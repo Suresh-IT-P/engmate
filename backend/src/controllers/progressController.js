@@ -22,7 +22,7 @@ async function getDashboardStats(req, res, next) {
     // Today's Daily Goal
     const dailyGoals = await db.query(
       `SELECT target_xp, earned_xp, target_minutes, spent_minutes, is_completed
-       FROM daily_goals WHERE user_id = ? AND goal_date = DATE('now')`,
+       FROM daily_goals WHERE user_id = ? AND goal_date = CURDATE()`,
       [userId]
     );
     const dailyGoal = dailyGoals[0] || { target_xp: 50, earned_xp: 0, target_minutes: 20, spent_minutes: 0, is_completed: 0 };

@@ -14,8 +14,12 @@ async function runMigration() {
   if (isMySQL) {
     const statements = schemaSql
       .split(';')
-      .map(s => s.trim())
-      .filter(s => s.length > 0 && !s.startsWith('--'));
+      .map(s => {
+        // Strip all leading comment lines (-- ...) so CREATE TABLE
+        // statements that follow a section comment are not discarded.
+        return s.replace(/^(\s*--[^\n]*\n)*/g, '').trim();
+      })
+      .filter(s => s.length > 0);
 
     let count = 0;
     for (const sql of statements) {
@@ -33,7 +37,8 @@ async function runMigration() {
         }
       }
     }
-  } else {
+    console.log(`[Migration] ${count} statements executed successfully.`);
+  }
     let transformed = schemaSql
       .replace(/INT AUTO_INCREMENT PRIMARY KEY/gi, 'INTEGER PRIMARY KEY AUTOINCREMENT')
       .replace(/DATETIME DEFAULT CURRENT_TIMESTAMP/gi, 'DATETIME DEFAULT CURRENT_TIMESTAMP')

@@ -59,7 +59,7 @@ async function register(req, res, next) {
     // Create Initial Streak
     await db.execute(
       `INSERT INTO streaks (user_id, current_streak, longest_streak, last_activity_date)
-       VALUES (?, 1, 1, DATE('now'))`,
+       VALUES (?, 1, 1, CURDATE())`,
       [userId]
     );
 

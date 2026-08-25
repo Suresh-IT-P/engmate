@@ -8,7 +8,7 @@ class AnalyticsService {
     // 1. Log learning session
     await db.execute(
       `INSERT INTO learning_sessions (user_id, session_type, target_id, duration_seconds, xp_earned, session_date)
-       VALUES (?, ?, ?, ?, ?, DATE('now'))`,
+       VALUES (?, ?, ?, ?, ?, CURDATE())`,
       [userId, sessionType, targetId, durationSeconds, xpEarned]
     );
 
@@ -48,13 +48,13 @@ class AnalyticsService {
         }
 
         await db.execute(
-          `UPDATE streaks SET current_streak = ?, longest_streak = ?, last_activity_date = DATE('now'), updated_at = CURRENT_TIMESTAMP WHERE user_id = ?`,
+          `UPDATE streaks SET current_streak = ?, longest_streak = ?, last_activity_date = CURDATE(), updated_at = CURRENT_TIMESTAMP WHERE user_id = ?`,
           [currentStreak, longestStreak, userId]
         );
       }
     } else {
       await db.execute(
-        `INSERT INTO streaks (user_id, current_streak, longest_streak, last_activity_date) VALUES (?, 1, 1, DATE('now'))`,
+        `INSERT INTO streaks (user_id, current_streak, longest_streak, last_activity_date) VALUES (?, 1, 1, CURDATE())`,
         [userId]
       );
     }
@@ -63,7 +63,7 @@ class AnalyticsService {
     const spentMinutes = Math.max(1, Math.round(durationSeconds / 60));
     const goalRows = await db.query(
       `SELECT id, target_xp, earned_xp, target_minutes, spent_minutes, is_completed FROM daily_goals
-       WHERE user_id = ? AND goal_date = DATE('now')`,
+       WHERE user_id = ? AND goal_date = CURDATE()`,
       [userId]
     );
 
@@ -79,7 +79,7 @@ class AnalyticsService {
     } else {
       await db.execute(
         `INSERT INTO daily_goals (user_id, goal_date, target_xp, earned_xp, target_minutes, spent_minutes, is_completed)
-         VALUES (?, DATE('now'), 50, ?, 20, ?, ?)`,
+         VALUES (?, CURDATE(), 50, ?, 20, ?, ?)`,
         [userId, xpEarned, spentMinutes, (xpEarned >= 50 || spentMinutes >= 20) ? 1 : 0]
       );
     }

@@ -1,5 +1,5 @@
 import React from 'react';
-import { BrowserRouter, Routes, Route, Navigate } from 'react-router-dom';
+import { BrowserRouter, Routes, Route, Navigate, Outlet } from 'react-router-dom';
 import { AuthProvider, useAuth } from './context/AuthContext';
 import { LearningProvider } from './context/LearningContext';
 import { CallProvider } from './context/CallContext';
@@ -53,7 +53,7 @@ function ProtectedRoute({ children }) {
   if (!user) {
     return <Navigate to="/login" replace />;
   }
-  return children;
+  return children ? children : <Outlet />;
 }
 
 function AppContent() {
@@ -63,37 +63,39 @@ function AppContent() {
       <GlobalSearchModal />
       <main className="flex-1 min-w-0 app-main">
         <Routes>
-          <Route path="/" element={<HomeDashboard />} />
-          <Route path="/learn" element={<LearnHub />} />
-          <Route path="/courses/:id" element={<CourseDetailView />} />
-          <Route path="/lessons/:id" element={<LessonDetailView />} />
-          <Route path="/vocabulary" element={<VocabularyTrainer />} />
-          <Route path="/grammar" element={<GrammarCoach />} />
-          <Route path="/grammar/:id" element={<GrammarTopicDetail />} />
-          <Route path="/speaking" element={<SpeakingPracticeView />} />
-          <Route path="/ai-tutor" element={<AITutorView />} />
-          <Route path="/chat" element={<ChatRoomHub />} />
-          <Route path="/messages/:roomId" element={<ProtectedRoute><FriendChatView /></ProtectedRoute>} />
-          <Route path="/friends" element={<ProtectedRoute><FriendsHub /></ProtectedRoute>} />
-          <Route path="/practice" element={<PracticeHub />} />
-          <Route path="/quiz/daily" element={<DailyQuizView />} />
-          <Route path="/battle" element={<LiveGrammarBattle />} />
-          <Route path="/battle/ai" element={<AIBattleRoute />} />
-          <Route path="/battle/room" element={<MultiplayerBattle />} />
-          <Route path="/battle/room/:roomId" element={<MultiplayerBattle />} />
-          <Route path="/skills/reading" element={<ReadingPracticeView />} />
-          <Route path="/skills/listening" element={<ListeningPracticeView />} />
-          <Route path="/skills/writing" element={<WritingPracticeView />} />
-          <Route path="/progress" element={<ProgressAnalytics />} />
-          <Route path="/mistakes" element={<MistakeNotebook />} />
-          <Route path="/bookmarks" element={<BookmarksView />} />
-          <Route path="/onboarding" element={<OnboardingView />} />
-          <Route path="/profile" element={<ProtectedRoute><ProfileView /></ProtectedRoute>} />
-          <Route path="/settings" element={<SettingsView />} />
-          <Route path="/admin" element={<ProtectedRoute><AdminDashboard /></ProtectedRoute>} />
           <Route path="/login" element={<LoginView />} />
           <Route path="/register" element={<RegisterView />} />
-          <Route path="*" element={<Navigate to="/" replace />} />
+          <Route element={<ProtectedRoute />}>
+            <Route path="/" element={<HomeDashboard />} />
+            <Route path="/learn" element={<LearnHub />} />
+            <Route path="/courses/:id" element={<CourseDetailView />} />
+            <Route path="/lessons/:id" element={<LessonDetailView />} />
+            <Route path="/vocabulary" element={<VocabularyTrainer />} />
+            <Route path="/grammar" element={<GrammarCoach />} />
+            <Route path="/grammar/:id" element={<GrammarTopicDetail />} />
+            <Route path="/speaking" element={<SpeakingPracticeView />} />
+            <Route path="/ai-tutor" element={<AITutorView />} />
+            <Route path="/chat" element={<ChatRoomHub />} />
+            <Route path="/messages/:roomId" element={<FriendChatView />} />
+            <Route path="/friends" element={<FriendsHub />} />
+            <Route path="/practice" element={<PracticeHub />} />
+            <Route path="/quiz/daily" element={<DailyQuizView />} />
+            <Route path="/battle" element={<LiveGrammarBattle />} />
+            <Route path="/battle/ai" element={<AIBattleRoute />} />
+            <Route path="/battle/room" element={<MultiplayerBattle />} />
+            <Route path="/battle/room/:roomId" element={<MultiplayerBattle />} />
+            <Route path="/skills/reading" element={<ReadingPracticeView />} />
+            <Route path="/skills/listening" element={<ListeningPracticeView />} />
+            <Route path="/skills/writing" element={<WritingPracticeView />} />
+            <Route path="/progress" element={<ProgressAnalytics />} />
+            <Route path="/mistakes" element={<MistakeNotebook />} />
+            <Route path="/bookmarks" element={<BookmarksView />} />
+            <Route path="/onboarding" element={<OnboardingView />} />
+            <Route path="/profile" element={<ProfileView />} />
+            <Route path="/settings" element={<SettingsView />} />
+            <Route path="/admin" element={<AdminDashboard />} />
+            <Route path="*" element={<Navigate to="/" replace />} />
+          </Route>
         </Routes>
       </main>
       <FloatingChatWidget />

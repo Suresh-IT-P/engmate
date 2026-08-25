@@ -16,19 +16,10 @@ export function AuthProvider({ children }) {
     if (token) {
       loadCurrentUser();
     } else {
-      // Auto-bootstrap default student session so first-time visitors have zero friction
-      autoLoginDefaultStudent();
+      setLoading(false);
     }
   }, []);
 
-  async function autoLoginDefaultStudent() {
-    try {
-      await login('student@englishmate.ai', 'EnglishMate@2026');
-    } catch (e) {
-      console.warn('Auto demo login skipped:', e.message);
-      setLoading(false);
-    }
-  }
 
   async function loadCurrentUser() {
     try {

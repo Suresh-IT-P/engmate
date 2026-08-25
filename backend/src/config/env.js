@@ -11,13 +11,12 @@ const config = {
   
   // Database Configuration
   db: {
-    client: process.env.DB_CLIENT || (process.env.DB_HOST ? 'mysql' : 'sqlite'),
+    client: process.env.DB_CLIENT || 'mysql',
     host: process.env.DB_HOST || 'localhost',
     port: parseInt(process.env.DB_PORT, 10) || 3306,
     database: process.env.DB_NAME || 'englishmate',
     user: process.env.DB_USER || 'root',
-    password: process.env.DB_PASSWORD || '',
-    sqlitePath: process.env.SQLITE_PATH || path.resolve(__dirname, '../../database/englishmate.sqlite')
+    password: process.env.DB_PASSWORD || ''
   },
   
   // Authentication

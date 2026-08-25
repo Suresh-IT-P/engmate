@@ -15,28 +15,15 @@ async function resetDb() {
     'content_categories', 'user_settings', 'user_profiles', 'admin_users', 'users', 'learning_levels'
   ];
 
-  if (isMySQL) {
-    await db.execute('SET FOREIGN_KEY_CHECKS = 0');
-    for (const t of tables) {
-      try {
-        await db.execute(`DROP TABLE IF EXISTS ${t}`);
-      } catch (err) {
-        // ignore
-      }
+  await db.execute('SET FOREIGN_KEY_CHECKS = 0');
+  for (const t of tables) {
+    try {
+      await db.execute(`DROP TABLE IF EXISTS ${t}`);
+    } catch (err) {
+      // ignore
     }
-    await db.execute('SET FOREIGN_KEY_CHECKS = 1');
-  } else {
-    const sqlite = db.getSQLiteDb();
-    sqlite.pragma('foreign_keys = OFF');
-    for (const t of tables) {
-      try {
-        sqlite.exec(`DROP TABLE IF EXISTS ${t}`);
-      } catch (err) {
-        // ignore
-      }
-    }
-    sqlite.pragma('foreign_keys = ON');
   }
+  await db.execute('SET FOREIGN_KEY_CHECKS = 1');
 
   console.log('✓ Tables dropped cleanly. Re-running migration and seeds...\n');
   await seedAll();

@@ -149,7 +149,11 @@ export default function MultiplayerBattle() {
       setAnswerResult(null);
     });
 
+    // Counts consecutive failed handshakes, so a transient one stays quiet.
+    let failures = 0;
+
     on('connect', () => {
+      failures = 0;
       setConnected(true);
       setRoomError(null);
       const savedRoomId = sessionStorage.getItem('activeRoomId');
@@ -160,10 +164,17 @@ export default function MultiplayerBattle() {
 
     // Without this the Create button just does nothing when the server is
     // unreachable, which is exactly how this bug presented.
+    //
+    // The socket retries on its own now, so a single failure is not worth
+    // alarming anyone about — a cold start or a tunnel is normal. Only speak
+    // up once it has genuinely been failing for a while.
     on('connect_error', () => {
       setConnected(false);
       setCreating(false);
-      setRoomError('Cannot reach the game server. Check your connection and try again.');
+      failures += 1;
+      if (failures >= 3) {
+        setRoomError('Still cannot reach the game server — retrying automatically.');
+      }
     });
 
     if (newSocket.connected) setConnected(true);

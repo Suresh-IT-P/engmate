@@ -3,10 +3,11 @@ import { io } from 'socket.io-client';
 /**
  * One Socket.IO connection for the whole app.
  *
- * IMPORTANT: autoConnect is false — the socket is ONLY created and connected
- * after a successful login (see AuthContext). This prevents the repeated
- * "ERR_CONNECTION_REFUSED" spam that happens when an unauthenticated page
- * tries to open a WebSocket connection that the server rejects.
+ * autoConnect is false, so merely importing this never opens a connection —
+ * that avoids the "ERR_CONNECTION_REFUSED" spam from pages that have no use
+ * for a socket. Opening it is an explicit act: AuthContext calls
+ * connectSocket() on login, and screens that need a socket without a login
+ * (the multiplayer battle) call it themselves on mount.
  */
 export const SOCKET_URL =
   import.meta.env.VITE_SOCKET_URL ||
@@ -31,9 +32,28 @@ export function getSocket() {
   if (!socket) {
     socket = io(SOCKET_URL, {
       autoConnect: false,          // connectSocket() owns the lifecycle
-      transports: ['websocket', 'polling'],
-      reconnectionAttempts: 5,     // stop retrying after 5 failures
-      reconnectionDelay: 2000,
+
+      // Polling FIRST, then upgrade. This is not a downgrade: Socket.IO
+      // handshakes over HTTP and silently switches to WebSocket a moment
+      // later, which is verified working in production.
+      //
+      // Listing 'websocket' first is what broke the game server connection.
+      // A websocket-first handshake times out behind the deployment's proxy,
+      // and socket.io-client does not fall through to the next transport on
+      // its own — so the client failed outright instead of using polling,
+      // which works fine.
+      transports: ['polling', 'websocket'],
+
+      // Belt and braces: if polling is ever the blocked one, try the rest
+      // rather than giving up on the first failure.
+      tryAllTransports: true,
+
+      // Never stop trying. Capping this at 5 meant a phone that lost signal
+      // for ten seconds, or a cold start on the host, left the socket dead
+      // until a full page reload — the UI just sat on "Connecting…" forever.
+      reconnectionAttempts: Infinity,
+      reconnectionDelay: 1000,
+      reconnectionDelayMax: 10000, // back off, but keep retrying
       auth: { token: localStorage.getItem('englishmate_token') || null }
     });
   }

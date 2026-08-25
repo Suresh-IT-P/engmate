@@ -156,11 +156,19 @@ export default function MultiplayerBattle() {
       failures = 0;
       setConnected(true);
       setRoomError(null);
-      const savedRoomId = sessionStorage.getItem('activeRoomId');
-      if (savedRoomId) newSocket.emit('rejoin_room', { roomId: savedRoomId, sessionId });
+      // Rejoining is not done here. Flipping `connected` re-runs the join
+      // effect below, which knows the room currently in the URL — this
+      // handler was captured on mount and would use a stale one.
     });
 
-    on('disconnect', () => setConnected(false));
+    on('disconnect', () => {
+      setConnected(false);
+      // Our seat is tied to a socket id that no longer exists. Clear the
+      // "already joined" latch so the join effect asks for it back as soon as
+      // we are connected again — otherwise a phone that dropped for two
+      // seconds stays listed in the room but deaf to everything in it.
+      joinedRef.current = null;
+    });
 
     // Without this the Create button just does nothing when the server is
     // unreachable, which is exactly how this bug presented.
@@ -257,18 +265,20 @@ export default function MultiplayerBattle() {
   }, []);
 
   /* ----------------------------------------- join the room in the URL ---- */
+  // Runs on first arrival AND after every reconnect, because `connected`
+  // is a dependency and 'disconnect' clears the latch below.
   useEffect(() => {
     if (!socket || !roomIdParam) return;
+    // Emitting while closed only buffers the packet, and it would be flushed
+    // before we know whether this is a first join or a reconnect. Wait.
+    if (!connected) return;
     if (joinedRef.current === roomIdParam) return;
     joinedRef.current = roomIdParam;
 
-    const saved = sessionStorage.getItem('activeRoomId');
-    if (saved === roomIdParam) {
-      socket.emit('rejoin_room', { roomId: roomIdParam, sessionId });
-    } else {
-      socket.emit('join_room', { roomId: roomIdParam, playerName, sessionId });
-    }
-  }, [socket, roomIdParam, sessionId, playerName]);
+    // Always 'join_room': the server recognises a returning sessionId and
+    // restores the seat, so the client does not have to guess which it is.
+    socket.emit('join_room', { roomId: roomIdParam, playerName, sessionId });
+  }, [socket, connected, roomIdParam, sessionId, playerName]);
 
   /* ------------------------------------------------------------ timers --- */
   useEffect(() => {

@@ -170,21 +170,36 @@ function initGameSocket(server) {
       if (!room) {
         return socket.emit('error', 'Room not found.');
       }
+
+      // A player we already know is not a newcomer — they are the same person
+      // arriving on a new socket. Phones do this constantly (screen lock, a
+      // WiFi/cellular handover, backgrounding the browser), and every one of
+      // those gets a brand new socket id.
+      //
+      // This used to fall through to the `find` below, match, and then do
+      // nothing at all: no socket.join, so the new socket was never in the
+      // room and received none of its broadcasts, and no reply, so the client
+      // sat on "CONNECTING" forever. Desktops rarely drop, which is why this
+      // only ever showed up on phones.
+      const returning = room.players.find(p => p.sessionId === sessionId);
+      if (returning) {
+        return resumePlayer(socket, roomId, room, returning);
+      }
+
+      // Only genuine newcomers are turned away from a match in progress.
       if (room.state !== 'LOBBY') {
         return socket.emit('error', 'Game has already started.');
       }
-      
-      if (!room.players.find(p => p.sessionId === sessionId)) {
-        room.players.push({ id: socket.id, sessionId, name: playerName, score: 0, streak: 0, connected: true });
-        socket.join(roomId);
-        // The host chose the topic and the clock; tell the joiner both.
-        socket.emit('join_success', roomMeta(roomId, room));
-        io.to(roomId).emit('system_message', {
-          id: Math.random().toString(36).slice(2, 9),
-          text: `👋 ${playerName} joined the room.`
-        });
-      }
-      
+
+      room.players.push({ id: socket.id, sessionId, name: playerName, score: 0, streak: 0, connected: true });
+      socket.join(roomId);
+      // The host chose the topic and the clock; tell the joiner both.
+      socket.emit('join_success', roomMeta(roomId, room));
+      io.to(roomId).emit('system_message', {
+        id: Math.random().toString(36).slice(2, 9),
+        text: `👋 ${playerName} joined the room.`
+      });
+
       io.to(roomId).emit('room_update', { players: room.players });
     });
 
@@ -196,33 +211,7 @@ function initGameSocket(server) {
       const player = room.players.find(p => p.sessionId === sessionId);
       if (!player) return socket.emit('error', 'Session not found in room.');
 
-      // Clear any pending disconnect timeout
-      if (room.disconnectTimeouts?.[sessionId]) {
-        clearTimeout(room.disconnectTimeouts[sessionId]);
-        delete room.disconnectTimeouts[sessionId];
-      }
-
-      player.id = socket.id;
-      player.connected = true;
-      socket.join(roomId);
-
-      // Sync the full state back to the rejoining client
-      const current = room.questions[room.currentQuestionIndex];
-      socket.emit('rejoin_success', {
-        ...roomMeta(roomId, room),
-        state: room.state,
-        currentQuestionIndex: room.currentQuestionIndex,
-        questionData: room.state === 'PLAYING' && current ? {
-          question: current.q,
-          options: current.options,
-          questionNumber: room.currentQuestionIndex + 1,
-          totalQuestions: room.questions.length,
-          secondsPerQuestion: room.secondsPerQuestion
-        } : null
-      });
-
-      // Let others know they reconnected
-      io.to(roomId).emit('room_update', { players: room.players });
+      resumePlayer(socket, roomId, room, player);
     });
 
     // Start Game
@@ -385,6 +374,44 @@ function initGameSocket(server) {
       questionCount: room.questionCount,
       hostSessionId: room.hostSessionId
     };
+  }
+
+  /**
+   * Put a player we already know back into a room on a new socket.
+   *
+   * Shared by rejoin_room and by join_room, because the client cannot always
+   * tell which it should send: a phone that reopened the invite link in a
+   * fresh tab has no stored session and will say "join", while the same phone
+   * recovering an existing tab will say "rejoin". Both mean the same thing.
+   */
+  function resumePlayer(socket, roomId, room, player) {
+    // Cancel the 30s eviction armed when the old socket dropped.
+    if (room.disconnectTimeouts?.[player.sessionId]) {
+      clearTimeout(room.disconnectTimeouts[player.sessionId]);
+      delete room.disconnectTimeouts[player.sessionId];
+    }
+
+    player.id = socket.id;
+    player.connected = true;
+    socket.join(roomId);
+
+    // Sync the full state back to the rejoining client.
+    const current = room.questions[room.currentQuestionIndex];
+    socket.emit('rejoin_success', {
+      ...roomMeta(roomId, room),
+      state: room.state,
+      currentQuestionIndex: room.currentQuestionIndex,
+      questionData: room.state === 'PLAYING' && current ? {
+        question: current.q,
+        options: current.options,
+        questionNumber: room.currentQuestionIndex + 1,
+        totalQuestions: room.questions.length,
+        secondsPerQuestion: room.secondsPerQuestion
+      } : null
+    });
+
+    // Let others know they reconnected.
+    io.to(roomId).emit('room_update', { players: room.players });
   }
 
   function broadcastSystem(roomId, text) {

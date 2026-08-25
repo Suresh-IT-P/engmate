@@ -9,7 +9,7 @@ export default function RegisterView() {
   const navigate = useNavigate();
 
   const [fullName, setFullName] = useState('');
-  const [email, setEmail] = useState('');
+  const [phone, setPhone] = useState('');
   const [password, setPassword] = useState('');
   const [targetLevel, setTargetLevel] = useState('B1');
   const [primaryGoal, setPrimaryGoal] = useState('Daily conversation');
@@ -21,10 +21,16 @@ export default function RegisterView() {
     setLoading(true);
     setErrorMsg('');
 
+    if (phone.replace(/\D/g, '').length < 10) {
+      setErrorMsg('Please enter a valid 10-digit phone number.');
+      setLoading(false);
+      return;
+    }
+
     try {
       await register({
         fullName,
-        email,
+        phoneNumber: phone.trim(),
         password,
         targetLevel,
         primaryGoal,
@@ -41,7 +47,7 @@ export default function RegisterView() {
   return (
     <div className="max-w-md mx-auto px-4 pt-10 pb-nav min-h-[80vh] flex flex-col justify-center">
       <div className="p-4 sm:p-8 rounded-3xl bg-surface-container-lowest border border-surface-variant/80 shadow-2xl flex flex-col gap-6">
-        
+
         {/* Brand Header */}
         <div className="text-center flex flex-col items-center gap-2">
           <div className="w-14 h-14 shrink-0 rounded-2xl bg-gradient-to-tr from-primary to-primary-container text-white flex items-center justify-center shadow-lg shadow-primary/25">
@@ -60,42 +66,63 @@ export default function RegisterView() {
         )}
 
         <form onSubmit={handleSubmit} className="flex flex-col gap-3.5">
+          {/* Full Name */}
           <div>
             <label className="text-xs font-bold text-on-surface block mb-1">Full Name (முழு பெயர்)</label>
-            <input
-              type="text"
-              value={fullName}
-              onChange={(e) => setFullName(e.target.value)}
-              placeholder="e.g. Keerthu"
-              required
-              className="w-full p-3 rounded-2xl bg-surface-container border border-surface-variant/70 text-sm font-medium text-on-surface outline-none focus:ring-2 focus:ring-primary/40"
-            />
+            <div className="relative">
+              <span className="absolute left-3 top-1/2 -translate-y-1/2 text-on-surface-variant">
+                <span className="material-symbols-outlined text-[20px]">person</span>
+              </span>
+              <input
+                type="text"
+                value={fullName}
+                onChange={(e) => setFullName(e.target.value)}
+                placeholder="e.g. Keerthu"
+                required
+                className="w-full pl-10 pr-3 py-3 rounded-2xl bg-surface-container border border-surface-variant/70 text-sm font-medium text-on-surface outline-none focus:ring-2 focus:ring-primary/40"
+              />
+            </div>
           </div>
 
+          {/* Phone Number */}
           <div>
-            <label className="text-xs font-bold text-on-surface block mb-1">Email Address</label>
-            <input
-              type="email"
-              value={email}
-              onChange={(e) => setEmail(e.target.value)}
-              placeholder="name@example.com"
-              required
-              className="w-full p-3 rounded-2xl bg-surface-container border border-surface-variant/70 text-sm font-medium text-on-surface outline-none focus:ring-2 focus:ring-primary/40"
-            />
+            <label className="text-xs font-bold text-on-surface block mb-1">
+              Phone Number (தொலைபேசி எண்)
+            </label>
+            <div className="relative">
+              <span className="absolute left-3 top-1/2 -translate-y-1/2 text-on-surface-variant">
+                <span className="material-symbols-outlined text-[20px]">phone</span>
+              </span>
+              <input
+                type="tel"
+                value={phone}
+                onChange={(e) => setPhone(e.target.value)}
+                placeholder="+91 98765 43210"
+                required
+                className="w-full pl-10 pr-3 py-3 rounded-2xl bg-surface-container border border-surface-variant/70 text-sm font-medium text-on-surface outline-none focus:ring-2 focus:ring-primary/40"
+              />
+            </div>
           </div>
 
+          {/* Password */}
           <div>
             <label className="text-xs font-bold text-on-surface block mb-1">Password</label>
-            <input
-              type="password"
-              value={password}
-              onChange={(e) => setPassword(e.target.value)}
-              placeholder="Minimum 6 characters"
-              required
-              className="w-full p-3 rounded-2xl bg-surface-container border border-surface-variant/70 text-sm font-medium text-on-surface outline-none focus:ring-2 focus:ring-primary/40"
-            />
+            <div className="relative">
+              <span className="absolute left-3 top-1/2 -translate-y-1/2 text-on-surface-variant">
+                <span className="material-symbols-outlined text-[20px]">lock</span>
+              </span>
+              <input
+                type="password"
+                value={password}
+                onChange={(e) => setPassword(e.target.value)}
+                placeholder="Minimum 6 characters"
+                required
+                className="w-full pl-10 pr-3 py-3 rounded-2xl bg-surface-container border border-surface-variant/70 text-sm font-medium text-on-surface outline-none focus:ring-2 focus:ring-primary/40"
+              />
+            </div>
           </div>
 
+          {/* Level & Goal */}
           <div className="grid grid-cols-2 gap-2">
             <div>
               <label className="text-xs font-bold text-on-surface block mb-1">Target Level</label>

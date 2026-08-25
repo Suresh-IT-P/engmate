@@ -8,7 +8,7 @@ export default function LoginView() {
   const { tamilEnabled } = useLearning();
   const navigate = useNavigate();
 
-  const [email, setEmail] = useState('');
+  const [phone, setPhone] = useState('');
   const [password, setPassword] = useState('');
   const [loading, setLoading] = useState(false);
   const [errorMsg, setErrorMsg] = useState('');
@@ -19,20 +19,19 @@ export default function LoginView() {
     setErrorMsg('');
 
     try {
-      await login(email, password);
+      await login(phone, password);
       navigate('/');
     } catch (err) {
-      setErrorMsg(err.message || 'Login failed. Please check credentials.');
+      setErrorMsg(err.message || 'Login failed. Please check your credentials.');
     } finally {
       setLoading(false);
     }
   };
 
-
   return (
     <div className="max-w-md mx-auto px-4 pt-12 pb-nav min-h-[80vh] flex flex-col justify-center">
       <div className="p-4 sm:p-8 rounded-3xl bg-surface-container-lowest border border-surface-variant/80 shadow-2xl flex flex-col gap-6">
-        
+
         {/* Brand Banner */}
         <div className="text-center flex flex-col items-center gap-2">
           <div className="w-14 h-14 shrink-0 rounded-2xl bg-gradient-to-tr from-primary to-primary-container text-white flex items-center justify-center shadow-lg shadow-primary/25">
@@ -53,25 +52,39 @@ export default function LoginView() {
         {/* Form */}
         <form onSubmit={handleSubmit} className="flex flex-col gap-4">
           <div>
-            <label className="text-xs font-bold text-on-surface block mb-1">Email Address</label>
-            <input
-              type="email"
-              value={email}
-              onChange={(e) => setEmail(e.target.value)}
-              required
-              className="w-full p-3 rounded-2xl bg-surface-container border border-surface-variant/70 text-sm font-medium text-on-surface outline-none focus:ring-2 focus:ring-primary/40"
-            />
+            <label className="text-xs font-bold text-on-surface block mb-1">
+              Phone Number (தொலைபேசி எண்)
+            </label>
+            <div className="relative">
+              <span className="absolute left-3 top-1/2 -translate-y-1/2 text-on-surface-variant">
+                <span className="material-symbols-outlined text-[20px]">phone</span>
+              </span>
+              <input
+                type="tel"
+                value={phone}
+                onChange={(e) => setPhone(e.target.value)}
+                placeholder="+91 98765 43210"
+                required
+                className="w-full pl-10 pr-3 py-3 rounded-2xl bg-surface-container border border-surface-variant/70 text-sm font-medium text-on-surface outline-none focus:ring-2 focus:ring-primary/40"
+              />
+            </div>
           </div>
 
           <div>
             <label className="text-xs font-bold text-on-surface block mb-1">Password</label>
-            <input
-              type="password"
-              value={password}
-              onChange={(e) => setPassword(e.target.value)}
-              required
-              className="w-full p-3 rounded-2xl bg-surface-container border border-surface-variant/70 text-sm font-medium text-on-surface outline-none focus:ring-2 focus:ring-primary/40"
-            />
+            <div className="relative">
+              <span className="absolute left-3 top-1/2 -translate-y-1/2 text-on-surface-variant">
+                <span className="material-symbols-outlined text-[20px]">lock</span>
+              </span>
+              <input
+                type="password"
+                value={password}
+                onChange={(e) => setPassword(e.target.value)}
+                placeholder="Enter your password"
+                required
+                className="w-full pl-10 pr-3 py-3 rounded-2xl bg-surface-container border border-surface-variant/70 text-sm font-medium text-on-surface outline-none focus:ring-2 focus:ring-primary/40"
+              />
+            </div>
           </div>
 
           <button
@@ -86,7 +99,6 @@ export default function LoginView() {
             )}
           </button>
         </form>
-
 
         <p className="text-center text-xs text-on-surface-variant">
           Don't have an account?{' '}

@@ -41,8 +41,8 @@ export function AuthProvider({ children }) {
     }
   }
 
-  async function login(email, password) {
-    const res = await api.login({ email, password });
+  async function login(phone, password) {
+    const res = await api.login({ identifier: phone, password });
     if (res.success && res.data) {
       localStorage.setItem('englishmate_token', res.data.token);
       refreshSocketAuth();

@@ -6,23 +6,24 @@ const { success, error } = require('../utils/response');
 
 async function register(req, res, next) {
   try {
-    const { email, password, fullName, username, phoneNumber, nativeLanguage = 'Tamil', targetLevel = 'B1', primaryGoal = 'Daily conversation' } = req.body;
+    const { phoneNumber, password, fullName, username, nativeLanguage = 'Tamil', targetLevel = 'B1', primaryGoal = 'Daily conversation' } = req.body;
 
-    if (!email || !password || !fullName) {
-      return error(res, 'Email, password, and full name are required.', 400);
+    if (!phoneNumber || !password || !fullName) {
+      return error(res, 'Phone number, password, and full name are required.', 400);
     }
 
     if (password.length < 6) {
       return error(res, 'Password must be at least 6 characters.', 400);
     }
 
-    const cleanEmail = email.toLowerCase().trim();
+    const cleanPhone = phoneNumber.trim();
     const cleanUsername = username ? username.toLowerCase().trim() : null;
-    const cleanPhone = phoneNumber ? phoneNumber.trim() : null;
+    // Generate a unique internal email from the phone number for DB storage
+    const internalEmail = `${cleanPhone.replace(/[^0-9]/g, '')}@phone.englishmate.local`;
 
-    const existing = await db.query('SELECT id FROM users WHERE email = ?', [cleanEmail]);
-    if (existing.length > 0) {
-      return error(res, 'An account with this email already exists.', 409);
+    const existingPhone = await db.query('SELECT id FROM users WHERE phone_number = ?', [cleanPhone]);
+    if (existingPhone.length > 0) {
+      return error(res, 'An account with this phone number already exists.', 409);
     }
 
     if (cleanUsername) {
@@ -37,7 +38,7 @@ async function register(req, res, next) {
 
     const userRes = await db.execute(
       'INSERT INTO users (email, username, phone_number, password_hash, role, status, is_verified) VALUES (?, ?, ?, ?, ?, ?, ?)',
-      [cleanEmail, cleanUsername, cleanPhone, passwordHash, 'user', 'active', 1]
+      [internalEmail, cleanUsername, cleanPhone, passwordHash, 'user', 'active', 1]
     );
     const userId = userRes.insertId;
 
@@ -69,7 +70,7 @@ async function register(req, res, next) {
       [userId]
     );
 
-    const token = jwt.sign({ userId, email: cleanEmail, role: 'user' }, config.jwtSecret, {
+    const token = jwt.sign({ userId, role: 'user' }, config.jwtSecret, {
       expiresIn: config.jwtExpiresIn
     });
 
@@ -77,9 +78,8 @@ async function register(req, res, next) {
       token,
       user: {
         id: userId,
-        email: cleanEmail,
-        username: cleanUsername,
         phoneNumber: cleanPhone,
+        username: cleanUsername,
         role: 'user',
         fullName: fullName.trim(),
         currentLevel: 'A1',
@@ -99,7 +99,7 @@ async function login(req, res, next) {
     const loginId = (identifier || email || '').trim().toLowerCase();
 
     if (!loginId || !password) {
-      return error(res, 'Email/Username/Phone and password are required.', 400);
+      return error(res, 'Phone number and password are required.', 400);
     }
 
     const users = await db.query(

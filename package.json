@@ -6,7 +6,7 @@
     "dev:backend": "cd backend && npm run dev",
     "dev:frontend": "cd frontend && npm run dev",
     "dev": "node scripts/dev.js",
-    "build": "cd frontend && npm run build",
+    "build": "npm run install:all && cd frontend && npm run build",
     "start": "cd backend && npm start",
     "db:migrate": "cd backend && npm run db:migrate",
     "db:seed": "cd backend && npm run db:seed",

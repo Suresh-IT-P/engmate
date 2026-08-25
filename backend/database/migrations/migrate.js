@@ -23,7 +23,12 @@ async function runMigration() {
         await db.execute(sql);
         count++;
       } catch (err) {
-        if (!err.message.includes('already exists')) {
+        const msg = err.message || '';
+        if (
+          !msg.includes('already exists') &&
+          !msg.includes('Duplicate key name') &&
+          !msg.includes('Duplicate column name')
+        ) {
           console.warn(`[Migration Warning] ${err.message}`);
         }
       }

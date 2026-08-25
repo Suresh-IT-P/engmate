@@ -26,10 +26,14 @@ async function startServer() {
     await runMigration();
 
     // Check if courses table has records; if not, auto-seed exclusive Class 11 dataset
-    const courseCount = await db.query("SELECT COUNT(*) as count FROM courses WHERE id = 'crs_class11'");
-    if (courseCount[0]?.count === 0) {
-      console.log('🌱 Auto-seeding exclusive Class 11 WTS English dataset...');
-      await seedMasterPdfDataset();
+    try {
+      const courseCount = await db.query("SELECT COUNT(*) as count FROM courses WHERE id = 'crs_class11'");
+      if (courseCount[0]?.count === 0) {
+        console.log('🌱 Auto-seeding exclusive Class 11 WTS English dataset...');
+        await seedMasterPdfDataset();
+      }
+    } catch (seedErr) {
+      console.warn('[Seed] Skipping auto-seed (table may not exist yet):', seedErr.message);
     }
 
     const server = http.createServer(app);

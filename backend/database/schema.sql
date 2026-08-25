@@ -399,7 +399,7 @@ CREATE TABLE IF NOT EXISTS learning_sessions (
     target_id VARCHAR(50),
     duration_seconds INT NOT NULL DEFAULT 0,
     xp_earned INT NOT NULL DEFAULT 0,
-    session_date DATE DEFAULT (CURRENT_DATE),
+    session_date DATE DEFAULT (CURRENT_DATE()),
     created_at DATETIME DEFAULT CURRENT_TIMESTAMP,
     FOREIGN KEY (user_id) REFERENCES users(id) ON DELETE CASCADE
 );
@@ -408,7 +408,7 @@ CREATE TABLE IF NOT EXISTS learning_sessions (
 CREATE TABLE IF NOT EXISTS daily_goals (
     id INT AUTO_INCREMENT PRIMARY KEY,
     user_id INT NOT NULL,
-    goal_date DATE DEFAULT (CURRENT_DATE),
+    goal_date DATE DEFAULT (CURRENT_DATE()),
     target_xp INT DEFAULT 50,
     earned_xp INT DEFAULT 0,
     target_minutes INT DEFAULT 20,
@@ -642,12 +642,8 @@ CREATE TABLE IF NOT EXISTS message_reactions (
     FOREIGN KEY (user_id) REFERENCES users(id) ON DELETE CASCADE
 );
 
-CREATE INDEX IF NOT EXISTS idx_message_reactions_msg ON message_reactions(message_id);
 
 -- VOICE CALLS
--- One row per call attempt in a direct chat room, so the chat timeline can show
--- "missed call" / "voice call, 2:14" alongside the messages. Signalling itself
--- is peer-to-peer WebRTC and never touches the database; only the outcome does.
 CREATE TABLE IF NOT EXISTS call_logs (
     id INT AUTO_INCREMENT PRIMARY KEY,
     call_id VARCHAR(60) NOT NULL,
@@ -655,7 +651,7 @@ CREATE TABLE IF NOT EXISTS call_logs (
     caller_id INT NOT NULL,
     callee_id INT NOT NULL,
     call_type VARCHAR(10) NOT NULL DEFAULT 'voice',
-    status VARCHAR(20) NOT NULL DEFAULT 'missed', -- 'completed', 'missed', 'declined', 'cancelled', 'failed'
+    status VARCHAR(20) NOT NULL DEFAULT 'missed',
     duration_seconds INT DEFAULT 0,
     started_at DATETIME DEFAULT CURRENT_TIMESTAMP,
     ended_at DATETIME,
@@ -665,20 +661,21 @@ CREATE TABLE IF NOT EXISTS call_logs (
 );
 
 -- INDEXES FOR HIGH-PERFORMANCE QUERYING
-CREATE UNIQUE INDEX IF NOT EXISTS idx_call_logs_call_id ON call_logs(call_id);
-CREATE INDEX IF NOT EXISTS idx_call_logs_room ON call_logs(room_id, started_at);
-CREATE INDEX IF NOT EXISTS idx_chat_messages_room ON chat_messages(room_id, created_at);
-CREATE INDEX IF NOT EXISTS idx_battle_questions_topic ON battle_questions(topic_id);
-CREATE UNIQUE INDEX IF NOT EXISTS idx_battle_questions_key ON battle_questions(topic_id, question_key);
-CREATE INDEX IF NOT EXISTS idx_vocabulary_level ON vocabulary(level_id);
-CREATE INDEX IF NOT EXISTS idx_vocabulary_category ON vocabulary(category_id);
-CREATE INDEX IF NOT EXISTS idx_grammar_level ON grammar_topics(level_id);
-CREATE INDEX IF NOT EXISTS idx_lessons_module ON lessons(module_id);
-CREATE INDEX IF NOT EXISTS idx_exercises_lesson ON exercises(lesson_id);
-CREATE INDEX IF NOT EXISTS idx_questions_exercise ON questions(exercise_id);
-CREATE INDEX IF NOT EXISTS idx_user_vocab_review ON user_vocabulary(user_id, next_review_date);
-CREATE INDEX IF NOT EXISTS idx_quiz_attempts_user ON quiz_attempts(user_id);
-CREATE INDEX IF NOT EXISTS idx_ai_messages_conv ON ai_messages(conversation_id);
-CREATE INDEX IF NOT EXISTS idx_chat_messages_room ON chat_messages(room_id);
-CREATE INDEX IF NOT EXISTS idx_friendships_user ON friendships(user_id);
-CREATE INDEX IF NOT EXISTS idx_friendships_friend ON friendships(friend_id);
+-- (CREATE INDEX IF NOT EXISTS requires MySQL 8.0.32+; errors on duplicates are caught and ignored by migrate.js)
+CREATE INDEX idx_message_reactions_msg ON message_reactions(message_id);
+CREATE UNIQUE INDEX idx_call_logs_call_id ON call_logs(call_id);
+CREATE INDEX idx_call_logs_room ON call_logs(room_id, started_at);
+CREATE INDEX idx_chat_messages_room ON chat_messages(room_id, created_at);
+CREATE INDEX idx_battle_questions_topic ON battle_questions(topic_id);
+CREATE UNIQUE INDEX idx_battle_questions_key ON battle_questions(topic_id, question_key);
+CREATE INDEX idx_vocabulary_level ON vocabulary(level_id);
+CREATE INDEX idx_vocabulary_category ON vocabulary(category_id);
+CREATE INDEX idx_grammar_level ON grammar_topics(level_id);
+CREATE INDEX idx_lessons_module ON lessons(module_id);
+CREATE INDEX idx_exercises_lesson ON exercises(lesson_id);
+CREATE INDEX idx_questions_exercise ON questions(exercise_id);
+CREATE INDEX idx_user_vocab_review ON user_vocabulary(user_id, next_review_date);
+CREATE INDEX idx_quiz_attempts_user ON quiz_attempts(user_id);
+CREATE INDEX idx_ai_messages_conv ON ai_messages(conversation_id);
+CREATE INDEX idx_friendships_user ON friendships(user_id);
+CREATE INDEX idx_friendships_friend ON friendships(friend_id);

@@ -66,7 +66,7 @@ export default function RegisterView() {
               type="text"
               value={fullName}
               onChange={(e) => setFullName(e.target.value)}
-              placeholder="e.g. Suresh Kumar"
+              placeholder="e.g. Keerthu"
               required
               className="w-full p-3 rounded-2xl bg-surface-container border border-surface-variant/70 text-sm font-medium text-on-surface outline-none focus:ring-2 focus:ring-primary/40"
             />

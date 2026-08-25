@@ -16,7 +16,8 @@ const config = {
     port: parseInt(process.env.DB_PORT, 10) || 3306,
     database: process.env.DB_NAME || 'englishmate',
     user: process.env.DB_USER || 'root',
-    password: process.env.DB_PASSWORD || ''
+    password: process.env.DB_PASSWORD || '',
+    ssl: process.env.DB_SSL === 'true' || process.env.DB_HOST?.includes('aivencloud.com')
   },
   
   // Authentication

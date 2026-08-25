@@ -11,7 +11,8 @@ async function initMySQL() {
       port: config.db.port,
       user: config.db.user,
       password: config.db.password,
-      connectTimeout: 3000
+      connectTimeout: 3000,
+      ...(config.db.ssl && { ssl: { rejectUnauthorized: false } })
     });
     await adminConn.query(`CREATE DATABASE IF NOT EXISTS \`${config.db.database}\` CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci;`);
     await adminConn.end();
@@ -30,7 +31,8 @@ async function initMySQL() {
       connectionLimit: 10,
       queueLimit: 0,
       enableKeepAlive: true,
-      keepAliveInitialDelay: 0
+      keepAliveInitialDelay: 0,
+      ...(config.db.ssl && { ssl: { rejectUnauthorized: false } })
     });
     await mysqlPool.query('SELECT 1');
     console.log(`[Database] Connected successfully to MySQL (${config.db.database} on ${config.db.host}:${config.db.port})`);

@@ -7,18 +7,6 @@ import BattleTopicPicker from '../components/BattleTopicPicker';
 import { useBurst } from '../components/reactions/ReactionBurstLayer';
 import { haptic } from '../components/reactions/reactionKit';
 
-/**
- * Every event this screen subscribes to. The socket is shared with friend chat
- * and voice calls, so unmounting the battle detaches exactly these and leaves
- * the connection itself alone.
- */
-const BATTLE_EVENTS = [
-  'connect', 'error', 'room_created', 'join_success', 'rejoin_success', 'room_update',
-  'game_started', 'new_question', 'answer_result', 'round_over', 'opponent_answered',
-  'game_finished', 'rematch_ready', 'settings_updated', 'system_message',
-  'receive_chat', 'receive_emote'
-];
-
 /** Clock presets, in seconds. The server clamps anything outside 5–60. */
 const TIMER_PRESETS = [5, 10, 15, 20, 30, 45, 60];
 const ROUND_PRESETS = [5, 10, 15, 20];
@@ -113,7 +101,7 @@ export default function MultiplayerBattle() {
     const bound = [];
     const on = (event, handler) => {
       bound.push([event, handler]);
-      on(event, handler);
+      newSocket.on(event, handler);
     };
 
     const applyMeta = (data) => {

@@ -80,20 +80,76 @@ async function getEngine() {
   return 'mysql';
 }
 
+/**
+ * mysql2 throws "Bind parameters must not contain undefined" rather than
+ * treating it as NULL, so an optional field the caller left off becomes a
+ * 500 instead of a null column. Normalise here, once, for every query.
+ */
+function normalise(params) {
+  if (!Array.isArray(params)) return params;
+  return params.map((p) => (p === undefined ? null : p));
+}
+
 async function query(sql, params = []) {
   await getEngine();
-  const [rows] = await mysqlPool.query(sql, params);
+  const [rows] = await mysqlPool.query(sql, normalise(params));
   return rows;
 }
 
 async function execute(sql, params = []) {
   await getEngine();
-  const [result] = await mysqlPool.execute(sql, params);
+  const [result] = await mysqlPool.execute(sql, normalise(params));
   return {
     insertId: result.insertId,
     affectedRows: result.affectedRows,
     changedRows: result.changedRows
   };
+}
+
+/**
+ * Run several statements as one atomic unit on a single pooled connection.
+ *
+ * Registration needs this: it writes a user, a profile, settings, a streak and
+ * a notification. Without a transaction, a failure on any of the later inserts
+ * leaves an orphaned users row behind — and because the phone number is unique,
+ * that person can then never register again.
+ *
+ * The callback receives a tx object exposing the same query/execute signature.
+ */
+async function withTransaction(work) {
+  await getEngine();
+  const conn = await mysqlPool.getConnection();
+
+  const tx = {
+    query: async (sql, params = []) => {
+      const [rows] = await conn.query(sql, normalise(params));
+      return rows;
+    },
+    execute: async (sql, params = []) => {
+      const [result] = await conn.execute(sql, normalise(params));
+      return {
+        insertId: result.insertId,
+        affectedRows: result.affectedRows,
+        changedRows: result.changedRows
+      };
+    }
+  };
+
+  try {
+    await conn.beginTransaction();
+    const out = await work(tx);
+    await conn.commit();
+    return out;
+  } catch (err) {
+    try {
+      await conn.rollback();
+    } catch (_) {
+      /* the connection is already broken; releasing it is all we can do */
+    }
+    throw err;
+  } finally {
+    conn.release();
+  }
 }
 
 async function execDirect(rawSql) {
@@ -117,6 +173,7 @@ module.exports = {
   query,
   execute,
   execDirect,
+  withTransaction,
   initMySQL,
   getSQLiteDb,
   persistSQLite,

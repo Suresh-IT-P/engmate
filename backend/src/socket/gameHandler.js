@@ -105,7 +105,7 @@ async function loadQuestions(topicId, count = QUESTIONS_PER_MATCH) {
       `SELECT question_text, option_a, option_b, option_c, option_d, answer_index, explanation
          FROM battle_questions
         ${useTopic ? 'WHERE topic_id = ?' : ''}
-        ORDER BY RANDOM() LIMIT ?`,
+        ORDER BY RAND() LIMIT ?`,
       useTopic ? [topicId, count] : [count]
     );
     if (!rows.length) return FALLBACK_QUESTIONS;

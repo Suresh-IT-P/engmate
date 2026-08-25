@@ -15,54 +15,63 @@ export const SOCKET_URL =
 let socket = null;
 
 /**
- * Returns the shared socket only if it has already been connected.
- * Components should call this rather than connectSocket() themselves.
+ * The shared socket instance, created on first use but NOT connected.
+ *
+ * This always returns a real socket. Returning null until login looked tidy but
+ * broke every consumer: CallProvider captures the socket once in useState and
+ * MultiplayerBattle reads it in an effect, so both got null and threw on
+ * `socket.on(...)` — and because CallProvider wraps the whole app, that is a
+ * white screen for anyone not signed in.
+ *
+ * Attaching listeners to a disconnected socket is fine in Socket.IO; they fire
+ * when connect() is finally called. So consumers can wire up whenever they
+ * mount, and connectSocket() alone decides when traffic starts.
  */
 export function getSocket() {
-  return socket;
-}
-
-/**
- * Create and connect the socket. Called once after successful login.
- * Safe to call multiple times — it's a no-op if already connected.
- */
-export function connectSocket() {
-  if (socket && socket.connected) return socket;
-
   if (!socket) {
     socket = io(SOCKET_URL, {
-      autoConnect: false,          // We manually call connect() below
+      autoConnect: false,          // connectSocket() owns the lifecycle
       transports: ['websocket', 'polling'],
-      reconnectionAttempts: 5,     // Stop retrying after 5 failures
+      reconnectionAttempts: 5,     // stop retrying after 5 failures
       reconnectionDelay: 2000,
       auth: { token: localStorage.getItem('englishmate_token') || null }
     });
   }
-
-  socket.auth = { token: localStorage.getItem('englishmate_token') || null };
-  socket.connect();
   return socket;
 }
 
 /**
- * Disconnect and destroy the socket. Called on logout.
+ * Connect (or reconnect) with the current token. Called after login and when
+ * restoring an existing session. Safe to call repeatedly.
  */
-export function disconnectSocket() {
-  if (!socket) return;
-  socket.disconnect();
-  socket = null;
+export function connectSocket() {
+  const s = getSocket();
+  s.auth = { token: localStorage.getItem('englishmate_token') || null };
+  if (!s.connected) s.connect();
+  return s;
 }
 
 /**
- * @deprecated Use connectSocket() / disconnectSocket() instead.
- * Kept for backward compatibility with any components that still call it.
+ * Disconnect on logout — but keep the instance.
+ *
+ * Dropping it to null orphaned every listener already attached by CallProvider
+ * and the battle screen, so a logout followed by a login left them listening to
+ * a dead object and silently receiving nothing.
+ */
+export function disconnectSocket() {
+  if (!socket) return;
+  socket.auth = { token: null };
+  socket.disconnect();
+}
+
+/**
+ * Re-handshake with the current token. The token travels in the handshake, so
+ * a change of user needs a fresh connection for presence and calls to follow it.
  */
 export function refreshSocketAuth() {
   if (!socket) return;
   socket.auth = { token: localStorage.getItem('englishmate_token') || null };
-  if (socket.connected) {
-    socket.disconnect().connect();
-  }
+  if (socket.connected) socket.disconnect().connect();
 }
 
 /**

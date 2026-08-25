@@ -19,23 +19,23 @@ async function import11thData() {
 
   // Ensure Course for Class 11 exists
   await db.execute(
-    `INSERT OR IGNORE INTO courses (id, level_id, title, tamil_title, description, is_published, order_index)
+    `INSERT IGNORE INTO courses (id, level_id, title, tamil_title, description, is_published, order_index)
      VALUES ('crs_class11', 'B1', 'Class 11 English (Samacheer Kalvi)', '11ஆம் வகுப்பு ஆங்கிலம் (சமச்சீர்)', 'Complete Class 11 syllabus covering Prose, Poems, Grammar, Writing Skills, Proverbs, and Reading Comprehension.', 1, 6)`
   );
 
   // Ensure Modules for Class 11 exist
   await db.execute(
-    `INSERT OR IGNORE INTO modules (id, course_id, title, tamil_title, description, order_index)
+    `INSERT IGNORE INTO modules (id, course_id, title, tamil_title, description, order_index)
      VALUES ('mod_cls11_prose', 'crs_class11', 'Class 11 Prose Units', '11ஆம் வகுப்பு உரைநடை', 'Complete prose lessons and summaries', 1)`
   );
 
   await db.execute(
-    `INSERT OR IGNORE INTO modules (id, course_id, title, tamil_title, description, order_index)
+    `INSERT IGNORE INTO modules (id, course_id, title, tamil_title, description, order_index)
      VALUES ('mod_cls11_poem', 'crs_class11', 'Class 11 Poems', '11ஆம் வகுப்பு செய்யுள்', 'Poem analysis and vocabulary', 2)`
   );
 
   await db.execute(
-    `INSERT OR IGNORE INTO modules (id, course_id, title, tamil_title, description, order_index)
+    `INSERT IGNORE INTO modules (id, course_id, title, tamil_title, description, order_index)
      VALUES ('mod_cls11_writing', 'crs_class11', 'Practical Writing & Grammar', 'எழுத்துப்பயிற்சி மற்றும் இலக்கணம்', 'Notice, Email, Letters, and Proverbs', 3)`
   );
 
@@ -190,7 +190,7 @@ During one airport check-in, his carry-on bag zip jammed. When he yanked it forc
   for (let idx = 0; idx < proseUnits.length; idx++) {
     const p = proseUnits[idx];
     await db.execute(
-      `INSERT OR IGNORE INTO lessons (id, module_id, title, tamil_title, is_published, order_index)
+      `INSERT IGNORE INTO lessons (id, module_id, title, tamil_title, is_published, order_index)
        VALUES (?, 'mod_cls11_prose', ?, ?, 1, ?)`,
       [p.id, p.title, p.tamil_title, idx + 1]
     );
@@ -203,7 +203,7 @@ During one airport check-in, his carry-on bag zip jammed. When he yanked it forc
 
     for (const v of p.vocab) {
       await db.execute(
-        `INSERT OR IGNORE INTO vocabulary (word, phonetic, meaning, tamil_meaning, level_id)
+        `INSERT IGNORE INTO vocabulary (word, phonetic, meaning, tamil_meaning, level_id)
          VALUES (?, '/spelling/', ?, ?, 'B1')`,
         [v.word, v.def, v.tamil]
       );
@@ -270,7 +270,7 @@ King Richard II reflects on the vanity of royal power after losing his throne. H
   for (let idx = 0; idx < poems.length; idx++) {
     const pm = poems[idx];
     await db.execute(
-      `INSERT OR IGNORE INTO lessons (id, module_id, title, tamil_title, is_published, order_index)
+      `INSERT IGNORE INTO lessons (id, module_id, title, tamil_title, is_published, order_index)
        VALUES (?, 'mod_cls11_poem', ?, ?, 1, ?)`,
       [pm.id, pm.title, pm.tamil_title, idx + 10]
     );
@@ -337,7 +337,7 @@ Yours faithfully, R. Kumar
   };
 
   await db.execute(
-    `INSERT OR IGNORE INTO lessons (id, module_id, title, tamil_title, is_published, order_index)
+    `INSERT IGNORE INTO lessons (id, module_id, title, tamil_title, is_published, order_index)
      VALUES ('lsn_cls11_writing_skills', 'mod_cls11_writing', ?, ?, 1, 20)`,
     [writingSection.title, writingSection.tamil_title]
   );

@@ -16,12 +16,12 @@ async function purgeAllExcept11th() {
 
   // Ensure course_samacheer_class_11 also redirects or exists cleanly
   await db.execute(
-    `INSERT OR IGNORE INTO courses (id, level_id, title, tamil_title, description, is_published, order_index)
+    `INSERT IGNORE INTO courses (id, level_id, title, tamil_title, description, is_published, order_index)
      VALUES ('course_samacheer_class_11', 'B1', 'Class 11 English (Samacheer Kalvi)', '11ஆம் வகுப்பு ஆங்கிலம் (சமச்சீர்)', 'Complete Class 11 English Syllabus', 1, 1)`
   );
 
   await db.execute(
-    `INSERT OR IGNORE INTO courses (id, level_id, title, tamil_title, description, is_published, order_index)
+    `INSERT IGNORE INTO courses (id, level_id, title, tamil_title, description, is_published, order_index)
      VALUES ('crs_class11', 'B1', 'Class 11 English (Samacheer Kalvi)', '11ஆம் வகுப்பு ஆங்கிலம் (சமச்சீர்)', 'Complete Class 11 English Syllabus', 1, 1)`
   );
 

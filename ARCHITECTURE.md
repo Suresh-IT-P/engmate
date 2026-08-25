@@ -318,3 +318,83 @@ a reaction should never throw confetti.
 
 `getRoomMessages` batches reactions for the whole page in one query — one query
 per message would be N+1 on every room open.
+
+## 9. Deployment (Render + managed MySQL)
+
+### Boot sequence
+
+```
+initMySQL  →  runMigration  →  seedFoundations  →  repairOrphanedUsers
+           →  server.listen()          ← health checks pass here
+           →  ensureContent()          ← runs in the background
+```
+
+`seedFoundations` is blocking and comes first because **every content table and
+the profile created at registration has a foreign key into `learning_levels`**.
+`ensureContent` is deliberately *not* blocking: the first seed of the
+5,384-question battle bank takes minutes against a remote database, long enough
+to fail a platform start-up health check.
+
+### The registration 500
+
+A fresh deploy returned:
+
+```
+Cannot add or update a child row: a foreign key constraint fails
+(`user_profiles`, CONSTRAINT `user_profiles_ibfk_2`
+ FOREIGN KEY (`current_level`) REFERENCES `learning_levels` (`id`))
+```
+
+`learning_levels` was empty. The only seeder that populated it, `seedCourses`,
+runs solely under `npm run db:seed`, which is not part of a deploy; the boot
+path ran `seedMasterPdfDataset`, which never touches that table. The same gap
+also broke content seeding, since `courses.level_id = 'B1'` has the same
+constraint — which is why production had **every** content table at zero rows,
+not just a broken sign-up.
+
+Registration is now one transaction. It previously inserted the `users` row
+first, so the failure left an account with no profile — and because
+`phone_number` is unique, that person could never register again, only ever
+seeing "an account with this phone number already exists".
+`repairOrphanedUsers` gives any such account the profile it was owed.
+
+### Do not gate a slow seeder on "is the table empty"
+
+An interrupted seeder leaves a table non-empty but incomplete, and an
+empty-only gate then skips it forever. `vocabulary` sat at 2 rows this way.
+Every seeder checks each row before inserting, so `ensureContent` simply
+re-runs them. The one exception is `seedMasterPdfDataset`, which starts by
+DELETEing `user_progress` and so must only ever run against an empty database.
+
+### MySQL portability
+
+The codebase started on SQLite. These do not carry over:
+
+| SQLite | MySQL |
+| :--- | :--- |
+| `ORDER BY RANDOM()` | `ORDER BY RAND()` |
+| `INSERT OR IGNORE` | `INSERT IGNORE` |
+| `CREATE INDEX IF NOT EXISTS` | plain `CREATE INDEX`, ignore duplicate-key errors |
+
+Two more traps in the migration runner: it splits `schema.sql` on `;`, so a
+semicolon **inside a comment** truncates the comment and swallows the statement
+after it — keep semicolons out of comments in that file. And DDL must go
+through `query()`, not `execute()`: MySQL's prepared-statement protocol rejects
+`CREATE INDEX` outright, which silently skipped every index in the file.
+
+`db.js` also coerces `undefined` bind parameters to `NULL`, because mysql2
+throws on them rather than treating them as null.
+
+### Environment
+
+| Variable | Why |
+| :--- | :--- |
+| `NODE_ENV=production` | **Required.** Without it the error handler returns raw SQL errors to the browser — that FK message above was leaked to the client. |
+| `DB_HOST` / `DB_PORT` / `DB_NAME` / `DB_USER` / `DB_PASSWORD` | managed MySQL |
+| `DB_CA_CERT` | base64 CA cert for Aiven-style SSL |
+| `JWT_SECRET` | must be set; there is a dev default in `config/env.js` |
+| `VITE_SOCKET_URL` | optional; only needed if the API is on a different origin from the page |
+
+The frontend derives its Socket.IO URL from `window.location.origin` in a
+build, so a same-origin deploy needs no configuration. A bundle built before
+that change connects to `ws://localhost:5000` and must be rebuilt.

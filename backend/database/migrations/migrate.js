@@ -15,16 +15,24 @@ async function runMigration() {
     const statements = schemaSql
       .split(';')
       .map(s => {
-        // Strip all leading comment lines (-- ...) so CREATE TABLE
-        // statements that follow a section comment are not discarded.
-        return s.replace(/^(\s*--[^\n]*\n)*/g, '').trim();
+        // Strip every -- comment line, not only the leading ones. A comment
+        // sitting between statements would otherwise be sent to the server.
+        return s
+          .split(/\r?\n/)
+          .filter(line => !/^\s*--/.test(line))
+          .join('\n')
+          .trim();
       })
       .filter(s => s.length > 0);
 
     let count = 0;
     for (const sql of statements) {
       try {
-        await db.execute(sql);
+        // query(), not execute(): MySQL's prepared-statement protocol refuses
+        // several DDL forms outright ("This command is not supported in the
+        // prepared statement protocol yet"), which silently skipped every
+        // CREATE INDEX in this file.
+        await db.execDirect(sql);
         count++;
       } catch (err) {
         const msg = err.message || '';

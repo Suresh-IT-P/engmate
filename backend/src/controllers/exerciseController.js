@@ -138,7 +138,7 @@ async function getCustomPracticeSet(req, res, next) {
     let sql = 'SELECT * FROM questions WHERE 1=1';
     const params = [];
 
-    sql += ' ORDER BY RANDOM() LIMIT ?';
+    sql += ' ORDER BY RAND() LIMIT ?';
     params.push(requestedCount);
 
     const questions = await db.query(sql, params);

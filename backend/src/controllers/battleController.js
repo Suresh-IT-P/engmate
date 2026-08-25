@@ -71,7 +71,7 @@ async function getBattleQuestions(req, res, next) {
     const rows = await db.query(
       `SELECT * FROM battle_questions
         ${where.length ? `WHERE ${where.join(' AND ')}` : ''}
-        ORDER BY RANDOM() LIMIT ?`,
+        ORDER BY RAND() LIMIT ?`,
       [...params, count]
     );
 

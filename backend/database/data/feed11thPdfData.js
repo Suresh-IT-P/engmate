@@ -12,7 +12,7 @@ async function feed11thPdfData() {
 
   // 1. Ensure Class 11 Course Exists
   await db.execute(
-    `INSERT OR IGNORE INTO courses (id, level_id, title, tamil_title, description, is_published, order_index)
+    `INSERT IGNORE INTO courses (id, level_id, title, tamil_title, description, is_published, order_index)
      VALUES ('crs_class11', 'B1', 'Class 11 English (Samacheer Kalvi - Way to Success)', '11ஆம் வகுப்பு சமச்சீர் கல்வி ஆங்கிலம் (Way to Success)', 'Complete +1 English curriculum: Part I (1-mark Synonyms, Antonyms, Grammar, Idioms), Part II (2-mark Poetry & Transformations), Part III (3-mark ERC, Short Answers, Writing), Part IV (5-mark Paragraphs, Essay, Bio-data, Letters).', 1, 1)`
   );
 
@@ -26,7 +26,7 @@ async function feed11thPdfData() {
 
   for (const m of modulesData) {
     await db.execute(
-      `INSERT OR IGNORE INTO modules (id, course_id, title, tamil_title, description, order_index)
+      `INSERT IGNORE INTO modules (id, course_id, title, tamil_title, description, order_index)
        VALUES (?, 'crs_class11', ?, ?, ?, ?)`,
       [m.id, m.title, m.tamil, m.desc, m.index]
     );
@@ -239,7 +239,7 @@ A compound word is formed when two distinct words combine to create a new word w
   for (let idx = 0; idx < part1Lessons.length; idx++) {
     const l = part1Lessons[idx];
     await db.execute(
-      `INSERT OR IGNORE INTO lessons (id, module_id, title, tamil_title, is_published, order_index)
+      `INSERT IGNORE INTO lessons (id, module_id, title, tamil_title, is_published, order_index)
        VALUES (?, 'mod_11th_part1', ?, ?, 1, ?)`,
       [l.id, l.title, l.tamil_title, idx + 1]
     );
@@ -322,7 +322,7 @@ A compound word is formed when two distinct words combine to create a new word w
   for (let idx = 0; idx < part2Lessons.length; idx++) {
     const l = part2Lessons[idx];
     await db.execute(
-      `INSERT OR IGNORE INTO lessons (id, module_id, title, tamil_title, is_published, order_index)
+      `INSERT IGNORE INTO lessons (id, module_id, title, tamil_title, is_published, order_index)
        VALUES (?, 'mod_11th_part2', ?, ?, 1, ?)`,
       [l.id, l.title, l.tamil_title, idx + 1]
     );
@@ -346,7 +346,7 @@ A compound word is formed when two distinct words combine to create a new word w
   ];
 
   await db.execute(
-    `INSERT OR IGNORE INTO exercises (id, lesson_id, level_id, title, exercise_type, instructions, tamil_instructions, xp_points, order_index)
+    `INSERT IGNORE INTO exercises (id, lesson_id, level_id, title, exercise_type, instructions, tamil_instructions, xp_points, order_index)
      VALUES ('ex_11th_part1_quiz', 'lsn_11th_compound_words', 'B1', '11th Standard English 1-Mark Quiz', 'mcq', 'Choose the correct answer from options', 'சரியான விடையைத் தேர்ந்தெடுக்க', 50, 1)`
   );
 

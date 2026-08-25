@@ -7,6 +7,13 @@ async function seedLessons() {
   const contents = JSON.parse(fs.readFileSync(path.resolve(__dirname, '../data/lesson_content.json'), 'utf8'));
 
   for (const l of lessons) {
+    // The Class 11 dataset replaces courses and modules wholesale, so a lesson
+    // from the portable pack may point at a module that no longer exists.
+    // Skipping is correct here: inserting would fail the foreign key and abort
+    // the whole seed run.
+    const moduleExists = await db.query('SELECT id FROM modules WHERE id = ?', [l.module_id]);
+    if (moduleExists.length === 0) continue;
+
     const existing = await db.query('SELECT id FROM lessons WHERE id = ?', [l.id]);
     if (existing.length === 0) {
       await db.execute(
@@ -28,6 +35,11 @@ async function seedLessons() {
 
   let contentCount = 0;
   for (const c of contents) {
+    // Same reasoning: content for a lesson that was skipped above has nothing
+    // to attach to.
+    const lessonExists = await db.query('SELECT id FROM lessons WHERE id = ?', [c.lesson_id]);
+    if (lessonExists.length === 0) continue;
+
     const existing = await db.query(
       'SELECT id FROM lesson_content WHERE lesson_id = ? AND title = ?',
       [c.lesson_id, c.title]

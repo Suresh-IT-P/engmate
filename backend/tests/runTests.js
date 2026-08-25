@@ -1,5 +1,27 @@
 const db = require('../src/config/db');
+const config = require('../src/config/env');
 const seedAll = require('../database/seeds/seed');
+
+/**
+ * This suite SEEDS the database it is pointed at. When .env holds managed
+ * MySQL credentials that database is production, so running `npm test` would
+ * write seed data into live user data. Refuse unless the host is local or the
+ * operator sets ALLOW_DESTRUCTIVE_TESTS=1 on purpose.
+ */
+function assertSafeDatabase() {
+  const host = String(config.db.host || '').toLowerCase();
+  const isLocal = host === 'localhost' || host === '127.0.0.1' || host === '::1' || host === '';
+
+  if (isLocal || process.env.ALLOW_DESTRUCTIVE_TESTS === '1') return;
+
+  console.error('\n  REFUSING TO RUN.');
+  console.error(`  This suite seeds the database, and DB_HOST is "${config.db.host}" —`);
+  console.error('  that is not a local database. Running it would write test seed data');
+  console.error('  into live user data.\n');
+  console.error('  Point DB_HOST at a local MySQL, or set ALLOW_DESTRUCTIVE_TESTS=1 if');
+  console.error('  you are certain this database is disposable.\n');
+  process.exit(1);
+}
 const aiService = require('../src/services/aiService');
 const spacedRepetition = require('../src/services/spacedRepetitionService');
 const analyticsService = require('../src/services/analyticsService');
@@ -8,6 +30,8 @@ async function runTests() {
   console.log('\n======================================================');
   console.log('       English Mate Automated Test Suite');
   console.log('======================================================\n');
+
+  assertSafeDatabase();
 
   let passed = 0;
   let failed = 0;

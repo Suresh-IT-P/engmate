@@ -22,7 +22,7 @@ async function getVocabulary(req, res, next) {
       params.push(`%${search}%`, `%${search}%`, `%${search}%`);
     }
 
-    const orderClause = shuffle === 'true' ? ' ORDER BY RANDOM()' : ' ORDER BY v.id ASC';
+    const orderClause = shuffle === 'true' ? ' ORDER BY RAND()' : ' ORDER BY v.id ASC';
     sql += `${orderClause} LIMIT ? OFFSET ?`;
     params.push(parseInt(limit, 10), parseInt(offset, 10));
 

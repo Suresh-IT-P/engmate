@@ -36,39 +36,58 @@ async function register(req, res, next) {
     const salt = await bcrypt.genSalt(10);
     const passwordHash = await bcrypt.hash(password, salt);
 
-    const userRes = await db.execute(
-      'INSERT INTO users (email, username, phone_number, password_hash, role, status, is_verified) VALUES (?, ?, ?, ?, ?, ?, ?)',
-      [internalEmail, cleanUsername, cleanPhone, passwordHash, 'user', 'active', 1]
-    );
-    const userId = userRes.insertId;
+    // current_level and target_level are foreign keys into learning_levels.
+    // Passing an id that is not there fails the constraint and 500s, so resolve
+    // both against the table and fall back to NULL rather than guessing.
+    const knownLevels = await db.query('SELECT id FROM learning_levels');
+    const levelIds = new Set(knownLevels.map((l) => l.id));
+    const startLevel = levelIds.has('A1') ? 'A1' : (knownLevels[0]?.id ?? null);
+    const wantedTarget = String(targetLevel || '').trim().toUpperCase();
+    const goalLevel = levelIds.has(wantedTarget) ? wantedTarget : startLevel;
 
-    // Create User Profile
-    await db.execute(
-      `INSERT INTO user_profiles (user_id, full_name, username, phone_number, native_language, target_level, current_level, xp, coins, daily_goal_minutes, primary_goal)
-       VALUES (?, ?, ?, ?, ?, ?, 'A1', 50, 100, 20, ?)`,
-      [userId, fullName.trim(), cleanUsername, cleanPhone, nativeLanguage, targetLevel, primaryGoal]
-    );
+    // One transaction: a failure on any insert below must not leave a users row
+    // behind. It used to — and since phone_number is unique, that person could
+    // never register again, only ever getting "this phone number already exists".
+    const userId = await db.withTransaction(async (tx) => {
+      const userRes = await tx.execute(
+        'INSERT INTO users (email, username, phone_number, password_hash, role, status, is_verified) VALUES (?, ?, ?, ?, ?, ?, ?)',
+        [internalEmail, cleanUsername, cleanPhone, passwordHash, 'user', 'active', 1]
+      );
+      const newId = userRes.insertId;
 
-    // Create User Settings
-    await db.execute(
-      `INSERT INTO user_settings (user_id, theme, sound_effects, tamil_translation_enabled, voice_speed)
-       VALUES (?, 'light', 1, 1, 1.0)`,
-      [userId]
-    );
+      await tx.execute(
+        `INSERT INTO user_profiles (user_id, full_name, username, phone_number, native_language, target_level, current_level, xp, coins, daily_goal_minutes, primary_goal)
+         VALUES (?, ?, ?, ?, ?, ?, ?, 50, 100, 20, ?)`,
+        [newId, fullName.trim(), cleanUsername, cleanPhone, nativeLanguage, goalLevel, startLevel, primaryGoal]
+      );
 
-    // Create Initial Streak
-    await db.execute(
-      `INSERT INTO streaks (user_id, current_streak, longest_streak, last_activity_date)
-       VALUES (?, 1, 1, CURDATE())`,
-      [userId]
-    );
+      await tx.execute(
+        `INSERT INTO user_settings (user_id, theme, sound_effects, tamil_translation_enabled, voice_speed)
+         VALUES (?, 'light', 1, 1, 1.0)`,
+        [newId]
+      );
 
-    // Initial Welcome Notification
-    await db.execute(
-      `INSERT INTO notifications (user_id, title, tamil_title, message, notification_type)
-       VALUES (?, 'Welcome to English Mate! 🎉', 'வணக்கம்! வாழ்த்துகள்', 'Start your journey with Lesson 1 or add your friends to practice together!', 'system')`,
-      [userId]
-    );
+      await tx.execute(
+        `INSERT INTO streaks (user_id, current_streak, longest_streak, last_activity_date)
+         VALUES (?, 1, 1, CURDATE())`,
+        [newId]
+      );
+
+      await tx.execute(
+        `INSERT INTO notifications (user_id, title, tamil_title, message, notification_type)
+         VALUES (?, 'Welcome to English Mate! 🎉', 'வணக்கம்! வாழ்த்துகள்', 'Start your journey with Lesson 1 or add your friends to practice together!', 'system')`,
+        [newId]
+      );
+
+      return newId;
+    }).catch((txErr) => {
+      if (txErr && (txErr.code === 'ER_DUP_ENTRY' || /Duplicate entry/i.test(txErr.message))) {
+        const conflict = new Error('An account with this phone number or username already exists.');
+        conflict.status = 409;
+        throw conflict;
+      }
+      throw txErr;
+    });
 
     const token = jwt.sign({ userId, role: 'user' }, config.jwtSecret, {
       expiresIn: config.jwtExpiresIn
@@ -82,13 +101,14 @@ async function register(req, res, next) {
         username: cleanUsername,
         role: 'user',
         fullName: fullName.trim(),
-        currentLevel: 'A1',
-        targetLevel,
+        currentLevel: startLevel,
+        targetLevel: goalLevel,
         xp: 50,
         streak: 1
       }
     }, 'Account registered successfully.', 201);
   } catch (err) {
+    if (err.status === 409) return error(res, err.message, 409);
     next(err);
   }
 }

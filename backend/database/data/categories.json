@@ -52,5 +52,41 @@
     "icon": "school",
     "color_code": "#0284c7",
     "order_index": 6
+  },
+  {
+    "id": "business",
+    "name": "Business English",
+    "tamil_name": "வணிக ஆங்கிலம்",
+    "description": "Workplace, meetings, email and professional communication.",
+    "icon": "work",
+    "color_code": "#006c49",
+    "order_index": 7
+  },
+  {
+    "id": "academic",
+    "name": "Academic English",
+    "tamil_name": "கல்வி ஆங்கிலம்",
+    "description": "Exam, essay and study vocabulary for school and college.",
+    "icon": "school",
+    "color_code": "#684000",
+    "order_index": 8
+  },
+  {
+    "id": "travel",
+    "name": "Travel & Daily Life",
+    "tamil_name": "பயணம் & அன்றாட வாழ்க்கை",
+    "description": "Directions, transport, shopping and everyday situations.",
+    "icon": "flight",
+    "color_code": "#4f46e5",
+    "order_index": 9
+  },
+  {
+    "id": "technology",
+    "name": "Technology",
+    "tamil_name": "தொழில்நுட்பம்",
+    "description": "Computers, internet and modern digital vocabulary.",
+    "icon": "memory",
+    "color_code": "#885500",
+    "order_index": 10
   }
 ]

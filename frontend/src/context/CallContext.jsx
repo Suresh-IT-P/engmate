@@ -173,6 +173,8 @@ export function CallProvider({ children }) {
   /* ------------------------------------------------- socket wiring ---- */
 
   useEffect(() => {
+    if (!socket) return undefined;
+
     const onConnect = () => {
       setConnected(true);
       socket.emit('chat:register', {}, (res) => {
@@ -306,7 +308,7 @@ export function CallProvider({ children }) {
 
   // Re-register when the signed-in user changes, so presence follows the login.
   useEffect(() => {
-    if (!socket.connected) return;
+    if (!socket || !socket.connected) return;
     socket.emit('chat:register', {}, (res) => {
       if (res?.ok) {
         setMyUserId(res.userId);

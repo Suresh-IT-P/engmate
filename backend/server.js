@@ -2,7 +2,8 @@ const app = require('./src/app');
 const config = require('./src/config/env');
 const db = require('./src/config/db');
 const runMigration = require('./database/migrations/migrate');
-const seedMasterPdfDataset = require('./database/data/seedMasterPdfDataset');
+const { seedFoundations, repairOrphanedUsers } = require('./database/seeds/seedFoundations');
+const ensureContent = require('./database/seeds/ensureContent');
 const http = require('http');
 const initGameSocket = require('./src/socket/gameHandler');
 const initChatSocket = require('./src/socket/chatHandler');
@@ -25,15 +26,19 @@ async function startServer() {
     await db.initMySQL();
     await runMigration();
 
-    // Check if courses table has records; if not, auto-seed exclusive Class 11 dataset
+    // Reference rows first. Everything below has a foreign key to
+    // learning_levels — including the profile created at registration — so a
+    // deploy against an empty database fails at the first insert without this.
     try {
-      const courseCount = await db.query("SELECT COUNT(*) as count FROM courses WHERE id = 'crs_class11'");
-      if (courseCount[0]?.count === 0) {
-        console.log('🌱 Auto-seeding exclusive Class 11 WTS English dataset...');
-        await seedMasterPdfDataset();
-      }
-    } catch (seedErr) {
-      console.warn('[Seed] Skipping auto-seed (table may not exist yet):', seedErr.message);
+      const foundations = await seedFoundations();
+      console.log(`🌱 Foundations ready: ${foundations.levels} levels, ${foundations.categories} categories`);
+
+      // Heal accounts left profile-less by the old non-transactional register.
+      const repaired = await repairOrphanedUsers();
+      if (repaired > 0) console.log(`🩹 Repaired ${repaired} account(s) that had no profile`);
+    } catch (foundErr) {
+      // Loud, because registration and all content seeding depend on this.
+      console.error('[Foundations] CRITICAL — levels/categories not seeded:', foundErr.message);
     }
 
     const server = http.createServer(app);
@@ -49,6 +54,13 @@ async function startServer() {
       console.log(`  📞 Friend Chat & Voice Calling Ready               `);
       console.log(`  📊 Database Engine: ${db.getActiveEngineName()}      `);
       console.log(`======================================================\n`);
+
+      // Content seeding runs after we are listening, not before. Populating the
+      // 5,000-question battle bank over a remote database takes long enough to
+      // trip a platform health check if it blocks start-up.
+      ensureContent().catch((err) => {
+        console.error('[Content] Bootstrap failed:', err.message);
+      });
     });
   } catch (err) {
     console.error('❌ Failed to start English Mate server:', err);

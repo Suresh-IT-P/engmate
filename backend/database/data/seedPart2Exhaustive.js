@@ -14,12 +14,12 @@ async function seedPart2Exhaustive() {
 
   // Ensure Module 2 exists
   await db.execute(
-    `INSERT OR IGNORE INTO courses (id, level_id, title, tamil_title, description, is_published, order_index)
+    `INSERT IGNORE INTO courses (id, level_id, title, tamil_title, description, is_published, order_index)
      VALUES ('crs_class11', 'B1', 'Class 11 English (Samacheer Kalvi & Way to Success 2019)', '11ஆம் வகுப்பு ஆங்கிலம் (Way to Success முழுப் பாடத்திட்டம்)', 'Exclusive +1 English Study Material', 1, 1)`
   );
 
   await db.execute(
-    `INSERT OR IGNORE INTO modules (id, course_id, title, tamil_title, description, order_index)
+    `INSERT IGNORE INTO modules (id, course_id, title, tamil_title, description, order_index)
      VALUES ('mod_wts_p2', 'crs_class11', 'Part II: Poetry Appreciation & Transformations (Q21–Q30 | 14 Marks)', 'பகுதி 2: செய்யுள் வினாக்கள் & வாக்கிய மாற்றம் (14 மதிப்பெண்கள்)', 'Pages 45 to 62 of PDF: Q21-Q26 Poem Appreciation & Figures of Speech for all 6 Poems. Q27-Q30 Transformation of Sentences (Direct/Indirect, Active/Passive, Simple/Compound/Complex, If-Clauses).', 2)`
   );
 

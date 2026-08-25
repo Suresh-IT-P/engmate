@@ -13,12 +13,12 @@ async function seedPart1Exhaustive() {
 
   // Ensure Module 1 exists
   await db.execute(
-    `INSERT OR IGNORE INTO courses (id, level_id, title, tamil_title, description, is_published, order_index)
+    `INSERT IGNORE INTO courses (id, level_id, title, tamil_title, description, is_published, order_index)
      VALUES ('crs_class11', 'B1', 'Class 11 English (Samacheer Kalvi & Way to Success 2019)', '11ஆம் வகுப்பு ஆங்கிலம் (Way to Success முழுப் பாடத்திட்டம்)', 'Exclusive +1 English Study Material', 1, 1)`
   );
 
   await db.execute(
-    `INSERT OR IGNORE INTO modules (id, course_id, title, tamil_title, description, order_index)
+    `INSERT IGNORE INTO modules (id, course_id, title, tamil_title, description, order_index)
      VALUES ('mod_wts_p1', 'crs_class11', 'Part I: 1-Mark Questions & Grammar (Q1–Q20 | 20 Marks)', 'பகுதி 1: ஒரு மதிப்பெண் வினாக்கள் & இலக்கணம் (20 மதிப்பெண்கள்)', 'Complete Pages 4 to 44 of PDF Guide: Synonyms, Antonyms, Compound Words, Prefixes & Suffixes, Abbreviations, Clipped Words, Word Definitions, Phrasal Verbs, Idioms, Foreign Words, Euphemisms, Modals, Prepositions, Question Tags, Syllabification, American/British English, Singular/Plural, Sentence Patterns.', 1)`
   );
 

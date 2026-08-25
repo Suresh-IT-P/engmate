@@ -50,7 +50,7 @@ async function importCompleteMarkdown() {
   // 1. Insert New Course
   const courseId = 'crs_class11_raw';
   await db.execute(
-    `INSERT OR IGNORE INTO courses (id, level_id, title, tamil_title, description, is_published, order_index)
+    `INSERT IGNORE INTO courses (id, level_id, title, tamil_title, description, is_published, order_index)
      VALUES (?, 'B1', ?, ?, ?, 1, 2)`,
     [courseId, 'Class 11 English (Complete Raw Guide)', '11ஆம் வகுப்பு ஆங்கிலம் (முழு வழிகாட்டி)', 'The complete, unedited contents of the 11th standard English guide.']
   );

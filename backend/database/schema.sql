@@ -661,7 +661,10 @@ CREATE TABLE IF NOT EXISTS call_logs (
 );
 
 -- INDEXES FOR HIGH-PERFORMANCE QUERYING
--- (CREATE INDEX IF NOT EXISTS requires MySQL 8.0.32+; errors on duplicates are caught and ignored by migrate.js)
+-- Note: CREATE INDEX IF NOT EXISTS needs MySQL 8.0.32+, so these are plain
+-- CREATE INDEX and migrate.js ignores the duplicate-key errors on re-runs.
+-- Keep semicolons out of these comments. migrate.js splits the file on the
+-- statement separator, so one inside a comment swallows the next line.
 CREATE INDEX idx_message_reactions_msg ON message_reactions(message_id);
 CREATE UNIQUE INDEX idx_call_logs_call_id ON call_logs(call_id);
 CREATE INDEX idx_call_logs_room ON call_logs(room_id, started_at);

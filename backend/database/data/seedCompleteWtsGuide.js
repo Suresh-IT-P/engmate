@@ -13,7 +13,7 @@ async function seedCompleteGuide() {
 
   // 1. Ensure Course Exists
   await db.execute(
-    `INSERT OR IGNORE INTO courses (id, level_id, title, tamil_title, description, is_published, order_index)
+    `INSERT IGNORE INTO courses (id, level_id, title, tamil_title, description, is_published, order_index)
      VALUES ('crs_class11', 'B1', 'Class 11 English (Samacheer Kalvi & Way to Success 2019)', '11ஆம் வகுப்பு ஆங்கிலம் (சமச்சீர் & Way to Success)', 'Complete +1 English Syllabus Guide: Part I (1-Mark Grammar & Vocabulary), Part II (2-Mark Poetry & Transformations), Part III (3-Mark ERC & Practical Writing), Part IV (5-Mark Paragraphs, Essays & Bio-data).', 1, 1)`
   );
 
@@ -51,7 +51,7 @@ async function seedCompleteGuide() {
 
   for (const m of modules) {
     await db.execute(
-      `INSERT OR IGNORE INTO modules (id, course_id, title, tamil_title, description, order_index)
+      `INSERT IGNORE INTO modules (id, course_id, title, tamil_title, description, order_index)
        VALUES (?, 'crs_class11', ?, ?, ?, ?)`,
       [m.id, m.title, m.tamil, m.desc, m.order]
     );
@@ -331,7 +331,7 @@ Combining two separate words to form a single new word.
   for (let idx = 0; idx < part1Lessons.length; idx++) {
     const l = part1Lessons[idx];
     await db.execute(
-      `INSERT OR IGNORE INTO lessons (id, module_id, title, tamil_title, is_published, order_index)
+      `INSERT IGNORE INTO lessons (id, module_id, title, tamil_title, is_published, order_index)
        VALUES (?, ?, ?, ?, 1, ?)`,
       [l.id, l.moduleId, l.title, l.tamil, idx + 1]
     );
@@ -415,7 +415,7 @@ Combining two separate words to form a single new word.
   for (let idx = 0; idx < part2Lessons.length; idx++) {
     const l = part2Lessons[idx];
     await db.execute(
-      `INSERT OR IGNORE INTO lessons (id, module_id, title, tamil_title, is_published, order_index)
+      `INSERT IGNORE INTO lessons (id, module_id, title, tamil_title, is_published, order_index)
        VALUES (?, ?, ?, ?, 1, ?)`,
       [l.id, l.moduleId, l.title, l.tamil, idx + 1]
     );
@@ -506,7 +506,7 @@ Thank you.
   for (let idx = 0; idx < part3Lessons.length; idx++) {
     const l = part3Lessons[idx];
     await db.execute(
-      `INSERT OR IGNORE INTO lessons (id, module_id, title, tamil_title, is_published, order_index)
+      `INSERT IGNORE INTO lessons (id, module_id, title, tamil_title, is_published, order_index)
        VALUES (?, ?, ?, ?, 1, ?)`,
       [l.id, l.moduleId, l.title, l.tamil, idx + 1]
     );
@@ -577,7 +577,7 @@ Raj and Ravi were two farmers owning oxen. Raj worked hard, took care of his ani
   for (let idx = 0; idx < part4Lessons.length; idx++) {
     const l = part4Lessons[idx];
     await db.execute(
-      `INSERT OR IGNORE INTO lessons (id, module_id, title, tamil_title, is_published, order_index)
+      `INSERT IGNORE INTO lessons (id, module_id, title, tamil_title, is_published, order_index)
        VALUES (?, ?, ?, ?, 1, ?)`,
       [l.id, l.moduleId, l.title, l.tamil, idx + 1]
     );

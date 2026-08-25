@@ -39,16 +39,8 @@ async function runMigration() {
     }
     console.log(`[Migration] ${count} statements executed successfully.`);
   }
-    let transformed = schemaSql
-      .replace(/INT AUTO_INCREMENT PRIMARY KEY/gi, 'INTEGER PRIMARY KEY AUTOINCREMENT')
-      .replace(/DATETIME DEFAULT CURRENT_TIMESTAMP/gi, 'DATETIME DEFAULT CURRENT_TIMESTAMP')
-      .replace(/DEFAULT \(CURRENT_DATE\)/gi, "DEFAULT (DATE('now'))")
-      .replace(/FLOAT/gi, 'REAL');
 
-    await db.execDirect(transformed);
-  }
-
-  // Ensure new columns exist on existing SQLite/MySQL tables
+  // Ensure new columns exist on existing MySQL tables (safe ALTER — ignored if column already exists)
   const safeAddColumn = async (table, column, definition) => {
     try {
       await db.execute(`ALTER TABLE ${table} ADD COLUMN ${column} ${definition}`);

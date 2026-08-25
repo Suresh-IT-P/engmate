@@ -1,6 +1,6 @@
 import React, { createContext, useContext, useState, useEffect } from 'react';
 import { api } from '../services/api';
-import { refreshSocketAuth } from '../services/socket';
+import { connectSocket, disconnectSocket } from '../services/socket';
 
 const AuthContext = createContext(null);
 
@@ -32,6 +32,7 @@ export function AuthProvider({ children }) {
           current: res.data.streak.current_streak || 0,
           longest: res.data.streak.longest_streak || 0
         });
+        connectSocket(); // Restore socket for existing session
       }
     } catch (err) {
       console.warn('Session expired or invalid:', err.message);
@@ -45,7 +46,7 @@ export function AuthProvider({ children }) {
     const res = await api.login({ identifier: phone, password });
     if (res.success && res.data) {
       localStorage.setItem('englishmate_token', res.data.token);
-      refreshSocketAuth();
+      connectSocket();
       setUser(res.data.user);
       setProfile({
         full_name: res.data.user.fullName,
@@ -70,7 +71,7 @@ export function AuthProvider({ children }) {
     const res = await api.register(payload);
     if (res.success && res.data) {
       localStorage.setItem('englishmate_token', res.data.token);
-      refreshSocketAuth();
+      connectSocket();
       setUser(res.data.user);
       setProfile({
         full_name: res.data.user.fullName,
@@ -87,7 +88,7 @@ export function AuthProvider({ children }) {
 
   function logout() {
     localStorage.removeItem('englishmate_token');
-    refreshSocketAuth();
+    disconnectSocket();
     setUser(null);
     setProfile(null);
     setSettings(null);

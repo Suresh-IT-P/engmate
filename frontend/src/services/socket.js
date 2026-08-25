@@ -3,10 +3,10 @@ import { io } from 'socket.io-client';
 /**
  * One Socket.IO connection for the whole app.
  *
- * Vite only proxies `/api`, so in dev the socket has to reach the backend port
- * directly; in a build the frontend is served by that same Express process, so
- * the page origin is right. The hard-coded `http://localhost:5000` this
- * replaces worked on the dev machine and nowhere else.
+ * IMPORTANT: autoConnect is false — the socket is ONLY created and connected
+ * after a successful login (see AuthContext). This prevents the repeated
+ * "ERR_CONNECTION_REFUSED" spam that happens when an unauthenticated page
+ * tries to open a WebSocket connection that the server rejects.
  */
 export const SOCKET_URL =
   import.meta.env.VITE_SOCKET_URL ||
@@ -15,30 +15,59 @@ export const SOCKET_URL =
 let socket = null;
 
 /**
- * The shared socket, created on first use. Chat, presence and calls all ride
- * this one connection — a second one would register the user twice and make
- * presence flap on every page change.
+ * Returns the shared socket only if it has already been connected.
+ * Components should call this rather than connectSocket() themselves.
  */
 export function getSocket() {
-  if (!socket) {
-    socket = io(SOCKET_URL, {
-      autoConnect: true,
-      transports: ['websocket', 'polling'],
-      auth: { token: localStorage.getItem('englishmate_token') || null }
-    });
-  }
   return socket;
 }
 
-/** Re-handshake with a new token after login or logout. */
+/**
+ * Create and connect the socket. Called once after successful login.
+ * Safe to call multiple times — it's a no-op if already connected.
+ */
+export function connectSocket() {
+  if (socket && socket.connected) return socket;
+
+  if (!socket) {
+    socket = io(SOCKET_URL, {
+      autoConnect: false,          // We manually call connect() below
+      transports: ['websocket', 'polling'],
+      reconnectionAttempts: 5,     // Stop retrying after 5 failures
+      reconnectionDelay: 2000,
+      auth: { token: localStorage.getItem('englishmate_token') || null }
+    });
+  }
+
+  socket.auth = { token: localStorage.getItem('englishmate_token') || null };
+  socket.connect();
+  return socket;
+}
+
+/**
+ * Disconnect and destroy the socket. Called on logout.
+ */
+export function disconnectSocket() {
+  if (!socket) return;
+  socket.disconnect();
+  socket = null;
+}
+
+/**
+ * @deprecated Use connectSocket() / disconnectSocket() instead.
+ * Kept for backward compatibility with any components that still call it.
+ */
 export function refreshSocketAuth() {
   if (!socket) return;
   socket.auth = { token: localStorage.getItem('englishmate_token') || null };
-  socket.disconnect().connect();
+  if (socket.connected) {
+    socket.disconnect().connect();
+  }
 }
 
+/**
+ * @deprecated Use disconnectSocket() instead.
+ */
 export function closeSocket() {
-  if (!socket) return;
-  socket.close();
-  socket = null;
+  disconnectSocket();
 }

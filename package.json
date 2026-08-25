@@ -1,0 +1,27 @@
+{
+  "name": "english-mate-ai-english-bridge",
+  "version": "1.0.0",
+  "description": "English Mate - AI English Bridge Complete Application",
+  "scripts": {
+    "dev:backend": "cd backend && npm run dev",
+    "dev:frontend": "cd frontend && npm run dev",
+    "dev": "node scripts/dev.js",
+    "build": "cd frontend && npm run build",
+    "start": "cd backend && npm start",
+    "db:migrate": "cd backend && npm run db:migrate",
+    "db:seed": "cd backend && npm run db:seed",
+    "db:reset": "cd backend && npm run db:reset",
+    "test": "cd backend && npm test",
+    "install:all": "npm install && cd backend && npm install && cd ../frontend && npm install"
+  },
+  "keywords": [
+    "english-learning",
+    "ai-tutor",
+    "tamil-english",
+    "react",
+    "express",
+    "mysql"
+  ],
+  "author": "English Mate Team",
+  "license": "MIT"
+}

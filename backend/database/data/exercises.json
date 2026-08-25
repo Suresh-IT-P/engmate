@@ -1,0 +1,4340 @@
+[
+  {
+    "id": "ex_greetings_mcq",
+    "lesson_id": "les_a1_1_1",
+    "grammar_id": "gram_present_simple",
+    "category_id": "general",
+    "level_id": "A1",
+    "title": "Greetings & Introductions Check",
+    "exercise_type": "mcq",
+    "instructions": "Choose the best English greeting or response.",
+    "tamil_instructions": "சரியான ஆங்கில வாழ்த்து அல்லது பதிலை தேர்ந்தெடுக்கவும்.",
+    "xp_points": 20,
+    "order_index": 1,
+    "questions": [
+      {
+        "question_text": "What is the most polite and natural way to introduce yourself in a professional setting?",
+        "tamil_subtext": "அலுவலக சூழலில் உங்களை அறிமுகப்படுத்த மிகச் சரியான முறை எது?",
+        "correct_answer": "Hello, my name is Karthik.",
+        "explanation": "Saying 'Hello, my name is...' or 'I am...' is standard and professional. Avoid 'Myself Karthik'.",
+        "tamil_explanation": "'My name is...' அல்லது 'I am...' என்பதே முறைசார்ந்த ஆங்கில அறிமுகத்திற்கு சரியானது.",
+        "hint": "Start with 'Hello, my name is...'",
+        "points": 10,
+        "options": [
+          {
+            "option_text": "Me name Karthik.",
+            "is_correct": 0
+          },
+          {
+            "option_text": "I am being Karthik.",
+            "is_correct": 0
+          },
+          {
+            "option_text": "Hello, my name is Karthik.",
+            "is_correct": 1
+          },
+          {
+            "option_text": "Myself is Karthik.",
+            "is_correct": 0
+          }
+        ]
+      },
+      {
+        "question_text": "If someone says 'Nice to meet you', how should you politely reply?",
+        "tamil_subtext": "யாராவது 'Nice to meet you' என்று சொன்னால் நீங்கள் எப்படி பதிலளிக்க வேண்டும்?",
+        "correct_answer": "Nice to meet you too!",
+        "explanation": "Adding 'too' at the end is the friendly standard reply.",
+        "tamil_explanation": "'Nice to meet you too!' என்பதே பொருத்தமான பதில்.",
+        "hint": "Add 'too' to the greeting.",
+        "points": 10,
+        "options": [
+          {
+            "option_text": "Yes, I know you.",
+            "is_correct": 0
+          },
+          {
+            "option_text": "Nice to meet you too!",
+            "is_correct": 1
+          },
+          {
+            "option_text": "No problem at all.",
+            "is_correct": 0
+          },
+          {
+            "option_text": "Welcome to me.",
+            "is_correct": 0
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "ex_present_tense_fill",
+    "lesson_id": "les_a1_2_1",
+    "grammar_id": "gram_present_simple",
+    "category_id": "grammar",
+    "level_id": "A1",
+    "title": "Simple Present Tense Practice",
+    "exercise_type": "fill_blank",
+    "instructions": "Fill in the blank with the correct form of the verb in brackets.",
+    "tamil_instructions": "சரியான வினைச்சொல் வடிவத்தை நிரப்பவும்.",
+    "xp_points": 20,
+    "order_index": 2,
+    "questions": [
+      {
+        "question_text": "She ________ (practice) English speaking every evening.",
+        "tamil_subtext": "அவள் தினமும் மாலையில் ஆங்கிலப் பேச்சுப் பயிற்சி செய்கிறாள்.",
+        "correct_answer": "practices",
+        "explanation": "Because the subject is 'She' (third person singular), we add '-s' to 'practice'.",
+        "tamil_explanation": "'She' வரும்போது வினைச்சொல்லுடன் '-s' சேர்க்கப்பட்டு 'practices' என மாறும்.",
+        "hint": "Add '-s' for third-person singular.",
+        "points": 10,
+        "options": [
+          {
+            "option_text": "practicing",
+            "is_correct": 0
+          },
+          {
+            "option_text": "practices",
+            "is_correct": 1
+          },
+          {
+            "option_text": "is practice",
+            "is_correct": 0
+          },
+          {
+            "option_text": "practice",
+            "is_correct": 0
+          }
+        ]
+      },
+      {
+        "question_text": "They ________ (not / like) cold coffee.",
+        "tamil_subtext": "அவர்களுக்கு குளிர்ந்த காபி பிடிப்பதில்லை.",
+        "correct_answer": "do not like",
+        "explanation": "For 'They', the negative auxiliary verb is 'do not' followed by base verb 'like'.",
+        "tamil_explanation": "'They' வரும்போது 'do not like' என அமையும்.",
+        "hint": "Use 'do not' with base verb.",
+        "points": 10,
+        "options": [
+          {
+            "option_text": "do not like",
+            "is_correct": 1
+          },
+          {
+            "option_text": "are not like",
+            "is_correct": 0
+          },
+          {
+            "option_text": "not liking",
+            "is_correct": 0
+          },
+          {
+            "option_text": "does not like",
+            "is_correct": 0
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "ex_sentence_order_1",
+    "lesson_id": "les_a1_2_2",
+    "grammar_id": "gram_present_simple",
+    "category_id": "grammar",
+    "level_id": "A1",
+    "title": "Sentence Arrangement & Order",
+    "exercise_type": "sentence_order",
+    "instructions": "Arrange the scrambled words to make a grammatically correct sentence.",
+    "tamil_instructions": "சொற்களை சரியான வரிசையில் அமைத்து வாக்கியத்தை உருவாக்கவும்.",
+    "xp_points": 25,
+    "order_index": 3,
+    "questions": [
+      {
+        "question_text": "English / every / I / morning / practice",
+        "tamil_subtext": "நான் தினமும் காலையில் ஆங்கிலம் பயிற்சி செய்கிறேன்.",
+        "correct_answer": "I practice English every morning",
+        "explanation": "Standard English sentence order: Subject (I) + Verb (practice) + Object (English) + Time expression (every morning).",
+        "tamil_explanation": "ஆங்கில வாக்கிய அமைப்பு: Subject + Verb + Object + Time.",
+        "hint": "Start with 'I'",
+        "points": 10,
+        "options": [
+          {
+            "option_text": "I practice English every morning",
+            "is_correct": 1
+          },
+          {
+            "option_text": "I English practice every morning",
+            "is_correct": 0
+          },
+          {
+            "option_text": "Every morning English practice I",
+            "is_correct": 0
+          },
+          {
+            "option_text": "Practice I English every morning",
+            "is_correct": 0
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "ex_past_simple_error",
+    "lesson_id": "les_a2_1_1",
+    "grammar_id": "gram_past_simple",
+    "category_id": "grammar",
+    "level_id": "A2",
+    "title": "Spot the Grammar Mistake",
+    "exercise_type": "error_spotting",
+    "instructions": "Identify the grammatically correct sentence without errors.",
+    "tamil_instructions": "பிழையற்ற சரியான வாக்கியத்தை கண்டறியவும்.",
+    "xp_points": 25,
+    "order_index": 4,
+    "questions": [
+      {
+        "question_text": "Which of the following past tense sentences is 100% correct?",
+        "tamil_subtext": "கீழ்க்கண்டவற்றில் எது சரியான கடந்த கால வாக்கியம்?",
+        "correct_answer": "I did not receive the email yesterday.",
+        "explanation": "After 'did not', we always use the base form 'receive', not 'received'.",
+        "tamil_explanation": "'did not' பயன்படுத்திய பிறகு வினைச்சொல்லின் அடிப்படை வடிவமான 'receive' மட்டுமே வர வேண்டும்.",
+        "hint": "'did not' must be followed by base verb (V1).",
+        "points": 10,
+        "options": [
+          {
+            "option_text": "I did not received the email yesterday.",
+            "is_correct": 0
+          },
+          {
+            "option_text": "I didn't got the email yesterday.",
+            "is_correct": 0
+          },
+          {
+            "option_text": "I was not receive the email yesterday.",
+            "is_correct": 0
+          },
+          {
+            "option_text": "I did not receive the email yesterday.",
+            "is_correct": 1
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "ex_sam_10_flight_mcq",
+    "lesson_id": "les_sam_10_his_first_flight",
+    "title": "Class 10 Unit 1: His First Flight - Book Back & Additional Questions",
+    "tamil_title": "10-ஆம் வகுப்பு அலகு 1 வினா-விடைப் பயிற்சி",
+    "exercise_type": "mcq",
+    "difficulty": "medium",
+    "total_xp": 80,
+    "questions": [
+      {
+        "id": "q_sam_10_1",
+        "question_text": "Why did the young seagull fail to fly with his brothers and sister?",
+        "tamil_subtext": "இளைய கடற்பறவை ஏன் தன் சகோதரர்களுடன் பறக்கத் தவறியது?",
+        "options": [
+          "He was sleeping on the cliff",
+          "He was afraid that his wings would not support him",
+          "He was injured and could not move",
+          "He did not want to leave the ledge"
+        ],
+        "correct_answer": "He was afraid that his wings would not support him",
+        "explanation": "The young seagull felt certain that his wings would never support him over the vast sea.",
+        "tamil_explanation": "தன் இறக்கைகள் தன்னைத் தாங்காது என்ற அச்சமே அது பறக்கத் தயங்கியதற்கு காரணம்."
+      },
+      {
+        "id": "q_sam_10_2",
+        "question_text": "What did the young seagull's mother do to compel him to fly?",
+        "tamil_subtext": "கடற்பறவையை பறக்க வைக்க தாய் பறவை என்ன செய்தது?",
+        "options": [
+          "She brought a piece of fish and stopped just out of his reach",
+          "She flew away and abandoned him",
+          "She pushed him forcefully off the ledge",
+          "She called other seagulls to attack him"
+        ],
+        "correct_answer": "She brought a piece of fish and stopped just out of his reach",
+        "explanation": "Maddened by hunger, the young bird dived at the fish and instinctively spread his wings.",
+        "tamil_explanation": "மீன் துண்டைக் காட்டி எட்டாத தூரத்தில் நின்று பசியின் தூண்டுதலால் குதிக்க வைத்தது."
+      },
+      {
+        "id": "q_sam_10_3",
+        "question_text": "What is the synonym of the word 'devour'?",
+        "tamil_subtext": "'Devour' என்ற சொல்லின் ஒத்த சொல் என்ன?",
+        "options": [
+          "Spit out",
+          "Eat hungrily",
+          "Cook slowly",
+          "Store carefully"
+        ],
+        "correct_answer": "Eat hungrily",
+        "explanation": "'Devour' means to eat food or prey hungrily and quickly.",
+        "tamil_explanation": "'Devour' என்றால் பசியோடு வேகமாக விழுங்குதல் என்று பொருள்."
+      }
+    ]
+  },
+  {
+    "id": "ex_sam_10_voice_practice",
+    "lesson_id": "les_sam_10_gram_voice",
+    "title": "SSLC Board Exam: Active & Passive Voice Transformation Drills",
+    "tamil_title": "10-ஆம் வகுப்பு பொதுத்தேர்வு செய்வினை / செயப்பாட்டு வினை பயிற்சி",
+    "exercise_type": "mcq",
+    "difficulty": "medium",
+    "total_xp": 90,
+    "questions": [
+      {
+        "id": "q_sam_v_1",
+        "question_text": "Change into Passive Voice: 'The manager will sign the contract tomorrow.'",
+        "tamil_subtext": "செயப்பாட்டு வினையாக மாற்றுக.",
+        "options": [
+          "The contract was signed by the manager tomorrow.",
+          "The contract will have signed by the manager.",
+          "The manager is signing the contract tomorrow.",
+          "The contract will be signed by the manager tomorrow."
+        ],
+        "correct_answer": "The contract will be signed by the manager tomorrow.",
+        "explanation": "Future Simple passive formula: Subject + will + be + V3 + by + Object.",
+        "tamil_explanation": "எதிர்கால செய்வினை Passive ஆக மாறும்போது 'will be + V3' வரும்."
+      },
+      {
+        "id": "q_sam_v_2",
+        "question_text": "Change into Active Voice: 'A melodious song was sung by the choir.'",
+        "tamil_subtext": "செய்வினையாக மாற்றுக.",
+        "options": [
+          "The choir sang a melodious song.",
+          "The choir had sung a melodious song.",
+          "The choir sings a melodious song.",
+          "The choir is singing a melodious song."
+        ],
+        "correct_answer": "The choir sang a melodious song.",
+        "explanation": "Past Simple active formula: Subject + V2 (sang) + Object.",
+        "tamil_explanation": "கடந்த கால செயப்பாட்டு வினையின் Active வடிவம்: 'The choir sang a melodious song'."
+      }
+    ]
+  },
+  {
+    "id": "ex_sam_10_scramble_puzzles",
+    "lesson_id": "les_sam_10_gram_sentences",
+    "title": "SSLC Exam: Scrambled Sentence Puzzle Arena",
+    "tamil_title": "10-ஆம் வகுப்பு வாக்கிய ஒழுங்கமைப்பு புதிர்கள்",
+    "exercise_type": "sentence_order",
+    "difficulty": "medium",
+    "total_xp": 80,
+    "questions": [
+      {
+        "id": "q_sam_scram_1",
+        "question_text": "practice / makes / English / speaking / fluent",
+        "tamil_subtext": "சொற்களை சரியான வரிசையில் அமைத்து வாக்கியத்தை உருவாக்குக.",
+        "correct_answer": "practice makes English speaking fluent",
+        "explanation": "Subject (practice) + Verb (makes) + Object phrase (English speaking fluent).",
+        "tamil_explanation": "தொடர் பயிற்சி ஆங்கிலப் பேச்சை சரளமாக்குகிறது."
+      },
+      {
+        "id": "q_sam_scram_2",
+        "question_text": "never / give / up / your / dreams / on",
+        "tamil_subtext": "சொற்களை ஒழுங்குபடுத்துக.",
+        "correct_answer": "never give up on your dreams",
+        "explanation": "Imperative advice: Never give up on your dreams.",
+        "tamil_explanation": "உங்கள் கனவுகளை ஒருபோதும் கைவிடாதீர்கள்."
+      }
+    ]
+  },
+  {
+    "id": "ex_6_nouns",
+    "lesson_id": "les_sam6u1_3",
+    "category_id": "tn_board",
+    "level_id": "A1",
+    "title": "Class 6: Types of Nouns",
+    "exercise_type": "mcq",
+    "instructions": "Choose the correct type of noun for each word.",
+    "tamil_instructions": "ஒவ்வொரு சொல்லுக்கும் சரியான பெயர்ச்சொல் வகையை தேர்ந்தெடுக்கவும்.",
+    "xp_points": 30,
+    "order_index": 1,
+    "questions": [
+      {
+        "question_text": "What type of noun is \"Chennai\"?",
+        "correct_answer": "Proper Noun",
+        "explanation": "Chennai is a specific name of a city, so it is a Proper Noun.",
+        "tamil_explanation": "சென்னை ஒரு குறிப்பிட்ட நகரின் பெயர், எனவே இது ஒரு சரியான பெயர்ச்சொல்.",
+        "points": 10,
+        "options": [
+          {
+            "option_text": "Common Noun",
+            "is_correct": 0
+          },
+          {
+            "option_text": "Abstract Noun",
+            "is_correct": 0
+          },
+          {
+            "option_text": "Collective Noun",
+            "is_correct": 0
+          },
+          {
+            "option_text": "Proper Noun",
+            "is_correct": 1
+          }
+        ]
+      },
+      {
+        "question_text": "What type of noun is \"happiness\"?",
+        "correct_answer": "Abstract Noun",
+        "explanation": "Happiness cannot be seen or touched, so it is an Abstract Noun.",
+        "tamil_explanation": "மகிழ்ச்சியை பார்க்கவோ தொடவோ முடியாது, எனவே இது ஒரு சுருக்கமான பெயர்ச்சொல்.",
+        "points": 10,
+        "options": [
+          {
+            "option_text": "Proper Noun",
+            "is_correct": 0
+          },
+          {
+            "option_text": "Abstract Noun",
+            "is_correct": 1
+          },
+          {
+            "option_text": "Common Noun",
+            "is_correct": 0
+          },
+          {
+            "option_text": "Collective Noun",
+            "is_correct": 0
+          }
+        ]
+      },
+      {
+        "question_text": "What type of noun is \"flock\" in \"a flock of birds\"?",
+        "correct_answer": "Collective Noun",
+        "explanation": "Flock represents a group of birds — it is a Collective Noun.",
+        "tamil_explanation": "\"flock\" என்பது பறவைகளின் கூட்டத்தை குறிக்கிறது — இது ஒரு கூட்டுப் பெயர்ச்சொல்.",
+        "points": 10,
+        "options": [
+          {
+            "option_text": "Proper Noun",
+            "is_correct": 0
+          },
+          {
+            "option_text": "Abstract Noun",
+            "is_correct": 0
+          },
+          {
+            "option_text": "Collective Noun",
+            "is_correct": 1
+          },
+          {
+            "option_text": "Common Noun",
+            "is_correct": 0
+          }
+        ]
+      },
+      {
+        "question_text": "Which of these is a Common Noun?",
+        "correct_answer": "City",
+        "explanation": "City is a common noun because it refers to any city, not a specific one.",
+        "tamil_explanation": "City என்பது பொதுவான நகரை குறிக்கிறது, எனவே இது ஒரு பொதுப் பெயர்ச்சொல்.",
+        "points": 10,
+        "options": [
+          {
+            "option_text": "Team",
+            "is_correct": 0
+          },
+          {
+            "option_text": "Honesty",
+            "is_correct": 0
+          },
+          {
+            "option_text": "City",
+            "is_correct": 1
+          },
+          {
+            "option_text": "London",
+            "is_correct": 0
+          }
+        ]
+      },
+      {
+        "question_text": "\"The police\" refers to which type of noun?",
+        "correct_answer": "Collective Noun",
+        "explanation": "\"Police\" refers to a group of officers — it is a Collective Noun.",
+        "tamil_explanation": "\"Police\" என்பது அதிகாரிகளின் குழுவை குறிக்கிறது.",
+        "points": 10,
+        "options": [
+          {
+            "option_text": "Common Noun",
+            "is_correct": 0
+          },
+          {
+            "option_text": "Abstract Noun",
+            "is_correct": 0
+          },
+          {
+            "option_text": "Collective Noun",
+            "is_correct": 1
+          },
+          {
+            "option_text": "Proper Noun",
+            "is_correct": 0
+          }
+        ]
+      },
+      {
+        "question_text": "Which sentence uses an Abstract Noun?",
+        "correct_answer": "Courage is a great virtue.",
+        "explanation": "Courage and virtue are abstract nouns — they are feelings/qualities you cannot see.",
+        "tamil_explanation": "தைரியம் மற்றும் நல்லொழுக்கம் என்பவை சுருக்கமான பெயர்ச்சொற்கள்.",
+        "points": 10,
+        "options": [
+          {
+            "option_text": "A pride of lions rested.",
+            "is_correct": 0
+          },
+          {
+            "option_text": "Courage is a great virtue.",
+            "is_correct": 1
+          },
+          {
+            "option_text": "The dog barked loudly.",
+            "is_correct": 0
+          },
+          {
+            "option_text": "She visited Mumbai last year.",
+            "is_correct": 0
+          }
+        ]
+      },
+      {
+        "question_text": "What is the Proper Noun in: \"My teacher Mrs. Lakshmi is kind.\"?",
+        "correct_answer": "Lakshmi",
+        "explanation": "Lakshmi is a specific person's name — a Proper Noun.",
+        "tamil_explanation": "லக்ஷ்மி ஒரு குறிப்பிட்ட நபரின் பெயர் — ஒரு சரியான பெயர்ச்சொல்.",
+        "points": 10,
+        "options": [
+          {
+            "option_text": "Lakshmi",
+            "is_correct": 1
+          },
+          {
+            "option_text": "Kind",
+            "is_correct": 0
+          },
+          {
+            "option_text": "Teacher",
+            "is_correct": 0
+          },
+          {
+            "option_text": "My",
+            "is_correct": 0
+          }
+        ]
+      },
+      {
+        "question_text": "A \"pride\" of lions is a _____.",
+        "correct_answer": "Collective Noun",
+        "explanation": "\"Pride\" when referring to a group of lions is a Collective Noun.",
+        "tamil_explanation": "\"Pride\" என்பது சிங்கங்களின் கூட்டத்தை குறிக்கும் கூட்டுப் பெயர்ச்சொல்.",
+        "points": 10,
+        "options": [
+          {
+            "option_text": "Proper Noun",
+            "is_correct": 0
+          },
+          {
+            "option_text": "Abstract Noun",
+            "is_correct": 0
+          },
+          {
+            "option_text": "Collective Noun",
+            "is_correct": 1
+          },
+          {
+            "option_text": "Common Noun",
+            "is_correct": 0
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "ex_6_pronouns",
+    "lesson_id": "les_sam6u2_3",
+    "category_id": "tn_board",
+    "level_id": "A1",
+    "title": "Class 6: Pronouns",
+    "exercise_type": "mcq",
+    "instructions": "Select the correct pronoun to complete each sentence.",
+    "tamil_instructions": "ஒவ்வொரு வாக்கியத்திற்கும் சரியான பிரதிப்பெயரை தேர்ந்தெடுக்கவும்.",
+    "xp_points": 30,
+    "order_index": 1,
+    "questions": [
+      {
+        "question_text": "Ravi went to school. _____ was late.",
+        "correct_answer": "He",
+        "explanation": "Ravi is a male name, so the pronoun is \"He\".",
+        "tamil_explanation": "ரவி ஆண் பெயர், எனவே \"He\" சரியான பிரதிப்பெயர்.",
+        "points": 10,
+        "options": [
+          {
+            "option_text": "She",
+            "is_correct": 0
+          },
+          {
+            "option_text": "He",
+            "is_correct": 1
+          },
+          {
+            "option_text": "It",
+            "is_correct": 0
+          },
+          {
+            "option_text": "They",
+            "is_correct": 0
+          }
+        ]
+      },
+      {
+        "question_text": "The book is old. _____ pages are torn.",
+        "correct_answer": "Its",
+        "explanation": "\"Its\" is used for objects and animals without gender.",
+        "tamil_explanation": "பொருள்களுக்கு \"Its\" பயன்படுத்தப்படுகிறது.",
+        "points": 10,
+        "options": [
+          {
+            "option_text": "Her",
+            "is_correct": 0
+          },
+          {
+            "option_text": "His",
+            "is_correct": 0
+          },
+          {
+            "option_text": "Its",
+            "is_correct": 1
+          },
+          {
+            "option_text": "Their",
+            "is_correct": 0
+          }
+        ]
+      },
+      {
+        "question_text": "Meena and Anitha are sisters. _____ play together.",
+        "correct_answer": "They",
+        "explanation": "Two people need the plural pronoun \"They\".",
+        "tamil_explanation": "இரண்டு நபர்களுக்கு \"They\" என்ற பன்மை பிரதிப்பெயர் பயன்படுத்தப்படுகிறது.",
+        "points": 10,
+        "options": [
+          {
+            "option_text": "She",
+            "is_correct": 0
+          },
+          {
+            "option_text": "He",
+            "is_correct": 0
+          },
+          {
+            "option_text": "It",
+            "is_correct": 0
+          },
+          {
+            "option_text": "They",
+            "is_correct": 1
+          }
+        ]
+      },
+      {
+        "question_text": "_____ is my favourite subject.",
+        "correct_answer": "English",
+        "explanation": "Here \"English\" as the subject can be referred to by \"It\".",
+        "tamil_explanation": "இங்கே \"English\" என்ற பொருளை \"It\" குறிக்கிறது.",
+        "points": 10,
+        "options": [
+          {
+            "option_text": "English",
+            "is_correct": 1
+          },
+          {
+            "option_text": "They",
+            "is_correct": 0
+          },
+          {
+            "option_text": "We",
+            "is_correct": 0
+          },
+          {
+            "option_text": "It",
+            "is_correct": 0
+          }
+        ]
+      },
+      {
+        "question_text": "The teacher asked _____ to read aloud.",
+        "correct_answer": "us",
+        "explanation": "\"Us\" is the object pronoun for \"we\".",
+        "tamil_explanation": "\"We\" யின் செயப்படுபொருள் வடிவம் \"us\".",
+        "points": 10,
+        "options": [
+          {
+            "option_text": "ours",
+            "is_correct": 0
+          },
+          {
+            "option_text": "our",
+            "is_correct": 0
+          },
+          {
+            "option_text": "we",
+            "is_correct": 0
+          },
+          {
+            "option_text": "us",
+            "is_correct": 1
+          }
+        ]
+      },
+      {
+        "question_text": "Choose the Reflexive pronoun: \"She hurt _____ while cooking.\"",
+        "correct_answer": "herself",
+        "explanation": "\"Herself\" is the reflexive pronoun for \"she\".",
+        "tamil_explanation": "\"She\" யின் reflexive pronoun \"herself\".",
+        "points": 10,
+        "options": [
+          {
+            "option_text": "her",
+            "is_correct": 0
+          },
+          {
+            "option_text": "she",
+            "is_correct": 0
+          },
+          {
+            "option_text": "hers",
+            "is_correct": 0
+          },
+          {
+            "option_text": "herself",
+            "is_correct": 1
+          }
+        ]
+      },
+      {
+        "question_text": "Which is a Demonstrative Pronoun?",
+        "correct_answer": "This",
+        "explanation": "\"This\" is a Demonstrative Pronoun — it points to a specific thing.",
+        "tamil_explanation": "\"This\" ஒரு சுட்டுப் பிரதிப்பெயர்.",
+        "points": 10,
+        "options": [
+          {
+            "option_text": "He",
+            "is_correct": 0
+          },
+          {
+            "option_text": "Who",
+            "is_correct": 0
+          },
+          {
+            "option_text": "This",
+            "is_correct": 1
+          },
+          {
+            "option_text": "I",
+            "is_correct": 0
+          }
+        ]
+      },
+      {
+        "question_text": "\"Who is at the door?\" — \"Who\" is a _____ pronoun.",
+        "correct_answer": "Interrogative",
+        "explanation": "\"Who\" is used in questions — it is an Interrogative Pronoun.",
+        "tamil_explanation": "\"Who\" கேள்விகளில் பயன்படுகிறது — இது ஒரு வினவல் பிரதிப்பெயர்.",
+        "points": 10,
+        "options": [
+          {
+            "option_text": "Interrogative",
+            "is_correct": 1
+          },
+          {
+            "option_text": "Relative",
+            "is_correct": 0
+          },
+          {
+            "option_text": "Reflexive",
+            "is_correct": 0
+          },
+          {
+            "option_text": "Personal",
+            "is_correct": 0
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "ex_6_adjectives",
+    "lesson_id": "les_sam6u3_3",
+    "category_id": "tn_board",
+    "level_id": "A1",
+    "title": "Class 6: Adjectives & Degrees of Comparison",
+    "exercise_type": "mcq",
+    "instructions": "Choose the correct form of the adjective.",
+    "tamil_instructions": "சரியான பெயரடை வடிவத்தை தேர்ந்தெடுக்கவும்.",
+    "xp_points": 30,
+    "order_index": 1,
+    "questions": [
+      {
+        "question_text": "Rajan is _____ than his brother. (tall)",
+        "correct_answer": "taller",
+        "explanation": "For short adjectives, add \"-er\" for Comparative degree.",
+        "tamil_explanation": "குறுகிய பெயரடைகளுக்கு ஒப்பிட்டு நிலையில் \"-er\" சேர்க்க வேண்டும்.",
+        "points": 10,
+        "options": [
+          {
+            "option_text": "taller",
+            "is_correct": 1
+          },
+          {
+            "option_text": "most tall",
+            "is_correct": 0
+          },
+          {
+            "option_text": "tallest",
+            "is_correct": 0
+          },
+          {
+            "option_text": "more tall",
+            "is_correct": 0
+          }
+        ]
+      },
+      {
+        "question_text": "Mount Everest is the _____ mountain in the world. (high)",
+        "correct_answer": "highest",
+        "explanation": "Superlative degree of \"high\" is \"highest\" (add -est).",
+        "tamil_explanation": "\"high\" யின் மேலிட நிலை \"highest\".",
+        "points": 10,
+        "options": [
+          {
+            "option_text": "higher",
+            "is_correct": 0
+          },
+          {
+            "option_text": "most high",
+            "is_correct": 0
+          },
+          {
+            "option_text": "more high",
+            "is_correct": 0
+          },
+          {
+            "option_text": "highest",
+            "is_correct": 1
+          }
+        ]
+      },
+      {
+        "question_text": "This mango is _____ than that one. (sweet)",
+        "correct_answer": "sweeter",
+        "explanation": "For one-syllable adjectives, comparative is formed by adding -er.",
+        "tamil_explanation": "ஒரு எழுத்துக்கூட்டம் கொண்ட பெயரடைகளுக்கு -er சேர்க்கவும்.",
+        "points": 10,
+        "options": [
+          {
+            "option_text": "sweetest",
+            "is_correct": 0
+          },
+          {
+            "option_text": "most sweet",
+            "is_correct": 0
+          },
+          {
+            "option_text": "sweeter",
+            "is_correct": 1
+          },
+          {
+            "option_text": "more sweeter",
+            "is_correct": 0
+          }
+        ]
+      },
+      {
+        "question_text": "Which is the Positive degree of \"better\"?",
+        "correct_answer": "Good",
+        "explanation": "Good → Better → Best is an irregular comparison.",
+        "tamil_explanation": "Good → Better → Best என்பது ஒழுங்கற்ற ஒப்பிடல் வடிவம்.",
+        "points": 10,
+        "options": [
+          {
+            "option_text": "More good",
+            "is_correct": 0
+          },
+          {
+            "option_text": "Good",
+            "is_correct": 1
+          },
+          {
+            "option_text": "Well",
+            "is_correct": 0
+          },
+          {
+            "option_text": "Best",
+            "is_correct": 0
+          }
+        ]
+      },
+      {
+        "question_text": "She is the _____ student in the class. (intelligent)",
+        "correct_answer": "most intelligent",
+        "explanation": "For long adjectives (3+ syllables), use \"most\" for superlative.",
+        "tamil_explanation": "நீண்ட பெயரடைகளுக்கு \"most\" பயன்படுத்தி மேலிட நிலை உருவாக்கவும்.",
+        "points": 10,
+        "options": [
+          {
+            "option_text": "intelligenter",
+            "is_correct": 0
+          },
+          {
+            "option_text": "most intelligent",
+            "is_correct": 1
+          },
+          {
+            "option_text": "more intelligent",
+            "is_correct": 0
+          },
+          {
+            "option_text": "intelligentest",
+            "is_correct": 0
+          }
+        ]
+      },
+      {
+        "question_text": "This room is _____ than mine. (big)",
+        "correct_answer": "bigger",
+        "explanation": "Double the final consonant before adding -er: big → bigger.",
+        "tamil_explanation": "இறுதி மெய்யெழுத்தை இரட்டிப்பாக்கி -er சேர்க்கவும்: big → bigger.",
+        "points": 10,
+        "options": [
+          {
+            "option_text": "biggest",
+            "is_correct": 0
+          },
+          {
+            "option_text": "biger",
+            "is_correct": 0
+          },
+          {
+            "option_text": "bigger",
+            "is_correct": 1
+          },
+          {
+            "option_text": "most big",
+            "is_correct": 0
+          }
+        ]
+      },
+      {
+        "question_text": "_____ is the comparative of \"bad\".",
+        "correct_answer": "Worse",
+        "explanation": "\"Bad\" has an irregular comparative: Bad → Worse → Worst.",
+        "tamil_explanation": "\"Bad\" என்பதன் ஒழுங்கற்ற ஒப்பிடல் நிலை: Bad → Worse → Worst.",
+        "points": 10,
+        "options": [
+          {
+            "option_text": "Badder",
+            "is_correct": 0
+          },
+          {
+            "option_text": "Worst",
+            "is_correct": 0
+          },
+          {
+            "option_text": "Worse",
+            "is_correct": 1
+          },
+          {
+            "option_text": "More bad",
+            "is_correct": 0
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "ex_7_tenses",
+    "lesson_id": "les_sam7u2_3",
+    "category_id": "tn_board",
+    "level_id": "A1",
+    "title": "Class 7: All Tenses Practice",
+    "exercise_type": "mcq",
+    "instructions": "Choose the correct tense form for each sentence.",
+    "tamil_instructions": "ஒவ்வொரு வாக்கியத்திற்கும் சரியான காலத்தை தேர்ந்தெடுக்கவும்.",
+    "xp_points": 40,
+    "order_index": 1,
+    "questions": [
+      {
+        "question_text": "She _____ to school every day. (Simple Present)",
+        "correct_answer": "goes",
+        "explanation": "Simple Present uses \"goes\" for third-person singular (She/He/It).",
+        "tamil_explanation": "நிகழ்காலத்தில் She/He/It க்கு goes பயன்படுகிறது.",
+        "points": 10,
+        "options": [
+          {
+            "option_text": "goes",
+            "is_correct": 1
+          },
+          {
+            "option_text": "is going",
+            "is_correct": 0
+          },
+          {
+            "option_text": "went",
+            "is_correct": 0
+          },
+          {
+            "option_text": "has gone",
+            "is_correct": 0
+          }
+        ]
+      },
+      {
+        "question_text": "They _____ a match yesterday. (Simple Past)",
+        "correct_answer": "played",
+        "explanation": "Simple Past uses the past form \"played\".",
+        "tamil_explanation": "எளிய கடந்தகாலத்தில் \"played\" பயன்படுகிறது.",
+        "points": 10,
+        "options": [
+          {
+            "option_text": "have played",
+            "is_correct": 0
+          },
+          {
+            "option_text": "played",
+            "is_correct": 1
+          },
+          {
+            "option_text": "plays",
+            "is_correct": 0
+          },
+          {
+            "option_text": "play",
+            "is_correct": 0
+          }
+        ]
+      },
+      {
+        "question_text": "She _____ Tamil for 5 years. (Present Perfect)",
+        "correct_answer": "has studied",
+        "explanation": "Present Perfect: has/have + past participle. Used with \"for/since\".",
+        "tamil_explanation": "Present Perfect: has/have + past participle. \"for/since\" உடன் பயன்படுகிறது.",
+        "points": 10,
+        "options": [
+          {
+            "option_text": "studied",
+            "is_correct": 0
+          },
+          {
+            "option_text": "studies",
+            "is_correct": 0
+          },
+          {
+            "option_text": "is studying",
+            "is_correct": 0
+          },
+          {
+            "option_text": "has studied",
+            "is_correct": 1
+          }
+        ]
+      },
+      {
+        "question_text": "They _____ football when it started to rain. (Past Continuous)",
+        "correct_answer": "were playing",
+        "explanation": "Past Continuous = was/were + verb-ing. Action in progress in the past.",
+        "tamil_explanation": "Past Continuous = was/were + verb-ing.",
+        "points": 10,
+        "options": [
+          {
+            "option_text": "had played",
+            "is_correct": 0
+          },
+          {
+            "option_text": "play",
+            "is_correct": 0
+          },
+          {
+            "option_text": "were playing",
+            "is_correct": 1
+          },
+          {
+            "option_text": "played",
+            "is_correct": 0
+          }
+        ]
+      },
+      {
+        "question_text": "By next year, she _____ her degree. (Future Perfect)",
+        "correct_answer": "will have completed",
+        "explanation": "Future Perfect = will have + past participle.",
+        "tamil_explanation": "Future Perfect = will have + past participle.",
+        "points": 10,
+        "options": [
+          {
+            "option_text": "will complete",
+            "is_correct": 0
+          },
+          {
+            "option_text": "has completed",
+            "is_correct": 0
+          },
+          {
+            "option_text": "completes",
+            "is_correct": 0
+          },
+          {
+            "option_text": "will have completed",
+            "is_correct": 1
+          }
+        ]
+      },
+      {
+        "question_text": "I _____ (read) this book. It is very interesting.",
+        "correct_answer": "have read",
+        "explanation": "Present Perfect is used to talk about past experiences with a present relevance.",
+        "tamil_explanation": "Present Perfect கடந்தகால அனுபவங்களை கூற பயன்படுகிறது.",
+        "points": 10,
+        "options": [
+          {
+            "option_text": "read",
+            "is_correct": 0
+          },
+          {
+            "option_text": "had read",
+            "is_correct": 0
+          },
+          {
+            "option_text": "have read",
+            "is_correct": 1
+          },
+          {
+            "option_text": "reads",
+            "is_correct": 0
+          }
+        ]
+      },
+      {
+        "question_text": "The train _____ before we arrived. (Past Perfect)",
+        "correct_answer": "had left",
+        "explanation": "Past Perfect = had + past participle. The train left BEFORE we arrived.",
+        "tamil_explanation": "Past Perfect = had + past participle. முந்திய கடந்தகால நிகழ்வுகளுக்கு.",
+        "points": 10,
+        "options": [
+          {
+            "option_text": "had left",
+            "is_correct": 1
+          },
+          {
+            "option_text": "was leaving",
+            "is_correct": 0
+          },
+          {
+            "option_text": "left",
+            "is_correct": 0
+          },
+          {
+            "option_text": "has left",
+            "is_correct": 0
+          }
+        ]
+      },
+      {
+        "question_text": "She _____ right now. Do not disturb her. (Present Continuous)",
+        "correct_answer": "is studying",
+        "explanation": "Present Continuous = is/am/are + verb-ing. Action happening right now.",
+        "tamil_explanation": "Present Continuous = is/am/are + verb-ing. இப்போது நடக்கும் செயல்.",
+        "points": 10,
+        "options": [
+          {
+            "option_text": "study",
+            "is_correct": 0
+          },
+          {
+            "option_text": "is studying",
+            "is_correct": 1
+          },
+          {
+            "option_text": "was studying",
+            "is_correct": 0
+          },
+          {
+            "option_text": "studies",
+            "is_correct": 0
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "ex_7_articles",
+    "lesson_id": "les_sam7u4_3",
+    "category_id": "tn_board",
+    "level_id": "A1",
+    "title": "Class 7: Articles — A, An, The",
+    "exercise_type": "mcq",
+    "instructions": "Fill in the blank with the correct article (a, an, the or no article).",
+    "tamil_instructions": "சரியான உரிச்சொல்லை (a, an, the) நிரப்பவும்.",
+    "xp_points": 35,
+    "order_index": 1,
+    "questions": [
+      {
+        "question_text": "She bought _____ umbrella because it was raining.",
+        "correct_answer": "an",
+        "explanation": "\"An\" is used before words beginning with a vowel sound. Umbrella starts with \"u\".",
+        "tamil_explanation": "\"An\" உயிரொலியில் தொடங்கும் சொற்களுக்கு முன் பயன்படுகிறது.",
+        "points": 10,
+        "options": [
+          {
+            "option_text": "a",
+            "is_correct": 0
+          },
+          {
+            "option_text": "the",
+            "is_correct": 0
+          },
+          {
+            "option_text": "an",
+            "is_correct": 1
+          },
+          {
+            "option_text": "no article",
+            "is_correct": 0
+          }
+        ]
+      },
+      {
+        "question_text": "_____ Sun rises in the east.",
+        "correct_answer": "The",
+        "explanation": "\"The\" is used with unique things like the Sun, the Moon, the Earth.",
+        "tamil_explanation": "சூரியன், நிலா போன்ற தனிப்பட்ட பொருட்களுக்கு \"The\" பயன்படுகிறது.",
+        "points": 10,
+        "options": [
+          {
+            "option_text": "The",
+            "is_correct": 1
+          },
+          {
+            "option_text": "An",
+            "is_correct": 0
+          },
+          {
+            "option_text": "A",
+            "is_correct": 0
+          },
+          {
+            "option_text": "no article",
+            "is_correct": 0
+          }
+        ]
+      },
+      {
+        "question_text": "He is _____ honest man.",
+        "correct_answer": "an",
+        "explanation": "\"Honest\" begins with a silent \"h\" and a vowel sound \"o\", so use \"an\".",
+        "tamil_explanation": "\"Honest\" என்ற சொல் உயிரொலியில் தொடங்குவதால் \"an\" பயன்படுகிறது.",
+        "points": 10,
+        "options": [
+          {
+            "option_text": "no article",
+            "is_correct": 0
+          },
+          {
+            "option_text": "a",
+            "is_correct": 0
+          },
+          {
+            "option_text": "the",
+            "is_correct": 0
+          },
+          {
+            "option_text": "an",
+            "is_correct": 1
+          }
+        ]
+      },
+      {
+        "question_text": "_____ gold is a precious metal.",
+        "correct_answer": "no article",
+        "explanation": "No article is used with uncountable nouns used in general sense.",
+        "tamil_explanation": "பொதுவான அர்த்தத்தில் எண்ணிலடங்காப் பெயர்ச்சொல்களுக்கு article தேவையில்லை.",
+        "points": 10,
+        "options": [
+          {
+            "option_text": "An",
+            "is_correct": 0
+          },
+          {
+            "option_text": "A",
+            "is_correct": 0
+          },
+          {
+            "option_text": "no article",
+            "is_correct": 1
+          },
+          {
+            "option_text": "The",
+            "is_correct": 0
+          }
+        ]
+      },
+      {
+        "question_text": "I want to become _____ engineer.",
+        "correct_answer": "an",
+        "explanation": "\"An\" before \"engineer\" because it starts with a vowel sound \"e\".",
+        "tamil_explanation": "\"engineer\" உயிரொலி \"e\"யில் தொடங்குவதால் \"an\" பயன்படுகிறது.",
+        "points": 10,
+        "options": [
+          {
+            "option_text": "the",
+            "is_correct": 0
+          },
+          {
+            "option_text": "no article",
+            "is_correct": 0
+          },
+          {
+            "option_text": "an",
+            "is_correct": 1
+          },
+          {
+            "option_text": "a",
+            "is_correct": 0
+          }
+        ]
+      },
+      {
+        "question_text": "She plays _____ piano beautifully.",
+        "correct_answer": "the",
+        "explanation": "\"The\" is used with musical instruments.",
+        "tamil_explanation": "இசைக்கருவிகளுக்கு முன் \"the\" பயன்படுகிறது.",
+        "points": 10,
+        "options": [
+          {
+            "option_text": "an",
+            "is_correct": 0
+          },
+          {
+            "option_text": "the",
+            "is_correct": 1
+          },
+          {
+            "option_text": "a",
+            "is_correct": 0
+          },
+          {
+            "option_text": "no article",
+            "is_correct": 0
+          }
+        ]
+      },
+      {
+        "question_text": "_____ Himalayas are the tallest mountains in India.",
+        "correct_answer": "The",
+        "explanation": "\"The\" is used with mountain ranges, rivers, and groups of islands.",
+        "tamil_explanation": "மலைத்தொடர்கள், ஆறுகள், தீவுக்கூட்டங்களுக்கு \"The\" பயன்படுகிறது.",
+        "points": 10,
+        "options": [
+          {
+            "option_text": "no article",
+            "is_correct": 0
+          },
+          {
+            "option_text": "A",
+            "is_correct": 0
+          },
+          {
+            "option_text": "The",
+            "is_correct": 1
+          },
+          {
+            "option_text": "An",
+            "is_correct": 0
+          }
+        ]
+      },
+      {
+        "question_text": "He is _____ best student in the class.",
+        "correct_answer": "the",
+        "explanation": "\"The\" is used with superlatives.",
+        "tamil_explanation": "மேலிட நிலை பெயரடைகளுக்கு முன் \"the\" பயன்படுகிறது.",
+        "points": 10,
+        "options": [
+          {
+            "option_text": "an",
+            "is_correct": 0
+          },
+          {
+            "option_text": "the",
+            "is_correct": 1
+          },
+          {
+            "option_text": "a",
+            "is_correct": 0
+          },
+          {
+            "option_text": "no article",
+            "is_correct": 0
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "ex_7_direct_indirect",
+    "lesson_id": "les_sam7u5_3",
+    "category_id": "tn_board",
+    "level_id": "A2",
+    "title": "Class 7: Direct and Indirect Speech",
+    "exercise_type": "mcq",
+    "instructions": "Change the sentence from Direct to Indirect Speech.",
+    "tamil_instructions": "நேர்மொழியிலிருந்து மறைமொழியாக மாற்றவும்.",
+    "xp_points": 45,
+    "order_index": 1,
+    "questions": [
+      {
+        "question_text": "He said, \"I am happy.\" → Indirect Speech:",
+        "correct_answer": "He said that he was happy.",
+        "explanation": "In Indirect Speech: \"I\" → \"he\", \"am\" → \"was\", and add \"that\".",
+        "tamil_explanation": "மறைமொழியில்: \"I\" → \"he\", \"am\" → \"was\", மற்றும் \"that\" சேர்க்கவும்.",
+        "points": 10,
+        "options": [
+          {
+            "option_text": "He said that I was happy.",
+            "is_correct": 0
+          },
+          {
+            "option_text": "He told that he was happy.",
+            "is_correct": 0
+          },
+          {
+            "option_text": "He said that he was happy.",
+            "is_correct": 1
+          },
+          {
+            "option_text": "He said that he is happy.",
+            "is_correct": 0
+          }
+        ]
+      },
+      {
+        "question_text": "She said, \"I will come tomorrow.\" → Indirect:",
+        "correct_answer": "She said that she would come the next day.",
+        "explanation": "\"Will\" → \"would\" and \"tomorrow\" → \"the next day\" in Indirect Speech.",
+        "tamil_explanation": "\"will\" → \"would\" மற்றும் \"tomorrow\" → \"the next day\" என மாறும்.",
+        "points": 10,
+        "options": [
+          {
+            "option_text": "She said that she would come the next day.",
+            "is_correct": 1
+          },
+          {
+            "option_text": "She said that I would come the next day.",
+            "is_correct": 0
+          },
+          {
+            "option_text": "She told that she would come tomorrow.",
+            "is_correct": 0
+          },
+          {
+            "option_text": "She said that she will come tomorrow.",
+            "is_correct": 0
+          }
+        ]
+      },
+      {
+        "question_text": "The teacher said to us, \"Work hard.\" → Indirect:",
+        "correct_answer": "The teacher told us to work hard.",
+        "explanation": "Commands in Indirect Speech: told + object + to + infinitive.",
+        "tamil_explanation": "கட்டளை வாக்கியத்தில்: told + object + to + infinitive.",
+        "points": 10,
+        "options": [
+          {
+            "option_text": "The teacher told us that work hard.",
+            "is_correct": 0
+          },
+          {
+            "option_text": "The teacher said that we work hard.",
+            "is_correct": 0
+          },
+          {
+            "option_text": "The teacher said us to work hard.",
+            "is_correct": 0
+          },
+          {
+            "option_text": "The teacher told us to work hard.",
+            "is_correct": 1
+          }
+        ]
+      },
+      {
+        "question_text": "He asked, \"Are you coming?\" → Indirect:",
+        "correct_answer": "He asked if I was coming.",
+        "explanation": "Yes/No questions: use \"if\" or \"whether\" in Indirect Speech.",
+        "tamil_explanation": "ஆம்/இல்லை கேள்விகளுக்கு: \"if\" அல்லது \"whether\" பயன்படுகிறது.",
+        "points": 10,
+        "options": [
+          {
+            "option_text": "He asked whether am I coming.",
+            "is_correct": 0
+          },
+          {
+            "option_text": "He asked if I was coming.",
+            "is_correct": 1
+          },
+          {
+            "option_text": "He said if I was coming.",
+            "is_correct": 0
+          },
+          {
+            "option_text": "He asked that I was coming.",
+            "is_correct": 0
+          }
+        ]
+      },
+      {
+        "question_text": "She said, \"I can swim.\" → Indirect:",
+        "correct_answer": "She said that she could swim.",
+        "explanation": "\"Can\" → \"could\" in Indirect Speech.",
+        "tamil_explanation": "\"can\" → \"could\" ஆக மாறும்.",
+        "points": 10,
+        "options": [
+          {
+            "option_text": "She said that I could swim.",
+            "is_correct": 0
+          },
+          {
+            "option_text": "She said that she could swim.",
+            "is_correct": 1
+          },
+          {
+            "option_text": "She said that she can swim.",
+            "is_correct": 0
+          },
+          {
+            "option_text": "She told that she could swim.",
+            "is_correct": 0
+          }
+        ]
+      },
+      {
+        "question_text": "Ram said to me, \"Please help me.\" → Indirect:",
+        "correct_answer": "Ram requested me to help him.",
+        "explanation": "Polite requests in Indirect Speech use \"requested\".",
+        "tamil_explanation": "கொஞ்சமாக கேட்கும் வாக்கியங்களுக்கு \"requested\" பயன்படுகிறது.",
+        "points": 10,
+        "options": [
+          {
+            "option_text": "Ram told me to please help.",
+            "is_correct": 0
+          },
+          {
+            "option_text": "Ram asked me please to help.",
+            "is_correct": 0
+          },
+          {
+            "option_text": "Ram requested me to help him.",
+            "is_correct": 1
+          },
+          {
+            "option_text": "Ram said to me to help him.",
+            "is_correct": 0
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "ex_8_active_passive",
+    "lesson_id": "les_sam8u1_3",
+    "category_id": "tn_board",
+    "level_id": "A2",
+    "title": "Class 8: Active and Passive Voice",
+    "exercise_type": "mcq",
+    "instructions": "Choose the correct Passive Voice form of each sentence.",
+    "tamil_instructions": "ஒவ்வொரு வாக்கியத்திற்கும் சரியான கர்மணி வாக்கியத்தை தேர்ந்தெடுக்கவும்.",
+    "xp_points": 50,
+    "order_index": 1,
+    "questions": [
+      {
+        "question_text": "Active: \"She writes a letter.\" → Passive:",
+        "correct_answer": "A letter is written by her.",
+        "explanation": "Simple Present Passive: is/am/are + past participle.",
+        "tamil_explanation": "எளிய நிகழ்கால கர்மணி: is/am/are + past participle.",
+        "points": 10,
+        "options": [
+          {
+            "option_text": "A letter has been written by her.",
+            "is_correct": 0
+          },
+          {
+            "option_text": "A letter is written by her.",
+            "is_correct": 1
+          },
+          {
+            "option_text": "A letter was written by her.",
+            "is_correct": 0
+          },
+          {
+            "option_text": "A letter is being written by her.",
+            "is_correct": 0
+          }
+        ]
+      },
+      {
+        "question_text": "Active: \"They built this bridge in 1990.\" → Passive:",
+        "correct_answer": "This bridge was built by them in 1990.",
+        "explanation": "Simple Past Passive: was/were + past participle.",
+        "tamil_explanation": "எளிய கடந்தகால கர்மணி: was/were + past participle.",
+        "points": 10,
+        "options": [
+          {
+            "option_text": "This bridge was built by them in 1990.",
+            "is_correct": 1
+          },
+          {
+            "option_text": "This bridge is built by them in 1990.",
+            "is_correct": 0
+          },
+          {
+            "option_text": "This bridge had been built by them.",
+            "is_correct": 0
+          },
+          {
+            "option_text": "This bridge has been built by them.",
+            "is_correct": 0
+          }
+        ]
+      },
+      {
+        "question_text": "Active: \"She is writing a poem.\" → Passive:",
+        "correct_answer": "A poem is being written by her.",
+        "explanation": "Present Continuous Passive: is/am/are + being + past participle.",
+        "tamil_explanation": "நிகழ்கால தொடர் கர்மணி: is/am/are + being + past participle.",
+        "points": 10,
+        "options": [
+          {
+            "option_text": "A poem is written by her.",
+            "is_correct": 0
+          },
+          {
+            "option_text": "A poem is being written by her.",
+            "is_correct": 1
+          },
+          {
+            "option_text": "A poem was being written by her.",
+            "is_correct": 0
+          },
+          {
+            "option_text": "A poem has been written by her.",
+            "is_correct": 0
+          }
+        ]
+      },
+      {
+        "question_text": "Active: \"He has completed the task.\" → Passive:",
+        "correct_answer": "The task has been completed by him.",
+        "explanation": "Present Perfect Passive: has/have + been + past participle.",
+        "tamil_explanation": "நிகழ்கால நிறைவு கர்மணி: has/have + been + past participle.",
+        "points": 10,
+        "options": [
+          {
+            "option_text": "The task is completed by him.",
+            "is_correct": 0
+          },
+          {
+            "option_text": "The task has been completed by him.",
+            "is_correct": 1
+          },
+          {
+            "option_text": "The task was completed by him.",
+            "is_correct": 0
+          },
+          {
+            "option_text": "The task had been completed by him.",
+            "is_correct": 0
+          }
+        ]
+      },
+      {
+        "question_text": "Which sentence is in Passive Voice?",
+        "correct_answer": "The letter was written by Priya.",
+        "explanation": "\"Was written\" indicates Passive Voice (was + past participle + by).",
+        "tamil_explanation": "\"was written\" என்பது கர்மணி வாக்கியத்தைக் குறிக்கிறது.",
+        "points": 10,
+        "options": [
+          {
+            "option_text": "Priya wrote the letter.",
+            "is_correct": 0
+          },
+          {
+            "option_text": "Priya writes letters often.",
+            "is_correct": 0
+          },
+          {
+            "option_text": "Priya is writing a letter.",
+            "is_correct": 0
+          },
+          {
+            "option_text": "The letter was written by Priya.",
+            "is_correct": 1
+          }
+        ]
+      },
+      {
+        "question_text": "Active: \"The dog bit the boy.\" → Passive:",
+        "correct_answer": "The boy was bitten by the dog.",
+        "explanation": "Simple Past Passive: was/were + past participle.",
+        "tamil_explanation": "எளிய கடந்தகால கர்மணி: was/were + past participle.",
+        "points": 10,
+        "options": [
+          {
+            "option_text": "The boy had been bitten.",
+            "is_correct": 0
+          },
+          {
+            "option_text": "The boy is bitten by the dog.",
+            "is_correct": 0
+          },
+          {
+            "option_text": "The boy has been bitten by the dog.",
+            "is_correct": 0
+          },
+          {
+            "option_text": "The boy was bitten by the dog.",
+            "is_correct": 1
+          }
+        ]
+      },
+      {
+        "question_text": "Active: \"People speak English all over the world.\" → Passive:",
+        "correct_answer": "English is spoken all over the world.",
+        "explanation": "When agent is obvious or unimportant, \"by + agent\" can be omitted.",
+        "tamil_explanation": "செய்பவர் வெளிப்படையாக தெரிந்தால் \"by + agent\" தவிர்க்கலாம்.",
+        "points": 10,
+        "options": [
+          {
+            "option_text": "English has been spoken by people.",
+            "is_correct": 0
+          },
+          {
+            "option_text": "English was spoken by people.",
+            "is_correct": 0
+          },
+          {
+            "option_text": "English is being spoken by people.",
+            "is_correct": 0
+          },
+          {
+            "option_text": "English is spoken all over the world.",
+            "is_correct": 1
+          }
+        ]
+      },
+      {
+        "question_text": "Active: \"They will complete the project.\" → Passive:",
+        "correct_answer": "The project will be completed by them.",
+        "explanation": "Future Simple Passive: will + be + past participle.",
+        "tamil_explanation": "எதிர்கால எளிய கர்மணி: will + be + past participle.",
+        "points": 10,
+        "options": [
+          {
+            "option_text": "The project would be completed.",
+            "is_correct": 0
+          },
+          {
+            "option_text": "The project will be completed by them.",
+            "is_correct": 1
+          },
+          {
+            "option_text": "The project will have been completed.",
+            "is_correct": 0
+          },
+          {
+            "option_text": "The project is completed by them.",
+            "is_correct": 0
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "ex_8_modals",
+    "lesson_id": "les_sam8u3_3",
+    "category_id": "tn_board",
+    "level_id": "A2",
+    "title": "Class 8: Modal Verbs",
+    "exercise_type": "mcq",
+    "instructions": "Choose the correct modal verb for each sentence.",
+    "tamil_instructions": "ஒவ்வொரு வாக்கியத்திற்கும் சரியான துணை வினையை தேர்ந்தெடுக்கவும்.",
+    "xp_points": 45,
+    "order_index": 1,
+    "questions": [
+      {
+        "question_text": "You _____ brush your teeth every day. (strong advice)",
+        "correct_answer": "should",
+        "explanation": "\"Should\" expresses strong advice or recommendation.",
+        "tamil_explanation": "\"Should\" பலமான அறிவுரை அல்லது பரிந்துரையை குறிக்கிறது.",
+        "points": 10,
+        "options": [
+          {
+            "option_text": "should",
+            "is_correct": 1
+          },
+          {
+            "option_text": "could",
+            "is_correct": 0
+          },
+          {
+            "option_text": "might",
+            "is_correct": 0
+          },
+          {
+            "option_text": "would",
+            "is_correct": 0
+          }
+        ]
+      },
+      {
+        "question_text": "You _____ enter without permission. It is strictly prohibited.",
+        "correct_answer": "must not",
+        "explanation": "\"Must not\" expresses strong prohibition.",
+        "tamil_explanation": "\"Must not\" கடுமையான தடையை குறிக்கிறது.",
+        "points": 10,
+        "options": [
+          {
+            "option_text": "cannot",
+            "is_correct": 0
+          },
+          {
+            "option_text": "would not",
+            "is_correct": 0
+          },
+          {
+            "option_text": "should not",
+            "is_correct": 0
+          },
+          {
+            "option_text": "must not",
+            "is_correct": 1
+          }
+        ]
+      },
+      {
+        "question_text": "_____ I borrow your pencil? (polite request)",
+        "correct_answer": "May",
+        "explanation": "\"May\" is used for polite requests for permission.",
+        "tamil_explanation": "\"May\" மரியாதையான அனுமதி கோரலுக்கு பயன்படுகிறது.",
+        "points": 10,
+        "options": [
+          {
+            "option_text": "May",
+            "is_correct": 1
+          },
+          {
+            "option_text": "Must",
+            "is_correct": 0
+          },
+          {
+            "option_text": "Would",
+            "is_correct": 0
+          },
+          {
+            "option_text": "Should",
+            "is_correct": 0
+          }
+        ]
+      },
+      {
+        "question_text": "She _____ be at home by now. Her class ends at 5 PM. (possibility)",
+        "correct_answer": "might",
+        "explanation": "\"Might\" expresses possibility — something that may or may not happen.",
+        "tamil_explanation": "\"Might\" சாத்தியத்தை குறிக்கிறது.",
+        "points": 10,
+        "options": [
+          {
+            "option_text": "might",
+            "is_correct": 1
+          },
+          {
+            "option_text": "must",
+            "is_correct": 0
+          },
+          {
+            "option_text": "shall",
+            "is_correct": 0
+          },
+          {
+            "option_text": "can",
+            "is_correct": 0
+          }
+        ]
+      },
+      {
+        "question_text": "When I was young, I _____ run very fast. (past ability)",
+        "correct_answer": "could",
+        "explanation": "\"Could\" expresses past ability.",
+        "tamil_explanation": "\"Could\" கடந்தகாலத் திறனை குறிக்கிறது.",
+        "points": 10,
+        "options": [
+          {
+            "option_text": "could",
+            "is_correct": 1
+          },
+          {
+            "option_text": "would",
+            "is_correct": 0
+          },
+          {
+            "option_text": "can",
+            "is_correct": 0
+          },
+          {
+            "option_text": "should",
+            "is_correct": 0
+          }
+        ]
+      },
+      {
+        "question_text": "You _____ wear your seat belt while driving. (obligation)",
+        "correct_answer": "must",
+        "explanation": "\"Must\" expresses necessity or obligation.",
+        "tamil_explanation": "\"Must\" கட்டாயம் அல்லது தேவையை குறிக்கிறது.",
+        "points": 10,
+        "options": [
+          {
+            "option_text": "might",
+            "is_correct": 0
+          },
+          {
+            "option_text": "would",
+            "is_correct": 0
+          },
+          {
+            "option_text": "could",
+            "is_correct": 0
+          },
+          {
+            "option_text": "must",
+            "is_correct": 1
+          }
+        ]
+      },
+      {
+        "question_text": "_____ you like some more tea? (polite offer)",
+        "correct_answer": "Would",
+        "explanation": "\"Would\" is used for polite offers.",
+        "tamil_explanation": "\"Would\" மரியாதையான சலுகைகளுக்கு பயன்படுகிறது.",
+        "points": 10,
+        "options": [
+          {
+            "option_text": "Should",
+            "is_correct": 0
+          },
+          {
+            "option_text": "Would",
+            "is_correct": 1
+          },
+          {
+            "option_text": "Might",
+            "is_correct": 0
+          },
+          {
+            "option_text": "Must",
+            "is_correct": 0
+          }
+        ]
+      },
+      {
+        "question_text": "It _____ rain today — look at those dark clouds. (strong possibility)",
+        "correct_answer": "might",
+        "explanation": "\"Might\" indicates a strong possibility based on evidence.",
+        "tamil_explanation": "சான்றின் அடிப்படையில் வலுவான சாத்தியத்தை \"might\" குறிக்கிறது.",
+        "points": 10,
+        "options": [
+          {
+            "option_text": "might",
+            "is_correct": 1
+          },
+          {
+            "option_text": "shall",
+            "is_correct": 0
+          },
+          {
+            "option_text": "would",
+            "is_correct": 0
+          },
+          {
+            "option_text": "must",
+            "is_correct": 0
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "ex_8_question_tags",
+    "lesson_id": "les_sam8u4_3",
+    "category_id": "tn_board",
+    "level_id": "A2",
+    "title": "Class 8: Question Tags",
+    "exercise_type": "mcq",
+    "instructions": "Choose the correct question tag for each sentence.",
+    "tamil_instructions": "ஒவ்வொரு வாக்கியத்திற்கும் சரியான கேள்வி முனையை தேர்ந்தெடுக்கவும்.",
+    "xp_points": 40,
+    "order_index": 1,
+    "questions": [
+      {
+        "question_text": "She is a teacher, _____?",
+        "correct_answer": "isn't she?",
+        "explanation": "Positive sentence → Negative tag. \"She is\" → \"isn't she\".",
+        "tamil_explanation": "நேர்மறை வாக்கியம் → எதிர்மறை முனை.",
+        "points": 10,
+        "options": [
+          {
+            "option_text": "wasn't she?",
+            "is_correct": 0
+          },
+          {
+            "option_text": "doesn't she?",
+            "is_correct": 0
+          },
+          {
+            "option_text": "is she?",
+            "is_correct": 0
+          },
+          {
+            "option_text": "isn't she?",
+            "is_correct": 1
+          }
+        ]
+      },
+      {
+        "question_text": "They don't like spicy food, _____?",
+        "correct_answer": "do they?",
+        "explanation": "Negative sentence → Positive tag. \"Don't\" → \"do they\".",
+        "tamil_explanation": "எதிர்மறை வாக்கியம் → நேர்மறை முனை.",
+        "points": 10,
+        "options": [
+          {
+            "option_text": "don't they?",
+            "is_correct": 0
+          },
+          {
+            "option_text": "are they?",
+            "is_correct": 0
+          },
+          {
+            "option_text": "did they?",
+            "is_correct": 0
+          },
+          {
+            "option_text": "do they?",
+            "is_correct": 1
+          }
+        ]
+      },
+      {
+        "question_text": "He has finished his work, _____?",
+        "correct_answer": "hasn't he?",
+        "explanation": "\"Has finished\" → negative tag is \"hasn't he\".",
+        "tamil_explanation": "\"Has finished\" → எதிர்மறை முனை \"hasn't he\".",
+        "points": 10,
+        "options": [
+          {
+            "option_text": "didn't he?",
+            "is_correct": 0
+          },
+          {
+            "option_text": "isn't he?",
+            "is_correct": 0
+          },
+          {
+            "option_text": "has he?",
+            "is_correct": 0
+          },
+          {
+            "option_text": "hasn't he?",
+            "is_correct": 1
+          }
+        ]
+      },
+      {
+        "question_text": "You will come tomorrow, _____?",
+        "correct_answer": "won't you?",
+        "explanation": "\"Will\" → negative tag is \"won't\".",
+        "tamil_explanation": "\"Will\" → எதிர்மறை முனை \"won't\".",
+        "points": 10,
+        "options": [
+          {
+            "option_text": "don't you?",
+            "is_correct": 0
+          },
+          {
+            "option_text": "will you?",
+            "is_correct": 0
+          },
+          {
+            "option_text": "wouldn't you?",
+            "is_correct": 0
+          },
+          {
+            "option_text": "won't you?",
+            "is_correct": 1
+          }
+        ]
+      },
+      {
+        "question_text": "Nobody came to the party, _____?",
+        "correct_answer": "did they?",
+        "explanation": "Negative pronouns (nobody, nothing, nowhere) → positive tag with \"they\".",
+        "tamil_explanation": "எதிர்மறை பிரதிப்பெயர்களுக்கு (nobody) → \"they\" உடன் நேர்மறை முனை.",
+        "points": 10,
+        "options": [
+          {
+            "option_text": "did they?",
+            "is_correct": 1
+          },
+          {
+            "option_text": "nobody did?",
+            "is_correct": 0
+          },
+          {
+            "option_text": "didn't they?",
+            "is_correct": 0
+          },
+          {
+            "option_text": "came they?",
+            "is_correct": 0
+          }
+        ]
+      },
+      {
+        "question_text": "Let's go for a walk, _____?",
+        "correct_answer": "shall we?",
+        "explanation": "\"Let's\" always takes \"shall we?\" as its question tag.",
+        "tamil_explanation": "\"Let's\" க்கு எப்போதும் \"shall we?\" என்று பயன்படுகிறது.",
+        "points": 10,
+        "options": [
+          {
+            "option_text": "don't we?",
+            "is_correct": 0
+          },
+          {
+            "option_text": "will we?",
+            "is_correct": 0
+          },
+          {
+            "option_text": "shall we?",
+            "is_correct": 1
+          },
+          {
+            "option_text": "should we?",
+            "is_correct": 0
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "ex_9_conditionals",
+    "lesson_id": "les_sam9u1_3",
+    "category_id": "tn_board",
+    "level_id": "A2",
+    "title": "Class 9: Conditional Sentences",
+    "exercise_type": "mcq",
+    "instructions": "Identify the type of conditional or complete the sentence correctly.",
+    "tamil_instructions": "நிபந்தனை வாக்கிய வகையை அடையாளம் காணவும் அல்லது சரியாக நிரப்பவும்.",
+    "xp_points": 55,
+    "order_index": 1,
+    "questions": [
+      {
+        "question_text": "If you heat ice, it _____. (Zero Conditional)",
+        "correct_answer": "melts",
+        "explanation": "Zero Conditional: If + Simple Present → Simple Present. For universal truths.",
+        "tamil_explanation": "Zero Conditional: If + Simple Present → Simple Present. பொதுவான உண்மைகளுக்கு.",
+        "points": 10,
+        "options": [
+          {
+            "option_text": "will melt",
+            "is_correct": 0
+          },
+          {
+            "option_text": "would melt",
+            "is_correct": 0
+          },
+          {
+            "option_text": "melts",
+            "is_correct": 1
+          },
+          {
+            "option_text": "melted",
+            "is_correct": 0
+          }
+        ]
+      },
+      {
+        "question_text": "If it rains tomorrow, we _____ at home. (First Conditional)",
+        "correct_answer": "will stay",
+        "explanation": "First Conditional: If + Simple Present → will + base verb. For real future possibilities.",
+        "tamil_explanation": "First Conditional: If + Simple Present → will + base verb. நடக்கக்கூடிய எதிர்கால சாத்தியங்களுக்கு.",
+        "points": 10,
+        "options": [
+          {
+            "option_text": "stay",
+            "is_correct": 0
+          },
+          {
+            "option_text": "would stay",
+            "is_correct": 0
+          },
+          {
+            "option_text": "stayed",
+            "is_correct": 0
+          },
+          {
+            "option_text": "will stay",
+            "is_correct": 1
+          }
+        ]
+      },
+      {
+        "question_text": "If I had wings, I _____ fly to London. (Second Conditional)",
+        "correct_answer": "would",
+        "explanation": "Second Conditional: If + Simple Past → would + base verb. For imaginary/unlikely situations.",
+        "tamil_explanation": "Second Conditional: If + Simple Past → would + base verb. கற்பனை சூழல்களுக்கு.",
+        "points": 10,
+        "options": [
+          {
+            "option_text": "should",
+            "is_correct": 0
+          },
+          {
+            "option_text": "would",
+            "is_correct": 1
+          },
+          {
+            "option_text": "could",
+            "is_correct": 0
+          },
+          {
+            "option_text": "will",
+            "is_correct": 0
+          }
+        ]
+      },
+      {
+        "question_text": "If she _____ harder, she would have passed. (Third Conditional)",
+        "correct_answer": "had worked",
+        "explanation": "Third Conditional: If + Past Perfect → would have + past participle. For past regrets.",
+        "tamil_explanation": "Third Conditional: If + Past Perfect → would have + past participle. கடந்தகால வருத்தங்களுக்கு.",
+        "points": 10,
+        "options": [
+          {
+            "option_text": "works",
+            "is_correct": 0
+          },
+          {
+            "option_text": "had worked",
+            "is_correct": 1
+          },
+          {
+            "option_text": "had worked",
+            "is_correct": 0
+          },
+          {
+            "option_text": "worked",
+            "is_correct": 0
+          }
+        ]
+      },
+      {
+        "question_text": "Which type is: \"If you touch fire, you get burned.\"?",
+        "correct_answer": "Zero Conditional",
+        "explanation": "Zero Conditional states universal scientific facts.",
+        "tamil_explanation": "Zero Conditional பொதுவான அறிவியல் உண்மைகளை கூறுகிறது.",
+        "points": 10,
+        "options": [
+          {
+            "option_text": "Third Conditional",
+            "is_correct": 0
+          },
+          {
+            "option_text": "Second Conditional",
+            "is_correct": 0
+          },
+          {
+            "option_text": "Zero Conditional",
+            "is_correct": 1
+          },
+          {
+            "option_text": "First Conditional",
+            "is_correct": 0
+          }
+        ]
+      },
+      {
+        "question_text": "If I were the Prime Minister, I _____ build more schools.",
+        "correct_answer": "would",
+        "explanation": "Second Conditional uses \"were\" (not \"was\") with I/he/she for imaginary situations.",
+        "tamil_explanation": "Second Conditional இல் கற்பனை சூழல்களுக்கு \"were\" பயன்படுகிறது.",
+        "points": 10,
+        "options": [
+          {
+            "option_text": "would",
+            "is_correct": 1
+          },
+          {
+            "option_text": "will",
+            "is_correct": 0
+          },
+          {
+            "option_text": "shall",
+            "is_correct": 0
+          },
+          {
+            "option_text": "should",
+            "is_correct": 0
+          }
+        ]
+      },
+      {
+        "question_text": "_____ I known the truth, I would have told you. (Third Conditional)",
+        "correct_answer": "Had",
+        "explanation": "Inverted Third Conditional: Had + subject + past participle (no \"if\").",
+        "tamil_explanation": "தலைகீழ் Third Conditional: Had + subject + past participle (\"if\" இல்லாமல்).",
+        "points": 10,
+        "options": [
+          {
+            "option_text": "Had",
+            "is_correct": 1
+          },
+          {
+            "option_text": "Were",
+            "is_correct": 0
+          },
+          {
+            "option_text": "Should",
+            "is_correct": 0
+          },
+          {
+            "option_text": "If",
+            "is_correct": 0
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "ex_9_passive_all",
+    "lesson_id": "les_sam9u3_3",
+    "category_id": "tn_board",
+    "level_id": "A2",
+    "title": "Class 9: Passive Voice — All Tenses",
+    "exercise_type": "mcq",
+    "instructions": "Choose the correct Passive Voice transformation.",
+    "tamil_instructions": "சரியான கர்மணி வாக்கிய மாற்றத்தை தேர்ந்தெடுக்கவும்.",
+    "xp_points": 55,
+    "order_index": 1,
+    "questions": [
+      {
+        "question_text": "Active: \"They are building a new stadium.\" → Passive:",
+        "correct_answer": "A new stadium is being built by them.",
+        "explanation": "Present Continuous Passive: is/am/are + being + past participle.",
+        "tamil_explanation": "நிகழ்கால தொடர் கர்மணி: is/am/are + being + past participle.",
+        "points": 10,
+        "options": [
+          {
+            "option_text": "A new stadium has been built.",
+            "is_correct": 0
+          },
+          {
+            "option_text": "A new stadium is being built by them.",
+            "is_correct": 1
+          },
+          {
+            "option_text": "A new stadium is built by them.",
+            "is_correct": 0
+          },
+          {
+            "option_text": "A new stadium was being built.",
+            "is_correct": 0
+          }
+        ]
+      },
+      {
+        "question_text": "Active: \"He had written the report.\" → Passive:",
+        "correct_answer": "The report had been written by him.",
+        "explanation": "Past Perfect Passive: had + been + past participle.",
+        "tamil_explanation": "கடந்தகால நிறைவு கர்மணி: had + been + past participle.",
+        "points": 10,
+        "options": [
+          {
+            "option_text": "The report had been written by him.",
+            "is_correct": 1
+          },
+          {
+            "option_text": "The report has been written.",
+            "is_correct": 0
+          },
+          {
+            "option_text": "The report is written by him.",
+            "is_correct": 0
+          },
+          {
+            "option_text": "The report was written by him.",
+            "is_correct": 0
+          }
+        ]
+      },
+      {
+        "question_text": "Active: \"They will have finished the work.\" → Passive:",
+        "correct_answer": "The work will have been finished by them.",
+        "explanation": "Future Perfect Passive: will + have + been + past participle.",
+        "tamil_explanation": "எதிர்கால நிறைவு கர்மணி: will + have + been + past participle.",
+        "points": 10,
+        "options": [
+          {
+            "option_text": "The work has been finished.",
+            "is_correct": 0
+          },
+          {
+            "option_text": "The work will have been finished by them.",
+            "is_correct": 1
+          },
+          {
+            "option_text": "The work would have been finished.",
+            "is_correct": 0
+          },
+          {
+            "option_text": "The work will be finished.",
+            "is_correct": 0
+          }
+        ]
+      },
+      {
+        "question_text": "Active: \"Ravi was eating a mango.\" → Passive:",
+        "correct_answer": "A mango was being eaten by Ravi.",
+        "explanation": "Past Continuous Passive: was/were + being + past participle.",
+        "tamil_explanation": "கடந்தகால தொடர் கர்மணி: was/were + being + past participle.",
+        "points": 10,
+        "options": [
+          {
+            "option_text": "A mango had been eaten.",
+            "is_correct": 0
+          },
+          {
+            "option_text": "A mango was being eaten by Ravi.",
+            "is_correct": 1
+          },
+          {
+            "option_text": "A mango was eaten by Ravi.",
+            "is_correct": 0
+          },
+          {
+            "option_text": "A mango is being eaten.",
+            "is_correct": 0
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "ex_9_concord",
+    "lesson_id": "les_sam9u4_3",
+    "category_id": "tn_board",
+    "level_id": "A2",
+    "title": "Class 9: Subject-Verb Agreement (Concord)",
+    "exercise_type": "mcq",
+    "instructions": "Choose the verb that agrees with the subject.",
+    "tamil_instructions": "கர்த்தாவுடன் ஒத்துப்போகும் வினையை தேர்ந்தெடுக்கவும்.",
+    "xp_points": 50,
+    "order_index": 1,
+    "questions": [
+      {
+        "question_text": "Each of the students _____ submitted the assignment.",
+        "correct_answer": "has",
+        "explanation": "\"Each\" is always singular. Use singular verb \"has\".",
+        "tamil_explanation": "\"Each\" எப்போதும் ஒருமை — \"has\" பயன்படுகிறது.",
+        "points": 10,
+        "options": [
+          {
+            "option_text": "were",
+            "is_correct": 0
+          },
+          {
+            "option_text": "have",
+            "is_correct": 0
+          },
+          {
+            "option_text": "has",
+            "is_correct": 1
+          },
+          {
+            "option_text": "had",
+            "is_correct": 0
+          }
+        ]
+      },
+      {
+        "question_text": "Neither the teacher nor the students _____ present.",
+        "correct_answer": "were",
+        "explanation": "Neither...nor: verb agrees with the nearest subject. \"Students\" (plural) → \"were\".",
+        "tamil_explanation": "Neither...nor: அருகில் உள்ள கர்த்தாவுடன் வினை ஒத்திசைகிறது.",
+        "points": 10,
+        "options": [
+          {
+            "option_text": "were",
+            "is_correct": 1
+          },
+          {
+            "option_text": "is",
+            "is_correct": 0
+          },
+          {
+            "option_text": "are",
+            "is_correct": 0
+          },
+          {
+            "option_text": "was",
+            "is_correct": 0
+          }
+        ]
+      },
+      {
+        "question_text": "The committee _____ unanimous in its decision.",
+        "correct_answer": "was",
+        "explanation": "Collective noun (committee) acting as one unit → singular verb.",
+        "tamil_explanation": "கூட்டுப் பெயர்ச்சொல் (committee) ஒரு அலகாக செயல்படும்போது → ஒருமை வினை.",
+        "points": 10,
+        "options": [
+          {
+            "option_text": "was",
+            "is_correct": 1
+          },
+          {
+            "option_text": "were",
+            "is_correct": 0
+          },
+          {
+            "option_text": "are",
+            "is_correct": 0
+          },
+          {
+            "option_text": "have been",
+            "is_correct": 0
+          }
+        ]
+      },
+      {
+        "question_text": "Ten kilometres _____ a long distance to walk.",
+        "correct_answer": "is",
+        "explanation": "Distances, time, and amounts are treated as singular.",
+        "tamil_explanation": "தூரம், நேரம், அளவு என்பவை ஒருமையாக கருதப்படும்.",
+        "points": 10,
+        "options": [
+          {
+            "option_text": "is",
+            "is_correct": 1
+          },
+          {
+            "option_text": "were",
+            "is_correct": 0
+          },
+          {
+            "option_text": "are",
+            "is_correct": 0
+          },
+          {
+            "option_text": "have been",
+            "is_correct": 0
+          }
+        ]
+      },
+      {
+        "question_text": "Both Ravi and Priya _____ going to the party.",
+        "correct_answer": "are",
+        "explanation": "\"Both...and\" → always plural verb.",
+        "tamil_explanation": "\"Both...and\" → எப்போதும் பன்மை வினை.",
+        "points": 10,
+        "options": [
+          {
+            "option_text": "has been",
+            "is_correct": 0
+          },
+          {
+            "option_text": "was",
+            "is_correct": 0
+          },
+          {
+            "option_text": "is",
+            "is_correct": 0
+          },
+          {
+            "option_text": "are",
+            "is_correct": 1
+          }
+        ]
+      },
+      {
+        "question_text": "The news _____ shocking.",
+        "correct_answer": "was",
+        "explanation": "\"News\" is an uncountable noun and always takes a singular verb.",
+        "tamil_explanation": "\"News\" எண்ணிலடங்காப் பெயர்ச்சொல் — ஒருமை வினை மட்டுமே.",
+        "points": 10,
+        "options": [
+          {
+            "option_text": "are",
+            "is_correct": 0
+          },
+          {
+            "option_text": "was",
+            "is_correct": 1
+          },
+          {
+            "option_text": "have been",
+            "is_correct": 0
+          },
+          {
+            "option_text": "were",
+            "is_correct": 0
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "ex_10_his_first_flight_qa",
+    "lesson_id": "les_sam10u1_3",
+    "category_id": "tn_board",
+    "level_id": "B1",
+    "title": "Class 10 Unit 1: His First Flight — Comprehension",
+    "exercise_type": "mcq",
+    "instructions": "Answer questions based on the story \"His First Flight\" by Liam O'Flaherty.",
+    "tamil_instructions": "\"His First Flight\" கதையை அடிப்படையாக கொண்டு வினாக்களுக்கு பதிலளிக்கவும்.",
+    "xp_points": 60,
+    "order_index": 1,
+    "questions": [
+      {
+        "question_text": "Who is the author of \"His First Flight\"?",
+        "correct_answer": "Liam O'Flaherty",
+        "explanation": "Liam O'Flaherty is the Irish author of \"His First Flight\".",
+        "tamil_explanation": "\"His First Flight\" இன் ஆசிரியர் லியம் ஓ'ஃப்ளாஹெர்டி.",
+        "points": 10,
+        "options": [
+          {
+            "option_text": "Robert Frost",
+            "is_correct": 0
+          },
+          {
+            "option_text": "Liam O'Flaherty",
+            "is_correct": 1
+          },
+          {
+            "option_text": "Ruskin Bond",
+            "is_correct": 0
+          },
+          {
+            "option_text": "Guy de Maupassant",
+            "is_correct": 0
+          }
+        ]
+      },
+      {
+        "question_text": "Why was the young seagull afraid to fly?",
+        "correct_answer": "He was afraid his wings would not support him.",
+        "explanation": "The young seagull feared his wings were too weak to support him in flight.",
+        "tamil_explanation": "இளம் கடற்பறவை தன் சிறகுகள் பறக்க போதுமான வலிமை இல்லை என்று பயந்தது.",
+        "points": 10,
+        "options": [
+          {
+            "option_text": "He was afraid of the water.",
+            "is_correct": 0
+          },
+          {
+            "option_text": "He was afraid his wings would not support him.",
+            "is_correct": 1
+          },
+          {
+            "option_text": "He was tired and hungry.",
+            "is_correct": 0
+          },
+          {
+            "option_text": "He was afraid of other birds.",
+            "is_correct": 0
+          }
+        ]
+      },
+      {
+        "question_text": "How did the young seagull finally fly?",
+        "correct_answer": "He dived at the fish his mother was holding and his hunger overcame his fear.",
+        "explanation": "The mother tempted him with food, and hunger drove him to dive, causing him to fly.",
+        "tamil_explanation": "அன்னை உணவால் தூண்டியதால் பசி அவனது பயத்தை வென்று அவன் பறக்கத் தொடங்கினான்.",
+        "points": 10,
+        "options": [
+          {
+            "option_text": "He jumped to reach his brothers.",
+            "is_correct": 0
+          },
+          {
+            "option_text": "He dived at the fish his mother was holding and his hunger overcame his fear.",
+            "is_correct": 1
+          },
+          {
+            "option_text": "His father pushed him off the ledge.",
+            "is_correct": 0
+          },
+          {
+            "option_text": "He was blown off by the wind.",
+            "is_correct": 0
+          }
+        ]
+      },
+      {
+        "question_text": "What does the young seagull symbolize?",
+        "correct_answer": "Overcoming fear to achieve success",
+        "explanation": "The story shows how courage and hunger for success can help overcome fear.",
+        "tamil_explanation": "இந்தக் கதை தைரியமும் வெற்றியின் ஆசையும் எவ்வாறு பயத்தை வெல்கிறது என்று காட்டுகிறது.",
+        "points": 10,
+        "options": [
+          {
+            "option_text": "The cruelty of family members",
+            "is_correct": 0
+          },
+          {
+            "option_text": "Overcoming fear to achieve success",
+            "is_correct": 1
+          },
+          {
+            "option_text": "The love of a mother",
+            "is_correct": 0
+          },
+          {
+            "option_text": "The importance of food",
+            "is_correct": 0
+          }
+        ]
+      },
+      {
+        "question_text": "What is the moral of \"His First Flight\"?",
+        "correct_answer": "Courage and determination help us overcome our fears.",
+        "explanation": "The story teaches that stepping out of comfort zones helps us achieve great things.",
+        "tamil_explanation": "ஆறுதல் மண்டலத்திலிருந்து வெளியே வருவதே வெற்றியின் திறவுகோல்.",
+        "points": 10,
+        "options": [
+          {
+            "option_text": "Food is more important than fear.",
+            "is_correct": 0
+          },
+          {
+            "option_text": "Courage and determination help us overcome our fears.",
+            "is_correct": 1
+          },
+          {
+            "option_text": "Flying is easy once you start.",
+            "is_correct": 0
+          },
+          {
+            "option_text": "Always listen to your parents.",
+            "is_correct": 0
+          }
+        ]
+      },
+      {
+        "question_text": "The word \"brink\" in the story means:",
+        "correct_answer": "the edge of a cliff",
+        "explanation": "\"Brink\" means the edge of a high place, such as a cliff.",
+        "tamil_explanation": "\"Brink\" என்பது ஒரு உயரமான இடத்தின் விளிம்பை குறிக்கிறது.",
+        "points": 10,
+        "options": [
+          {
+            "option_text": "the top of a mountain",
+            "is_correct": 0
+          },
+          {
+            "option_text": "a type of wing",
+            "is_correct": 0
+          },
+          {
+            "option_text": "the middle of the sea",
+            "is_correct": 0
+          },
+          {
+            "option_text": "the edge of a cliff",
+            "is_correct": 1
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "ex_10_sslc_grammar",
+    "lesson_id": "les_sam10u7_3",
+    "category_id": "tn_board",
+    "level_id": "B1",
+    "title": "Class 10: SSLC Board Grammar — Complete Revision",
+    "exercise_type": "mcq",
+    "instructions": "Choose the grammatically correct answer for each SSLC-style question.",
+    "tamil_instructions": "SSLC பாணி இலக்கண வினாக்களுக்கு சரியான விடையை தேர்ந்தெடுக்கவும்.",
+    "xp_points": 75,
+    "order_index": 1,
+    "questions": [
+      {
+        "question_text": "She said, \"I have finished my work.\" → Indirect Speech:",
+        "correct_answer": "She said that she had finished her work.",
+        "explanation": "Past Perfect is used in Indirect when reporting a Present Perfect statement.",
+        "tamil_explanation": "நிகழ்கால நிறைவை மறைமொழியில் கூறும்போது Past Perfect பயன்படுகிறது.",
+        "points": 10,
+        "options": [
+          {
+            "option_text": "She said that she has finished her work.",
+            "is_correct": 0
+          },
+          {
+            "option_text": "She said that I have finished my work.",
+            "is_correct": 0
+          },
+          {
+            "option_text": "She told that she has finished her work.",
+            "is_correct": 0
+          },
+          {
+            "option_text": "She said that she had finished her work.",
+            "is_correct": 1
+          }
+        ]
+      },
+      {
+        "question_text": "Fill in: \"If I _____ a millionaire, I would donate to charity.\" (Second Conditional)",
+        "correct_answer": "were",
+        "explanation": "Second Conditional: Use \"were\" (not \"was\") for all subjects (I/he/she) in formal English.",
+        "tamil_explanation": "Second Conditional: அனைத்து கர்த்தாக்களுக்கும் \"were\" பயன்படுகிறது.",
+        "points": 10,
+        "options": [
+          {
+            "option_text": "had been",
+            "is_correct": 0
+          },
+          {
+            "option_text": "am",
+            "is_correct": 0
+          },
+          {
+            "option_text": "were",
+            "is_correct": 1
+          },
+          {
+            "option_text": "was",
+            "is_correct": 0
+          }
+        ]
+      },
+      {
+        "question_text": "Active: \"The police are investigating the case.\" → Passive:",
+        "correct_answer": "The case is being investigated by the police.",
+        "explanation": "Present Continuous Passive: is/am/are + being + past participle.",
+        "tamil_explanation": "நிகழ்கால தொடர் கர்மணி: is/am/are + being + past participle.",
+        "points": 10,
+        "options": [
+          {
+            "option_text": "The case has been investigated.",
+            "is_correct": 0
+          },
+          {
+            "option_text": "The case is being investigated by the police.",
+            "is_correct": 1
+          },
+          {
+            "option_text": "The case was investigated.",
+            "is_correct": 0
+          },
+          {
+            "option_text": "The case is investigated by police.",
+            "is_correct": 0
+          }
+        ]
+      },
+      {
+        "question_text": "Choose the correct Concord: \"Neither of the boys _____ ready.\"",
+        "correct_answer": "is",
+        "explanation": "\"Neither\" with a singular noun takes a singular verb.",
+        "tamil_explanation": "\"Neither\" ஒருமைப் பெயர்ச்சொல்லுடன் ஒருமை வினை.",
+        "points": 10,
+        "options": [
+          {
+            "option_text": "is",
+            "is_correct": 1
+          },
+          {
+            "option_text": "are",
+            "is_correct": 0
+          },
+          {
+            "option_text": "have",
+            "is_correct": 0
+          },
+          {
+            "option_text": "were",
+            "is_correct": 0
+          }
+        ]
+      },
+      {
+        "question_text": "Spot the error: \"She is more better than her sister.\"",
+        "correct_answer": "\"more\" should be removed — \"better\" is already comparative",
+        "explanation": "\"Better\" is already the comparative form. Adding \"more\" creates a double comparative error.",
+        "tamil_explanation": "\"Better\" ஏற்கனவே ஒப்பிடல் நிலை — \"more\" சேர்ப்பது தவறு.",
+        "points": 10,
+        "options": [
+          {
+            "option_text": "\"more\" should be removed — \"better\" is already comparative",
+            "is_correct": 1
+          },
+          {
+            "option_text": "Sister should be \"sisters\"",
+            "is_correct": 0
+          },
+          {
+            "option_text": "\"is\" should be \"was\"",
+            "is_correct": 0
+          },
+          {
+            "option_text": "No error",
+            "is_correct": 0
+          }
+        ]
+      },
+      {
+        "question_text": "Which sentence has the correct use of Article?",
+        "correct_answer": "She plays the violin.",
+        "explanation": "\"The\" is used before musical instruments.",
+        "tamil_explanation": "இசைக்கருவிகளுக்கு முன் \"the\" பயன்படுகிறது.",
+        "points": 10,
+        "options": [
+          {
+            "option_text": "She plays an violin.",
+            "is_correct": 0
+          },
+          {
+            "option_text": "She plays a violin.",
+            "is_correct": 0
+          },
+          {
+            "option_text": "She plays the violin.",
+            "is_correct": 1
+          },
+          {
+            "option_text": "She plays violin.",
+            "is_correct": 0
+          }
+        ]
+      },
+      {
+        "question_text": "Choose the correct sentence:",
+        "correct_answer": "Each of the girls has submitted her project.",
+        "explanation": "\"Each\" is singular — use singular verb \"has\" and singular pronoun \"her\".",
+        "tamil_explanation": "\"Each\" ஒருமை — \"has\" மற்றும் \"her\" பயன்படுகிறது.",
+        "points": 10,
+        "options": [
+          {
+            "option_text": "Each of the girls has submitted her project.",
+            "is_correct": 1
+          },
+          {
+            "option_text": "Each of the girls had submitted their projects.",
+            "is_correct": 0
+          },
+          {
+            "option_text": "Each girl have submitted her project.",
+            "is_correct": 0
+          },
+          {
+            "option_text": "Each of the girls have submitted their project.",
+            "is_correct": 0
+          }
+        ]
+      },
+      {
+        "question_text": "Combine using \"not only...but also\": \"Ravi is talented. Ravi is hardworking.\"",
+        "correct_answer": "Ravi is not only talented but also hardworking.",
+        "explanation": "\"Not only...but also\" correlates two qualities of the same subject.",
+        "tamil_explanation": "\"Not only...but also\" இரண்டு குணங்களை இணைக்கிறது.",
+        "points": 10,
+        "options": [
+          {
+            "option_text": "Ravi is not only talented but hardworking also.",
+            "is_correct": 0
+          },
+          {
+            "option_text": "Not only Ravi is talented but also hardworking.",
+            "is_correct": 0
+          },
+          {
+            "option_text": "Ravi not only is talented but also hardworking.",
+            "is_correct": 0
+          },
+          {
+            "option_text": "Ravi is not only talented but also hardworking.",
+            "is_correct": 1
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "ex_11_sentence_transformation",
+    "lesson_id": "les_sam11u1_3",
+    "category_id": "tn_board",
+    "level_id": "B1",
+    "title": "Class 11: Sentence Transformation",
+    "exercise_type": "mcq",
+    "instructions": "Transform each sentence as directed.",
+    "tamil_instructions": "ஒவ்வொரு வாக்கியத்தையும் கேட்டபடி மாற்றவும்.",
+    "xp_points": 65,
+    "order_index": 1,
+    "questions": [
+      {
+        "question_text": "Change to Negative: \"She always tells the truth.\"",
+        "correct_answer": "She never tells a lie.",
+        "explanation": "\"Always tells the truth\" can be negated as \"never tells a lie\" (both mean the same).",
+        "tamil_explanation": "\"Always tells the truth\" = \"never tells a lie\" — இரண்டும் ஒரே அர்த்தம்.",
+        "points": 10,
+        "options": [
+          {
+            "option_text": "She never tells the truth.",
+            "is_correct": 0
+          },
+          {
+            "option_text": "She does not always tell the truth.",
+            "is_correct": 0
+          },
+          {
+            "option_text": "She never tells a lie.",
+            "is_correct": 1
+          },
+          {
+            "option_text": "She tells truth never.",
+            "is_correct": 0
+          }
+        ]
+      },
+      {
+        "question_text": "Change to Interrogative: \"She is a brilliant student.\"",
+        "correct_answer": "Is she not a brilliant student?",
+        "explanation": "To change a statement to a question, invert the subject and auxiliary verb.",
+        "tamil_explanation": "கர்த்தா மற்றும் துணை வினையை மாற்றுவதன் மூலம் கேள்வி வாக்கியம் உருவாக்கலாம்.",
+        "points": 10,
+        "options": [
+          {
+            "option_text": "Is she not a brilliant student?",
+            "is_correct": 1
+          },
+          {
+            "option_text": "She is a brilliant student?",
+            "is_correct": 0
+          },
+          {
+            "option_text": "Is she brilliant?",
+            "is_correct": 0
+          },
+          {
+            "option_text": "Isn't she brilliant?",
+            "is_correct": 0
+          }
+        ]
+      },
+      {
+        "question_text": "Change Active to Passive: \"The manager called the meeting.\"",
+        "correct_answer": "The meeting was called by the manager.",
+        "explanation": "Simple Past Active → Simple Past Passive: was/were + past participle.",
+        "tamil_explanation": "எளிய கடந்தகால கர்த்தரி → கர்மணி: was/were + past participle.",
+        "points": 10,
+        "options": [
+          {
+            "option_text": "The meeting was called by the manager.",
+            "is_correct": 1
+          },
+          {
+            "option_text": "The meeting had been called.",
+            "is_correct": 0
+          },
+          {
+            "option_text": "The meeting called by the manager.",
+            "is_correct": 0
+          },
+          {
+            "option_text": "The meeting is called by the manager.",
+            "is_correct": 0
+          }
+        ]
+      },
+      {
+        "question_text": "Combine into one sentence: \"He is honest. He is diligent.\" (Using \"both...and\")",
+        "correct_answer": "He is both honest and diligent.",
+        "explanation": "\"Both...and\" combines two qualities: He is both [quality1] and [quality2].",
+        "tamil_explanation": "\"Both...and\" இரண்டு குணங்களை இணைக்கிறது.",
+        "points": 10,
+        "options": [
+          {
+            "option_text": "He is honest and also diligent both.",
+            "is_correct": 0
+          },
+          {
+            "option_text": "He is both honest and diligent.",
+            "is_correct": 1
+          },
+          {
+            "option_text": "He both is honest and diligent.",
+            "is_correct": 0
+          },
+          {
+            "option_text": "Both he is honest and diligent.",
+            "is_correct": 0
+          }
+        ]
+      },
+      {
+        "question_text": "Change to Exclamatory: \"She is a very clever girl.\"",
+        "correct_answer": "What a clever girl she is!",
+        "explanation": "\"What a + adjective + noun + subject + verb!\" is the exclamatory pattern.",
+        "tamil_explanation": "\"What a + பெயரடை + பெயர்ச்சொல் + கர்த்தா + வினை!\" என்பது ஆச்சரிய வாக்கிய வடிவம்.",
+        "points": 10,
+        "options": [
+          {
+            "option_text": "How she is clever!",
+            "is_correct": 0
+          },
+          {
+            "option_text": "What clever she is!",
+            "is_correct": 0
+          },
+          {
+            "option_text": "What a clever girl she is!",
+            "is_correct": 1
+          },
+          {
+            "option_text": "How clever girl she is!",
+            "is_correct": 0
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "ex_12_error_spotting",
+    "lesson_id": "les_sam12u1_3",
+    "category_id": "tn_board",
+    "level_id": "B2",
+    "title": "Class 12: Error Spotting — 20 Golden Rules",
+    "exercise_type": "mcq",
+    "instructions": "Spot the grammatical error in each sentence.",
+    "tamil_instructions": "ஒவ்வொரு வாக்கியத்திலும் உள்ள இலக்கணப் பிழையை கண்டறியவும்.",
+    "xp_points": 80,
+    "order_index": 1,
+    "questions": [
+      {
+        "question_text": "Spot the error: \"He is one of the best student in the class.\"",
+        "correct_answer": "\"student\" should be \"students\"",
+        "explanation": "After \"one of the\", the noun must be plural: one of the best STUDENTS.",
+        "tamil_explanation": "\"One of the\" க்கு பிறகு பன்மை பெயர்ச்சொல் வர வேண்டும்.",
+        "points": 10,
+        "options": [
+          {
+            "option_text": "\"He\" should be \"Him\"",
+            "is_correct": 0
+          },
+          {
+            "option_text": "\"best\" should be \"better\"",
+            "is_correct": 0
+          },
+          {
+            "option_text": "\"student\" should be \"students\"",
+            "is_correct": 1
+          },
+          {
+            "option_text": "\"is\" should be \"was\"",
+            "is_correct": 0
+          }
+        ]
+      },
+      {
+        "question_text": "Spot the error: \"She is more taller than her brother.\"",
+        "correct_answer": "\"more\" should be removed — \"taller\" is comparative",
+        "explanation": "\"Taller\" is already comparative. Adding \"more\" makes a double comparative.",
+        "tamil_explanation": "\"Taller\" ஏற்கனவே ஒப்பிடல் நிலை — \"more\" சேர்ப்பது தவறு.",
+        "points": 10,
+        "options": [
+          {
+            "option_text": "\"more\" should be removed — \"taller\" is comparative",
+            "is_correct": 1
+          },
+          {
+            "option_text": "\"than\" should be \"then\"",
+            "is_correct": 0
+          },
+          {
+            "option_text": "\"brother\" should be \"brothers\"",
+            "is_correct": 0
+          },
+          {
+            "option_text": "\"She\" should be \"Her\"",
+            "is_correct": 0
+          }
+        ]
+      },
+      {
+        "question_text": "Spot the error: \"He has been working here since three years.\"",
+        "correct_answer": "\"since\" should be \"for\"",
+        "explanation": "\"Since\" is used with specific time points. \"For\" is used with periods of time.",
+        "tamil_explanation": "\"Since\" குறிப்பிட்ட கால புள்ளிக்கு; \"For\" காலகட்டத்திற்கு.",
+        "points": 10,
+        "options": [
+          {
+            "option_text": "\"working\" should be \"worked\"",
+            "is_correct": 0
+          },
+          {
+            "option_text": "\"since\" should be \"for\"",
+            "is_correct": 1
+          },
+          {
+            "option_text": "\"here\" should be \"there\"",
+            "is_correct": 0
+          },
+          {
+            "option_text": "\"has been\" should be \"had been\"",
+            "is_correct": 0
+          }
+        ]
+      },
+      {
+        "question_text": "Spot the error: \"Each of the students have submitted their homework.\"",
+        "correct_answer": "\"have\" should be \"has\"",
+        "explanation": "\"Each\" is singular, so it takes a singular verb \"has\".",
+        "tamil_explanation": "\"Each\" ஒருமை — \"has\" பயன்படுத்த வேண்டும்.",
+        "points": 10,
+        "options": [
+          {
+            "option_text": "\"submitted\" should be \"submit\"",
+            "is_correct": 0
+          },
+          {
+            "option_text": "\"students\" should be \"student\"",
+            "is_correct": 0
+          },
+          {
+            "option_text": "\"have\" should be \"has\"",
+            "is_correct": 1
+          },
+          {
+            "option_text": "\"their\" should be \"his\"",
+            "is_correct": 0
+          }
+        ]
+      },
+      {
+        "question_text": "Spot the error: \"The committee have decided to postpone the event.\"",
+        "correct_answer": "No error — \"have\" is correct when members act individually",
+        "explanation": "When a collective noun acts as individuals, a plural verb is used.",
+        "tamil_explanation": "கூட்டுப் பெயர்ச்சொல் தனித்தனியாக செயல்படும்போது பன்மை வினை சரியானது.",
+        "points": 10,
+        "options": [
+          {
+            "option_text": "\"committee\" should be \"committees\"",
+            "is_correct": 0
+          },
+          {
+            "option_text": "\"decided\" should be \"decide\"",
+            "is_correct": 0
+          },
+          {
+            "option_text": "No error — \"have\" is correct when members act individually",
+            "is_correct": 1
+          },
+          {
+            "option_text": "\"postpone\" should be \"postponement\"",
+            "is_correct": 0
+          }
+        ]
+      },
+      {
+        "question_text": "Spot the error: \"She told me that she will come tomorrow.\"",
+        "correct_answer": "\"will\" should be \"would\"",
+        "explanation": "In Indirect Speech, when reporting verb is past, \"will\" changes to \"would\".",
+        "tamil_explanation": "மறைமொழியில் வரும்போது \"will\" → \"would\" ஆக மாறும்.",
+        "points": 10,
+        "options": [
+          {
+            "option_text": "\"will\" should be \"would\"",
+            "is_correct": 1
+          },
+          {
+            "option_text": "\"told\" should be \"said\"",
+            "is_correct": 0
+          },
+          {
+            "option_text": "\"tomorrow\" should be \"the next day\"",
+            "is_correct": 0
+          },
+          {
+            "option_text": "\"me\" should be \"to me\"",
+            "is_correct": 0
+          }
+        ]
+      },
+      {
+        "question_text": "Spot the error: \"He is much more senior than me in this company.\"",
+        "correct_answer": "\"me\" should be \"I\"",
+        "explanation": "After comparisons with \"than\", use the subject pronoun \"I\", not the object pronoun \"me\" in formal English.",
+        "tamil_explanation": "ஒப்பிட்டு வாக்கியங்களில் \"than\" க்கு பிறகு Subject pronoun \"I\" பயன்படுத்த வேண்டும்.",
+        "points": 10,
+        "options": [
+          {
+            "option_text": "\"senior\" should be \"seniorer\"",
+            "is_correct": 0
+          },
+          {
+            "option_text": "\"me\" should be \"I\"",
+            "is_correct": 1
+          },
+          {
+            "option_text": "\"much\" should be \"very\"",
+            "is_correct": 0
+          },
+          {
+            "option_text": "\"company\" should be \"companies\"",
+            "is_correct": 0
+          }
+        ]
+      },
+      {
+        "question_text": "Spot the error: \"The scenery of Kashmir are very beautiful.\"",
+        "correct_answer": "\"are\" should be \"is\"",
+        "explanation": "\"Scenery\" is an uncountable noun — always singular verb \"is\".",
+        "tamil_explanation": "\"Scenery\" எண்ணிலடங்காப் பெயர்ச்சொல் — \"is\" பயன்படுகிறது.",
+        "points": 10,
+        "options": [
+          {
+            "option_text": "\"beautiful\" should be \"beauty\"",
+            "is_correct": 0
+          },
+          {
+            "option_text": "\"The\" should be removed",
+            "is_correct": 0
+          },
+          {
+            "option_text": "\"very\" should be \"more\"",
+            "is_correct": 0
+          },
+          {
+            "option_text": "\"are\" should be \"is\"",
+            "is_correct": 1
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "ex_12_sentence_transform_hsc",
+    "lesson_id": "les_sam12u2_2",
+    "category_id": "tn_board",
+    "level_id": "B2",
+    "title": "Class 12: Sentence Transformation — HSC Board",
+    "exercise_type": "mcq",
+    "instructions": "Transform sentences as directed — HSC board exam style.",
+    "tamil_instructions": "HSC பொதுத்தேர்வு பாணியில் வாக்கியங்களை மாற்றவும்.",
+    "xp_points": 80,
+    "order_index": 1,
+    "questions": [
+      {
+        "question_text": "\"It was such a hot day that we stayed indoors.\" → Using \"so...that\"",
+        "correct_answer": "It was so hot a day that we stayed indoors.",
+        "explanation": "\"Such a + adjective + noun\" = \"so + adjective + a + noun\" pattern.",
+        "tamil_explanation": "\"Such a + peyaradai + peyar\" = \"so + peyaradai + a + peyar\" vadi.",
+        "points": 10,
+        "options": [
+          {
+            "option_text": "The day was so hot that we stayed indoors.",
+            "is_correct": 0
+          },
+          {
+            "option_text": "It was so hot that we stayed indoors.",
+            "is_correct": 0
+          },
+          {
+            "option_text": "It was so hot a day that we stayed indoors.",
+            "is_correct": 1
+          },
+          {
+            "option_text": "Such it was so hot that we stayed indoors.",
+            "is_correct": 0
+          }
+        ]
+      },
+      {
+        "question_text": "\"No other mountain is as high as Everest.\" → Superlative form:",
+        "correct_answer": "Everest is the highest mountain.",
+        "explanation": "Positive \"No other...as...as\" = Superlative \"the + -est\".",
+        "tamil_explanation": "Positive \"No other...as...as\" = Superlative \"the + -est\".",
+        "points": 10,
+        "options": [
+          {
+            "option_text": "Everest is the most highest mountain.",
+            "is_correct": 0
+          },
+          {
+            "option_text": "Everest is higher than all mountains.",
+            "is_correct": 0
+          },
+          {
+            "option_text": "Everest is the highest mountain.",
+            "is_correct": 1
+          },
+          {
+            "option_text": "Everest is highest mountain.",
+            "is_correct": 0
+          }
+        ]
+      },
+      {
+        "question_text": "\"He is too weak to carry this bag.\" → Using \"so...that\"",
+        "correct_answer": "He is so weak that he cannot carry this bag.",
+        "explanation": "\"Too...to\" = \"so...that + cannot/could not\".",
+        "tamil_explanation": "\"Too...to\" = \"so...that + cannot/could not\".",
+        "points": 10,
+        "options": [
+          {
+            "option_text": "He is too weak so he cannot carry this bag.",
+            "is_correct": 0
+          },
+          {
+            "option_text": "He is very weak to carry this bag.",
+            "is_correct": 0
+          },
+          {
+            "option_text": "He is so weak that he can carry this bag.",
+            "is_correct": 0
+          },
+          {
+            "option_text": "He is so weak that he cannot carry this bag.",
+            "is_correct": 1
+          }
+        ]
+      },
+      {
+        "question_text": "Change to Simple Sentence: \"When the teacher entered, all students stood up.\"",
+        "correct_answer": "All students stood up at the teacher's entry.",
+        "explanation": "Complex → Simple: Replace \"when\" clause with a noun phrase \"at the teacher's entry\".",
+        "tamil_explanation": "Complex → Simple: \"when\" திரட்சியை பெயர்த்தொடரால் மாற்றவும்.",
+        "points": 10,
+        "options": [
+          {
+            "option_text": "On entering the teacher, students stood up.",
+            "is_correct": 0
+          },
+          {
+            "option_text": "All students stood up at the teacher's entry.",
+            "is_correct": 1
+          },
+          {
+            "option_text": "Students standing up when teacher entered.",
+            "is_correct": 0
+          },
+          {
+            "option_text": "The teacher entering, all students stood.",
+            "is_correct": 0
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "ex_gen_prepositions",
+    "lesson_id": "les_sam7u3_3",
+    "category_id": "grammar",
+    "level_id": "A1",
+    "title": "Prepositions — In, On, At, By, With, For, About",
+    "exercise_type": "mcq",
+    "instructions": "Choose the correct preposition.",
+    "tamil_instructions": "சரியான உரிச்சொல்லை தேர்ந்தெடுக்கவும்.",
+    "xp_points": 35,
+    "order_index": 1,
+    "questions": [
+      {
+        "question_text": "She arrived _____ the station at 8 PM.",
+        "correct_answer": "at",
+        "explanation": "\"At\" is used for specific points/places like stations, airports.",
+        "tamil_explanation": "\"At\" குறிப்பிட்ட இடங்களுக்கு (நிலையம், விமான நிலையம்) பயன்படுகிறது.",
+        "points": 10,
+        "options": [
+          {
+            "option_text": "by",
+            "is_correct": 0
+          },
+          {
+            "option_text": "at",
+            "is_correct": 1
+          },
+          {
+            "option_text": "on",
+            "is_correct": 0
+          },
+          {
+            "option_text": "in",
+            "is_correct": 0
+          }
+        ]
+      },
+      {
+        "question_text": "The meeting is _____ Monday morning.",
+        "correct_answer": "on",
+        "explanation": "\"On\" is used with days of the week.",
+        "tamil_explanation": "\"On\" வாரத்தின் நாட்களுக்கு பயன்படுகிறது.",
+        "points": 10,
+        "options": [
+          {
+            "option_text": "by",
+            "is_correct": 0
+          },
+          {
+            "option_text": "at",
+            "is_correct": 0
+          },
+          {
+            "option_text": "in",
+            "is_correct": 0
+          },
+          {
+            "option_text": "on",
+            "is_correct": 1
+          }
+        ]
+      },
+      {
+        "question_text": "She was born _____ 1998.",
+        "correct_answer": "in",
+        "explanation": "\"In\" is used for years, months, and longer time periods.",
+        "tamil_explanation": "\"In\" ஆண்டுகள், மாதங்கள் மற்றும் நீண்ட காலகட்டங்களுக்கு பயன்படுகிறது.",
+        "points": 10,
+        "options": [
+          {
+            "option_text": "by",
+            "is_correct": 0
+          },
+          {
+            "option_text": "on",
+            "is_correct": 0
+          },
+          {
+            "option_text": "at",
+            "is_correct": 0
+          },
+          {
+            "option_text": "in",
+            "is_correct": 1
+          }
+        ]
+      },
+      {
+        "question_text": "The letter was written _____ her.",
+        "correct_answer": "by",
+        "explanation": "\"By\" shows the agent/doer in passive sentences.",
+        "tamil_explanation": "\"By\" செய்பவரை (agent) குறிக்கிறது.",
+        "points": 10,
+        "options": [
+          {
+            "option_text": "from",
+            "is_correct": 0
+          },
+          {
+            "option_text": "for",
+            "is_correct": 0
+          },
+          {
+            "option_text": "by",
+            "is_correct": 1
+          },
+          {
+            "option_text": "with",
+            "is_correct": 0
+          }
+        ]
+      },
+      {
+        "question_text": "I am very good _____ mathematics.",
+        "correct_answer": "at",
+        "explanation": "\"Good at\" is the correct collocations for skills.",
+        "tamil_explanation": "\"Good at\" திறன்களுக்கு சரியான collocations.",
+        "points": 10,
+        "options": [
+          {
+            "option_text": "in",
+            "is_correct": 0
+          },
+          {
+            "option_text": "at",
+            "is_correct": 1
+          },
+          {
+            "option_text": "for",
+            "is_correct": 0
+          },
+          {
+            "option_text": "on",
+            "is_correct": 0
+          }
+        ]
+      },
+      {
+        "question_text": "She is interested _____ learning French.",
+        "correct_answer": "in",
+        "explanation": "\"Interested in\" is the correct preposition collocation.",
+        "tamil_explanation": "\"Interested in\" சரியான preposition collocation.",
+        "points": 10,
+        "options": [
+          {
+            "option_text": "in",
+            "is_correct": 1
+          },
+          {
+            "option_text": "on",
+            "is_correct": 0
+          },
+          {
+            "option_text": "with",
+            "is_correct": 0
+          },
+          {
+            "option_text": "at",
+            "is_correct": 0
+          }
+        ]
+      },
+      {
+        "question_text": "The book is _____ the table.",
+        "correct_answer": "on",
+        "explanation": "\"On\" is used for surfaces.",
+        "tamil_explanation": "\"On\" மேற்பரப்புகளுக்கு பயன்படுகிறது.",
+        "points": 10,
+        "options": [
+          {
+            "option_text": "in",
+            "is_correct": 0
+          },
+          {
+            "option_text": "at",
+            "is_correct": 0
+          },
+          {
+            "option_text": "on",
+            "is_correct": 1
+          },
+          {
+            "option_text": "by",
+            "is_correct": 0
+          }
+        ]
+      },
+      {
+        "question_text": "Please wait _____ the door.",
+        "correct_answer": "at",
+        "explanation": "\"At the door\" means right next to/near the door.",
+        "tamil_explanation": "\"At the door\" கதவிற்கு அருகில் என்பதை குறிக்கிறது.",
+        "points": 10,
+        "options": [
+          {
+            "option_text": "in",
+            "is_correct": 0
+          },
+          {
+            "option_text": "at",
+            "is_correct": 1
+          },
+          {
+            "option_text": "by",
+            "is_correct": 0
+          },
+          {
+            "option_text": "on",
+            "is_correct": 0
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "ex_gen_phrasal_verbs",
+    "lesson_id": "les_sam12u3_3",
+    "category_id": "grammar",
+    "level_id": "B1",
+    "title": "Phrasal Verbs — Common Usage",
+    "exercise_type": "mcq",
+    "instructions": "Choose the meaning of the underlined phrasal verb.",
+    "tamil_instructions": "கோடிட்ட phrasal verb யின் அர்த்தத்தை தேர்ந்தெடுக்கவும்.",
+    "xp_points": 50,
+    "order_index": 1,
+    "questions": [
+      {
+        "question_text": "She had to give up her job when she had a baby.",
+        "correct_answer": "Abandon/Quit",
+        "explanation": "\"Give up\" means to stop doing something or to abandon it.",
+        "tamil_explanation": "\"Give up\" என்பது ஒரு செயலை விட்டுவிடுவதை குறிக்கிறது.",
+        "points": 10,
+        "options": [
+          {
+            "option_text": "Give as a gift",
+            "is_correct": 0
+          },
+          {
+            "option_text": "Abandon/Quit",
+            "is_correct": 1
+          },
+          {
+            "option_text": "Start working",
+            "is_correct": 0
+          },
+          {
+            "option_text": "Complete",
+            "is_correct": 0
+          }
+        ]
+      },
+      {
+        "question_text": "I ran into my old friend at the market yesterday.",
+        "correct_answer": "Met accidentally",
+        "explanation": "\"Run into\" means to meet someone unexpectedly.",
+        "tamil_explanation": "\"Run into\" என்பது யாரையாவது எதிர்பாராமல் சந்திப்பதை குறிக்கிறது.",
+        "points": 10,
+        "options": [
+          {
+            "option_text": "Met accidentally",
+            "is_correct": 1
+          },
+          {
+            "option_text": "Ran away from",
+            "is_correct": 0
+          },
+          {
+            "option_text": "Chased",
+            "is_correct": 0
+          },
+          {
+            "option_text": "Called out to",
+            "is_correct": 0
+          }
+        ]
+      },
+      {
+        "question_text": "The fire broke out in the warehouse at midnight.",
+        "correct_answer": "Started suddenly",
+        "explanation": "\"Break out\" means to start suddenly (fire, war, disease).",
+        "tamil_explanation": "\"Break out\" என்பது திடீரென தொடங்குவதை குறிக்கிறது.",
+        "points": 10,
+        "options": [
+          {
+            "option_text": "Was controlled",
+            "is_correct": 0
+          },
+          {
+            "option_text": "Spread slowly",
+            "is_correct": 0
+          },
+          {
+            "option_text": "Started suddenly",
+            "is_correct": 1
+          },
+          {
+            "option_text": "Was put out",
+            "is_correct": 0
+          }
+        ]
+      },
+      {
+        "question_text": "We need to look into this matter immediately.",
+        "correct_answer": "Investigate",
+        "explanation": "\"Look into\" means to investigate or examine carefully.",
+        "tamil_explanation": "\"Look into\" என்பது விசாரிப்பதை குறிக்கிறது.",
+        "points": 10,
+        "options": [
+          {
+            "option_text": "Overlook",
+            "is_correct": 0
+          },
+          {
+            "option_text": "Observe from far",
+            "is_correct": 0
+          },
+          {
+            "option_text": "Ignore",
+            "is_correct": 0
+          },
+          {
+            "option_text": "Investigate",
+            "is_correct": 1
+          }
+        ]
+      },
+      {
+        "question_text": "She put off the meeting until next week.",
+        "correct_answer": "Postponed",
+        "explanation": "\"Put off\" means to postpone or delay.",
+        "tamil_explanation": "\"Put off\" என்பது ஒத்திவைப்பதை குறிக்கிறது.",
+        "points": 10,
+        "options": [
+          {
+            "option_text": "Postponed",
+            "is_correct": 1
+          },
+          {
+            "option_text": "Attended",
+            "is_correct": 0
+          },
+          {
+            "option_text": "Moved to an earlier date",
+            "is_correct": 0
+          },
+          {
+            "option_text": "Cancelled permanently",
+            "is_correct": 0
+          }
+        ]
+      },
+      {
+        "question_text": "He came across an old letter while cleaning.",
+        "correct_answer": "Found unexpectedly",
+        "explanation": "\"Come across\" means to find or discover something by chance.",
+        "tamil_explanation": "\"Come across\" என்பது தற்செயலாக கண்டுபிடிப்பதை குறிக்கிறது.",
+        "points": 10,
+        "options": [
+          {
+            "option_text": "Found unexpectedly",
+            "is_correct": 1
+          },
+          {
+            "option_text": "Destroyed",
+            "is_correct": 0
+          },
+          {
+            "option_text": "Threw away",
+            "is_correct": 0
+          },
+          {
+            "option_text": "Lost",
+            "is_correct": 0
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "ex_vocab_class6_words",
+    "lesson_id": "les_sam6u1_4",
+    "category_id": "vocabulary",
+    "level_id": "A1",
+    "title": "Class 6: Core Vocabulary Bank",
+    "exercise_type": "mcq",
+    "instructions": "Choose the correct meaning for each word.",
+    "tamil_instructions": "ஒவ்வொரு சொல்லுக்கும் சரியான பொருளை தேர்ந்தெடுக்கவும்.",
+    "xp_points": 25,
+    "order_index": 1,
+    "questions": [
+      {
+        "question_text": "What does \"migrate\" mean?",
+        "correct_answer": "To move from one place to another",
+        "explanation": "Migrate means to move from one region/country to another seasonally.",
+        "tamil_explanation": "\"Migrate\" என்பது இடம் பெயர்வதை குறிக்கிறது.",
+        "points": 10,
+        "options": [
+          {
+            "option_text": "To build a nest",
+            "is_correct": 0
+          },
+          {
+            "option_text": "To stop moving",
+            "is_correct": 0
+          },
+          {
+            "option_text": "To move from one place to another",
+            "is_correct": 1
+          },
+          {
+            "option_text": "To lay eggs",
+            "is_correct": 0
+          }
+        ]
+      },
+      {
+        "question_text": "What is the meaning of \"conservation\"?",
+        "correct_answer": "Protection of nature and wildlife",
+        "explanation": "\"Conservation\" means the protection and preservation of the environment.",
+        "tamil_explanation": "\"Conservation\" என்பது இயற்கையையும் வனவிலங்குகளையும் பாதுகாப்பதை குறிக்கிறது.",
+        "points": 10,
+        "options": [
+          {
+            "option_text": "Protection of nature and wildlife",
+            "is_correct": 1
+          },
+          {
+            "option_text": "Growing of trees",
+            "is_correct": 0
+          },
+          {
+            "option_text": "A conversation",
+            "is_correct": 0
+          },
+          {
+            "option_text": "Destruction of forests",
+            "is_correct": 0
+          }
+        ]
+      },
+      {
+        "question_text": "\"Enormous\" means:",
+        "correct_answer": "Very large",
+        "explanation": "\"Enormous\" describes something very large in size.",
+        "tamil_explanation": "\"Enormous\" என்பது மிகவும் பெரிதான என்று பொருள்படும்.",
+        "points": 10,
+        "options": [
+          {
+            "option_text": "Very large",
+            "is_correct": 1
+          },
+          {
+            "option_text": "Very small",
+            "is_correct": 0
+          },
+          {
+            "option_text": "Very beautiful",
+            "is_correct": 0
+          },
+          {
+            "option_text": "Very fast",
+            "is_correct": 0
+          }
+        ]
+      },
+      {
+        "question_text": "The word \"swoop\" means:",
+        "correct_answer": "To fly down quickly",
+        "explanation": "\"Swoop\" means to move down quickly through the air.",
+        "tamil_explanation": "\"Swoop\" என்பது காற்றில் வேகமாக கீழே பறப்பதை குறிக்கிறது.",
+        "points": 10,
+        "options": [
+          {
+            "option_text": "To fly down quickly",
+            "is_correct": 1
+          },
+          {
+            "option_text": "To swim",
+            "is_correct": 0
+          },
+          {
+            "option_text": "To walk slowly",
+            "is_correct": 0
+          },
+          {
+            "option_text": "To sleep",
+            "is_correct": 0
+          }
+        ]
+      },
+      {
+        "question_text": "\"Ancient\" means:",
+        "correct_answer": "Very old",
+        "explanation": "\"Ancient\" refers to things from a very long time ago.",
+        "tamil_explanation": "\"Ancient\" என்பது மிகவும் பழமையான என்று பொருள்படும்.",
+        "points": 10,
+        "options": [
+          {
+            "option_text": "Very beautiful",
+            "is_correct": 0
+          },
+          {
+            "option_text": "Very old",
+            "is_correct": 1
+          },
+          {
+            "option_text": "Very new",
+            "is_correct": 0
+          },
+          {
+            "option_text": "Very small",
+            "is_correct": 0
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "ex_vocab_class10_words",
+    "lesson_id": "les_sam10u1_1",
+    "category_id": "vocabulary",
+    "level_id": "B1",
+    "title": "Class 10: Advanced Vocabulary",
+    "exercise_type": "mcq",
+    "instructions": "Choose the correct meaning or usage for each word.",
+    "tamil_instructions": "ஒவ்வொரு சொல்லின் சரியான பொருளை தேர்ந்தெடுக்கவும்.",
+    "xp_points": 40,
+    "order_index": 1,
+    "questions": [
+      {
+        "question_text": "\"Muster\" in \"mustering up courage\" means:",
+        "correct_answer": "To gather or summon",
+        "explanation": "\"Muster\" means to gather strength or courage.",
+        "tamil_explanation": "\"Muster\" என்பது தைரியம் திரட்டுவதை குறிக்கிறது.",
+        "points": 10,
+        "options": [
+          {
+            "option_text": "To gather or summon",
+            "is_correct": 1
+          },
+          {
+            "option_text": "To waste",
+            "is_correct": 0
+          },
+          {
+            "option_text": "To destroy",
+            "is_correct": 0
+          },
+          {
+            "option_text": "To hide",
+            "is_correct": 0
+          }
+        ]
+      },
+      {
+        "question_text": "\"Plummeted\" most likely means:",
+        "correct_answer": "Fell suddenly and steeply",
+        "explanation": "\"Plummet\" means to fall sharply and rapidly.",
+        "tamil_explanation": "\"Plummet\" என்பது திடீரென கீழே வீழ்வதை குறிக்கிறது.",
+        "points": 10,
+        "options": [
+          {
+            "option_text": "Fell suddenly and steeply",
+            "is_correct": 1
+          },
+          {
+            "option_text": "Stayed still",
+            "is_correct": 0
+          },
+          {
+            "option_text": "Moved slowly",
+            "is_correct": 0
+          },
+          {
+            "option_text": "Rose quickly",
+            "is_correct": 0
+          }
+        ]
+      },
+      {
+        "question_text": "The synonym of \"reluctant\" is:",
+        "correct_answer": "Unwilling",
+        "explanation": "\"Reluctant\" means not willing to do something.",
+        "tamil_explanation": "\"Reluctant\" என்பது தயங்கும், விருப்பமற்ற என்று பொருள்படும்.",
+        "points": 10,
+        "options": [
+          {
+            "option_text": "Unwilling",
+            "is_correct": 1
+          },
+          {
+            "option_text": "Confident",
+            "is_correct": 0
+          },
+          {
+            "option_text": "Eager",
+            "is_correct": 0
+          },
+          {
+            "option_text": "Happy",
+            "is_correct": 0
+          }
+        ]
+      },
+      {
+        "question_text": "\"Frantic\" most nearly means:",
+        "correct_answer": "Wildly excited or worried",
+        "explanation": "\"Frantic\" describes extreme anxiety or excitement.",
+        "tamil_explanation": "\"Frantic\" என்பது கடுமையான கவலை அல்லது அவசரத்தை குறிக்கிறது.",
+        "points": 10,
+        "options": [
+          {
+            "option_text": "Very bored",
+            "is_correct": 0
+          },
+          {
+            "option_text": "Wildly excited or worried",
+            "is_correct": 1
+          },
+          {
+            "option_text": "Very calm",
+            "is_correct": 0
+          },
+          {
+            "option_text": "Very slow",
+            "is_correct": 0
+          }
+        ]
+      },
+      {
+        "question_text": "What does \"tedious\" mean?",
+        "correct_answer": "Long and boring",
+        "explanation": "\"Tedious\" describes something that is long, boring, and tiresome.",
+        "tamil_explanation": "\"Tedious\" என்பது நீண்ட, சலிப்பான என்று பொருள்படும்.",
+        "points": 10,
+        "options": [
+          {
+            "option_text": "Long and boring",
+            "is_correct": 1
+          },
+          {
+            "option_text": "Short and exciting",
+            "is_correct": 0
+          },
+          {
+            "option_text": "Old and useful",
+            "is_correct": 0
+          },
+          {
+            "option_text": "New and interesting",
+            "is_correct": 0
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "ex_gen_reported_speech",
+    "lesson_id": "les_sam8u5_3",
+    "category_id": "grammar",
+    "level_id": "A2",
+    "title": "Reported Speech — Comprehensive Practice",
+    "exercise_type": "mcq",
+    "instructions": "Choose the correct reported speech transformation.",
+    "tamil_instructions": "சரியான மறைமொழி மாற்றத்தை தேர்ந்தெடுக்கவும்.",
+    "xp_points": 50,
+    "order_index": 1,
+    "questions": [
+      {
+        "question_text": "He said, \"I am reading a book.\" → Reported:",
+        "correct_answer": "He said that he was reading a book.",
+        "explanation": "\"Am\" changes to \"was\" in Reported Speech. \"I\" changes to \"he\".",
+        "tamil_explanation": "மறைமொழியில் \"am\" → \"was\" மற்றும் \"I\" → \"he\" ஆக மாறும்.",
+        "points": 10,
+        "options": [
+          {
+            "option_text": "He said that he was reading a book.",
+            "is_correct": 1
+          },
+          {
+            "option_text": "He said that I am reading a book.",
+            "is_correct": 0
+          },
+          {
+            "option_text": "He told that he was reading a book.",
+            "is_correct": 0
+          },
+          {
+            "option_text": "He said that he is reading a book.",
+            "is_correct": 0
+          }
+        ]
+      },
+      {
+        "question_text": "She asked me, \"Where do you live?\" → Reported:",
+        "correct_answer": "She asked me where I lived.",
+        "explanation": "Wh-questions in Reported Speech: asked + wh-word + subject + verb (no auxiliary).",
+        "tamil_explanation": "Wh-கேள்விகளில்: asked + wh-word + subject + verb (auxiliary இல்லை).",
+        "points": 10,
+        "options": [
+          {
+            "option_text": "She told me where I lived.",
+            "is_correct": 0
+          },
+          {
+            "option_text": "She asked me where I live.",
+            "is_correct": 0
+          },
+          {
+            "option_text": "She asked me where I lived.",
+            "is_correct": 1
+          },
+          {
+            "option_text": "She asked me where do I live.",
+            "is_correct": 0
+          }
+        ]
+      },
+      {
+        "question_text": "The teacher said, \"Do not make noise.\" → Reported:",
+        "correct_answer": "The teacher told us not to make noise.",
+        "explanation": "Negative commands in Reported Speech: told + not to + verb.",
+        "tamil_explanation": "எதிர்மறை கட்டளைகளில்: told + not to + verb.",
+        "points": 10,
+        "options": [
+          {
+            "option_text": "The teacher said not to make noise.",
+            "is_correct": 0
+          },
+          {
+            "option_text": "The teacher told us not to make noise.",
+            "is_correct": 1
+          },
+          {
+            "option_text": "The teacher asked us do not make noise.",
+            "is_correct": 0
+          },
+          {
+            "option_text": "The teacher told that not to make noise.",
+            "is_correct": 0
+          }
+        ]
+      },
+      {
+        "question_text": "\"Congratulations! You have won the prize.\" → Reported:",
+        "correct_answer": "She congratulated him on winning the prize.",
+        "explanation": "Exclamations of joy/congratulations use \"congratulated on\" in Reported Speech.",
+        "tamil_explanation": "வாழ்த்து வாக்கியங்களுக்கு \"congratulated on\" பயன்படுகிறது.",
+        "points": 10,
+        "options": [
+          {
+            "option_text": "She told him that he has won the prize.",
+            "is_correct": 0
+          },
+          {
+            "option_text": "She said congratulations for winning.",
+            "is_correct": 0
+          },
+          {
+            "option_text": "She exclaimed that he won the prize.",
+            "is_correct": 0
+          },
+          {
+            "option_text": "She congratulated him on winning the prize.",
+            "is_correct": 1
+          }
+        ]
+      },
+      {
+        "question_text": "He said to me, \"Can you help me?\" → Reported:",
+        "correct_answer": "He asked me if I could help him.",
+        "explanation": "\"Can\" → \"could\" and Yes/No questions use \"if/whether\" in Reported Speech.",
+        "tamil_explanation": "\"can\" → \"could\" மற்றும் ஆம்/இல்லை கேள்விகளில் \"if/whether\" பயன்படுகிறது.",
+        "points": 10,
+        "options": [
+          {
+            "option_text": "He told me whether I could help him.",
+            "is_correct": 0
+          },
+          {
+            "option_text": "He asked me could I help him.",
+            "is_correct": 0
+          },
+          {
+            "option_text": "He said me if I can help him.",
+            "is_correct": 0
+          },
+          {
+            "option_text": "He asked me if I could help him.",
+            "is_correct": 1
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "ex_gen_voice_mixed",
+    "lesson_id": "les_sam9u3_4",
+    "category_id": "grammar",
+    "level_id": "A2",
+    "title": "Active and Passive Voice — Mixed Practice",
+    "exercise_type": "mcq",
+    "instructions": "Choose the correct voice transformation.",
+    "tamil_instructions": "சரியான குரல் மாற்றத்தை தேர்ந்தெடுக்கவும்.",
+    "xp_points": 50,
+    "order_index": 1,
+    "questions": [
+      {
+        "question_text": "Passive: \"A new book will be launched by the author.\" → Active:",
+        "correct_answer": "The author will launch a new book.",
+        "explanation": "Future Simple Passive → Active: Subject + will + base verb + object.",
+        "tamil_explanation": "எதிர்கால எளிய கர்மணி → கர்த்தரி: Subject + will + base verb + object.",
+        "points": 10,
+        "options": [
+          {
+            "option_text": "The author launches a new book.",
+            "is_correct": 0
+          },
+          {
+            "option_text": "The author launched a new book.",
+            "is_correct": 0
+          },
+          {
+            "option_text": "The author will launch a new book.",
+            "is_correct": 1
+          },
+          {
+            "option_text": "The author is launching a new book.",
+            "is_correct": 0
+          }
+        ]
+      },
+      {
+        "question_text": "Which sentence is in Active Voice?",
+        "correct_answer": "The students completed the project.",
+        "explanation": "\"Students completed\" — the subject performs the action. That is Active Voice.",
+        "tamil_explanation": "\"Students completed\" — கர்த்தா செயலை செய்கிறது. அது கர்த்தரி வாக்கியம்.",
+        "points": 10,
+        "options": [
+          {
+            "option_text": "The project has been completed.",
+            "is_correct": 0
+          },
+          {
+            "option_text": "The project is being completed by the students.",
+            "is_correct": 0
+          },
+          {
+            "option_text": "The students completed the project.",
+            "is_correct": 1
+          },
+          {
+            "option_text": "The project was completed by the students.",
+            "is_correct": 0
+          }
+        ]
+      },
+      {
+        "question_text": "Passive: \"The letter was being typed by the secretary.\" → Active:",
+        "correct_answer": "The secretary was typing the letter.",
+        "explanation": "\"Was being typed\" (Past Continuous Passive) → \"was typing\" (Past Continuous Active).",
+        "tamil_explanation": "\"Was being typed\" (கடந்தகால தொடர் கர்மணி) → \"was typing\" (கடந்தகால தொடர் கர்த்தரி).",
+        "points": 10,
+        "options": [
+          {
+            "option_text": "The secretary is typing the letter.",
+            "is_correct": 0
+          },
+          {
+            "option_text": "The secretary typed the letter.",
+            "is_correct": 0
+          },
+          {
+            "option_text": "The secretary types the letter.",
+            "is_correct": 0
+          },
+          {
+            "option_text": "The secretary was typing the letter.",
+            "is_correct": 1
+          }
+        ]
+      }
+    ]
+  }
+]

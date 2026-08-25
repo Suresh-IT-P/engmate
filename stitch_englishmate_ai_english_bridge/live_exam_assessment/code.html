@@ -1,0 +1,145 @@
+<html lang="en"><head><meta charset="utf-8"/><meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover" name="viewport"/><link href="https://fonts.googleapis.com/css2?family=Be+Vietnam+Pro:wght@400;500&amp;family=Plus+Jakarta+Sans:wght@600;700&amp;display=swap" rel="stylesheet"/><link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@24,400,0,0" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/><script src="https://cdn.tailwindcss.com"></script><script id="tailwind-config">tailwind.config={darkMode:"class",theme:{extend:{"colors":{"on-secondary-container":"#00714d","secondary-container":"#6cf8bb","outline-variant":"#c7c4d8","on-background":"#1b1b24","primary-fixed-dim":"#c3c0ff","secondary-fixed-dim":"#4edea3","surface-container-low":"#f5f2ff","outline":"#777587","surface-variant":"#e4e1ee","secondary":"#006c49","inverse-primary":"#c3c0ff","secondary-fixed":"#6ffbbe","tertiary":"#684000","on-secondary-fixed-variant":"#005236","on-primary":"#ffffff","surface-container":"#f0ecf9","on-tertiary":"#ffffff","surface-tint":"#4d44e3","surface-bright":"#fcf8ff","on-tertiary-fixed-variant":"#653e00","inverse-on-surface":"#f3effc","on-primary-container":"#dad7ff","on-secondary-fixed":"#002113","on-tertiary-container":"#ffd4a4","error":"#ba1a1a","on-error-container":"#93000a","background":"#fcf8ff","primary-fixed":"#e2dfff","tertiary-fixed-dim":"#ffb95f","surface":"#fcf8ff","primary-container":"#4f46e5","tertiary-fixed":"#ffddb8","surface-dim":"#dcd8e5","tertiary-container":"#885500","on-surface-variant":"#464555","surface-container-high":"#eae6f4","on-surface":"#1b1b24","inverse-surface":"#302f39","on-primary-fixed-variant":"#3323cc","surface-container-lowest":"#ffffff","primary":"#3525cd","on-secondary":"#ffffff","on-error":"#ffffff"},"borderRadius":{"DEFAULT":"0.25rem","lg":"0.5rem","xl":"0.75rem","full":"9999px"},"spacing":{"gutter":"16px","md":"24px","max-width":"1200px","lg":"40px","base":"8px","sm":"12px","margin-mobile":"20px","xl":"64px","xs":"4px"},"fontFamily":{"tamil-subtext":["Be Vietnam Pro"],"display-lg":["Plus Jakarta Sans"],"headline-md":["Plus Jakarta Sans"],"display-lg-mobile":["Plus Jakarta Sans"],"body-lg":["Be Vietnam Pro"],"body-md":["Be Vietnam Pro"],"label-caps":["Plus Jakarta Sans"]},"fontSize":{"tamil-subtext":["14px",{"lineHeight":"1.4","fontWeight":"500"}],"display-lg":["40px",{"lineHeight":"1.2","letterSpacing":"-0.02em","fontWeight":"700"}],"headline-md":["24px",{"lineHeight":"1.3","fontWeight":"600"}],"display-lg-mobile":["32px",{"lineHeight":"1.2","fontWeight":"700"}],"body-lg":["18px",{"lineHeight":"1.6","fontWeight":"400"}],"body-md":["16px",{"lineHeight":"1.5","fontWeight":"400"}],"label-caps":["12px",{"lineHeight":"1.0","letterSpacing":"0.05em","fontWeight":"700"}]}}}}</script><style>@layer base{.pb-safe{padding-bottom:env(safe-area-inset-bottom,0px);}.pt-safe{padding-top:env(safe-area-inset-top,0px);}}body{overscroll-behavior:none;}</style><style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head><body class="bg-surface text-on-surface font-body-md"><header class="fixed top-0 w-full z-50 bg-surface/80 backdrop-blur-xl pt-safe shadow-[0_1px_8px_rgba(0,0,0,0.04)]"><div class="h-16 px-4 flex items-center gap-4"><button class="w-10 h-10 flex items-center justify-center rounded-full hover:bg-surface-variant transition-colors" onclick="history.back()"><span class="material-symbols-outlined text-on-surface">arrow_back</span></button><h1 class="font-headline-md text-headline-md text-on-surface truncate">Live Exam Interface</h1><div class="ml-auto w-8 h-8 rounded-full bg-primary flex items-center justify-center"><span class="material-symbols-outlined text-on-primary text-[18px]">person</span></div></div></header><main class="pt-16 pb-safe min-h-screen bg-surface"><div class="flex flex-col w-full h-full relative font-body-md bg-surface text-on-surface">
+<!-- Exam Header -->
+<div class="sticky top-0 z-10 bg-surface-container-low px-gutter py-sm flex items-center justify-between shadow-sm">
+<div class="flex flex-col">
+<span class="font-label-caps text-on-surface-variant text-label-caps">Mock Test: English Literacy</span>
+<span class="font-headline-md text-primary text-[16px]">Question 12 of 50</span>
+</div>
+<div class="flex items-center gap-xs bg-error-container text-on-error-container px-sm py-xs rounded-full font-tamil-subtext shadow-sm ring-1 ring-error/20">
+<span class="material-symbols-outlined text-[18px]">timer</span>
+<span class="font-bold" id="countdown-timer">44:12</span>
+</div>
+</div>
+<!-- Main Question Content -->
+<div class="flex-1 overflow-y-auto px-gutter py-md pb-32">
+<!-- Flag Action -->
+<div class="flex justify-end mb-sm">
+<button class="flex items-center gap-xs text-primary bg-primary-container/20 px-sm py-xs rounded-full hover:bg-primary-container/40 transition-colors font-tamil-subtext text-sm">
+<span class="material-symbols-outlined text-[18px]">flag</span>
+        Flag for review
+      </button>
+</div>
+<!-- Question Context / Passage -->
+<div class="bg-surface-container rounded-xl p-md mb-md shadow-sm relative overflow-hidden">
+<!-- Decorative accent -->
+<div class="absolute top-0 left-0 w-1 h-full bg-secondary"></div>
+<p class="font-body-lg text-on-surface leading-relaxed mb-4">
+            Read the following passage carefully:
+        </p>
+<div class="bg-surface-container-high p-sm rounded-lg font-body-md text-on-surface-variant italic border-l-4 border-outline-variant">
+            "The rapid advancement of artificial intelligence has led to unprecedented shifts in the global economy, rendering some traditional roles obsolete while creating entirely new paradigms of work."
+        </div>
+<p class="font-headline-md text-on-surface mt-md">
+            Based on the passage, the word "obsolete" most closely means:
+        </p>
+</div>
+<!-- Multiple Choice Options -->
+<div class="flex flex-col gap-sm" id="mcq-options">
+<!-- Option A -->
+<label class="relative flex items-center p-md rounded-xl bg-surface-container-low hover:bg-surface-container-high transition-colors shadow-sm cursor-pointer group">
+<input class="peer sr-only" name="answer" type="radio" value="A"/>
+<div class="w-8 h-8 rounded-full bg-surface-variant flex items-center justify-center text-on-surface-variant font-bold mr-sm group-hover:bg-primary/10 peer-checked:bg-primary peer-checked:text-on-primary transition-all">A</div>
+<span class="font-body-md text-on-surface flex-1">Highly valuable and sought after</span>
+<div class="absolute inset-0 rounded-xl ring-2 ring-transparent peer-checked:ring-primary pointer-events-none transition-all"></div>
+</label>
+<!-- Option B -->
+<label class="relative flex items-center p-md rounded-xl bg-surface-container-low hover:bg-surface-container-high transition-colors shadow-sm cursor-pointer group">
+<input class="peer sr-only" name="answer" type="radio" value="B"/>
+<div class="w-8 h-8 rounded-full bg-surface-variant flex items-center justify-center text-on-surface-variant font-bold mr-sm group-hover:bg-primary/10 peer-checked:bg-primary peer-checked:text-on-primary transition-all">B</div>
+<span class="font-body-md text-on-surface flex-1">No longer in use or out of date</span>
+<div class="absolute inset-0 rounded-xl ring-2 ring-transparent peer-checked:ring-primary pointer-events-none transition-all"></div>
+</label>
+<!-- Option C -->
+<label class="relative flex items-center p-md rounded-xl bg-surface-container-low hover:bg-surface-container-high transition-colors shadow-sm cursor-pointer group">
+<input class="peer sr-only" name="answer" type="radio" value="C"/>
+<div class="w-8 h-8 rounded-full bg-surface-variant flex items-center justify-center text-on-surface-variant font-bold mr-sm group-hover:bg-primary/10 peer-checked:bg-primary peer-checked:text-on-primary transition-all">C</div>
+<span class="font-body-md text-on-surface flex-1">Fundamental to future growth</span>
+<div class="absolute inset-0 rounded-xl ring-2 ring-transparent peer-checked:ring-primary pointer-events-none transition-all"></div>
+</label>
+<!-- Option D -->
+<label class="relative flex items-center p-md rounded-xl bg-surface-container-low hover:bg-surface-container-high transition-colors shadow-sm cursor-pointer group">
+<input class="peer sr-only" name="answer" type="radio" value="D"/>
+<div class="w-8 h-8 rounded-full bg-surface-variant flex items-center justify-center text-on-surface-variant font-bold mr-sm group-hover:bg-primary/10 peer-checked:bg-primary peer-checked:text-on-primary transition-all">D</div>
+<span class="font-body-md text-on-surface flex-1">Temporarily suspended</span>
+<div class="absolute inset-0 rounded-xl ring-2 ring-transparent peer-checked:ring-primary pointer-events-none transition-all"></div>
+</label>
+</div>
+</div>
+<!-- Bottom Navigation Footer -->
+<div class="fixed bottom-0 left-0 w-full bg-surface border-t border-surface-variant p-gutter shadow-[0_-4px_16px_rgba(0,0,0,0.05)] pb-safe z-20">
+<div class="max-w-max-width mx-auto flex items-center justify-between">
+<button class="flex items-center justify-center gap-xs px-md py-sm rounded-full bg-surface-container text-on-surface font-tamil-subtext hover:bg-surface-container-high transition-colors">
+<span class="material-symbols-outlined text-[18px]">chevron_left</span>
+        Previous
+      </button>
+<!-- Progress Dots (Optional, for visual rhythm) -->
+<div class="hidden sm:flex items-center gap-1">
+<div class="w-2 h-2 rounded-full bg-surface-variant"></div>
+<div class="w-2 h-2 rounded-full bg-surface-variant"></div>
+<div class="w-3 h-3 rounded-full bg-primary"></div>
+<div class="w-2 h-2 rounded-full bg-surface-variant"></div>
+<div class="w-2 h-2 rounded-full bg-surface-variant"></div>
+</div>
+<button class="flex items-center justify-center gap-xs px-md py-sm rounded-full bg-primary text-on-primary font-tamil-subtext hover:bg-primary/90 transition-colors shadow-sm">
+        Next
+        <span class="material-symbols-outlined text-[18px]">chevron_right</span>
+</button>
+</div>
+</div>
+<!-- Floating Help Button -->
+<button aria-label="Help and Support" class="fixed bottom-24 right-4 w-12 h-12 bg-secondary-container text-on-secondary-container rounded-full shadow-lg flex items-center justify-center hover:scale-105 transition-transform z-30 group">
+<span class="material-symbols-outlined group-hover:hidden text-[24px]">support_agent</span>
+<span class="material-symbols-outlined hidden group-hover:block text-[24px]">chat</span>
+</button>
+<script>
+    // Simple mock countdown timer logic for demonstration
+    document.addEventListener('DOMContentLoaded', () => {
+        let timeRemaining = 44 * 60 + 12; // 44 mins 12 secs
+        const timerDisplay = document.getElementById('countdown-timer');
+        
+        const updateTimer = () => {
+            const minutes = Math.floor(timeRemaining / 60);
+            const seconds = timeRemaining % 60;
+            timerDisplay.textContent = `${minutes.toString().padStart(2, '0')}:${seconds.toString().padStart(2, '0')}`;
+            
+            if (timeRemaining > 0) {
+                timeRemaining--;
+            }
+            
+            // Add pulse effect when time is running out (e.g., last 5 mins)
+            if(timeRemaining < 300) {
+               timerDisplay.parentElement.classList.add('animate-pulse');
+               timerDisplay.parentElement.classList.replace('bg-error-container', 'bg-error');
+               timerDisplay.parentElement.classList.replace('text-on-error-container', 'text-on-error');
+            }
+        };
+
+        setInterval(updateTimer, 1000);
+
+        // Add subtle interaction sounds or haptic feedback simulations here if needed
+        const radioInputs = document.querySelectorAll('input[type="radio"]');
+        radioInputs.forEach(input => {
+            input.addEventListener('change', (e) => {
+                // Remove selected styling from all
+                document.querySelectorAll('#mcq-options label').forEach(lbl => {
+                    lbl.classList.remove('bg-surface-container-high');
+                    lbl.classList.add('bg-surface-container-low');
+                });
+                
+                // Add selected styling to active
+                if(e.target.checked) {
+                    const label = e.target.closest('label');
+                    label.classList.remove('bg-surface-container-low');
+                    label.classList.add('bg-surface-container-high');
+                }
+            });
+        });
+    });
+  </script>
+</div></main></body></html>

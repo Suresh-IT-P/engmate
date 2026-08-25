@@ -1,0 +1,156 @@
+<html lang="en"><head><meta charset="utf-8"/><meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover" name="viewport"/><link href="https://fonts.googleapis.com/css2?family=Be+Vietnam+Pro:wght@400;500&amp;family=Plus+Jakarta+Sans:wght@600;700&amp;display=swap" rel="stylesheet"/><link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@24,400,0,0" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/><script src="https://cdn.tailwindcss.com"></script><script id="tailwind-config">tailwind.config={darkMode:"class",theme:{extend:{"colors":{"on-secondary-container":"#00714d","secondary-container":"#6cf8bb","outline-variant":"#c7c4d8","on-background":"#1b1b24","primary-fixed-dim":"#c3c0ff","secondary-fixed-dim":"#4edea3","surface-container-low":"#f5f2ff","outline":"#777587","surface-variant":"#e4e1ee","secondary":"#006c49","inverse-primary":"#c3c0ff","secondary-fixed":"#6ffbbe","tertiary":"#684000","on-secondary-fixed-variant":"#005236","on-primary":"#ffffff","surface-container":"#f0ecf9","on-tertiary":"#ffffff","surface-tint":"#4d44e3","surface-bright":"#fcf8ff","on-tertiary-fixed-variant":"#653e00","inverse-on-surface":"#f3effc","on-primary-container":"#dad7ff","on-secondary-fixed":"#002113","on-tertiary-container":"#ffd4a4","error":"#ba1a1a","on-error-container":"#93000a","background":"#fcf8ff","primary-fixed":"#e2dfff","tertiary-fixed-dim":"#ffb95f","surface":"#fcf8ff","primary-container":"#4f46e5","tertiary-fixed":"#ffddb8","surface-dim":"#dcd8e5","tertiary-container":"#885500","on-surface-variant":"#464555","surface-container-high":"#eae6f4","on-surface":"#1b1b24","inverse-surface":"#302f39","on-primary-fixed-variant":"#3323cc","surface-container-lowest":"#ffffff","primary":"#3525cd","on-secondary":"#ffffff","on-error":"#ffffff"},"borderRadius":{"DEFAULT":"0.25rem","lg":"0.5rem","xl":"0.75rem","full":"9999px"},"spacing":{"gutter":"16px","md":"24px","max-width":"1200px","lg":"40px","base":"8px","sm":"12px","margin-mobile":"20px","xl":"64px","xs":"4px"},"fontFamily":{"tamil-subtext":["Be Vietnam Pro"],"display-lg":["Plus Jakarta Sans"],"headline-md":["Plus Jakarta Sans"],"display-lg-mobile":["Plus Jakarta Sans"],"body-lg":["Be Vietnam Pro"],"body-md":["Be Vietnam Pro"],"label-caps":["Plus Jakarta Sans"]},"fontSize":{"tamil-subtext":["14px",{"lineHeight":"1.4","fontWeight":"500"}],"display-lg":["40px",{"lineHeight":"1.2","letterSpacing":"-0.02em","fontWeight":"700"}],"headline-md":["24px",{"lineHeight":"1.3","fontWeight":"600"}],"display-lg-mobile":["32px",{"lineHeight":"1.2","fontWeight":"700"}],"body-lg":["18px",{"lineHeight":"1.6","fontWeight":"400"}],"body-md":["16px",{"lineHeight":"1.5","fontWeight":"400"}],"label-caps":["12px",{"lineHeight":"1.0","letterSpacing":"0.05em","fontWeight":"700"}]}}}}</script><style>@layer base{.pb-safe{padding-bottom:env(safe-area-inset-bottom,0px);}.pt-safe{padding-top:env(safe-area-inset-top,0px);}}body{overscroll-behavior:none;}</style><style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head><body class="bg-surface text-on-surface font-body-md"><header class="fixed top-0 w-full z-50 bg-surface/80 backdrop-blur-xl pt-safe shadow-[0_1px_8px_rgba(0,0,0,0.04)]"><div class="h-16 px-margin-mobile flex items-center justify-between"><h1 class="font-headline-md text-headline-md text-on-surface">Mock Exam Dashboard</h1><div class="w-8 h-8 rounded-full bg-primary flex items-center justify-center"><span class="material-symbols-outlined text-on-primary text-[18px]">person</span></div></div></header><main class="pt-16 pb-32 min-h-screen bg-surface"><div class="flex flex-col w-full pb-xl gap-lg">
+<!-- Subtitle / Welcome Area -->
+<div class="flex flex-col px-margin-mobile pt-sm gap-xs">
+<p class="font-tamil-subtext text-tamil-subtext text-on-surface-variant flex items-center gap-xs">
+<span class="material-symbols-outlined text-[18px]">translate</span>
+      மாதிரி தேர்வுகள் (Mock Exams)
+    </p>
+</div>
+<!-- Weekly Progress Tracker -->
+<div class="mx-margin-mobile bg-surface-container rounded-xl p-md shadow-sm flex items-center justify-between relative overflow-hidden">
+<div class="absolute -right-10 -top-10 w-32 h-32 bg-secondary/5 rounded-full blur-2xl"></div>
+<div class="flex flex-col gap-xs z-10">
+<h2 class="font-headline-md text-[20px] text-on-surface">Weekly Goal</h2>
+<p class="font-body-md text-body-md text-on-surface-variant">2/5 Exams Completed</p>
+<div class="flex gap-1 mt-1">
+<span class="material-symbols-outlined text-[16px] text-tertiary-fixed-dim">local_fire_department</span>
+<span class="font-label-caps text-label-caps text-tertiary">3 Day Streak!</span>
+</div>
+</div>
+<!-- Circular Progress SVG -->
+<div class="relative w-16 h-16 flex-shrink-0 z-10">
+<svg class="w-full h-full transform -rotate-90" viewbox="0 0 36 36">
+<circle class="stroke-surface-variant fill-none" cx="18" cy="18" r="15" stroke-width="4"></circle>
+<!-- 40% complete (2/5) = 37.68 dasharray / 94.2 max -->
+<circle class="stroke-secondary fill-none" cx="18" cy="18" r="15" stroke-dasharray="37.68, 100" stroke-linecap="round" stroke-width="4"></circle>
+</svg>
+<div class="absolute inset-0 flex items-center justify-center font-headline-md text-[16px] text-on-surface">
+        40%
+      </div>
+</div>
+</div>
+<!-- Featured Upcoming Exam -->
+<div class="mx-margin-mobile bg-primary rounded-xl shadow-md relative overflow-hidden flex flex-col md:flex-row">
+<!-- Decorative background image / gradient overlay -->
+<div class="absolute inset-0 z-0">
+<div class="w-full h-full bg-cover bg-center opacity-40 mix-blend-overlay" data-alt="A soft, abstract, 3D geometric illustration featuring floating glowing spheres and layered translucent waves in deep indigo and soft purple hues, evoking focus, learning, and academic achievement, brightly lit and uplifting." style="background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuD6Aut2rkDU-LKYf_v9GhOoV9ueimDxcm4GRY3_mb9YZ2Nv7TDMpxVQw6V1WfMpvJ9b_YmVdarCxRmebOzVs1V67Yvmm8rN_imMmY47XSsnaM-0_F6Ta5U9t6xps13FNr_7QE7JOs9m9l7oLaPTiO1WTPONT-QJPd4XVoR_VycOOF7Sp0oKOrazefAXgXQBFjRAij5WiauggxthidZVqGuhQbV1OLeD0UjsTdJq55RwJTh-2BGJFTHc')"></div>
+<div class="absolute inset-0 bg-gradient-to-r from-primary via-primary/90 to-transparent"></div>
+</div>
+<div class="p-md relative z-10 flex flex-col items-start w-full gap-sm">
+<div class="bg-primary-container text-on-primary-container px-3 py-1 rounded-full font-label-caps text-label-caps flex items-center gap-1 shadow-sm">
+<span class="material-symbols-outlined text-[14px]">event</span>
+        Upcoming
+      </div>
+<h2 class="font-headline-md text-[22px] text-on-primary mt-1">TN State Board Full Mock</h2>
+<p class="font-body-md text-body-md text-primary-fixed-dim">Join 1,200+ students preparing for the final exam.</p>
+<!-- Countdown Timer -->
+<div class="flex gap-sm mt-md w-full max-w-[300px]">
+<div class="flex-1 bg-surface-container-lowest/20 backdrop-blur-sm rounded-lg p-sm flex flex-col items-center justify-center text-on-primary shadow-sm">
+<span class="font-headline-md text-headline-md">24</span>
+<span class="font-label-caps text-[10px] text-primary-fixed-dim">HOURS</span>
+</div>
+<div class="flex-1 bg-surface-container-lowest/20 backdrop-blur-sm rounded-lg p-sm flex flex-col items-center justify-center text-on-primary shadow-sm">
+<span class="font-headline-md text-headline-md">45</span>
+<span class="font-label-caps text-[10px] text-primary-fixed-dim">MINS</span>
+</div>
+<div class="flex-1 bg-surface-container-lowest/20 backdrop-blur-sm rounded-lg p-sm flex flex-col items-center justify-center text-on-primary shadow-sm">
+<span class="font-headline-md text-headline-md" id="sec-ticker">12</span>
+<span class="font-label-caps text-[10px] text-primary-fixed-dim">SECS</span>
+</div>
+</div>
+</div>
+</div>
+<!-- Categories / Tabs -->
+<div class="flex overflow-x-auto gap-sm px-margin-mobile pb-2 hide-scrollbar" style="scrollbar-width: none; -ms-overflow-style: none;">
+<button class="bg-primary text-on-primary px-5 py-2.5 rounded-full font-body-md text-body-md whitespace-nowrap shadow-sm transition-transform active:scale-95 flex items-center gap-2">
+<span class="material-symbols-outlined text-[18px]">fact_check</span>
+      Full Length
+    </button>
+<button class="bg-surface-container text-on-surface px-5 py-2.5 rounded-full font-body-md text-body-md whitespace-nowrap transition-transform active:scale-95 flex items-center gap-2">
+<span class="material-symbols-outlined text-[18px]">spellcheck</span>
+      Grammar
+    </button>
+<button class="bg-surface-container text-on-surface px-5 py-2.5 rounded-full font-body-md text-body-md whitespace-nowrap transition-transform active:scale-95 flex items-center gap-2">
+<span class="material-symbols-outlined text-[18px]">translate</span>
+      Vocabulary
+    </button>
+<button class="bg-surface-container text-on-surface px-5 py-2.5 rounded-full font-body-md text-body-md whitespace-nowrap transition-transform active:scale-95 flex items-center gap-2">
+<span class="material-symbols-outlined text-[18px]">menu_book</span>
+      Reading
+    </button>
+</div>
+<!-- Exam Cards Grid -->
+<div class="grid grid-cols-1 md:grid-cols-2 gap-md px-margin-mobile">
+<!-- Card 1 -->
+<div class="bg-surface-container-lowest rounded-xl p-md shadow-sm flex flex-col gap-md relative overflow-hidden group">
+<div class="absolute inset-0 bg-gradient-to-br from-transparent via-primary/5 to-transparent opacity-0 group-active:opacity-100 transition-opacity"></div>
+<div class="flex justify-between items-start">
+<div class="w-12 h-12 rounded-full bg-secondary-container text-on-secondary-container flex items-center justify-center shadow-sm">
+<span class="material-symbols-outlined">timer</span>
+</div>
+<div class="bg-surface text-on-surface-variant px-3 py-1 rounded-full font-label-caps text-label-caps shadow-sm flex items-center gap-1">
+<span class="material-symbols-outlined text-[14px]">schedule</span>
+          90 MINS
+        </div>
+</div>
+<div class="flex flex-col gap-1 z-10">
+<h3 class="font-headline-md text-[20px] text-on-surface">General English Mini-Mock</h3>
+<p class="font-body-md text-body-md text-on-surface-variant">50 Questions • Covers all topics</p>
+</div>
+<button class="w-full bg-surface-container-high text-on-surface py-3.5 rounded-lg font-body-md text-body-md mt-auto transition-all active:bg-surface-variant flex items-center justify-center gap-2 z-10">
+        Start Exam
+        <span class="material-symbols-outlined text-[18px]">arrow_forward</span>
+</button>
+</div>
+<!-- Card 2 -->
+<div class="bg-surface-container-lowest rounded-xl p-md shadow-sm flex flex-col gap-md relative overflow-hidden group">
+<div class="absolute inset-0 bg-gradient-to-br from-transparent via-primary/5 to-transparent opacity-0 group-active:opacity-100 transition-opacity"></div>
+<div class="flex justify-between items-start">
+<div class="w-12 h-12 rounded-full bg-tertiary-container text-on-tertiary-container flex items-center justify-center shadow-sm">
+<span class="material-symbols-outlined">psychology</span>
+</div>
+<div class="bg-surface text-on-surface-variant px-3 py-1 rounded-full font-label-caps text-label-caps shadow-sm flex items-center gap-1">
+<span class="material-symbols-outlined text-[14px]">schedule</span>
+          120 MINS
+        </div>
+</div>
+<div class="flex flex-col gap-1 z-10">
+<h3 class="font-headline-md text-[20px] text-on-surface">Advanced Vocabulary Test</h3>
+<p class="font-body-md text-body-md text-on-surface-variant">100 Questions • High difficulty</p>
+</div>
+<button class="w-full bg-surface-container-high text-on-surface py-3.5 rounded-lg font-body-md text-body-md mt-auto transition-all active:bg-surface-variant flex items-center justify-center gap-2 z-10">
+        Start Exam
+        <span class="material-symbols-outlined text-[18px]">arrow_forward</span>
+</button>
+</div>
+</div>
+<!-- Floating Chat Button -->
+<button class="fixed bottom-24 right-margin-mobile w-14 h-14 bg-secondary text-on-secondary rounded-full shadow-lg flex items-center justify-center transition-transform active:scale-90 z-40 hover:bg-on-secondary-container hover:shadow-xl">
+<span class="material-symbols-outlined">forum</span>
+</button>
+</div>
+<style>
+  /* Fallback utility if tailwind plugin fails for scrollbar */
+  .hide-scrollbar::-webkit-scrollbar {
+    display: none;
+  }
+</style>
+<script>
+  // Simple countdown ticker simulation for the hero section
+  (function() {
+    const ticker = document.getElementById('sec-ticker');
+    if (ticker) {
+      let seconds = parseInt(ticker.innerText, 10);
+      setInterval(() => {
+        seconds = seconds > 0 ? seconds - 1 : 59;
+        ticker.innerText = seconds.toString().padStart(2, '0');
+      }, 1000);
+    }
+  })();
+</script></main><nav class="fixed bottom-0 w-full z-50 pb-safe bg-surface/80 backdrop-blur-xl shadow-[0_-1px_8px_rgba(0,0,0,0.04)]" data-active-classes="text-primary font-bold"><div class="flex justify-around items-center h-16"><a class="flex flex-col items-center gap-1 text-on-surface-variant transition-colors" data-path="exam-dashboard" href="#"><span class="material-symbols-outlined">dashboard</span><span class="font-label-caps text-label-caps">Exams</span></a><a class="flex flex-col items-center gap-1 text-on-surface-variant transition-colors" data-path="learning-hub" href="#"><span class="material-symbols-outlined">auto_stories</span><span class="font-label-caps text-label-caps">Learn</span></a><a class="flex flex-col items-center gap-1 text-on-surface-variant transition-colors" data-path="student-progress" href="#"><span class="material-symbols-outlined">leaderboard</span><span class="font-label-caps text-label-caps">Stats</span></a></div></nav></body></html>

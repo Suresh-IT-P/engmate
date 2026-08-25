@@ -1,0 +1,34 @@
+[
+  {
+    "id": "mod_wts_part1",
+    "course_id": "crs_class11",
+    "title": "Part I: 1-Mark Questions & Grammar (20 Marks)",
+    "tamil_title": "பகுதி 1: ஒரு மதிப்பெண் வினாக்கள் & இலக்கணம் (20 மதிப்பெண்கள்)",
+    "description": "Q1-Q20: Synonyms, Antonyms, Compound Words, Prefixes & Suffixes, Abbreviations, Clipped Words, Word Definitions, Phrasal Verbs, Idioms, Foreign Words, Euphemism, Modals, Prepositions, Question Tags, Syllabification, American/British English, Singular/Plural, Sentence Patterns",
+    "order_index": 1
+  },
+  {
+    "id": "mod_wts_part2",
+    "course_id": "crs_class11",
+    "title": "Part II: Poetry Appreciation & Transformations (14 Marks)",
+    "tamil_title": "பகுதி 2: கவிதை வினாக்கள் & இலக்கண மாற்றங்கள் (14 மதிப்பெண்கள்)",
+    "description": "Q21-Q30: Poetry Appreciation Questions, Figures of Speech, Direct/Indirect Speech, Active/Passive Voice, Simple/Compound/Complex Sentences, Conditional (If) Clauses",
+    "order_index": 2
+  },
+  {
+    "id": "mod_wts_part3",
+    "course_id": "crs_class11",
+    "title": "Part III: ERC, Short Answers & Practical Writing (21 Marks)",
+    "tamil_title": "பகுதி 3: இடம்பெற்று விளக்குதல், சிறு வினாக்கள் & எழுத்துப்பயிற்சி (21 மதிப்பெண்கள்)",
+    "description": "Q31-Q40: ERC (Reference to Context), Prose Short Answers, Dialogue Writing, Process Description, Proverbs, Semantic Fields, Notice Writing, Headline Expansion, Email Writing, Error Spotting",
+    "order_index": 3
+  },
+  {
+    "id": "mod_wts_part4",
+    "course_id": "crs_class11",
+    "title": "Part IV: Paragraphs, Essays & Bio-data Applications (35 Marks)",
+    "tamil_title": "பகுதி 4: நெடு வினாக்கள், கட்டுரைகள் & வேலை விண்ணப்பம் (35 மதிப்பெண்கள்)",
+    "description": "Q41-Q47: Prose Paragraphs, Poetry Paragraphs, Supplementary Stories, Note-Making & Summary Writing, Bio-Data & Job Application, Letter Writing, General Essays, Story Expansion",
+    "order_index": 4
+  }
+]

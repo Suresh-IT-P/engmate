@@ -1,0 +1,200 @@
+<html lang="en"><head><meta charset="utf-8"/><meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover" name="viewport"/><link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@600;700&family=Be+Vietnam+Pro:wght@400;500&family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@24,400,0,0" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Be+Vietnam+Pro:wght@100..900&family=Plus+Jakarta+Sans:wght@100..900&display=swap" rel="stylesheet"/><script src="https://cdn.tailwindcss.com"></script><script id="tailwind-config">tailwind.config = { darkMode: "class", theme: { extend: { "colors": { "tertiary-container": "#885500", "surface-tint": "#4d44e3", "surface-variant": "#e4e1ee", "surface-container-high": "#eae6f4", "surface-container-lowest": "#ffffff", "surface": "#fcf8ff", "primary-fixed-dim": "#c3c0ff", "outline-variant": "#c7c4d8", "inverse-on-surface": "#f3effc", "on-error": "#ffffff", "secondary-fixed": "#6ffbbe", "surface-bright": "#fcf8ff", "on-secondary": "#ffffff", "on-tertiary": "#ffffff", "surface-dim": "#dcd8e5", "error-container": "#ffdad6", "on-primary-container": "#dad7ff", "inverse-primary": "#c3c0ff", "on-secondary-container": "#00714d", "surface-container-low": "#f5f2ff", "surface-container": "#f0ecf9", "on-tertiary-container": "#ffd4a4", "on-tertiary-fixed": "#2a1700", "surface-container-highest": "#e4e1ee", "on-primary-fixed": "#0f0069", "background": "#fcf8ff", "on-secondary-fixed-variant": "#005236", "secondary-container": "#6cf8bb", "on-surface-variant": "#464555", "on-tertiary-fixed-variant": "#653e00", "secondary": "#006c49", "tertiary-fixed": "#ffddb8", "primary": "#3525cd", "on-secondary-fixed": "#002113", "on-primary": "#ffffff", "on-surface": "#1b1b24", "on-primary-fixed-variant": "#3323cc", "primary-fixed": "#e2dfff", "secondary-fixed-dim": "#4edea3", "inverse-surface": "#302f39", "tertiary-fixed-dim": "#ffb95f", "primary-container": "#4f46e5", "on-background": "#1b1b24", "tertiary": "#684000", "error": "#ba1a1a", "on-error-container": "#93000a", "outline": "#777587" }, "borderRadius": { "DEFAULT": "0.25rem", "lg": "0.5rem", "xl": "0.75rem", "full": "9999px" }, "spacing": { "md": "24px", "base": "8px", "lg": "40px", "max-width": "1200px", "xs": "4px", "sm": "12px", "xl": "64px", "margin-mobile": "20px", "gutter": "16px" }, "fontFamily": { "display-lg": ["Plus Jakarta Sans"], "display-lg-mobile": ["Plus Jakarta Sans"], "tamil-subtext": ["Be Vietnam Pro"], "body-md": ["Be Vietnam Pro"], "headline-md": ["Plus Jakarta Sans"], "body-lg": ["Be Vietnam Pro"], "label-caps": ["Plus Jakarta Sans"] }, "fontSize": { "display-lg": ["40px", { "lineHeight": "1.2", "letterSpacing": "-0.02em", "fontWeight": "700" }], "display-lg-mobile": ["32px", { "lineHeight": "1.2", "fontWeight": "700" }], "tamil-subtext": ["14px", { "lineHeight": "1.4", "fontWeight": "500" }], "body-md": ["16px", { "lineHeight": "1.5", "fontWeight": "400" }], "headline-md": ["24px", { "lineHeight": "1.3", "fontWeight": "600" }], "body-lg": ["18px", { "lineHeight": "1.6", "fontWeight": "400" }], "label-caps": ["12px", { "lineHeight": "1.0", "letterSpacing": "0.05em", "fontWeight": "700" }] } } } };</script><style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head><body class="bg-surface text-on-surface font-body-md min-h-screen pt-safe pb-safe"><main class="flex flex-col w-full"><div class="flex flex-col w-full h-full relative overflow-hidden bg-surface">
+<div class="flex flex-col w-full max-w-[1200px] mx-auto px-margin-mobile pt-lg pb-xl z-10">
+<!-- Progress Indicator -->
+<div class="w-full flex items-center justify-center gap-2 mb-lg">
+<div class="h-2 w-8 rounded-full bg-surface-container-highest"></div>
+<div class="h-2 w-8 rounded-full bg-primary relative overflow-hidden">
+<div class="absolute inset-0 bg-white/20 animate-pulse"></div>
+</div>
+<div class="h-2 w-8 rounded-full bg-surface-container-highest"></div>
+</div>
+<!-- Header Section -->
+<div class="text-center mb-xl animate-fade-in-up">
+<h1 class="font-display-lg-mobile text-display-lg-mobile text-on-surface mb-sm">
+        நீங்க எந்த வகுப்பு?
+      </h1>
+<p class="font-body-lg text-body-lg text-on-surface-variant">
+        Which class are you studying?
+      </p>
+</div>
+<!-- Class Grid -->
+<div class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-md w-full">
+<!-- Class 6 -->
+<button class="class-card group relative flex flex-col items-center justify-center p-md bg-surface-container-lowest rounded-xl shadow-[0_4px_24px_rgba(53,37,205,0.06)] hover:shadow-[0_8px_32px_rgba(53,37,205,0.12)] transition-all duration-300 transform hover:-translate-y-1 active:scale-95 active:bg-surface-container overflow-hidden">
+<div class="absolute inset-0 bg-gradient-to-br from-primary/0 to-primary/5 opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
+<div class="w-20 h-20 mb-sm relative z-10 flex items-center justify-center">
+<img alt="Class 6" class="object-contain w-full h-full" data-alt="A cute, simple 3D illustration of a slightly open backpack with a colorful book peeking out. Soft, squishy aesthetic. Warm, encouraging lighting. Light background matching the UI colors." src="https://lh3.googleusercontent.com/aida-public/AB6AXuAFfMMNWNC_BtAXMcrcpBnaPkUdVdjspPhxWKHwTANKAr3nMjTXn3TD6JMR7jSQU3X345opoUQVyjwGgNZrYGzb0JPN1v9Z5H1o4XTrq1DV2U7UGlP9TmPdKcPCbD8M1AlEFvO33g66olYJ576JhrLqJ2QTKDe3OmZCjO_VWNjLD0Z0huWeN-JZiJIcKx0hgROPeDIIQetULXEk-EdHRar0bdHacp-yo29JD3FOznu9tLtfK2zGUB1n"/>
+</div>
+<div class="text-center z-10">
+<div class="font-headline-md text-headline-md text-on-surface group-hover:text-primary transition-colors">வகுப்பு 6</div>
+<div class="font-tamil-subtext text-tamil-subtext text-on-surface-variant mt-xs">Class 6</div>
+</div>
+<div class="absolute inset-0 rounded-xl ring-2 ring-primary opacity-0 group-focus:opacity-100 pointer-events-none transition-opacity"></div>
+</button>
+<!-- Class 7 -->
+<button class="class-card group relative flex flex-col items-center justify-center p-md bg-surface-container-lowest rounded-xl shadow-[0_4px_24px_rgba(53,37,205,0.06)] hover:shadow-[0_8px_32px_rgba(53,37,205,0.12)] transition-all duration-300 transform hover:-translate-y-1 active:scale-95 active:bg-surface-container overflow-hidden">
+<div class="absolute inset-0 bg-gradient-to-br from-primary/0 to-primary/5 opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
+<div class="w-20 h-20 mb-sm relative z-10 flex items-center justify-center">
+<img alt="Class 7" class="object-contain w-full h-full" data-alt="A cute, simple 3D illustration of a microscope and a small test tube. Soft, squishy aesthetic. Warm, encouraging lighting. Light background matching the UI colors." src="https://lh3.googleusercontent.com/aida-public/AB6AXuDjplXslqayxYCxtotYL4O7bgIqUb4ehcyYdOrDioLm1V8RiUBop_lY7k3vIguY3aTadYOQdyVnIwKPZVTcIB0Yzu2q76L8lifVsr_nWrttG1m7m6_0O_Njf3wnTbHYZC_Yp2UY0w3TCMqYxQTj-46YZO-nGpN2lzwKwcQcbNYybeNlnMUS6YhZBJVoKWyvgJfvYYYKnUr27utgdSJRoBl4MlER_4DJwkSA027YvQkk-zbqj5eYfJvN"/>
+</div>
+<div class="text-center z-10">
+<div class="font-headline-md text-headline-md text-on-surface group-hover:text-primary transition-colors">வகுப்பு 7</div>
+<div class="font-tamil-subtext text-tamil-subtext text-on-surface-variant mt-xs">Class 7</div>
+</div>
+<div class="absolute inset-0 rounded-xl ring-2 ring-primary opacity-0 group-focus:opacity-100 pointer-events-none transition-opacity"></div>
+</button>
+<!-- Class 8 -->
+<button class="class-card group relative flex flex-col items-center justify-center p-md bg-surface-container-lowest rounded-xl shadow-[0_4px_24px_rgba(53,37,205,0.06)] hover:shadow-[0_8px_32px_rgba(53,37,205,0.12)] transition-all duration-300 transform hover:-translate-y-1 active:scale-95 active:bg-surface-container overflow-hidden">
+<div class="absolute inset-0 bg-gradient-to-br from-primary/0 to-primary/5 opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
+<div class="w-20 h-20 mb-sm relative z-10 flex items-center justify-center">
+<img alt="Class 8" class="object-contain w-full h-full" data-alt="A cute, simple 3D illustration of an open book with glowing geometric shapes floating above it. Soft, squishy aesthetic. Warm, encouraging lighting. Light background matching the UI colors." src="https://lh3.googleusercontent.com/aida-public/AB6AXuD8u9pbhWPMp8AD2gpLkgE9wpQyQYFiBR2-cD6EoVog4tVWQeurVXFtfmm1VUP6ti5j5p55KXv3Zio47Gig4Uemlk2n6iDvb18Z4Kpnj_s7S4qnJTcage4xVy17gP8kz7GVzd8BjUZYy0368cjhtdlGLhhBFcYkiANSh26CKgjSeT0Nn0EjaY6cHpHzB5TaYj1_s80P_JOr9jg-vuRonImW6_6I2GZ2n8c5VX-4oPcxakZPgv2UwWd5"/>
+</div>
+<div class="text-center z-10">
+<div class="font-headline-md text-headline-md text-on-surface group-hover:text-primary transition-colors">வகுப்பு 8</div>
+<div class="font-tamil-subtext text-tamil-subtext text-on-surface-variant mt-xs">Class 8</div>
+</div>
+<div class="absolute inset-0 rounded-xl ring-2 ring-primary opacity-0 group-focus:opacity-100 pointer-events-none transition-opacity"></div>
+</button>
+<!-- Class 9 -->
+<button class="class-card group relative flex flex-col items-center justify-center p-md bg-surface-container-lowest rounded-xl shadow-[0_4px_24px_rgba(53,37,205,0.06)] hover:shadow-[0_8px_32px_rgba(53,37,205,0.12)] transition-all duration-300 transform hover:-translate-y-1 active:scale-95 active:bg-surface-container overflow-hidden">
+<div class="absolute inset-0 bg-gradient-to-br from-primary/0 to-primary/5 opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
+<div class="w-20 h-20 mb-sm relative z-10 flex items-center justify-center">
+<img alt="Class 9" class="object-contain w-full h-full" data-alt="A cute, simple 3D illustration of a small desktop computer monitor with a graph on the screen. Soft, squishy aesthetic. Warm, encouraging lighting. Light background matching the UI colors." src="https://lh3.googleusercontent.com/aida-public/AB6AXuDJeLntQKeT1qx6EIlWXDNwKech8AaY1sMGmcGEx_ZlxRYk7KBF4LJU1ThxKoDbtKke1lcgmQ0JPfkz7E5jotAL7jH3iwbzH_s2te9WChvV3oz_hGi-F9vl-esVb1njPUWsW8O2QGREO1BrE01Nqp1NEMmEquUW-QX17bhrk44fT8BYxz8xLtuJNtzrkfmYXgDBFMaQYSsnV-DEp5108eGeoLVO-K-jNsgARyMyOUEiGcVtZOoH5so_"/>
+</div>
+<div class="text-center z-10">
+<div class="font-headline-md text-headline-md text-on-surface group-hover:text-primary transition-colors">வகுப்பு 9</div>
+<div class="font-tamil-subtext text-tamil-subtext text-on-surface-variant mt-xs">Class 9</div>
+</div>
+<div class="absolute inset-0 rounded-xl ring-2 ring-primary opacity-0 group-focus:opacity-100 pointer-events-none transition-opacity"></div>
+</button>
+<!-- Class 10 -->
+<button class="class-card group relative flex flex-col items-center justify-center p-md bg-surface-container-lowest rounded-xl shadow-[0_4px_24px_rgba(53,37,205,0.06)] hover:shadow-[0_8px_32px_rgba(53,37,205,0.12)] transition-all duration-300 transform hover:-translate-y-1 active:scale-95 active:bg-surface-container overflow-hidden">
+<div class="absolute inset-0 bg-gradient-to-br from-primary/0 to-primary/5 opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
+<!-- Highlight badge for board year -->
+<div class="absolute top-0 right-0 bg-secondary text-on-secondary font-label-caps text-label-caps px-2 py-1 rounded-bl-lg rounded-tr-xl z-20 shadow-sm flex items-center gap-1">
+<span class="material-symbols-outlined text-[14px]">star</span>
+             BOARD
+        </div>
+<div class="w-20 h-20 mb-sm relative z-10 flex items-center justify-center">
+<img alt="Class 10" class="object-contain w-full h-full" data-alt="A cute, simple 3D illustration of an award ribbon and a graduation cap. Soft, squishy aesthetic. Warm, encouraging lighting. Light background matching the UI colors." src="https://lh3.googleusercontent.com/aida-public/AB6AXuCdom6tJVPIjt3ZFe_W_uYxHdPIIq-HhqOnWng5Vnwu6CzQJ9xfW03TTEG6zMnea8_OJVPKPFm4Pfi5GoP4xHNPWXIYsoWg1UnCtoaB5W6Hk_psSUCryvURkG_bokBk25fgbJZKO3jW3WSFYaDuh_QlqTg0vG1aXXkpX15-inJOm35fx-husbQ7rCIt-V4gXCh3xVXHYyMhUbPhTt_rOcwlYrbX8szkK047xpLRZOYAeM8_wAKeR6Nv"/>
+</div>
+<div class="text-center z-10">
+<div class="font-headline-md text-headline-md text-on-surface group-hover:text-primary transition-colors">வகுப்பு 10</div>
+<div class="font-tamil-subtext text-tamil-subtext text-on-surface-variant mt-xs">Class 10</div>
+</div>
+<div class="absolute inset-0 rounded-xl ring-2 ring-primary opacity-0 group-focus:opacity-100 pointer-events-none transition-opacity"></div>
+</button>
+<!-- Class 11 -->
+<button class="class-card group relative flex flex-col items-center justify-center p-md bg-surface-container-lowest rounded-xl shadow-[0_4px_24px_rgba(53,37,205,0.06)] hover:shadow-[0_8px_32px_rgba(53,37,205,0.12)] transition-all duration-300 transform hover:-translate-y-1 active:scale-95 active:bg-surface-container overflow-hidden">
+<div class="absolute inset-0 bg-gradient-to-br from-primary/0 to-primary/5 opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
+<div class="w-20 h-20 mb-sm relative z-10 flex items-center justify-center">
+<img alt="Class 11" class="object-contain w-full h-full" data-alt="A cute, simple 3D illustration of stacked books with a compass resting on top. Soft, squishy aesthetic. Warm, encouraging lighting. Light background matching the UI colors." src="https://lh3.googleusercontent.com/aida-public/AB6AXuDEz5ikxJp0CA8Yii1evWeQgBMATjhv2iUMpCKVOZ-VNK2KgLGZlieaDkaIYoV_HWN2wlqiPHmMZoXJdC49ITqtCBwI7Glje1C02dAucUr2Yu7mpI-gGoVunXMFJnTRG2_YqoeTgMYlLT2O-v71SO6p1aezusj6gIEgWIIa5mRYmsrDB-TAdHodwXLNuvJZLzWOGVHODurF22yZ4qBCW4M4ZJQwZNBrR9Rjk-4b7mCO3Pda37ej6G0-"/>
+</div>
+<div class="text-center z-10">
+<div class="font-headline-md text-headline-md text-on-surface group-hover:text-primary transition-colors">வகுப்பு 11</div>
+<div class="font-tamil-subtext text-tamil-subtext text-on-surface-variant mt-xs">Class 11</div>
+</div>
+<div class="absolute inset-0 rounded-xl ring-2 ring-primary opacity-0 group-focus:opacity-100 pointer-events-none transition-opacity"></div>
+</button>
+<!-- Class 12 -->
+<button class="class-card group relative flex flex-col items-center justify-center p-md bg-surface-container-lowest rounded-xl shadow-[0_4px_24px_rgba(53,37,205,0.06)] hover:shadow-[0_8px_32px_rgba(53,37,205,0.12)] transition-all duration-300 transform hover:-translate-y-1 active:scale-95 active:bg-surface-container overflow-hidden md:col-span-1 lg:col-span-1">
+<div class="absolute inset-0 bg-gradient-to-br from-primary/0 to-primary/5 opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
+<!-- Highlight badge for board year -->
+<div class="absolute top-0 right-0 bg-secondary text-on-secondary font-label-caps text-label-caps px-2 py-1 rounded-bl-lg rounded-tr-xl z-20 shadow-sm flex items-center gap-1">
+<span class="material-symbols-outlined text-[14px]">star</span>
+             BOARD
+        </div>
+<div class="w-20 h-20 mb-sm relative z-10 flex items-center justify-center">
+<img alt="Class 12" class="object-contain w-full h-full" data-alt="A cute, simple 3D illustration of a graduation diploma tied with a ribbon and a golden key. Soft, squishy aesthetic. Warm, encouraging lighting. Light background matching the UI colors." src="https://lh3.googleusercontent.com/aida-public/AB6AXuAD1-y5zx5hZRpwSHKMkI5dw_cixYPToH3jMMmmuX5RxYWyPpBsLOY1GTWtyJVJL7HMa7onGhXDrEUyQE2aOL7zy5xaxEifowSMk0EqEc9QBf-pcK4v2gcSCIW_nmjFRZM1R1Q7RZx3wym8ZYFOzB_SapNkVc7JAPakc8tAF5upYtutVEn_claR52PmoI0srbomIp7glVDiNfGcSbwlP7cFM92-SscDV4dobTicM6HsEenR66ki06yP"/>
+</div>
+<div class="text-center z-10">
+<div class="font-headline-md text-headline-md text-on-surface group-hover:text-primary transition-colors">வகுப்பு 12</div>
+<div class="font-tamil-subtext text-tamil-subtext text-on-surface-variant mt-xs">Class 12</div>
+</div>
+<div class="absolute inset-0 rounded-xl ring-2 ring-primary opacity-0 group-focus:opacity-100 pointer-events-none transition-opacity"></div>
+</button>
+</div>
+<!-- Decorative ambient shapes in background -->
+<div class="absolute top-0 left-0 w-full h-full pointer-events-none overflow-hidden z-0 opacity-40">
+<svg class="absolute top-[10%] left-[-5%] w-64 h-64 text-primary-fixed blur-3xl animate-[pulse_6s_ease-in-out_infinite]" fill="currentColor" viewbox="0 0 100 100">
+<circle cx="50" cy="50" r="50"></circle>
+</svg>
+<svg class="absolute bottom-[10%] right-[-10%] w-96 h-96 text-secondary-fixed blur-3xl animate-[pulse_8s_ease-in-out_infinite_alternate]" fill="currentColor" viewbox="0 0 100 100">
+<circle cx="50" cy="50" r="50"></circle>
+</svg>
+</div>
+</div>
+<!-- Bottom Action Area (Sticky on mobile) -->
+<div class="mt-auto w-full max-w-[1200px] mx-auto px-margin-mobile pb-margin-mobile pt-sm z-20 bg-gradient-to-t from-surface via-surface to-transparent relative">
+<div class="opacity-0 translate-y-4 transition-all duration-500 ease-out flex justify-end" id="continue-container">
+<button class="bg-primary text-on-primary font-headline-md text-body-md py-sm px-xl rounded-full shadow-[0_8px_16px_rgba(53,37,205,0.25)] hover:shadow-[0_12px_24px_rgba(53,37,205,0.35)] hover:-translate-y-1 transition-all duration-300 flex items-center gap-2 active:scale-95 active:bg-on-primary-fixed-variant">
+            தொடரவும் / Continue
+            <span class="material-symbols-outlined text-[20px]">arrow_forward</span>
+</button>
+</div>
+</div>
+</div>
+<style>
+  @keyframes fade-in-up {
+    from {
+      opacity: 0;
+      transform: translateY(20px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+  .animate-fade-in-up {
+    animation: fade-in-up 0.6s ease-out forwards;
+  }
+  
+  .class-card {
+      opacity: 0;
+      animation: fade-in-up 0.5s ease-out forwards;
+  }
+  
+  .class-card:nth-child(1) { animation-delay: 0.1s; }
+  .class-card:nth-child(2) { animation-delay: 0.15s; }
+  .class-card:nth-child(3) { animation-delay: 0.2s; }
+  .class-card:nth-child(4) { animation-delay: 0.25s; }
+  .class-card:nth-child(5) { animation-delay: 0.3s; }
+  .class-card:nth-child(6) { animation-delay: 0.35s; }
+  .class-card:nth-child(7) { animation-delay: 0.4s; }
+</style>
+<script>
+  document.addEventListener('DOMContentLoaded', () => {
+    const cards = document.querySelectorAll('.class-card');
+    const continueContainer = document.getElementById('continue-container');
+    let selectedClass = null;
+
+    cards.forEach(card => {
+      card.addEventListener('click', () => {
+        // Remove selection from all
+        cards.forEach(c => {
+          c.classList.remove('ring-4', 'ring-primary', 'bg-primary/5', 'shadow-inner');
+          c.querySelector('.ring-2')?.classList.remove('opacity-100');
+        });
+
+        // Add selection to clicked
+        card.classList.add('ring-4', 'ring-primary', 'bg-primary/5', 'shadow-inner');
+        
+        // Show continue button
+        if (!selectedClass) {
+          continueContainer.classList.remove('opacity-0', 'translate-y-4');
+          continueContainer.classList.add('opacity-100', 'translate-y-0');
+        }
+        
+        // Play subtle sound/haptic here if in native wrapper
+        selectedClass = card;
+      });
+    });
+  });
+</script></main></body></html>

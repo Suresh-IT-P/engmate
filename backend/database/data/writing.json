@@ -1,0 +1,22 @@
+[
+  {
+    "id": "wri_leave_email",
+    "title": "Formal Sick Leave Email to Manager",
+    "tamil_title": "மேலாளருக்கு மருத்துவ விடுப்பு மின்னஞ்சல்",
+    "prompt_type": "email",
+    "level_id": "A2",
+    "min_words": 30,
+    "instructions": "Write a professional email to your manager informing them that you are unwell with fever and requesting 1 day of sick leave. Mention who will handle urgent queries in your absence.",
+    "sample_answer": "Dear Mr. Ramesh,\n\nI am writing to inform you that I am unwell with fever today and will be unable to attend office. I request you to grant me one day of sick leave for August 23rd.\n\nI have handed over my urgent client support tasks to Priya. I will check urgent emails periodically.\n\nThank you for your understanding.\n\nSincerely,\nKarthik"
+  },
+  {
+    "id": "wri_opinion_ai_education",
+    "title": "Opinion: AI in English Learning",
+    "tamil_title": "கருத்துக்களம்: ஆங்கிலக் கற்றலில் செயற்கை நுண்ணறிவு",
+    "prompt_type": "opinion",
+    "level_id": "B1",
+    "min_words": 50,
+    "instructions": "Express your opinion on how AI tools and conversational tutors help students learn English faster and overcome shyness.",
+    "sample_answer": "In my view, AI-powered language tools provide a safe, non-judgmental environment for beginners to practice spoken English. Unlike traditional classrooms where students fear making grammar mistakes in front of peers, AI tutors give instant, constructive feedback with bilingual explanations. This boosts learner confidence and accelerates fluency dramatically."
+  }
+]

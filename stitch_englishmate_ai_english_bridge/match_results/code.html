@@ -1,0 +1,166 @@
+<html lang="en"><head><meta charset="utf-8"/><meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover" name="viewport"/><link href="https://fonts.googleapis.com/css2?family=Be+Vietnam+Pro:wght@400;500&amp;family=Plus+Jakarta+Sans:wght@600;700&amp;display=swap" rel="stylesheet"/><link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/><style>@layer base{html,body{width:100vw;margin:0;padding:0;overflow-x:hidden;}body{overscroll-behavior:none;}.pb-safe{padding-bottom:env(safe-area-inset-bottom,0px);}.pt-safe{padding-top:env(safe-area-inset-top,0px);}}::-webkit-scrollbar{display:none;}</style><script src="https://cdn.tailwindcss.com"></script><script id="tailwind-config">tailwind.config={darkMode:"class",theme:{extend:{"colors":{"on-secondary-container":"#00714d","on-surface":"#1b1b24","outline-variant":"#c7c4d8","on-secondary-fixed":"#002113","on-background":"#1b1b24","background":"#fcf8ff","surface-dim":"#dcd8e5","on-error-container":"#93000a","error-container":"#ffdad6","primary-fixed":"#e2dfff","primary-container":"#4f46e5","secondary-fixed-dim":"#4edea3","primary-fixed-dim":"#c3c0ff","secondary-fixed":"#6ffbbe","surface-variant":"#e4e1ee","surface-container-low":"#f5f2ff","secondary":"#006c49","tertiary-fixed":"#ffddb8","on-primary":"#ffffff","surface-container-highest":"#e4e1ee","on-secondary-fixed-variant":"#005236","surface-container":"#f0ecf9","surface-container-high":"#eae6f4","surface-container-lowest":"#ffffff","tertiary-container":"#885500","error":"#ba1a1a","on-primary-fixed":"#0f0069","tertiary-fixed-dim":"#ffb95f","inverse-surface":"#302f39","on-secondary":"#ffffff","on-primary-fixed-variant":"#3323cc","on-error":"#ffffff","inverse-primary":"#c3c0ff","primary":"#3525cd","surface":"#fcf8ff","on-tertiary":"#ffffff","surface-tint":"#4d44e3","on-tertiary-fixed-variant":"#653e00","on-primary-container":"#dad7ff","on-tertiary-fixed":"#2a1700","surface-bright":"#fcf8ff","on-surface-variant":"#464555","inverse-on-surface":"#f3effc","tertiary":"#684000","on-tertiary-container":"#ffd4a4","outline":"#777587","secondary-container":"#6cf8bb"},"borderRadius":{"DEFAULT":"0.25rem","lg":"0.5rem","xl":"0.75rem","full":"9999px"},"spacing":{"base":"8px","md":"24px","xs":"4px","sm":"12px","xl":"64px","gutter":"16px","lg":"40px","max-width":"1200px","margin-mobile":"20px"},"fontFamily":{"tamil-subtext":["Be Vietnam Pro"],"label-caps":["Plus Jakarta Sans"],"display-lg-mobile":["Plus Jakarta Sans"],"body-lg":["Be Vietnam Pro"],"display-lg":["Plus Jakarta Sans"],"headline-md":["Plus Jakarta Sans"],"body-md":["Be Vietnam Pro"]},"fontSize":{"tamil-subtext":["14px",{"lineHeight":"1.4","fontWeight":"500"}],"label-caps":["12px",{"lineHeight":"1.0","letterSpacing":"0.05em","fontWeight":"700"}],"display-lg-mobile":["32px",{"lineHeight":"1.2","fontWeight":"700"}],"body-lg":["18px",{"lineHeight":"1.6","fontWeight":"400"}],"display-lg":["40px",{"lineHeight":"1.2","letterSpacing":"-0.02em","fontWeight":"700"}],"headline-md":["24px",{"lineHeight":"1.3","fontWeight":"600"}],"body-md":["16px",{"lineHeight":"1.5","fontWeight":"400"}]}}}}</script><style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head><body class="bg-background font-body-md text-on-background"><header class="fixed top-0 w-full z-50 bg-surface/80 backdrop-blur-xl pt-safe shadow-[0_1px_8px_rgba(0,0,0,0.04)]"><div class="h-16 px-margin-mobile flex items-center gap-sm"><button class="w-10 h-10 flex items-center justify-center rounded-full hover:bg-surface-variant transition-colors" onclick="history.back()"><span class="material-symbols-outlined text-on-surface">arrow_back</span></button><h1 class="font-headline-md text-body-lg text-on-surface flex-1 truncate">Match Results</h1><div class="flex items-center gap-xs"><div class="flex items-center bg-primary-container/10 px-sm py-xs rounded-full"><span class="material-symbols-outlined text-primary text-[18px]">timer</span><span class="font-label-caps text-label-caps text-primary ml-xs">00:45</span></div></div></div></header><main class="relative w-full pt-16 pb-safe bg-surface min-h-screen"><div class="flex flex-col w-full relative min-h-full">
+<!-- Dynamic Confetti Background Overlay -->
+<div class="absolute inset-0 z-0 overflow-hidden pointer-events-none opacity-50" id="confetti-container"></div>
+<!-- Header Area (Celebration) -->
+<section class="relative z-10 px-margin-mobile pt-lg pb-md flex flex-col items-center text-center">
+<div class="w-24 h-24 bg-tertiary-fixed rounded-full flex items-center justify-center shadow-md mb-md relative">
+<span class="material-symbols-outlined text-[48px] text-tertiary-container" style="font-variation-settings: 'FILL' 1;">trophy</span>
+<!-- Sparkle decorators -->
+<span class="material-symbols-outlined text-tertiary-container absolute -top-xs -right-xs animate-pulse text-[24px]" style="font-variation-settings: 'FILL' 1;">arrow_back_ios_new</span>
+<span class="material-symbols-outlined text-tertiary-container absolute bottom-xs -left-sm animate-pulse text-[20px] delay-75" style="font-variation-settings: 'FILL' 1;">arrow_back_ios_new</span>
+</div>
+<h2 class="font-display-lg-mobile text-display-lg-mobile text-on-surface mb-xs">மிக நன்று!</h2>
+<p class="font-tamil-subtext text-tamil-subtext text-on-surface-variant">Well Played! Match complete.</p>
+</section>
+<!-- Podium / Rankings Section -->
+<section class="relative z-10 px-margin-mobile mb-xl">
+<div class="bg-surface-container-low rounded-xl p-md shadow-sm">
+<h3 class="font-headline-md text-body-lg text-on-surface mb-md">Final Standings</h3>
+<!-- List Rankings -->
+<div class="flex flex-col gap-sm">
+<!-- 1st Place (Current User) -->
+<div class="bg-surface rounded-lg p-sm shadow-sm flex items-center justify-between relative overflow-hidden">
+<div class="absolute left-0 top-0 bottom-0 w-1 bg-secondary"></div>
+<div class="flex items-center gap-sm">
+<div class="w-8 h-8 rounded-full bg-secondary-container flex items-center justify-center font-label-caps text-label-caps text-on-secondary-container">1</div>
+<div class="w-12 h-12 rounded-full overflow-hidden bg-surface-variant flex-shrink-0">
+<img class="w-full h-full object-cover" data-alt="A brightly lit, stylized 3D avatar of a smiling young student with a subtle gradient background in warm indigo tones." src="https://lh3.googleusercontent.com/aida-public/AB6AXuC4x3L9C5BUHhdSUg9ku6BBADAxpr7ex0dBljQrCbHnSLwm1POcSRif95slg7j-9aG3fn-ybdcBiinULexTMUMHQHYnmIEDGORmYz9NJVxc5ayvaQPhkL5L6KLmkqrpF2CfM2x_Sh98EyV0Zs8YXvrxFPQGhJWg6mDVDS-D-E2yCbcDDk_oKfq60FicBbF-o90KMPbK_UyfJoMMR6gzjc-2zhkPyK767j0WSB2s1jlwywaNKjV6oAX2"/>
+</div>
+<div>
+<p class="font-body-md text-body-md text-on-surface font-semibold">You</p>
+</div>
+</div>
+<div class="flex items-center gap-xs">
+<span class="font-display-lg-mobile text-body-lg text-secondary">2450</span>
+<span class="font-label-caps text-[10px] text-secondary">PTS</span>
+</div>
+</div>
+<!-- 2nd Place -->
+<div class="bg-surface rounded-lg p-sm flex items-center justify-between">
+<div class="flex items-center gap-sm">
+<div class="w-8 h-8 rounded-full bg-surface-variant flex items-center justify-center font-label-caps text-label-caps text-on-surface-variant">2</div>
+<div class="w-10 h-10 rounded-full overflow-hidden bg-surface-variant flex-shrink-0">
+<img class="w-full h-full object-cover" data-alt="A stylized 3D avatar of an opponent with a neutral grey background." src="https://lh3.googleusercontent.com/aida-public/AB6AXuDOgK52xcI-73HoVHE1XzTPIIWwWBmDPR6Bl0vttf4uhCaahNxJwcjmnHlAZ7Mq3den2q8yQAiefngY4CLOYwToC9to3WGvc3jOyYN4qDMfmbrDPmk004mGu5LnNFokXrj0QC6PvbU0DUahMMRkfDOlhjshSr1Uyq1iMxtXt59rBhnjURZ6Pz-AHSCedGfLbixiXDzB-AnsyWds-5psBYREFkxt7YzG5yGhScAAF2QTfjp_ce1gPw9A"/>
+</div>
+<div>
+<p class="font-body-md text-body-md text-on-surface">Karthik R.</p>
+</div>
+</div>
+<div class="flex items-center gap-xs">
+<span class="font-headline-md text-body-md text-on-surface-variant">1980</span>
+<span class="font-label-caps text-[10px] text-on-surface-variant">PTS</span>
+</div>
+</div>
+<!-- 3rd Place -->
+<div class="bg-surface rounded-lg p-sm flex items-center justify-between">
+<div class="flex items-center gap-sm">
+<div class="w-8 h-8 rounded-full bg-surface-variant flex items-center justify-center font-label-caps text-label-caps text-on-surface-variant">3</div>
+<div class="w-10 h-10 rounded-full overflow-hidden bg-surface-variant flex-shrink-0 opacity-80">
+<img class="w-full h-full object-cover" data-alt="A generic stylized 3D avatar in cool blue tones." src="https://lh3.googleusercontent.com/aida-public/AB6AXuArcU1k2YXkEgJfsyckO4xWPUPhgHP_aU5BJpB2kILoflRrZlSgBVbVQwAsgDgbL2o1-46W29ieEtWLMXkwDq4zjJBaiJYVanmcXMReMDUAmqJUg3rxWVomj5PFYc7_8QKbffDXL51zRYAVnls-1pSUmyluxg7jdMETyzHUSIHk2SEcqW8ztbK5oeqwO2kgrmbVzfrgOHthcpjbzd86ILzAf-HPOe-x0BxrAvozvow2P-AM9TgosMy4"/>
+</div>
+<div>
+<p class="font-body-md text-body-md text-on-surface">Priya M.</p>
+</div>
+</div>
+<div class="flex items-center gap-xs">
+<span class="font-headline-md text-body-md text-on-surface-variant">1420</span>
+<span class="font-label-caps text-[10px] text-on-surface-variant">PTS</span>
+</div>
+</div>
+<!-- 4th Place -->
+<div class="bg-surface rounded-lg p-sm flex items-center justify-between opacity-75">
+<div class="flex items-center gap-sm">
+<div class="w-8 h-8 rounded-full bg-surface-variant flex items-center justify-center font-label-caps text-label-caps text-on-surface-variant">4</div>
+<div class="w-10 h-10 rounded-full overflow-hidden bg-surface-variant flex-shrink-0 opacity-60">
+<img class="w-full h-full object-cover" data-alt="A generic stylized 3D avatar." src="https://lh3.googleusercontent.com/aida-public/AB6AXuDBa46eZwAuCCahp_i1XnudnLfsbxfcA2AvtUrIHhJa2zqg2GYj9EZQDRxWumkuTTFT-7z3BqzF3atXy9Ak7mCtD6WBqStOQrUK7iUaUmP_8svKCek0_JzWCMUx86ytD_Kf5HVXood25U0gnqIxrBpnXyeZ8ueI4iYAdRn-WqODnS18GZyES6JfUhz-5uLKIsIH2p_MQSJTO775A3ihXclDNImfo6H-gw0RxgaiPqZYVKU6PW-WkEdV"/>
+</div>
+<div>
+<p class="font-body-md text-body-md text-on-surface">Arun K.</p>
+</div>
+</div>
+<div class="flex items-center gap-xs">
+<span class="font-headline-md text-body-md text-on-surface-variant">850</span>
+<span class="font-label-caps text-[10px] text-on-surface-variant">PTS</span>
+</div>
+</div>
+</div>
+</div>
+</section>
+<!-- Rewards Section -->
+<section class="relative z-10 px-margin-mobile mb-xl">
+<div class="grid grid-cols-2 gap-sm">
+<div class="bg-tertiary-fixed-dim rounded-xl p-md flex flex-col items-center justify-center shadow-sm">
+<span class="material-symbols-outlined text-[32px] text-on-tertiary-fixed mb-xs" style="font-variation-settings: 'FILL' 1;">star</span>
+<span class="font-display-lg-mobile text-headline-md text-on-tertiary-fixed">+50</span>
+<span class="font-label-caps text-label-caps text-on-tertiary-fixed opacity-80">XP GAINED</span>
+</div>
+<div class="bg-error-container rounded-xl p-md flex flex-col items-center justify-center shadow-sm">
+<span class="material-symbols-outlined text-[32px] text-on-error-container mb-xs" style="font-variation-settings: 'FILL' 1;">local_fire_department</span>
+<span class="font-display-lg-mobile text-headline-md text-on-error-container">8 Days</span>
+<span class="font-label-caps text-label-caps text-on-error-container opacity-80">STREAK 🔥</span>
+</div>
+</div>
+</section>
+<!-- Review Section -->
+<section class="relative z-10 px-margin-mobile mb-xl">
+<button class="w-full bg-surface-container-high rounded-xl p-md flex items-center justify-between shadow-sm hover:shadow-md transition-shadow">
+<div class="flex items-center gap-sm">
+<div class="w-10 h-10 bg-primary-container/10 rounded-full flex items-center justify-center">
+<span class="material-symbols-outlined text-primary">menu_book</span>
+</div>
+<div class="text-left">
+<p class="font-headline-md text-body-md text-on-surface">Review Mistakes</p>
+<p class="font-tamil-subtext text-[12px] text-on-surface-variant">தவறுகளை ஆராய்க (3 to review)</p>
+</div>
+</div>
+<span class="material-symbols-outlined text-on-surface-variant">chevron_right</span>
+</button>
+</section>
+<!-- Bottom Actions -->
+<section class="relative z-10 px-margin-mobile mt-auto pb-xl flex flex-col gap-sm">
+<button class="w-full bg-primary text-on-primary font-headline-md text-body-lg py-sm rounded-full shadow-md flex items-center justify-center gap-xs active:translate-y-px transition-transform">
+<span class="material-symbols-outlined text-[20px]">replay</span>
+      Play Again
+    </button>
+<button class="w-full bg-surface text-primary font-headline-md text-body-md py-sm rounded-full shadow-sm flex items-center justify-center gap-xs active:translate-y-px transition-transform">
+      Back to Lobby
+    </button>
+</section>
+</div>
+<script>
+  // Simple CSS particle animation for confetti
+  const container = document.getElementById('confetti-container');
+  const colors = ['#4f46e5', '#6ffbbe', '#ffb95f', '#ba1a1a'];
+  
+  for(let i=0; i<30; i++) {
+    const confetti = document.createElement('div');
+    confetti.className = 'absolute rounded-sm opacity-80';
+    confetti.style.width = Math.random() * 8 + 4 + 'px';
+    confetti.style.height = Math.random() * 16 + 8 + 'px';
+    confetti.style.backgroundColor = colors[Math.floor(Math.random() * colors.length)];
+    confetti.style.left = Math.random() * 100 + 'vw';
+    confetti.style.top = -20 + 'px';
+    
+    // Randomize fall
+    const duration = Math.random() * 3 + 2;
+    const delay = Math.random() * 2;
+    
+    confetti.animate([
+      { transform: `translate3d(0,0,0) rotate(0deg)`, opacity: 1 },
+      { transform: `translate3d(${Math.random()*100-50}px, 100vh, 0) rotate(${Math.random()*360}deg)`, opacity: 0 }
+    ], {
+      duration: duration * 1000,
+      delay: delay * 1000,
+      iterations: Infinity,
+      easing: 'cubic-bezier(.37,0,.63,1)'
+    });
+    
+    container.appendChild(confetti);
+  }
+</script></main><footer class="fixed bottom-0 w-full z-50 pb-safe bg-surface/90 backdrop-blur-xl px-margin-mobile h-24 flex items-center justify-between"><button class="flex-1 h-14 bg-error/10 text-error font-label-caps text-label-caps rounded-xl flex items-center justify-center gap-sm"><span class="material-symbols-outlined">logout</span> LEAVE ROOM </button></footer></body></html>

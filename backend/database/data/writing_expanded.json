@@ -1,0 +1,202 @@
+[
+  {
+    "id": "wri_wts_bio_data",
+    "title": "Bio-Data & Job Application (Part IV)",
+    "tamil_title": "சுயவிவரக் குறிப்பு & வேலை விண்ணப்பம்",
+    "prompt_type": "letter",
+    "level_id": "B1",
+    "min_words": 120,
+    "instructions": "You are Kavitha R., 24, of 12, Gandhi Street, Thanjavur. You saw an advertisement in The Hindu for the post of Junior Accountant at Bharath Textiles, Coimbatore. Write a letter of application, and attach your bio-data with the headings: Name, Father's Name, Date of Birth, Address, Educational Qualification, Experience, Languages Known and References.",
+    "sample_answer": "12, Gandhi Street,\nThanjavur - 613001.\n15 August 2025.\n\nTo\nThe Manager,\nBharath Textiles,\nCoimbatore - 641001.\n\nSir,\n\nSub: Application for the post of Junior Accountant - reg.\nRef: Advertisement in The Hindu dated 10 August 2025.\n\nWith reference to your advertisement cited above, I wish to apply for the post of Junior Accountant in your esteemed concern. I have completed my B.Com. degree with first class and have two years of experience in accounts work. I am confident that my qualification and experience will enable me to discharge my duties to your satisfaction.\n\nMy bio-data is enclosed for your kind perusal. If given an opportunity, I assure you of my sincere and dedicated service.\n\nThanking you,\n\nYours faithfully,\nR. Kavitha\n\nEncl: Bio-data\n\nBIO-DATA\n\nName             : Kavitha R.\nFather's Name    : Ramanathan K.\nDate of Birth    : 12 June 2001\nAddress          : 12, Gandhi Street, Thanjavur - 613001\nQualification    : B.Com., Bharathidasan University, 2022 (First Class)\nExperience       : 2 years as Accounts Assistant, Sri Balaji Traders, Thanjavur\nLanguages Known  : Tamil, English\nReferences       : 1. Dr. S. Meena, Head of Commerce, Govt. Arts College, Thanjavur\n                   2. Mr. P. Kumar, Proprietor, Sri Balaji Traders, Thanjavur\n\nPlace : Thanjavur\nDate  : 15 August 2025                                    Signature\n                                                          (R. Kavitha)"
+  },
+  {
+    "id": "wri_wts_leave_letter",
+    "title": "Formal Leave Letter to the Headmaster",
+    "tamil_title": "தலைமையாசிரியருக்கு விடுப்புக் கடிதம்",
+    "prompt_type": "letter",
+    "level_id": "A2",
+    "min_words": 80,
+    "instructions": "Write a formal letter to your Headmaster requesting three days of leave to attend your sister's wedding. Follow the correct format: sender's address, date, receiver's address, subject, salutation, body, subscription and signature.",
+    "sample_answer": "From\nS. Arun,\nXI - A,\nGovernment Higher Secondary School,\nTiruvarur.\n\nTo\nThe Headmaster,\nGovernment Higher Secondary School,\nTiruvarur.\n\nSir,\n\nSub: Requesting three days of leave - reg.\n\nI respectfully request you to grant me leave for three days from 18 August 2025 to 20 August 2025. My sister's wedding is to be held at our native village during these days, and my presence is required for the family functions.\n\nI shall complete the lessons and assignments missed during my absence. Kindly grant me leave for the said period.\n\nThanking you,\n\nYours obediently,\nS. Arun\n\nPlace : Tiruvarur\nDate  : 16 August 2025"
+  },
+  {
+    "id": "wri_wts_notice_writing",
+    "title": "Notice Writing (Part III)",
+    "tamil_title": "அறிவிப்பு எழுதுதல்",
+    "prompt_type": "paragraph",
+    "level_id": "B1",
+    "min_words": 60,
+    "instructions": "You are the Secretary of the English Literary Association of your school. Write a notice in not more than 50 words informing students about an inter-class elocution competition. Include the name of the institution, the word NOTICE, the date, a heading, the body and your signature with designation.",
+    "sample_answer": "GOVERNMENT HIGHER SECONDARY SCHOOL, MADURAI\nENGLISH LITERARY ASSOCIATION\n\nNOTICE\n\n20 August 2025\n\nINTER-CLASS ELOCUTION COMPETITION\n\nAn inter-class elocution competition will be held on 28 August 2025 at 2.00 p.m. in the school auditorium. The topic is 'Reading Habits among Students'. Each speaker will be given four minutes. Interested students may give their names to the undersigned on or before 25 August 2025.\n\nR. Divya\nSecretary,\nEnglish Literary Association"
+  },
+  {
+    "id": "wri_wts_email_principal",
+    "title": "Email Writing (Part III)",
+    "tamil_title": "மின்னஞ்சல் எழுதுதல்",
+    "prompt_type": "email",
+    "level_id": "B1",
+    "min_words": 70,
+    "instructions": "Write an email to the Principal of your school requesting permission to organise a blood donation camp on the school premises. Use the correct email format: To, Subject, Salutation, Body and Signature.",
+    "sample_answer": "To      : principal.ghss.madurai@gmail.com\nSubject : Permission to organise a blood donation camp\n\nRespected Sir,\n\nOn behalf of the Red Ribbon Club of our school, I request your kind permission to organise a blood donation camp on the school premises on 12 September 2025 between 9.00 a.m. and 1.00 p.m.\n\nThe Government Hospital, Madurai, has agreed to send a medical team with the necessary equipment. Around sixty students of the higher secondary classes and several teachers have volunteered to donate. We require the use of the assembly hall and permission to display a banner at the school entrance.\n\nWe assure you that classes will not be disturbed and that the hall will be left clean.\n\nThanking you,\n\nYours obediently,\nM. Praveen\nSecretary, Red Ribbon Club\nXI - B"
+  },
+  {
+    "id": "wri_wts_dialogue_writing",
+    "title": "Dialogue Writing (Part III)",
+    "tamil_title": "உரையாடல் எழுதுதல்",
+    "prompt_type": "story",
+    "level_id": "B1",
+    "min_words": 70,
+    "instructions": "Write a dialogue of at least six exchanges between a librarian and a student who wants to borrow a book that is already issued to someone else.",
+    "sample_answer": "Student   : Good morning, madam. I am looking for 'The Wings of Fire'.\nLibrarian : Good morning. Let me check. I am sorry, that copy was issued yesterday.\nStudent   : Oh. When will it be returned, madam?\nLibrarian : It is due on the twenty-fifth. Shall I reserve it for you?\nStudent   : Yes, please. My project is due at the end of the month.\nLibrarian : Then let me suggest something. We have a shorter biography of Dr. Kalam on the same shelf.\nStudent   : That would help me start, madam. May I borrow it today?\nLibrarian : Certainly. Please sign here, and I will send you a message when the other book comes back.\nStudent   : Thank you very much, madam.\nLibrarian : You are welcome. Do return it within a fortnight."
+  },
+  {
+    "id": "wri_wts_process_description",
+    "title": "Process Description (Part III)",
+    "tamil_title": "செயல்முறை விளக்கம்",
+    "prompt_type": "paragraph",
+    "level_id": "B1",
+    "min_words": 80,
+    "instructions": "Describe the process of preparing filter coffee in about 80 words. Use the passive voice and sequence words such as first, then, next, after that and finally.",
+    "sample_answer": "Filter coffee is prepared in a simple but careful sequence. First, two spoons of freshly ground coffee powder are placed in the upper chamber of the stainless steel filter and pressed down gently with the disc. Then boiling water is poured over it and the lid is closed. The filter is left undisturbed for about fifteen minutes, during which the decoction collects drop by drop in the lower chamber. Next, milk is boiled separately and sweetened with sugar. After that, one part of decoction is mixed with three parts of hot milk. Finally, the coffee is poured between a tumbler and a dabara several times until a thick froth is formed, and it is served hot."
+  },
+  {
+    "id": "wri_wts_note_making",
+    "title": "Note-Making and Summary Writing (Part IV)",
+    "tamil_title": "குறிப்பெடுத்தல் & சுருக்கம் எழுதுதல்",
+    "prompt_type": "paragraph",
+    "level_id": "B2",
+    "min_words": 100,
+    "instructions": "Read the passage 'The Water Crisis in Tamil Nadu' in the Reading section. Make notes on it using a title, headings, sub-headings and recognisable abbreviations, and then write a summary of about 80 words.",
+    "sample_answer": "TITLE: WATER CRISIS IN TAMIL NADU\n\n1. The problem\n   1.1 Rain from NE monsoon, Oct-Dec\n   1.2 Falls in heavy bursts, runs off to sea\n   1.3 Shortage is of storage, not rainfall\n\n2. Traditional system\n   2.1 Temple tanks, ooranis, channels\n   2.2 Each tank caught rain from small catchment\n   2.3 Slowly recharged nearby wells\n\n3. What went wrong\n   3.1 Tanks built over or silted up\n   3.2 Borewells replaced tanks\n   3.3 Pumping faster than recharge -> aquifer depletion\n\n4. A working remedy\n   4.1 Chennai rainwater harvesting compulsory, 2003\n   4.2 Water levels rose; salinity of coastal wells fell\n\nABBREVIATIONS USED: NE - north-east; Oct - October; Dec - December\n\nSUMMARY\n\nTamil Nadu's water problem is one of storage rather than rainfall. The north-east monsoon delivers heavy rain between October and December, but most of it runs off into the sea. Traditional temple tanks and ooranis once caught this rain and recharged the surrounding wells. As these tanks were built over or silted up, borewells replaced them and groundwater was pumped faster than it could be replenished. Chennai's compulsory rainwater harvesting rule of 2003 raised water levels and reduced the salinity of coastal wells, showing that conservation works."
+  },
+  {
+    "id": "wri_wts_essay_reading_habit",
+    "title": "General Essay — Reading Habits among Students",
+    "tamil_title": "பொதுக் கட்டுரை — மாணவர்களின் வாசிப்புப் பழக்கம்",
+    "prompt_type": "opinion",
+    "level_id": "B2",
+    "min_words": 150,
+    "instructions": "Write an essay of about 150 words on 'The Declining Reading Habit among Students'. Use a clear introduction, two or three body paragraphs with reasons and examples, and a conclusion with a suggestion.",
+    "sample_answer": "Reading was once the chief pleasure of a student's free hour. Today the same hour belongs to a screen, and the habit of reading a whole book is quietly disappearing.\n\nThe first reason is availability. A short video demands nothing of the viewer, while a book asks for patience and attention. When the easier option is always within reach, the harder one is rarely chosen. The second reason is the examination system itself. Students are trained to read guides and question banks, which give answers without giving the pleasure of discovery. What is read for marks alone is forgotten once the marks are obtained.\n\nThe loss is real. Reading builds vocabulary, lengthens attention and, most importantly, allows a young person to live for a while inside another mind.\n\nThe remedy need not be grand. A fixed twenty minutes each day, a small class library, and a teacher who reads aloud with enjoyment can restore in a year what neglect has taken away.\n"
+  },
+  {
+    "id": "wri_wts_essay_social_media",
+    "title": "General Essay — Social Media: Boon or Bane",
+    "tamil_title": "பொதுக் கட்டுரை — சமூக ஊடகம்: நன்மையா தீமையா",
+    "prompt_type": "opinion",
+    "level_id": "B2",
+    "min_words": 150,
+    "instructions": "Write a balanced essay of about 150 words on 'Social Media: Boon or Bane'. Present both sides fairly before stating your own view.",
+    "sample_answer": "Few inventions have divided opinion as sharply as social media. To some it is the greatest democratiser of our time; to others, a thief of attention and peace.\n\nThe case in its favour is strong. A student in a village can now hear a lecture from a professor she will never meet. Farmers check prices before they load their lorries. During floods and cyclones, rescue has reached people because a message travelled faster than an official order.\n\nThe case against it is equally serious. The same speed carries rumour as efficiently as news. Attention is fragmented, sleep is shortened, and young people measure their worth against edited versions of other people's lives.\n\nMy own view is that the fault lies less in the tool than in the absence of limits. Used for thirty deliberate minutes, social media is a library and a marketplace. Used without limit, it becomes the master rather than the servant.\n"
+  },
+  {
+    "id": "wri_wts_story_expansion",
+    "title": "Story Expansion from Hints (Part IV)",
+    "tamil_title": "குறிப்புகளிலிருந்து கதை விரிவாக்கம்",
+    "prompt_type": "story",
+    "level_id": "B1",
+    "min_words": 120,
+    "instructions": "Expand the following hints into a readable story and give it a suitable title. Add a moral. HINTS: A thirsty crow — flies far — finds a pitcher — water very low — cannot reach — sees pebbles — drops them one by one — water rises — drinks — flies away happily.",
+    "sample_answer": "TITLE: WHERE THERE IS A WILL, THERE IS A WAY\n\nIt was a burning afternoon in May, and a crow had been flying since morning in search of water. Every pond he passed had dried into cracked mud, and his throat had grown so parched that he could hardly caw.\n\nAt last, in the courtyard of a deserted house, he saw a pitcher. His heart lifted, and he flew down at once. But when he looked inside, his hope sank: the water lay far below, barely covering the bottom, and however far he stretched his beak, he could not reach it.\n\nHe was about to fly away when he noticed a heap of small pebbles nearby. An idea came to him. He picked up a pebble, dropped it into the pitcher, and went back for another. Again and again he did this, and slowly, with each pebble, the water crept upward.\n\nAt last it rose to the neck of the pitcher. The crow drank deeply, ruffled his feathers, and flew away in the cool of the evening.\n\nMORAL: Patience and presence of mind can solve what strength alone cannot.\n"
+  },
+  {
+    "id": "wri_wts_headline_expansion",
+    "title": "Headline Expansion (Part III)",
+    "tamil_title": "தலைப்புச் செய்தி விரிவாக்கம்",
+    "prompt_type": "paragraph",
+    "level_id": "B1",
+    "min_words": 50,
+    "instructions": "Expand each of the following newspaper headlines into a complete sentence: (a) HEAVY RAIN LASHES DELTA DISTRICTS (b) SCHOOL STUDENT WINS NATIONAL CHESS TITLE (c) NEW BUS TERMINUS OPENED IN MADURAI",
+    "sample_answer": "(a) Heavy rain lashed the delta districts of Tamil Nadu, and normal life was affected in Thanjavur, Tiruvarur and Nagapattinam.\n\n(b) A higher secondary school student from Coimbatore has won the national chess title after defeating the defending champion in the final round.\n\n(c) A new bus terminus was opened in Madurai on Monday by the Chief Minister, and it is expected to ease traffic congestion in the city centre.\n\nNOTE ON METHOD: A headline drops articles, auxiliaries and often the tense marker. To expand it, restore the articles (a, an, the), supply the missing auxiliary verb, fix the tense, and add one detail of place, time or reason."
+  },
+  {
+    "id": "wri_wts_informal_letter",
+    "title": "Informal Letter to a Friend",
+    "tamil_title": "நண்பருக்கு தனிப்பட்ட கடிதம்",
+    "prompt_type": "letter",
+    "level_id": "A2",
+    "min_words": 90,
+    "instructions": "Write a letter to your friend describing how you spent your summer holidays, and invite him or her to visit you during the next vacation.",
+    "sample_answer": "45, Bharathi Nagar,\nSalem - 636007.\n10 June 2025.\n\nDear Bharath,\n\nI hope this letter finds you and your family in good health. It has been nearly six months since we last met, and I have been meaning to write.\n\nMy holidays passed pleasantly. I spent the first three weeks at my grandmother's house in Yercaud, where the mornings were cold enough to need a shawl. I read four books, learnt to cycle uphill without stopping, and helped my uncle in his coffee estate. In the last week I joined a spoken English course in town, which I enjoyed more than I expected.\n\nDo come and stay with us during the next vacation. Yercaud is only an hour away, and my grandmother has already asked about you.\n\nConvey my regards to your parents.\n\nYours affectionately,\nKarthik"
+  },
+  {
+    "id": "wri_wts_letter_editor",
+    "title": "Letter to the Editor",
+    "tamil_title": "ஆசிரியருக்குக் கடிதம்",
+    "prompt_type": "letter",
+    "level_id": "B2",
+    "min_words": 100,
+    "instructions": "Write a letter to the Editor of a national daily drawing attention to the poor condition of the roads in your locality and requesting action from the authorities.",
+    "sample_answer": "From\nS. Nandhini,\n18, Kamaraj Street,\nVellore - 632001.\n\nTo\nThe Editor,\nThe Hindu,\nChennai - 600002.\n\nSir,\n\nSub: Poor condition of roads in Kamaraj Street, Vellore - reg.\n\nThrough the columns of your esteemed daily, I wish to draw the attention of the authorities to the deplorable condition of the roads in our locality.\n\nThe road in Kamaraj Street has not been relaid for the past four years. It is now full of potholes, which fill with water during the monsoon and become invisible to motorists. Two schoolchildren were injured last month when a two-wheeler skidded near the junction. Elderly residents avoid walking on the road after dusk, as there is no street lighting either.\n\nRepeated petitions to the local body have brought no response. I request the authorities concerned to relay the road and restore the street lights before the north-east monsoon sets in.\n\nThanking you,\n\nYours faithfully,\nS. Nandhini\n\nPlace : Vellore\nDate  : 22 August 2025"
+  },
+  {
+    "id": "wri_wts_advertisement",
+    "title": "Writing an Advertisement",
+    "tamil_title": "விளம்பரம் எழுதுதல்",
+    "prompt_type": "paragraph",
+    "level_id": "A2",
+    "min_words": 50,
+    "instructions": "Draft a classified advertisement for a national daily announcing the sale of a second-hand two-wheeler. Keep it brief and include the essential details.",
+    "sample_answer": "FOR SALE\n\nTVS Jupiter, 2021 model, single owner, 18,000 km, insurance valid till March 2026, new tyres, excellent condition, papers clear. Price Rs. 52,000 (negotiable). Genuine buyers may contact 98xxxxxx21 between 6 p.m. and 8 p.m. Vellore.\n\nNOTE ON METHOD: A classified advertisement is written in short phrases rather than full sentences. Give the item, the model and year, the condition, the price and one clear way to make contact. Articles and auxiliary verbs are usually dropped."
+  },
+  {
+    "id": "wri_wts_paragraph_prose",
+    "title": "Prose Paragraph Answer (Part IV)",
+    "tamil_title": "உரைநடை நெடு வினா",
+    "prompt_type": "paragraph",
+    "level_id": "B2",
+    "min_words": 120,
+    "instructions": "Answer in a paragraph of about 120 words: 'The author's grandmother was a woman of quiet strength.' Justify this statement with reference to 'The Portrait of a Lady'.",
+    "sample_answer": "The grandmother in Khushwant Singh's 'The Portrait of a Lady' shows her strength not in protest but in acceptance. When the family moved to the city and the author began attending an English school, she lost her place as his teacher and companion. She did not complain. She simply withdrew to her spinning wheel, her prayers and her sparrows, and made a full life out of what remained.\n\nHer strength is equally visible in her disapproval. She objected to the music lessons at the English school and to the absence of scripture in it, and she said so once, plainly, and never argued again.\n\nEven her death is an act of will. Knowing her end was near, she stopped speaking, lay down, and told her beads until she died. The silent grief of the thousands of sparrows around her body is the author's final proof of the quiet power she held over every living thing near her."
+  },
+  {
+    "id": "wri_wts_paragraph_poetry",
+    "title": "Poetry Paragraph Answer (Part IV)",
+    "tamil_title": "கவிதை நெடு வினா",
+    "prompt_type": "paragraph",
+    "level_id": "B2",
+    "min_words": 120,
+    "instructions": "Answer in a paragraph of about 120 words: How does Gabriel Okara contrast the past and the present in the poem 'Once Upon a Time'?",
+    "sample_answer": "Gabriel Okara builds the whole poem on a contrast between a sincere past and a hollow present, and he draws it through small, physical details rather than abstract statements.\n\nIn the past, people laughed with their hearts and with their eyes. In the present they laugh only with their teeth, while their ice-block-cold eyes search behind the speaker's shadow. Once, a handshake was warm and came from the heart; now hands search empty pockets while the mouth speaks politely.\n\nThe same reversal marks the words of welcome. 'Feel at home' and 'Come again' were once invitations; now they are formulas, and the door is shut on the second visit.\n\nMost painfully, the father admits that he has himself learnt this falseness, wearing an office face, a street face and a host face. The contrast therefore ends not in accusation but in confession, as he asks his son to teach him how to laugh sincerely once more."
+  },
+  {
+    "id": "wri_wts_compere_script",
+    "title": "Compering Script for a School Function",
+    "tamil_title": "பள்ளி விழா தொகுப்புரை",
+    "prompt_type": "story",
+    "level_id": "B1",
+    "min_words": 90,
+    "instructions": "Prepare a short compering script to welcome the chief guest and introduce the first two items at your school's Annual Day function.",
+    "sample_answer": "Respected Principal, honoured Chief Guest, dear teachers and my dear friends, a very good evening to all of you.\n\nIt is my privilege to welcome you to the twenty-fifth Annual Day of our school. This evening belongs to our students, and to the teachers whose patience made it possible.\n\nIt is now my honour to welcome our Chief Guest, Dr. Meena Sundaram, District Educational Officer, a distinguished teacher and the author of two books on classroom learning. Madam, we are grateful that you have found the time to be with us this evening.\n\nWe shall begin, as we always do, with the Tamil Thai Vaazhthu. May I request everyone to rise.\n\nThank you. Our first item this evening is a folk dance presented by the students of Class XI, celebrating the harvest season of our land. Friends, please welcome them with a big round of applause."
+  },
+  {
+    "id": "wri_wts_report_writing",
+    "title": "Report Writing — A School Event",
+    "tamil_title": "நிகழ்வு அறிக்கை எழுதுதல்",
+    "prompt_type": "paragraph",
+    "level_id": "B1",
+    "min_words": 100,
+    "instructions": "You are the Secretary of the Science Club. Write a report of about 100 words on the Science Exhibition held in your school last week, for publication in the school magazine.",
+    "sample_answer": "SCIENCE EXHIBITION HELD AT GOVERNMENT HIGHER SECONDARY SCHOOL, ERODE\n\nBy R. Suresh, Secretary, Science Club\n\nA two-day Science Exhibition was held in our school on 12 and 13 August 2025 in the school auditorium. It was inaugurated by Dr. A. Ramesh, Professor of Physics, Government Arts College, Erode.\n\nSixty-four models prepared by students of Classes IX to XII were displayed under four sections: energy, environment, health and agriculture. A working model of a rainwater harvesting system by the students of Class XI attracted particular attention and was judged the best exhibit.\n\nAbout nine hundred visitors, including students from six neighbouring schools, attended over the two days. The Principal distributed the prizes at the valedictory function and announced that the exhibition would be made an annual event."
+  },
+  {
+    "id": "wri_wts_speech_writing",
+    "title": "Speech Writing — Importance of Discipline",
+    "tamil_title": "உரை எழுதுதல் — ஒழுக்கத்தின் முக்கியத்துவம்",
+    "prompt_type": "opinion",
+    "level_id": "B1",
+    "min_words": 110,
+    "instructions": "Write a short speech of about 110 words to be delivered at the school assembly on 'The Importance of Discipline in Student Life'.",
+    "sample_answer": "Respected Principal, dear teachers and my dear friends, a very good morning to all of you.\n\nI have been asked to speak this morning on the importance of discipline in student life.\n\nDiscipline is often mistaken for punishment. It is not. Discipline is simply the habit of doing what needs to be done, whether or not one feels like doing it that morning. The student who studies for one hour every day, without waiting for the examination to frighten him, has discipline.\n\nAll the great achievers we admire had this quality. Dr. Kalam rose at four to study. Mary Kom trained while her family opposed her.\n\nFriends, talent is distributed unequally, but discipline is available to every one of us. Let us begin today, with one small habit kept faithfully.\n\nThank you."
+  },
+  {
+    "id": "wri_wts_picture_description",
+    "title": "Describing a Picture or Scene",
+    "tamil_title": "காட்சி விவரணை",
+    "prompt_type": "paragraph",
+    "level_id": "A2",
+    "min_words": 80,
+    "instructions": "Describe a busy morning scene at a railway station in about 80 words. Use the present tense and appeal to more than one sense.",
+    "sample_answer": "It is half past seven, and the Madurai Junction is at its busiest. The board rattles as it changes, and a metallic voice announces the arrival of the Vaigai Express on platform three.\n\nA porter in a red shirt threads his way through the crowd with two suitcases balanced on his head. Near the tea stall, steam rises from a row of glasses, and the smell of coffee mixes with the sharper smell of engine oil.\n\nA young mother holds her son firmly by the wrist as the train slides in. For a moment the whole platform moves together, and then, just as suddenly, it is quiet again."
+  }
+]

@@ -1,0 +1,170 @@
+[
+  {
+    "id": "gram_present_simple",
+    "title": "Simple Present Tense (எளிய நிகழ்காலம்)",
+    "tamil_title": "எளிய நிகழ்காலம் — வழக்கமான செயல்கள்",
+    "level_id": "A1",
+    "category_id": "grammar",
+    "summary": "Used for universal facts, habits, routines, and scheduled events.",
+    "tamil_summary": "தினசரி வழக்கங்கள், மாறாத உண்மைகள் மற்றும் பழக்கங்களைக் குறிக்கப் பயன்படுகிறது.",
+    "rule_formula": "Positive: Subject + Base Verb (+ s/es for He/She/It)\nNegative: Subject + do/does not + Base Verb\nQuestion: Do/Does + Subject + Base Verb?",
+    "explanation": "Add '-s' or '-es' to the verb only when the subject is third-person singular (He, She, It, or a singular noun). For I, You, We, They, use the base verb unchanged.",
+    "beginner_explanation": "நான், நீ, நாம், அவர்கள் (I, You, We, They) வரும்போது வினைச்சொல்லை அப்படியே பயன்படுத்தவும் (e.g., I work). அவன், அவள், அது (He, She, It) வரும்போது வினைச்சொல்லுடன் 's' அல்லது 'es' சேர்க்க வேண்டும் (e.g., She works).",
+    "common_mistakes": "Incorrect: 'She go to school everyday.' -> Correct: 'She goes to school everyday.'\nIncorrect: 'He does not likes tea.' -> Correct: 'He does not like tea.'",
+    "order_index": 1,
+    "examples": [
+      {
+        "sentence": "The sun rises in the east.",
+        "tamil_translation": "சூரியன் கிழக்கில் உதிக்கிறது.",
+        "is_correct": 1,
+        "explanation": "Universal truth uses Simple Present."
+      },
+      {
+        "sentence": "I practice spoken English for 30 minutes every day.",
+        "tamil_translation": "நான் தினமும் 30 நிமிடங்கள் ஆங்கிலம் பேசிப் பழகுகிறேன்.",
+        "is_correct": 1,
+        "explanation": "Habitual action."
+      },
+      {
+        "sentence": "She works at a software company in Chennai.",
+        "tamil_translation": "அவள் சென்னையில் உள்ள ஒரு மென்பொருள் நிறுவனத்தில் வேலை செய்கிறாள்.",
+        "is_correct": 1,
+        "explanation": "Third person singular adds '-s'."
+      }
+    ]
+  },
+  {
+    "id": "gram_present_continuous",
+    "title": "Present Continuous Tense (தொடர் நிகழ்காலம்)",
+    "tamil_title": "தொடர் நிகழ்காலம் — இப்போது நடக்கும் செயல்கள்",
+    "level_id": "A1",
+    "category_id": "grammar",
+    "summary": "Used for actions happening right now at the moment of speech.",
+    "tamil_summary": "பேசும் இந்த நொடியில் தொடர்ந்து நடந்து கொண்டிருக்கும் செயல்களைக் குறிக்கப் பயன்படுகிறது.",
+    "rule_formula": "Subject + am/is/are + Verb(-ing)\nI -> am\nHe/She/It -> is\nYou/We/They -> are",
+    "explanation": "Always pair the appropriate form of 'to be' (am/is/are) with the present participle (-ing) form of the main verb.",
+    "beginner_explanation": "இப்போது நீங்கள் என்ன செய்து கொண்டிருக்கிறீர்கள் என்று சொல்ல: Subject + am/is/are + வினைச்சொல்(ing). உதாரணமாக: 'I am reading' (நான் படித்துக் கொண்டிருக்கிறேன்).",
+    "common_mistakes": "Incorrect: 'I am go to office.' -> Correct: 'I am going to office.'\nIncorrect: 'She is knowing the answer.' (Stative verbs like know, love, want don't usually take -ing) -> Correct: 'She knows the answer.'",
+    "order_index": 2,
+    "examples": [
+      {
+        "sentence": "I am learning English on English Mate right now.",
+        "tamil_translation": "நான் இப்போது இங்கிலீஷ் மேட்டில் ஆங்கிலம் படித்துக் கொண்டிருக்கிறேன்.",
+        "is_correct": 1,
+        "explanation": "Action happening right at this moment."
+      },
+      {
+        "sentence": "They are having lunch in the cafeteria.",
+        "tamil_translation": "அவர்கள் உணவகத்தில் மதிய உணவு சாப்பிட்டுக் கொண்டிருக்கிறார்கள்.",
+        "is_correct": 1,
+        "explanation": "They + are + verb-ing."
+      }
+    ]
+  },
+  {
+    "id": "gram_past_simple",
+    "title": "Simple Past Tense (கடந்த காலம்)",
+    "tamil_title": "கடந்த காலம் — முடிவடைந்த செயல்கள்",
+    "level_id": "A2",
+    "category_id": "grammar",
+    "summary": "Used for actions that were completed at a specific time in the past.",
+    "tamil_summary": "கடந்த காலத்தில் ஒரு குறிப்பிட்ட நேரத்தில் தொடங்கி முடிவடைந்த செயல்களைக் குறிக்கப் பயன்படுகிறது.",
+    "rule_formula": "Positive: Subject + Past Verb (V2)\nNegative: Subject + did not + Base Verb (V1)\nQuestion: Did + Subject + Base Verb (V1)?",
+    "explanation": "Regular verbs add '-ed' (walk -> walked). Irregular verbs change completely (go -> went, see -> saw, buy -> bought). In negatives and questions with 'did', the main verb reverts to base form (V1).",
+    "beginner_explanation": "நேற்று அல்லது சென்ற வாரம் நடந்த செயல்களைச் சொல்ல V2 வடிவத்தைப் பயன்படுத்துகிறோம். ஆனால் 'did' அல்லது 'did not' பயன்படுத்தும்போது எப்போதும் அடிப்படை வினைச்சொல்லை (V1) மட்டுமே பயன்படுத்த வேண்டும்.",
+    "common_mistakes": "Incorrect: 'I did not went there.' -> Correct: 'I did not go there.'\nIncorrect: 'Yesterday I have seen a movie.' -> Correct: 'Yesterday I saw a movie.'",
+    "order_index": 3,
+    "examples": [
+      {
+        "sentence": "I graduated from college in 2022.",
+        "tamil_translation": "நான் 2022 இல் கல்லூரியில் பட்டம் பெற்றேன்.",
+        "is_correct": 1,
+        "explanation": "Completed past event with specific year."
+      },
+      {
+        "sentence": "Did you attend yesterday's English workshop?",
+        "tamil_translation": "நேற்றைய ஆங்கிலப் பயிலரங்கில் நீங்கள் கலந்துகொண்டீர்களா?",
+        "is_correct": 1,
+        "explanation": "Question using Did + Subject + Base verb."
+      }
+    ]
+  },
+  {
+    "id": "gram_present_perfect",
+    "title": "Present Perfect Tense (தொடர்புள்ள கடந்த காலம்)",
+    "tamil_title": "நிகழ்காலத்துடன் தொடர்புடைய கடந்த கால நிகழ்வுகள்",
+    "level_id": "B1",
+    "category_id": "grammar",
+    "summary": "Used for past actions when the exact time is not specified or when the result affects the present.",
+    "tamil_summary": "கடந்த காலத்தில் நடந்திருந்தாலும் அதன் தாக்கம் அல்லது முடிவு தற்போது இருக்கும்போது பயன்படுகிறது.",
+    "rule_formula": "Subject + have/has + Past Participle (V3)\nI/You/We/They -> have\nHe/She/It -> has",
+    "explanation": "Use Present Perfect with 'already', 'yet', 'ever', 'never', 'just', 'since', 'for'. Do NOT use it with specific past time words like 'yesterday', 'in 2010', or 'last week'.",
+    "beginner_explanation": "நீங்கள் ஒரு செயலை செய்திருக்கிறீர்களா இல்லையா என்று அனுபவங்களைச் சொல்ல 'have/has + V3' பயன்படுத்தவும். எ.கா: 'I have visited Madurai' (நான் மதுரைக்கு சென்றிருக்கிறேன்).",
+    "common_mistakes": "Incorrect: 'I have seen him yesterday.' -> Correct: 'I saw him yesterday.'\nIncorrect: 'She has not submit the assignment.' -> Correct: 'She has not submitted the assignment.'",
+    "order_index": 4,
+    "examples": [
+      {
+        "sentence": "I have completed all my lessons for today.",
+        "tamil_translation": "இன்றைய எனது அனைத்து பாடங்களையும் நான் முடித்துவிட்டேன்.",
+        "is_correct": 1,
+        "explanation": "Action completed, result relevant now."
+      },
+      {
+        "sentence": "Have you ever spoken in English on stage?",
+        "tamil_translation": "நீங்கள் எப்போதாவது மேடையில் ஆங்கிலத்தில் பேசியிருக்கிறீர்களா?",
+        "is_correct": 1,
+        "explanation": "Asking about life experience."
+      }
+    ]
+  },
+  {
+    "id": "gram_conditionals",
+    "title": "Conditionals (நிபந்தனை வாக்கியங்கள்)",
+    "tamil_title": "நிபந்தனை வாக்கியங்கள் (If Clauses)",
+    "level_id": "B2",
+    "category_id": "grammar",
+    "summary": "Zero, First, Second, and Third conditionals describing cause and effect scenarios.",
+    "tamil_summary": "'இப்படி நடந்தால் அப்படி நடக்கும்' என்ற நிபந்தனைகளை வெளிப்படுத்தும் முறை.",
+    "rule_formula": "First Conditional: If + Present Simple, will + Base Verb\nSecond Conditional: If + Past Simple, would + Base Verb\nThird Conditional: If + Past Perfect, would have + V3",
+    "explanation": "First conditional is for real/likely future possibilities. Second conditional is for imaginary/hypothetical present situations. Third conditional is for past regrets or impossible alternative past outcomes.",
+    "beginner_explanation": "நீங்கள் நன்றாகப் பயிற்சி செய்தால் ஆங்கிலம் சரளமாகப் பேசுவீர்கள்: 'If you practice well, you will speak English fluently.'",
+    "common_mistakes": "Incorrect: 'If it will rain, we will cancel the match.' -> Correct: 'If it rains, we will cancel the match.' (Never use 'will' in the If clause).",
+    "order_index": 5,
+    "examples": [
+      {
+        "sentence": "If you practice 15 minutes daily, your fluency will improve rapidly.",
+        "tamil_translation": "நீங்கள் தினமும் 15 நிமிடங்கள் பயிற்சி செய்தால், உங்கள் பேச்சுத்திறன் வேகமாக மேம்படும்.",
+        "is_correct": 1,
+        "explanation": "First conditional real possibility."
+      },
+      {
+        "sentence": "If I were you, I would take this job offer.",
+        "tamil_translation": "நான் உங்கள் இடத்தில் இருந்திருந்தால், இந்த வேலை வாய்ப்பை ஏற்றிருப்பேன்.",
+        "is_correct": 1,
+        "explanation": "Second conditional hypothetical advice."
+      }
+    ]
+  },
+  {
+    "id": "gram_active_passive",
+    "title": "Active and Passive Voice (செய்வினை & செயப்பாட்டு வினை)",
+    "tamil_title": "செய்வினை & செயப்பாட்டு வினை",
+    "level_id": "B1",
+    "category_id": "grammar",
+    "summary": "Shifting focus from the doer of the action to the action itself or the recipient.",
+    "tamil_summary": "செயலைச் செய்தவரைக் காட்டிலும் செய்யப்பட்ட செயலுக்கு முக்கியத்துவம் அளிப்பது.",
+    "rule_formula": "Active: Subject + Verb + Object\nPassive: Object + be (am/is/are/was/were) + V3 + by + Subject",
+    "explanation": "Passive voice is frequently used in formal reports, scientific writing, and news when the agent is unknown, obvious, or less important than the action.",
+    "beginner_explanation": "அவன் கடிதம் எழுதினான் (Active: He wrote a letter) -> கடிதம் அவனால் எழுதப்பட்டது (Passive: The letter was written by him).",
+    "common_mistakes": "Incorrect: 'The email was sent by he.' -> Correct: 'The email was sent by him.'",
+    "order_index": 6,
+    "examples": [
+      {
+        "sentence": "The application was developed by our engineering team.",
+        "tamil_translation": "இந்த செயலி எங்கள் பொறியியல் குழுவால் உருவாக்கப்பட்டது.",
+        "is_correct": 1,
+        "explanation": "Passive voice focusing on the application."
+      }
+    ]
+  }
+]

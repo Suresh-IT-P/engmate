@@ -1,0 +1,68 @@
+[
+  {
+    "id": "ach_first_lesson",
+    "title": "First Step Forward",
+    "tamil_title": "முதல் படி வெற்றி",
+    "description": "Complete your very first English lesson on English Mate.",
+    "icon": "emoji_events",
+    "xp_reward": 50,
+    "badge_color": "#3525cd",
+    "category": "learning",
+    "threshold_value": 1
+  },
+  {
+    "id": "ach_streak_3",
+    "title": "Ignited Habit",
+    "tamil_title": "3 நாள் தொடர் பயிற்சி",
+    "description": "Maintain a 3-day continuous learning streak.",
+    "icon": "local_fire_department",
+    "xp_reward": 75,
+    "badge_color": "#ba1a1a",
+    "category": "streak",
+    "threshold_value": 3
+  },
+  {
+    "id": "ach_streak_7",
+    "title": "Week of Fire",
+    "tamil_title": "7 நாள் தொடர் சாதனை",
+    "description": "Complete a full 7-day learning streak without missing a day.",
+    "icon": "whatshot",
+    "xp_reward": 150,
+    "badge_color": "#e11d48",
+    "category": "streak",
+    "threshold_value": 7
+  },
+  {
+    "id": "ach_vocab_10",
+    "title": "Word Collector",
+    "tamil_title": "சொற்கள் சேகரிப்பாளர் (10 சொற்கள்)",
+    "description": "Learn and master 10 new vocabulary words.",
+    "icon": "auto_stories",
+    "xp_reward": 100,
+    "badge_color": "#684000",
+    "category": "vocabulary",
+    "threshold_value": 10
+  },
+  {
+    "id": "ach_speaking_starter",
+    "title": "Voice Champion",
+    "tamil_title": "பேச்சு வீரர்",
+    "description": "Complete your first AI speaking voice practice session.",
+    "icon": "record_voice_over",
+    "xp_reward": 100,
+    "badge_color": "#006c49",
+    "category": "speaking",
+    "threshold_value": 1
+  },
+  {
+    "id": "ach_grammar_guru",
+    "title": "Grammar Guru",
+    "tamil_title": "இலக்கண மேதை",
+    "description": "Score 100% on three grammar exercises.",
+    "icon": "psychology",
+    "xp_reward": 150,
+    "badge_color": "#4f46e5",
+    "category": "grammar",
+    "threshold_value": 3
+  }
+]

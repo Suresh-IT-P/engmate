@@ -1,0 +1,112 @@
+[
+  {
+    "id": "lsn_wts_p1_synonyms_antonyms",
+    "module_id": "mod_wts_part1",
+    "title": "1-6. Synonyms & Antonyms (சொற்களின் பொருள் & எதிர்ச்சொல்)",
+    "tamil_title": "உரைநடை 1-6 கலைச்சொற்கள் & எதிர்ச்சொற்கள்",
+    "lesson_type": "vocabulary",
+    "xp_reward": 50,
+    "duration_minutes": 15,
+    "order_index": 1
+  },
+  {
+    "id": "lsn_wts_p1_compound_and_affixes",
+    "module_id": "mod_wts_part1",
+    "title": "7-8. Compound Words & Prefixes/Suffixes",
+    "tamil_title": "கூட்டுச் சொற்கள் & முன்னொட்டு/பின்னொட்டு",
+    "lesson_type": "grammar",
+    "xp_reward": 40,
+    "duration_minutes": 12,
+    "order_index": 2
+  },
+  {
+    "id": "lsn_wts_p1_abbrev_clipped_def",
+    "module_id": "mod_wts_part1",
+    "title": "9-11. Abbreviations, Clipped Words & One-Word Definitions",
+    "tamil_title": "சுருக்கக் குறியீடுகள் & சொற்பொருள் விளக்கம்",
+    "lesson_type": "standard",
+    "xp_reward": 40,
+    "duration_minutes": 12,
+    "order_index": 3
+  },
+  {
+    "id": "lsn_wts_p1_phrasal_idioms_foreign",
+    "module_id": "mod_wts_part1",
+    "title": "12-14. Phrasal Verbs, Idioms & Foreign Phrases",
+    "tamil_title": "கூட்டு வினைகள் & மரபுத்தொடர்கள்",
+    "lesson_type": "vocabulary",
+    "xp_reward": 45,
+    "duration_minutes": 15,
+    "order_index": 4
+  },
+  {
+    "id": "lsn_wts_p1_modals_preps_tags",
+    "module_id": "mod_wts_part1",
+    "title": "15-20. Modals, Prepositions, Question Tags & Patterns",
+    "tamil_title": "Modals, Prepositions, Tags & Sentence Patterns",
+    "lesson_type": "grammar",
+    "xp_reward": 50,
+    "duration_minutes": 15,
+    "order_index": 5
+  },
+  {
+    "id": "lsn_wts_p2_poetry_appreciation",
+    "module_id": "mod_wts_part2",
+    "title": "21-26. Poetry Appreciation & Figures of Speech",
+    "tamil_title": "6 செய்யுள்களின் கவிதை வினாக்கள் & Figures of Speech",
+    "lesson_type": "standard",
+    "xp_reward": 50,
+    "duration_minutes": 15,
+    "order_index": 1
+  },
+  {
+    "id": "lsn_wts_p2_transformations",
+    "module_id": "mod_wts_part2",
+    "title": "27-30. Transformation of Sentences",
+    "tamil_title": "Direct/Indirect, Active/Passive, Simple/Compound/Complex, If-Clauses",
+    "lesson_type": "grammar",
+    "xp_reward": 60,
+    "duration_minutes": 20,
+    "order_index": 2
+  },
+  {
+    "id": "lsn_wts_p3_erc_and_prose_qa",
+    "module_id": "mod_wts_part3",
+    "title": "31-36. Poem ERC & Prose Short Answers",
+    "tamil_title": "Poem ERC & 6 Prose Short Answer QA",
+    "lesson_type": "standard",
+    "xp_reward": 50,
+    "duration_minutes": 15,
+    "order_index": 1
+  },
+  {
+    "id": "lsn_wts_p3_practical_writing",
+    "module_id": "mod_wts_part3",
+    "title": "37-40. Practical Writing & Communication Skills",
+    "tamil_title": "Dialogue, Process, Notice, Email, Headlines, Error Spotting",
+    "lesson_type": "writing",
+    "xp_reward": 55,
+    "duration_minutes": 18,
+    "order_index": 2
+  },
+  {
+    "id": "lsn_wts_p4_paragraphs_mastery",
+    "module_id": "mod_wts_part4",
+    "title": "41-43. Paragraph Answers (Prose, Poetry & Supplementary)",
+    "tamil_title": "உரைநடை, கவிதை & கதை நெடு வினாக்கள்",
+    "lesson_type": "standard",
+    "xp_reward": 60,
+    "duration_minutes": 20,
+    "order_index": 1
+  },
+  {
+    "id": "lsn_wts_p4_bio_data_and_essays",
+    "module_id": "mod_wts_part4",
+    "title": "44-47. Bio-Data, Job Application, Essays & Story Expansion",
+    "tamil_title": "வேலை விண்ணப்பம், சுயவிவரக் குறிப்பு & பொதுக் கட்டுரைகள்",
+    "lesson_type": "writing",
+    "xp_reward": 70,
+    "duration_minutes": 25,
+    "order_index": 2
+  }
+]

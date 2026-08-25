@@ -1,0 +1,496 @@
+[
+  {
+    "id": "gram_wts_future_tenses",
+    "title": "Future Tenses (எதிர்காலம்)",
+    "tamil_title": "எதிர்காலம் — will, shall, going to",
+    "level_id": "B1",
+    "category_id": "grammar",
+    "summary": "Four future forms: Simple Future, Future Continuous, Future Perfect and Future Perfect Continuous.",
+    "tamil_summary": "எதிர்காலத்தில் நடக்கும் செயல்களைக் குறிக்க நான்கு வடிவங்கள் உள்ளன.",
+    "rule_formula": "Simple Future: Subject + will/shall + V1\nFuture Continuous: Subject + will be + V1-ing\nFuture Perfect: Subject + will have + V3\nFuture Perfect Continuous: Subject + will have been + V1-ing + since/for",
+    "explanation": "Use 'will' for decisions made at the moment of speaking, promises and predictions. Use 'be going to' for plans already decided before speaking. Future Perfect shows an action that will be finished before a point in the future.",
+    "beginner_explanation": "பேசும் நேரத்தில் எடுக்கும் முடிவுக்கு 'will' பயன்படுத்தவும். ஏற்கனவே திட்டமிட்ட செயலுக்கு 'going to' பயன்படுத்தவும். எதிர்காலத்தில் ஒரு நேரத்திற்கு முன் முடியும் செயலுக்கு 'will have + V3' பயன்படுத்தவும்.",
+    "common_mistakes": "Incorrect: 'I will to call you.' -> Correct: 'I will call you.'\nIncorrect: 'She will comes tomorrow.' -> Correct: 'She will come tomorrow.'\nIncorrect: 'By 6 pm I will finish the work.' -> Correct: 'By 6 pm I will have finished the work.'",
+    "order_index": 10,
+    "examples": [
+      { "sentence": "I will help you with your English homework.", "tamil_translation": "உங்கள் ஆங்கிலப் பாடத்திற்கு நான் உதவுவேன்.", "is_correct": 1, "explanation": "A decision made while speaking uses 'will'." },
+      { "sentence": "We are going to visit Madurai next month.", "tamil_translation": "அடுத்த மாதம் நாங்கள் மதுரைக்குச் செல்லப் போகிறோம்.", "is_correct": 1, "explanation": "A plan already decided uses 'be going to'." },
+      { "sentence": "By next April, she will have completed her course.", "tamil_translation": "அடுத்த ஏப்ரலுக்குள் அவள் தன் படிப்பை முடித்திருப்பாள்.", "is_correct": 1, "explanation": "Future Perfect: finished before a future point." }
+    ]
+  },
+  {
+    "id": "gram_wts_past_continuous_perfect",
+    "title": "Past Continuous & Past Perfect (கடந்த தொடர் & முற்று காலம்)",
+    "tamil_title": "கடந்த தொடர்காலம் & கடந்த முற்றுக் காலம்",
+    "level_id": "B1",
+    "category_id": "grammar",
+    "summary": "Past Continuous shows an action in progress in the past; Past Perfect shows which of two past actions happened first.",
+    "tamil_summary": "கடந்த காலத்தில் நடந்துகொண்டிருந்த செயலுக்கு Past Continuous; இரண்டு செயல்களில் முதலில் நடந்ததற்கு Past Perfect.",
+    "rule_formula": "Past Continuous: Subject + was/were + V1-ing\nPast Perfect: Subject + had + V3\nPast Perfect Continuous: Subject + had been + V1-ing",
+    "explanation": "When two actions happened in the past, the earlier one takes 'had + V3' and the later one takes the simple past. 'While' usually introduces the continuous action and 'when' the sudden one.",
+    "beginner_explanation": "கடந்த காலத்தில் இரண்டு செயல்கள் நடந்தால், முதலில் நடந்த செயலுக்கு 'had + V3' பயன்படுத்தவும்; பின்னர் நடந்ததற்கு எளிய கடந்த காலம். 'while' தொடர்ச்சியான செயலையும், 'when' திடீர் செயலையும் குறிக்கும்.",
+    "common_mistakes": "Incorrect: 'The train had left before I reached.' is fine, but 'The train left before I had reached.' is wrong.\nIncorrect: 'I was knowing the answer.' -> Correct: 'I knew the answer.' (state verbs take no continuous form)",
+    "order_index": 11,
+    "examples": [
+      { "sentence": "While I was reading, the power went off.", "tamil_translation": "நான் படித்துக்கொண்டிருந்தபோது மின்சாரம் தடைபட்டது.", "is_correct": 1, "explanation": "'While' with the continuing action, simple past for the sudden one." },
+      { "sentence": "The bus had already left when we reached the stop.", "tamil_translation": "நாங்கள் நிறுத்தத்தை அடைந்தபோது பேருந்து ஏற்கனவே புறப்பட்டுவிட்டது.", "is_correct": 1, "explanation": "The earlier action takes 'had + V3'." },
+      { "sentence": "I was knowing him for years.", "tamil_translation": "இது தவறான வாக்கியம்.", "is_correct": 0, "explanation": "'Know' is a state verb: use 'I had known him for years.'" }
+    ]
+  },
+  {
+    "id": "gram_wts_modals",
+    "title": "Modal Verbs (துணை வினைகள்)",
+    "tamil_title": "Modals — can, could, may, must, should",
+    "level_id": "B1",
+    "category_id": "grammar",
+    "summary": "The thirteen modals express ability, permission, possibility, obligation and advice.",
+    "tamil_summary": "திறன், அனுமதி, சாத்தியம், கடமை, அறிவுரை ஆகியவற்றைக் குறிக்கும் 13 துணை வினைகள்.",
+    "rule_formula": "Subject + modal + V1 (base form)\nThe 13 modals: can, could, may, might, will, would, shall, should, must, ought to, need, dare, used to",
+    "explanation": "A modal is always followed by the base form of the verb. Modals never take '-s' for he/she/it, and two modals never appear together. 'Must' shows strong obligation, 'should' shows advice, 'may/might' show possibility, and 'can/could' show ability or permission.",
+    "beginner_explanation": "Modal-க்குப் பிறகு எப்போதும் வினைச்சொல்லின் அடிப்படை வடிவமே வரும். Modal-உடன் 's' சேர்க்கக் கூடாது; இரண்டு modals ஒன்றாக வராது. 'must' — கட்டாயம், 'should' — அறிவுரை, 'may/might' — சாத்தியம், 'can/could' — திறன் அல்லது அனுமதி.",
+    "common_mistakes": "Incorrect: 'She can sings well.' -> Correct: 'She can sing well.'\nIncorrect: 'He must to go now.' -> Correct: 'He must go now.'\nIncorrect: 'You will can do it.' -> Correct: 'You will be able to do it.'",
+    "order_index": 12,
+    "examples": [
+      { "sentence": "You should revise the poem before the exam.", "tamil_translation": "தேர்வுக்கு முன் கவிதையை மீண்டும் படிக்க வேண்டும்.", "is_correct": 1, "explanation": "'Should' gives advice." },
+      { "sentence": "Students must wear the uniform on Monday.", "tamil_translation": "திங்கட்கிழமை மாணவர்கள் சீருடை அணிய வேண்டும்.", "is_correct": 1, "explanation": "'Must' shows a strong obligation." },
+      { "sentence": "May I borrow your dictionary, sir?", "tamil_translation": "ஐயா, உங்கள் அகராதியை நான் இரவல் பெறலாமா?", "is_correct": 1, "explanation": "'May' asks for polite permission." }
+    ]
+  },
+  {
+    "id": "gram_wts_prepositions",
+    "title": "Prepositions (முன்னுருபுகள்)",
+    "tamil_title": "in, on, at, by, with, for, about",
+    "level_id": "B1",
+    "category_id": "grammar",
+    "summary": "Prepositions show the relation of a noun to time, place, direction or manner.",
+    "tamil_summary": "பெயர்ச்சொல்லுக்கும் காலம், இடம், திசை, முறை ஆகியவற்றுக்கும் உள்ள தொடர்பைக் காட்டுபவை.",
+    "rule_formula": "TIME: in + month/year/season | on + day/date | at + clock time\nPLACE: in + enclosed space | on + surface | at + exact point",
+    "explanation": "The safest way to choose is to move from the largest unit to the smallest: 'in' for large units (in May, in India), 'on' for a specific day or a surface (on Monday, on the table), 'at' for a precise point (at 6 pm, at the bus stop).",
+    "beginner_explanation": "பெரியது முதல் சிறியது வரை நினைவில் வைக்கவும்: பெரிய அளவுக்கு 'in' (in May, in India), குறிப்பிட்ட நாள் அல்லது மேற்பரப்புக்கு 'on' (on Monday, on the table), துல்லியமான இடம் அல்லது நேரத்திற்கு 'at' (at 6 pm, at the bus stop).",
+    "common_mistakes": "Incorrect: 'I will meet you in Monday.' -> Correct: 'on Monday'\nIncorrect: 'She is good in English.' -> Correct: 'She is good at English.'\nIncorrect: 'He is married with a doctor.' -> Correct: 'He is married to a doctor.'",
+    "order_index": 13,
+    "examples": [
+      { "sentence": "Our head office is at Madurai.", "tamil_translation": "எங்கள் தலைமை அலுவலகம் மதுரையில் உள்ளது.", "is_correct": 1, "explanation": "'At' marks an exact point on a map." },
+      { "sentence": "My brother will visit me in May.", "tamil_translation": "என் சகோதரன் மே மாதத்தில் என்னைச் சந்திப்பான்.", "is_correct": 1, "explanation": "'In' is used with months." },
+      { "sentence": "The book is on the table.", "tamil_translation": "அந்தப் புத்தகம் மேசையின் மேல் உள்ளது.", "is_correct": 1, "explanation": "'On' is used for surfaces." }
+    ]
+  },
+  {
+    "id": "gram_wts_articles",
+    "title": "Articles — a, an, the (சுட்டிடைச் சொற்கள்)",
+    "tamil_title": "a, an, the பயன்பாடு",
+    "level_id": "A2",
+    "category_id": "grammar",
+    "summary": "'A' and 'an' introduce something for the first time; 'the' points to something already known.",
+    "tamil_summary": "முதன்முறை குறிப்பிடும்போது 'a/an'; ஏற்கனவே தெரிந்ததைக் குறிக்க 'the'.",
+    "rule_formula": "a + consonant SOUND | an + vowel SOUND | the + already-known or unique thing",
+    "explanation": "The choice between 'a' and 'an' depends on sound, not spelling. 'An hour' takes 'an' because the h is silent; 'a university' takes 'a' because it begins with a 'yu' sound. Use 'the' for rivers, oceans, mountain ranges, newspapers and unique things like the sun.",
+    "beginner_explanation": "'a' அல்லது 'an' தேர்வு எழுத்தை அல்ல, ஒலியைப் பொறுத்தது. 'an hour' — 'h' ஒலிக்காததால் 'an'. 'a university' — 'யூ' ஒலியில் தொடங்குவதால் 'a'. ஆறுகள், கடல்கள், மலைத்தொடர்கள், நாளிதழ்கள், சூரியன் போன்ற ஒரே ஒன்றுக்கு 'the'.",
+    "common_mistakes": "Incorrect: 'He is a honest man.' -> Correct: 'an honest man'\nIncorrect: 'She is an university student.' -> Correct: 'a university student'\nIncorrect: 'Sun rises in the east.' -> Correct: 'The sun rises in the east.'",
+    "order_index": 14,
+    "examples": [
+      { "sentence": "It took me an hour to finish the essay.", "tamil_translation": "கட்டுரையை முடிக்க எனக்கு ஒரு மணி நேரம் ஆனது.", "is_correct": 1, "explanation": "'Hour' begins with a vowel sound, so 'an'." },
+      { "sentence": "My father reads The Hindu every morning.", "tamil_translation": "என் தந்தை தினமும் காலையில் தி இந்து படிப்பார்.", "is_correct": 1, "explanation": "Newspapers take 'the'." },
+      { "sentence": "He is a honest officer.", "tamil_translation": "இது தவறான வாக்கியம்.", "is_correct": 0, "explanation": "'Honest' starts with a vowel sound: 'an honest officer'." }
+    ]
+  },
+  {
+    "id": "gram_wts_question_tags",
+    "title": "Question Tags (வினா ஒட்டுகள்)",
+    "tamil_title": "isn't it? / aren't you? — வினா ஒட்டுகள்",
+    "level_id": "B1",
+    "category_id": "grammar",
+    "summary": "A short question added to the end of a statement to confirm it.",
+    "tamil_summary": "ஒரு கூற்றை உறுதிப்படுத்த இறுதியில் சேர்க்கப்படும் சிறு வினா.",
+    "rule_formula": "Positive statement -> negative tag\nNegative statement -> positive tag\nTag = auxiliary + pronoun + ?",
+    "explanation": "The tag borrows the auxiliary from the statement. If there is no auxiliary, use do/does/did. The subject in the tag is always a pronoun. Statements with 'never', 'hardly', 'seldom' and 'no' count as negative, so they take a positive tag.",
+    "beginner_explanation": "கூற்று நேர்மறையானால் ஒட்டு எதிர்மறை; கூற்று எதிர்மறையானால் ஒட்டு நேர்மறை. துணை வினை இல்லையெனில் do/does/did பயன்படுத்தவும். ஒட்டில் எப்போதும் பிரதிப்பெயரே வரும். 'never', 'hardly', 'seldom', 'no' — இவை எதிர்மறையாகக் கருதப்படும்.",
+    "common_mistakes": "Incorrect: 'She is a teacher, isn't she?' is right, but 'She is a teacher, is she?' is wrong.\nIncorrect: 'You never come late, don't you?' -> Correct: 'You never come late, do you?'\nIncorrect: 'Let us go, shall you?' -> Correct: 'Let us go, shall we?'",
+    "order_index": 15,
+    "examples": [
+      { "sentence": "Ravi plays cricket well, doesn't he?", "tamil_translation": "ரவி நன்றாகக் கிரிக்கெட் விளையாடுவான், இல்லையா?", "is_correct": 1, "explanation": "No auxiliary in the statement, so the tag uses 'does'." },
+      { "sentence": "You have not finished the work, have you?", "tamil_translation": "நீ வேலையை முடிக்கவில்லை, இல்லையா?", "is_correct": 1, "explanation": "Negative statement takes a positive tag." },
+      { "sentence": "She hardly speaks in class, does she?", "tamil_translation": "அவள் வகுப்பில் அரிதாகவே பேசுகிறாள், இல்லையா?", "is_correct": 1, "explanation": "'Hardly' is negative in meaning, so the tag is positive." }
+    ]
+  },
+  {
+    "id": "gram_wts_concord",
+    "title": "Subject-Verb Agreement (எழுவாய் - பயனிலை ஒப்புமை)",
+    "tamil_title": "Concord — எழுவாய்க்கேற்ற வினை",
+    "level_id": "B1",
+    "category_id": "grammar",
+    "summary": "The verb must agree with the subject in number and person.",
+    "tamil_summary": "எழுவாயின் ஒருமை/பன்மைக்கு ஏற்ப வினைச்சொல் அமைய வேண்டும்.",
+    "rule_formula": "Singular subject + singular verb (adds -s)\nPlural subject + plural verb (no -s)\nEach / Every / Either / Neither / One of + singular verb",
+    "explanation": "Ignore any phrase that comes between the subject and the verb. In 'Each of the cycles is damaged', the subject is 'Each', not 'cycles'. Uncountable nouns such as furniture, information, luggage and news are singular. Two subjects joined by 'and' take a plural verb.",
+    "beginner_explanation": "எழுவாய்க்கும் வினைக்கும் இடையே வரும் சொற்றொடரைப் புறக்கணிக்கவும். 'Each of the cycles is damaged' — இங்கு எழுவாய் 'Each', 'cycles' அல்ல. furniture, information, luggage, news — இவை ஒருமை. 'and' ஆல் இணைந்த இரு எழுவாய்கள் பன்மை வினை பெறும்.",
+    "common_mistakes": "Incorrect: 'Many people behaves rudely.' -> Correct: 'Many people behave rudely.'\nIncorrect: 'The furniture were displayed.' -> Correct: 'The furniture was displayed.'\nIncorrect: 'Each of the boys are ready.' -> Correct: 'Each of the boys is ready.'",
+    "order_index": 16,
+    "examples": [
+      { "sentence": "Money makes many things.", "tamil_translation": "பணம் பல காரியங்களைச் சாதிக்கும்.", "is_correct": 1, "explanation": "'Money' is singular, so the verb takes '-s'." },
+      { "sentence": "The news of the floods was shocking.", "tamil_translation": "வெள்ளம் பற்றிய செய்தி அதிர்ச்சி அளித்தது.", "is_correct": 1, "explanation": "'News' is singular despite ending in -s." },
+      { "sentence": "Each of the cycles are damaged.", "tamil_translation": "இது தவறான வாக்கியம்.", "is_correct": 0, "explanation": "'Each' is singular: 'Each of the cycles is damaged.'" }
+    ]
+  },
+  {
+    "id": "gram_wts_direct_indirect",
+    "title": "Direct and Indirect Speech (நேர்கூற்று & அயற்கூற்று)",
+    "tamil_title": "Reported Speech — கூற்று மாற்றம்",
+    "level_id": "B1",
+    "category_id": "grammar",
+    "summary": "Reporting someone's words without quoting them exactly.",
+    "tamil_summary": "ஒருவர் கூறியதை அப்படியே மேற்கோள் காட்டாமல் தெரிவிப்பது.",
+    "rule_formula": "Change 1: the reporting verb (say -> tell, ask, request)\nChange 2: the tense moves one step back\nChange 3: pronouns follow the subject\nChange 4: time and place words shift (now -> then, here -> there, today -> that day)",
+    "explanation": "When the reporting verb is in the past, the reported verb moves one tense back: present becomes past, past becomes past perfect. If the sentence states a universal truth or a habitual fact, the tense does not change.",
+    "beginner_explanation": "கூறும் வினை கடந்த காலத்தில் இருந்தால், உள்ளே உள்ள வினை ஒரு படி பின்னோக்கிச் செல்லும்: நிகழ்காலம் கடந்த காலமாகும், கடந்த காலம் Past Perfect ஆகும். மாறாத உண்மையாக இருந்தால் காலம் மாறாது.",
+    "common_mistakes": "Incorrect: 'He said that he is busy.' (past reporting verb) -> Correct: 'He said that he was busy.'\nIncorrect: 'She asked me where do I live.' -> Correct: 'She asked me where I lived.'\nIncorrect: 'He said to me...' for a request -> Correct: 'He requested me...'",
+    "order_index": 17,
+    "examples": [
+      { "sentence": "He said, \"I am writing a letter.\" -> He said that he was writing a letter.", "tamil_translation": "அவர் ஒரு கடிதம் எழுதுவதாகக் கூறினார்.", "is_correct": 1, "explanation": "Present continuous becomes past continuous." },
+      { "sentence": "The teacher said, \"The earth is round.\" -> The teacher said that the earth is round.", "tamil_translation": "பூமி உருண்டையானது என ஆசிரியர் கூறினார்.", "is_correct": 1, "explanation": "A universal truth keeps its tense." },
+      { "sentence": "She said to me, \"Please help me.\" -> She requested me to help her.", "tamil_translation": "தனக்கு உதவுமாறு அவள் என்னிடம் வேண்டினாள்.", "is_correct": 1, "explanation": "A request uses 'requested + object + to + V1'." }
+    ]
+  },
+  {
+    "id": "gram_wts_reported_qc",
+    "title": "Reported Questions, Commands & Exclamations",
+    "tamil_title": "வினா, கட்டளை & வியப்புக் கூற்று மாற்றம்",
+    "level_id": "B1",
+    "category_id": "grammar",
+    "summary": "Special rules apply when the reported sentence is a question, an order or an exclamation.",
+    "tamil_summary": "வினா, கட்டளை, வியப்பு வாக்கியங்களை மாற்றும்போது தனி விதிகள் உள்ளன.",
+    "rule_formula": "Wh-question: asked + wh-word + subject + verb\nYes/No question: asked + if/whether + subject + verb\nCommand: ordered/told + object + to + V1\nRequest: requested + object + to + V1\nExclamation: exclaimed with joy/sorrow that ...",
+    "explanation": "A reported question loses its question mark and its inverted word order: the subject comes before the verb, and do/does/did disappears. Commands and requests use an infinitive rather than a that-clause.",
+    "beginner_explanation": "அயற்கூற்று வினாவில் கேள்விக்குறி நீக்கப்படும்; எழுவாய் வினைக்கு முன் வரும்; do/does/did நீங்கும். கட்டளை மற்றும் வேண்டுகோள்களுக்கு 'to + V1' பயன்படுத்தவும்.",
+    "common_mistakes": "Incorrect: 'He asked me what is my name?' -> Correct: 'He asked me what my name was.'\nIncorrect: 'She told me to not go.' -> Correct: 'She told me not to go.'\nIncorrect: 'He asked did I come.' -> Correct: 'He asked whether I had come.'",
+    "order_index": 18,
+    "examples": [
+      { "sentence": "He asked, \"Where do you live?\" -> He asked where I lived.", "tamil_translation": "நான் எங்கு வசிக்கிறேன் என அவர் கேட்டார்.", "is_correct": 1, "explanation": "No 'do', and the subject precedes the verb." },
+      { "sentence": "The officer said, \"Stand up.\" -> The officer ordered me to stand up.", "tamil_translation": "எழுந்து நிற்குமாறு அதிகாரி எனக்குக் கட்டளையிட்டார்.", "is_correct": 1, "explanation": "A command becomes 'ordered + to + V1'." },
+      { "sentence": "She said, \"What a beautiful garden!\" -> She exclaimed with joy that it was a very beautiful garden.", "tamil_translation": "அது மிக அழகான தோட்டம் என அவள் மகிழ்ச்சியுடன் வியந்தாள்.", "is_correct": 1, "explanation": "Exclamations use 'exclaimed with joy that'." }
+    ]
+  },
+  {
+    "id": "gram_wts_sentence_types",
+    "title": "Simple, Compound and Complex Sentences",
+    "tamil_title": "எளிய, கூட்டு & கலவை வாக்கியங்கள்",
+    "level_id": "B1",
+    "category_id": "grammar",
+    "summary": "Sentences are classified by how many clauses they contain and how those clauses join.",
+    "tamil_summary": "வாக்கியங்கள் அவற்றில் உள்ள கிளைவாக்கியங்களின் எண்ணிக்கையால் வகைப்படுத்தப்படுகின்றன.",
+    "rule_formula": "Simple: one finite verb\nCompound: two main clauses + and / but / or / so / yet\nComplex: one main clause + a subordinate clause (because, although, when, if, that, who, which)",
+    "explanation": "To turn a simple sentence into a complex one, expand a phrase into a clause with a subordinating conjunction. To make it compound, split it into two independent clauses joined by a coordinating conjunction. The meaning must stay exactly the same.",
+    "beginner_explanation": "எளிய வாக்கியத்தில் ஒரே ஒரு முற்று வினை இருக்கும். கூட்டு வாக்கியத்தில் and, but, or, so ஆல் இணைந்த இரு தன்னிலை வாக்கியங்கள். கலவை வாக்கியத்தில் ஒரு தலைமை வாக்கியமும் because, although, when, if போன்றவற்றால் இணைந்த கிளைவாக்கியமும் இருக்கும். பொருள் மாறக்கூடாது.",
+    "common_mistakes": "Incorrect: 'Although he was tired, but he worked.' -> Correct: 'Although he was tired, he worked.'\nNever use two connectives for the same join: 'Because... so...' is wrong.",
+    "order_index": 19,
+    "examples": [
+      { "sentence": "Simple: Being ill, he did not attend school.", "tamil_translation": "உடல்நலமில்லாததால் அவன் பள்ளிக்குச் செல்லவில்லை.", "is_correct": 1, "explanation": "One finite verb: 'did not attend'." },
+      { "sentence": "Compound: He was ill, so he did not attend school.", "tamil_translation": "அவன் நோய்வாய்ப்பட்டிருந்தான், எனவே பள்ளிக்குச் செல்லவில்லை.", "is_correct": 1, "explanation": "Two main clauses joined by 'so'." },
+      { "sentence": "Complex: As he was ill, he did not attend school.", "tamil_translation": "அவன் நோய்வாய்ப்பட்டிருந்ததால் பள்ளிக்குச் செல்லவில்லை.", "is_correct": 1, "explanation": "A subordinate clause with 'as'." }
+    ]
+  },
+  {
+    "id": "gram_wts_sentence_patterns",
+    "title": "Sentence Patterns (வாக்கிய அமைப்புகள்)",
+    "tamil_title": "SVO, SVC, SVOO, SVOC அமைப்புகள்",
+    "level_id": "B1",
+    "category_id": "grammar",
+    "summary": "Every English sentence follows one of a small set of subject-verb patterns.",
+    "tamil_summary": "ஒவ்வொரு ஆங்கில வாக்கியமும் சில குறிப்பிட்ட அமைப்புகளில் ஒன்றைப் பின்பற்றுகிறது.",
+    "rule_formula": "S V — The baby smiled.\nS V O — She wrote a letter.\nS V C — He is a doctor.\nS V I O D O — She gave me a book.\nS V O C — They elected him captain.\nS V A — He lives in Chennai.",
+    "explanation": "Identify the verb first, then ask 'who?' to find the subject and 'what/whom?' to find the object. A complement renames or describes the subject or object; an adjunct adds place, time or manner and can usually be removed.",
+    "beginner_explanation": "முதலில் வினைச்சொல்லைக் கண்டறியவும். 'யார்?' எனக் கேட்டால் எழுவாய் கிடைக்கும்; 'எதை / யாரை?' எனக் கேட்டால் செயப்படுபொருள் கிடைக்கும். Complement என்பது எழுவாயையோ செயப்படுபொருளையோ விளக்கும். Adjunct என்பது இடம், காலம், முறையைக் குறிக்கும்; அதை நீக்கினாலும் வாக்கியம் நிற்கும்.",
+    "common_mistakes": "Do not confuse an object with a complement: in 'He is a doctor', 'a doctor' is a complement (it renames 'he'), not an object.",
+    "order_index": 20,
+    "examples": [
+      { "sentence": "She gave me a beautiful gift. (S V IO DO)", "tamil_translation": "அவள் எனக்கு அழகான பரிசு கொடுத்தாள்.", "is_correct": 1, "explanation": "'me' is the indirect object, 'a beautiful gift' the direct object." },
+      { "sentence": "The students elected Ravi their leader. (S V O C)", "tamil_translation": "மாணவர்கள் ரவியைத் தங்கள் தலைவராகத் தேர்ந்தெடுத்தனர்.", "is_correct": 1, "explanation": "'their leader' completes the meaning of the object." },
+      { "sentence": "My grandmother lives in a village. (S V A)", "tamil_translation": "என் பாட்டி ஒரு கிராமத்தில் வசிக்கிறார்.", "is_correct": 1, "explanation": "'in a village' is an adjunct of place." }
+    ]
+  },
+  {
+    "id": "gram_wts_degrees",
+    "title": "Degrees of Comparison (ஒப்பீட்டு நிலைகள்)",
+    "tamil_title": "Positive, Comparative, Superlative",
+    "level_id": "A2",
+    "category_id": "grammar",
+    "summary": "Adjectives change form to compare two or more things.",
+    "tamil_summary": "இரண்டு அல்லது அதற்கு மேற்பட்டவற்றை ஒப்பிட உரிச்சொற்கள் வடிவம் மாறும்.",
+    "rule_formula": "Positive: as + adjective + as\nComparative: adjective + -er / more + than\nSuperlative: the + adjective + -est / the most",
+    "explanation": "Short adjectives add -er and -est; longer ones take 'more' and 'most'. Never use both together. When changing between degrees, the meaning must remain identical — this is a common Part II transformation question.",
+    "beginner_explanation": "சிறிய உரிச்சொற்களுக்கு -er, -est சேர்க்கவும்; நீளமானவற்றுக்கு more, most பயன்படுத்தவும். இரண்டையும் சேர்த்துப் பயன்படுத்தக் கூடாது. நிலைகளை மாற்றும்போது பொருள் மாறக்கூடாது.",
+    "common_mistakes": "Incorrect: 'She is more taller than me.' -> Correct: 'She is taller than me.'\nIncorrect: 'This is the most best book.' -> Correct: 'This is the best book.'",
+    "order_index": 21,
+    "examples": [
+      { "sentence": "Superlative: Kanchana is the tallest girl in the class.", "tamil_translation": "வகுப்பிலேயே காஞ்சனா தான் மிக உயரமானவள்.", "is_correct": 1, "explanation": "Comparing one with all others." },
+      { "sentence": "Comparative: Kanchana is taller than any other girl in the class.", "tamil_translation": "வகுப்பில் உள்ள மற்ற எந்தப் பெண்ணையும் விட காஞ்சனா உயரமானவள்.", "is_correct": 1, "explanation": "Same meaning in the comparative degree." },
+      { "sentence": "Positive: No other girl in the class is as tall as Kanchana.", "tamil_translation": "வகுப்பில் வேறு எந்தப் பெண்ணும் காஞ்சனாவைப் போல் உயரமானவள் அல்ல.", "is_correct": 1, "explanation": "Same meaning in the positive degree." }
+    ]
+  },
+  {
+    "id": "gram_wts_relative_clauses",
+    "title": "Relative Clauses (தொடர்புக் கிளைவாக்கியங்கள்)",
+    "tamil_title": "who, whom, whose, which, that",
+    "level_id": "B1",
+    "category_id": "grammar",
+    "summary": "A relative clause adds information about a noun using who, whom, whose, which or that.",
+    "tamil_summary": "பெயர்ச்சொல்லைப் பற்றிய கூடுதல் தகவலைத் தரும் கிளைவாக்கியம்.",
+    "rule_formula": "who — subject, people | whom — object, people | whose — possession | which — things | that — people or things",
+    "explanation": "Place the relative pronoun immediately after the noun it describes. Use 'who' when it acts as the subject of its clause and 'whom' when it acts as the object. Two short sentences can be combined into one complex sentence with a relative pronoun.",
+    "beginner_explanation": "தொடர்புப் பிரதிப்பெயரை அது விளக்கும் பெயர்ச்சொல்லுக்கு அடுத்ததாக வைக்கவும். எழுவாயாக இருந்தால் 'who'; செயப்படுபொருளாக இருந்தால் 'whom'. இரு சிறு வாக்கியங்களை ஒரே கலவை வாக்கியமாக இணைக்கலாம்.",
+    "common_mistakes": "Incorrect: 'The boy which won the prize.' -> Correct: 'The boy who won the prize.'\nIncorrect: 'This is the book what I bought.' -> Correct: 'This is the book that I bought.'",
+    "order_index": 22,
+    "examples": [
+      { "sentence": "The girl who won the essay contest is my sister.", "tamil_translation": "கட்டுரைப் போட்டியில் வென்ற பெண் என் சகோதரி.", "is_correct": 1, "explanation": "'Who' is the subject of 'won'." },
+      { "sentence": "This is the pen which my father gave me.", "tamil_translation": "இது என் தந்தை எனக்குக் கொடுத்த பேனா.", "is_correct": 1, "explanation": "'Which' refers to a thing." },
+      { "sentence": "I met a farmer whose fields were flooded.", "tamil_translation": "வயல்கள் வெள்ளத்தில் மூழ்கிய ஒரு விவசாயியை நான் சந்தித்தேன்.", "is_correct": 1, "explanation": "'Whose' shows possession." }
+    ]
+  },
+  {
+    "id": "gram_wts_gerund_infinitive",
+    "title": "Gerund, Infinitive and Participle",
+    "tamil_title": "Gerund, Infinitive, Participle வேறுபாடு",
+    "level_id": "B2",
+    "category_id": "grammar",
+    "summary": "Three verb forms that behave like nouns or adjectives.",
+    "tamil_summary": "பெயர்ச்சொல்லாகவோ உரிச்சொல்லாகவோ செயல்படும் மூன்று வினை வடிவங்கள்.",
+    "rule_formula": "Gerund: V-ing used as a noun\nInfinitive: to + V1\nParticiple: V-ing (present) or V3 (past) used as an adjective",
+    "explanation": "A gerund names an activity and can be the subject of a sentence. An infinitive expresses purpose. A participle describes a noun. Prepositions are always followed by a gerund, never by an infinitive.",
+    "beginner_explanation": "Gerund என்பது செயலைப் பெயராகக் குறிக்கும், வாக்கியத்தின் எழுவாயாக வரலாம். Infinitive நோக்கத்தைக் குறிக்கும். Participle பெயர்ச்சொல்லை விளக்கும். முன்னுருபுக்குப் பிறகு எப்போதும் Gerund-ஏ வரும், Infinitive வராது.",
+    "common_mistakes": "Incorrect: 'I am fond of to read.' -> Correct: 'I am fond of reading.'\nIncorrect: 'He is used to walk daily.' -> Correct: 'He is used to walking daily.'",
+    "order_index": 23,
+    "examples": [
+      { "sentence": "Swimming is a good exercise.", "tamil_translation": "நீச்சல் ஒரு நல்ல உடற்பயிற்சி.", "is_correct": 1, "explanation": "Gerund acting as the subject." },
+      { "sentence": "She went to the library to borrow a book.", "tamil_translation": "புத்தகம் இரவல் பெற அவள் நூலகத்திற்குச் சென்றாள்.", "is_correct": 1, "explanation": "Infinitive of purpose." },
+      { "sentence": "The crying child was comforted by his mother.", "tamil_translation": "அழுதுகொண்டிருந்த குழந்தையை அவன் தாய் தேற்றினாள்.", "is_correct": 1, "explanation": "Present participle used as an adjective." }
+    ]
+  },
+  {
+    "id": "gram_wts_linkers",
+    "title": "Linkers and Connectors (இணைப்புச் சொற்கள்)",
+    "tamil_title": "however, therefore, although, moreover",
+    "level_id": "B1",
+    "category_id": "grammar",
+    "summary": "Words that join ideas and show the logical relation between them.",
+    "tamil_summary": "கருத்துகளை இணைத்து அவற்றுக்கிடையேயான தொடர்பைக் காட்டும் சொற்கள்.",
+    "rule_formula": "Addition: and, moreover, besides, furthermore\nContrast: but, however, although, nevertheless\nCause: because, since, as\nResult: so, therefore, hence, thus\nSequence: first, then, finally",
+    "explanation": "Choose the linker by the relation you want to show, then check the punctuation: 'however' and 'therefore' usually follow a full stop or semicolon and take a comma; 'although' and 'because' join clauses directly.",
+    "beginner_explanation": "எந்தத் தொடர்பைக் காட்ட வேண்டுமோ அதற்கேற்ற இணைப்புச் சொல்லைத் தேர்ந்தெடுக்கவும். 'however', 'therefore' — முற்றுப்புள்ளிக்குப் பின் வந்து காற்புள்ளி பெறும். 'although', 'because' — கிளைவாக்கியங்களை நேரடியாக இணைக்கும்.",
+    "common_mistakes": "Incorrect: 'Although he was tired, but he continued.' -> Correct: drop 'but'.\nIncorrect: 'He was late, however, the bus had gone.' -> Correct: 'He was late; however, the bus had gone.'",
+    "order_index": 24,
+    "examples": [
+      { "sentence": "She studied hard; therefore, she scored well.", "tamil_translation": "அவள் கடினமாகப் படித்தாள்; எனவே நல்ல மதிப்பெண் பெற்றாள்.", "is_correct": 1, "explanation": "'Therefore' shows a result." },
+      { "sentence": "Although it rained heavily, the match continued.", "tamil_translation": "கனமழை பெய்தபோதிலும் ஆட்டம் தொடர்ந்தது.", "is_correct": 1, "explanation": "'Although' shows contrast without 'but'." },
+      { "sentence": "The room was small; moreover, it was poorly lit.", "tamil_translation": "அறை சிறியதாக இருந்தது; மேலும், வெளிச்சமும் குறைவாக இருந்தது.", "is_correct": 1, "explanation": "'Moreover' adds a further point." }
+    ]
+  },
+  {
+    "id": "gram_wts_prefix_suffix",
+    "title": "Prefixes and Suffixes (முன்னொட்டு & பின்னொட்டு)",
+    "tamil_title": "un-, dis-, mis- / -able, -ment, -ous",
+    "level_id": "A2",
+    "category_id": "vocabulary",
+    "summary": "Small units added before or after a root word to change its meaning or word class.",
+    "tamil_summary": "வேர்ச்சொல்லுக்கு முன்னும் பின்னும் சேர்க்கப்பட்டு பொருளையோ சொல்வகையையோ மாற்றும் அசைகள்.",
+    "rule_formula": "Prefix + root -> changes MEANING (un + tidy = untidy)\nRoot + suffix -> changes WORD CLASS (cricket + er = cricketer)",
+    "explanation": "Common prefixes are un-, in-, im-, il-, ir-, dis-, mis-, non-, pre-, en-. Common suffixes are -able, -ous, -ing, -or, -er, -ment, -ance, -ful, -ity, -ist, -ly. Choose the negative prefix that matches the first letter of the root: il- before l, im- before m/p, ir- before r.",
+    "beginner_explanation": "முன்னொட்டு பொருளை மாற்றும் (un + tidy = untidy). பின்னொட்டு சொல்வகையை மாற்றும் (cricket + er = cricketer). எதிர்மறை முன்னொட்டு வேர்ச்சொல்லின் முதல் எழுத்தைப் பொறுத்தது: l-க்கு முன் il-, m/p-க்கு முன் im-, r-க்கு முன் ir-.",
+    "common_mistakes": "Incorrect: 'unpossible' -> Correct: 'impossible'\nIncorrect: 'unlegal' -> Correct: 'illegal'\nIncorrect: 'unregular' -> Correct: 'irregular'",
+    "order_index": 25,
+    "examples": [
+      { "sentence": "The instructions were inaudible in the noisy hall.", "tamil_translation": "சத்தமான அரங்கில் அறிவுறுத்தல்கள் கேட்கவில்லை.", "is_correct": 1, "explanation": "'in-' + 'audible' = not able to be heard." },
+      { "sentence": "His achievement made the whole school proud.", "tamil_translation": "அவனது சாதனை பள்ளி முழுவதையும் பெருமைப்படுத்தியது.", "is_correct": 1, "explanation": "'achieve' + '-ment' turns a verb into a noun." },
+      { "sentence": "She was irresponsible about her duties.", "tamil_translation": "அவள் தன் கடமைகளில் பொறுப்பற்றவளாக இருந்தாள்.", "is_correct": 1, "explanation": "'ir-' is used before a root beginning with r." }
+    ]
+  },
+  {
+    "id": "gram_wts_compound_words",
+    "title": "Compound Words (கூட்டுச் சொற்கள்)",
+    "tamil_title": "கூட்டுச் சொற்களின் அமைப்பு",
+    "level_id": "A2",
+    "category_id": "vocabulary",
+    "summary": "Two words joined to form a single word with a new meaning.",
+    "tamil_summary": "இரு சொற்கள் இணைந்து புதிய பொருள் தரும் ஒரே சொல்லாக அமைவது.",
+    "rule_formula": "Noun + Noun: mantelpiece, toll gate\nAdjective + Noun: whiteboard, blackboard\nGerund + Noun: washing machine, swimming pool\nVerb + Noun: breakwater",
+    "explanation": "Part I asks both for the missing half of a compound word and for the word classes that combine to form it. Learn the pattern, not just the word: 'whitewash' is Adjective + Verb, while 'birthplace' is Noun + Noun.",
+    "beginner_explanation": "பகுதி I-இல் கூட்டுச் சொல்லின் விடுபட்ட பகுதியையும், அது எந்தச் சொல்வகைகள் இணைந்து உருவானது என்பதையும் கேட்பார்கள். சொல்லை மட்டுமல்ல, அமைப்பையும் கற்கவும்: 'whitewash' = Adjective + Verb; 'birthplace' = Noun + Noun.",
+    "common_mistakes": "Do not guess by sound: 'watermarch' is not a word, but 'watermark' and 'waterproof' are.",
+    "order_index": 26,
+    "examples": [
+      { "sentence": "The clock stood on the mantelpiece.", "tamil_translation": "கடிகாரம் நெருப்பிடத்தின் மேல் தட்டில் இருந்தது.", "is_correct": 1, "explanation": "'mantel' + 'piece' — Noun + Noun." },
+      { "sentence": "We stopped at the toll gate near Trichy.", "tamil_translation": "திருச்சி அருகே சுங்கச்சாவடியில் நிறுத்தினோம்.", "is_correct": 1, "explanation": "'toll' + 'gate' — Noun + Noun." },
+      { "sentence": "This watch is waterproof.", "tamil_translation": "இந்தக் கடிகாரம் நீர்புகா வகையைச் சேர்ந்தது.", "is_correct": 1, "explanation": "'water' + 'proof'." }
+    ]
+  },
+  {
+    "id": "gram_wts_clipped_abbrev",
+    "title": "Clipped Words, Abbreviations and Acronyms",
+    "tamil_title": "சுருக்கச் சொற்கள், சுருக்கக் குறியீடுகள் & முதலெழுத்துச் சொற்கள்",
+    "level_id": "A2",
+    "category_id": "vocabulary",
+    "summary": "Three different ways English shortens words and phrases.",
+    "tamil_summary": "ஆங்கிலத்தில் சொற்களைச் சுருக்கும் மூன்று வெவ்வேறு முறைகள்.",
+    "rule_formula": "Clipped word: a shortened form of ONE word (demonstration -> demo)\nAbbreviation: initials read letter by letter (T.N.P.S.C.)\nAcronym: initials read as a WORD (NASA, LASER)",
+    "explanation": "The exam distinguishes carefully between an abbreviation and an acronym. If you say each letter separately it is an abbreviation; if the letters make a pronounceable word it is an acronym. A clipped word is simply a shorter version of a single longer word.",
+    "beginner_explanation": "ஒவ்வொரு எழுத்தையும் தனித்தனியே உச்சரித்தால் அது Abbreviation. எழுத்துகள் சேர்ந்து ஒரு சொல்லாக உச்சரிக்கப்பட்டால் அது Acronym. ஒரே நீண்ட சொல்லின் சுருக்க வடிவம் Clipped word.",
+    "common_mistakes": "Do not confuse the two: 'IELTS' is read as a word, so it is an acronym; 'MBA' is read letter by letter, so it is an abbreviation.",
+    "order_index": 27,
+    "examples": [
+      { "sentence": "We watched a demo of the new software.", "tamil_translation": "புதிய மென்பொருளின் செயல் விளக்கத்தைப் பார்த்தோம்.", "is_correct": 1, "explanation": "'Demo' is a clipped form of 'demonstration'." },
+      { "sentence": "He is preparing for the TNPSC examination.", "tamil_translation": "அவர் TNPSC தேர்வுக்குத் தயாராகிறார்.", "is_correct": 1, "explanation": "Tamil Nadu Public Service Commission — an abbreviation." },
+      { "sentence": "She scored well in IELTS.", "tamil_translation": "அவள் IELTS தேர்வில் நல்ல மதிப்பெண் பெற்றாள்.", "is_correct": 1, "explanation": "International English Language Testing System — an acronym." }
+    ]
+  },
+  {
+    "id": "gram_wts_phrasal_verbs",
+    "title": "Phrasal Verbs (கூட்டு வினைச்சொற்கள்)",
+    "tamil_title": "look into, stand by, put off",
+    "level_id": "B1",
+    "category_id": "vocabulary",
+    "summary": "A verb combined with a preposition or adverb that together carry a new meaning.",
+    "tamil_summary": "வினைச்சொல்லுடன் முன்னுருபு சேர்ந்து புதிய பொருள் தரும் தொடர்.",
+    "rule_formula": "Verb + particle = a meaning you cannot guess from the verb alone\nlook into = examine | stand by = support | put off = postpone | call off = cancel",
+    "explanation": "The particle changes the meaning completely: 'look into' means investigate, 'look after' means take care of, and 'look for' means search. Always read the whole sentence before choosing a meaning.",
+    "beginner_explanation": "முன்னுருபு பொருளை முற்றிலும் மாற்றிவிடும்: 'look into' — ஆய்வு செய்தல், 'look after' — கவனித்துக்கொள்ளுதல், 'look for' — தேடுதல். பொருளைத் தேர்வு செய்யும் முன் முழு வாக்கியத்தையும் படிக்கவும்.",
+    "common_mistakes": "Do not translate word by word: 'put off the meeting' means postpone it, not remove it.",
+    "order_index": 28,
+    "examples": [
+      { "sentence": "The officer looked into the matter carefully.", "tamil_translation": "அதிகாரி அந்த விஷயத்தை கவனமாக ஆய்வு செய்தார்.", "is_correct": 1, "explanation": "'Look into' means examine." },
+      { "sentence": "Come what may, I will stand by you.", "tamil_translation": "என்ன வந்தாலும் நான் உனக்கு துணையாக இருப்பேன்.", "is_correct": 1, "explanation": "'Stand by' means support." },
+      { "sentence": "My father always stands for truth and honesty.", "tamil_translation": "என் தந்தை எப்போதும் உண்மைக்கும் நேர்மைக்கும் ஆதரவாக நிற்பார்.", "is_correct": 1, "explanation": "'Stand for' means support or represent." }
+    ]
+  },
+  {
+    "id": "gram_wts_idioms",
+    "title": "Idioms and Their Meanings (மரபுத்தொடர்கள்)",
+    "tamil_title": "மரபுத்தொடர்களும் பொருளும்",
+    "level_id": "B1",
+    "category_id": "vocabulary",
+    "summary": "Fixed expressions whose meaning cannot be worked out from the individual words.",
+    "tamil_summary": "தனிச் சொற்களின் பொருளிலிருந்து அறியமுடியாத நிலையான தொடர்கள்.",
+    "rule_formula": "Learn the idiom as a single unit, together with a sample sentence.",
+    "explanation": "Idioms are tested in Part I and Part III. The safest way to answer is to read the whole sentence and judge the meaning from the situation rather than from the individual words.",
+    "beginner_explanation": "மரபுத்தொடர்கள் பகுதி I மற்றும் III-இல் கேட்கப்படும். தனிச் சொற்களை அல்லாமல், முழு வாக்கியத்தின் சூழலை வைத்துப் பொருளை ஊகிப்பதே பாதுகாப்பான வழி.",
+    "common_mistakes": "Never take an idiom literally: 'a piece of cake' has nothing to do with food; it means something very easy.",
+    "order_index": 29,
+    "examples": [
+      { "sentence": "The English test was a piece of cake for her.", "tamil_translation": "ஆங்கிலத் தேர்வு அவளுக்கு மிக எளிதாக இருந்தது.", "is_correct": 1, "explanation": "'A piece of cake' means very easy." },
+      { "sentence": "He let the cat out of the bag about the surprise party.", "tamil_translation": "ஆச்சரிய விருந்து பற்றிய ரகசியத்தை அவன் வெளியிட்டுவிட்டான்.", "is_correct": 1, "explanation": "To reveal a secret unintentionally." },
+      { "sentence": "She burnt the midnight oil before the public exam.", "tamil_translation": "பொதுத் தேர்வுக்கு முன் அவள் இரவு முழுவதும் விழித்திருந்து படித்தாள்.", "is_correct": 1, "explanation": "To study or work late into the night." }
+    ]
+  },
+  {
+    "id": "gram_wts_figures_speech",
+    "title": "Figures of Speech (அணி இலக்கணம்)",
+    "tamil_title": "Simile, Metaphor, Personification, Alliteration",
+    "level_id": "B2",
+    "category_id": "grammar",
+    "summary": "Devices poets use to make language vivid — tested in the Part II poetry questions.",
+    "tamil_summary": "கவிஞர்கள் மொழியை உயிர்ப்புடன் ஆக்கப் பயன்படுத்தும் உத்திகள் — பகுதி II கவிதை வினாக்களில் கேட்கப்படும்.",
+    "rule_formula": "Simile: comparison using 'like' or 'as'\nMetaphor: direct comparison without 'like' or 'as'\nPersonification: a lifeless thing given human qualities\nAlliteration: the same consonant sound repeated in nearby words\nHyperbole: deliberate exaggeration",
+    "explanation": "To identify a figure of speech, look for the signal: 'like' or 'as' means a simile; a lifeless thing performing a human action means personification; repeated initial consonant sounds mean alliteration.",
+    "beginner_explanation": "அணியைக் கண்டறிய அடையாளத்தைத் தேடவும்: 'like' அல்லது 'as' இருந்தால் Simile; உயிரற்ற பொருள் மனிதச் செயலைச் செய்தால் Personification; அருகருகே ஒரே மெய்யொலி மீண்டும் வந்தால் Alliteration.",
+    "common_mistakes": "A simile always uses 'like' or 'as'. Without them the same comparison becomes a metaphor.",
+    "order_index": 30,
+    "examples": [
+      { "sentence": "Simile: Her smile was as bright as the morning sun.", "tamil_translation": "அவளது புன்னகை காலைச் சூரியனைப் போல் ஒளிர்ந்தது.", "is_correct": 1, "explanation": "Comparison with 'as ... as'." },
+      { "sentence": "Personification: The angry sea swallowed the little boat.", "tamil_translation": "சினங்கொண்ட கடல் சிறு படகை விழுங்கியது.", "is_correct": 1, "explanation": "The sea is given human anger." },
+      { "sentence": "Alliteration: The silent stones stood still.", "tamil_translation": "அமைதியான கற்கள் அசையாமல் நின்றன.", "is_correct": 1, "explanation": "The 's' sound repeats." }
+    ]
+  },
+  {
+    "id": "gram_wts_syllabification",
+    "title": "Syllabification (அசைப் பிரிப்பு)",
+    "tamil_title": "சொற்களை அசைகளாகப் பிரித்தல்",
+    "level_id": "A2",
+    "category_id": "grammar",
+    "summary": "Splitting a word into the beats you hear when you say it aloud.",
+    "tamil_summary": "ஒரு சொல்லை உரக்கச் சொல்லும்போது கேட்கும் ஒலிப் பகுதிகளாகப் பிரித்தல்.",
+    "rule_formula": "Number of syllables = number of vowel SOUNDS you hear\nen-cy-clo-pae-di-a = 6 syllables",
+    "explanation": "Count vowel sounds, not vowel letters. A silent final 'e' does not form a syllable, so 'make' has one syllable while 'ma-king' has two.",
+    "beginner_explanation": "உயிரெழுத்துகளை அல்ல, கேட்கும் உயிரொலிகளை எண்ணவும். இறுதியில் ஒலிக்காத 'e' ஒரு அசையாகாது; எனவே 'make' ஒரு அசை, 'ma-king' இரண்டு அசைகள்.",
+    "common_mistakes": "Do not count silent letters: 'chocolate' is usually choc-o-late (3), not 4.",
+    "order_index": 31,
+    "examples": [
+      { "sentence": "beau-ti-ful — 3 syllables", "tamil_translation": "beau-ti-ful — மூன்று அசைகள்.", "is_correct": 1, "explanation": "Three vowel sounds are heard." },
+      { "sentence": "u-ni-ver-si-ty — 5 syllables", "tamil_translation": "u-ni-ver-si-ty — ஐந்து அசைகள்.", "is_correct": 1, "explanation": "Five vowel sounds." },
+      { "sentence": "make — 1 syllable", "tamil_translation": "make — ஒரு அசை மட்டுமே.", "is_correct": 1, "explanation": "The final 'e' is silent." }
+    ]
+  },
+  {
+    "id": "gram_wts_brit_am",
+    "title": "British and American English",
+    "tamil_title": "பிரிட்டிஷ் & அமெரிக்க ஆங்கிலம்",
+    "level_id": "A2",
+    "category_id": "vocabulary",
+    "summary": "The same idea often has two different words or spellings in the two varieties.",
+    "tamil_summary": "ஒரே கருத்துக்கு இரு வகை ஆங்கிலத்திலும் வெவ்வேறு சொற்கள் அல்லது எழுத்துமுறைகள் உள்ளன.",
+    "rule_formula": "Vocabulary: flat / apartment, boot / trunk, chips / french fries\nSpelling: colour / color, centre / center, realise / realize, travelling / traveling",
+    "explanation": "British spellings keep -our, -re and -ise; American spellings use -or, -er and -ize. Part I may give you a word in one variety and ask for its equivalent in the other.",
+    "beginner_explanation": "பிரிட்டிஷ் எழுத்துமுறையில் -our, -re, -ise; அமெரிக்க எழுத்துமுறையில் -or, -er, -ize. ஒரு வகையில் சொல்லைக் கொடுத்து மற்றொரு வகையில் அதற்கு இணையான சொல்லைக் கேட்பார்கள்.",
+    "common_mistakes": "Be consistent: do not mix 'colour' and 'center' in the same answer.",
+    "order_index": 32,
+    "examples": [
+      { "sentence": "British 'flat' = American 'apartment'.", "tamil_translation": "பிரிட்டிஷ் 'flat' = அமெரிக்க 'apartment'.", "is_correct": 1, "explanation": "A vocabulary difference." },
+      { "sentence": "British 'biscuit' = American 'cookie'.", "tamil_translation": "பிரிட்டிஷ் 'biscuit' = அமெரிக்க 'cookie'.", "is_correct": 1, "explanation": "A vocabulary difference." },
+      { "sentence": "British 'colour' = American 'color'.", "tamil_translation": "பிரிட்டிஷ் 'colour' = அமெரிக்க 'color'.", "is_correct": 1, "explanation": "A spelling difference." }
+    ]
+  },
+  {
+    "id": "gram_wts_singular_plural",
+    "title": "Singular and Plural Forms (ஒருமை & பன்மை)",
+    "tamil_title": "பன்மை உருவாக்கும் விதிகள்",
+    "level_id": "A2",
+    "category_id": "grammar",
+    "summary": "Rules and irregular forms for making nouns plural.",
+    "tamil_summary": "பெயர்ச்சொற்களைப் பன்மையாக்கும் விதிகளும் விதிவிலக்குகளும்.",
+    "rule_formula": "Most nouns: + s\n-s, -sh, -ch, -x, -z: + es\nconsonant + y: y -> ies\n-f / -fe: -> ves\nLatin -is: -> -es (analysis -> analyses)\nLatin -x: -> -ces (matrix -> matrices)",
+    "explanation": "Learn the irregular plurals separately: child/children, man/men, tooth/teeth, foot/feet, mouse/mice. Some nouns keep the same form: sheep, deer, series, species.",
+    "beginner_explanation": "விதிவிலக்கான பன்மைகளைத் தனியாகக் கற்கவும்: child/children, man/men, tooth/teeth, foot/feet. சில சொற்கள் மாறாது: sheep, deer, series, species.",
+    "common_mistakes": "Incorrect: 'childrens', 'informations', 'furnitures' — these words have no such plural form.",
+    "order_index": 33,
+    "examples": [
+      { "sentence": "The analyses of the two samples were identical.", "tamil_translation": "இரு மாதிரிகளின் பகுப்பாய்வுகள் ஒரே மாதிரி இருந்தன.", "is_correct": 1, "explanation": "'Analysis' becomes 'analyses'." },
+      { "sentence": "Three sheep were grazing in the field.", "tamil_translation": "மூன்று ஆடுகள் வயலில் மேய்ந்துகொண்டிருந்தன.", "is_correct": 1, "explanation": "'Sheep' is unchanged in the plural." },
+      { "sentence": "He gave me two informations.", "tamil_translation": "இது தவறான வாக்கியம்.", "is_correct": 0, "explanation": "'Information' is uncountable: 'two pieces of information'." }
+    ]
+  },
+  {
+    "id": "gram_wts_confusables",
+    "title": "Confusable Words and Homophones",
+    "tamil_title": "குழப்பமான சொற்கள் & ஒத்தொலிச் சொற்கள்",
+    "level_id": "B1",
+    "category_id": "vocabulary",
+    "summary": "Words that look or sound alike but differ in meaning.",
+    "tamil_summary": "ஒரே மாதிரி ஒலிக்கும் அல்லது தோற்றமளிக்கும், ஆனால் வெவ்வேறு பொருள் கொண்ட சொற்கள்.",
+    "rule_formula": "accept (receive) / except (leave out)\naffect (verb) / effect (noun)\nadapt (adjust) / adopt (take as one's own)\nstationary (not moving) / stationery (writing material)\nprincipal (head) / principle (rule)",
+    "explanation": "These pairs appear in the Part I 'choose the appropriate word' question. Fix each pair with a memory hook: stationEry has an 'e' for envelope; the principAl is your pAl.",
+    "beginner_explanation": "இந்தச் சொற்கள் பகுதி I-இல் 'சரியான சொல்லைத் தேர்ந்தெடு' வினாவில் வரும். ஒவ்வொரு ஜோடிக்கும் ஒரு நினைவூட்டல் வைத்துக்கொள்ளுங்கள்: stationEry-இல் 'e' என்பது envelope; principAl என்பது உங்கள் pAl (நண்பர்).",
+    "common_mistakes": "Incorrect: 'The rain effected the match.' -> Correct: 'The rain affected the match.'\nIncorrect: 'He adapted a child.' -> Correct: 'He adopted a child.'",
+    "order_index": 34,
+    "examples": [
+      { "sentence": "The heavy rain affected the crops badly.", "tamil_translation": "கனமழை பயிர்களை மோசமாகப் பாதித்தது.", "is_correct": 1, "explanation": "'Affect' is the verb." },
+      { "sentence": "We bought pens and paper from the stationery shop.", "tamil_translation": "எழுதுபொருள் கடையில் பேனாவும் தாளும் வாங்கினோம்.", "is_correct": 1, "explanation": "'Stationery' means writing material." },
+      { "sentence": "Everyone attended the meeting except Ravi.", "tamil_translation": "ரவியைத் தவிர அனைவரும் கூட்டத்தில் கலந்துகொண்டனர்.", "is_correct": 1, "explanation": "'Except' means leaving out." }
+    ]
+  },
+  {
+    "id": "gram_wts_error_rules",
+    "title": "Common Error Rules for Exams (பிழை கண்டறிதல் விதிகள்)",
+    "tamil_title": "தேர்வில் அடிக்கடி வரும் பிழைகள்",
+    "level_id": "B1",
+    "category_id": "grammar",
+    "summary": "The mistakes that appear most often in the Part III error-spotting question.",
+    "tamil_summary": "பகுதி III பிழை கண்டறிதல் வினாவில் அடிக்கடி வரும் தவறுகள்.",
+    "rule_formula": "1. Check subject-verb agreement first.\n2. After a modal, use V1.\n3. After 'did / does', use V1.\n4. Uncountable nouns take a singular verb.\n5. Two comparatives never combine.\n6. An article is needed before a singular countable noun.",
+    "explanation": "Work through the checklist in order. Most errors in this question are either subject-verb agreement or a wrong verb form after an auxiliary — check those two before anything else.",
+    "beginner_explanation": "இந்த வரிசையில் சரிபார்க்கவும். இந்த வினாவில் வரும் பெரும்பாலான பிழைகள் எழுவாய்-வினை ஒப்புமை அல்லது துணை வினைக்குப் பின் தவறான வினை வடிவம் ஆகும் — முதலில் இவ்விரண்டையும் பாருங்கள்.",
+    "common_mistakes": "Incorrect: 'He is good athlete.' -> Correct: 'He is a good athlete.'\nIncorrect: 'He started to USA yesterday.' -> Correct: 'He started for USA yesterday.'\nIncorrect: 'Do you know which is world's tallest building?' -> Correct: '... the world's tallest building?'",
+    "order_index": 35,
+    "examples": [
+      { "sentence": "Many people behave rudely nowadays.", "tamil_translation": "இக்காலத்தில் பலர் முரட்டுத்தனமாக நடந்துகொள்கிறார்கள்.", "is_correct": 1, "explanation": "'People' is plural, so the verb takes no '-s'." },
+      { "sentence": "The furniture was displayed at the showroom.", "tamil_translation": "காட்சியறையில் மரச்சாமான்கள் காட்சிப்படுத்தப்பட்டிருந்தன.", "is_correct": 1, "explanation": "'Furniture' is uncountable and singular." },
+      { "sentence": "He did not received the email.", "tamil_translation": "இது தவறான வாக்கியம்.", "is_correct": 0, "explanation": "After 'did not' use the base verb: 'did not receive'." }
+    ]
+  }
+]

@@ -1,0 +1,56 @@
+[
+  {
+    "id": "A1",
+    "name": "Beginner",
+    "title": "A1 — Beginner Foundation",
+    "description": "Essential words, daily greetings, simple present sentences, and basic vocabulary.",
+    "order_index": 1,
+    "min_xp": 0,
+    "badge_icon": "eco"
+  },
+  {
+    "id": "A2",
+    "name": "Elementary",
+    "title": "A2 — Elementary English",
+    "description": "Routine communications, past and future simple tenses, shopping, travel.",
+    "order_index": 2,
+    "min_xp": 500,
+    "badge_icon": "spa"
+  },
+  {
+    "id": "B1",
+    "name": "Intermediate",
+    "title": "B1 — Intermediate Bridge",
+    "description": "Conditionals, phrasal verbs, workplace conversation, storytelling, fluency.",
+    "order_index": 3,
+    "min_xp": 1500,
+    "badge_icon": "flight_takeoff"
+  },
+  {
+    "id": "B2",
+    "name": "Upper Intermediate",
+    "title": "B2 — Upper Intermediate",
+    "description": "Complex debate, idiomatic expressions, professional meetings, interview mastery.",
+    "order_index": 4,
+    "min_xp": 3500,
+    "badge_icon": "military_tech"
+  },
+  {
+    "id": "C1",
+    "name": "Advanced",
+    "title": "C1 — Advanced Professional",
+    "description": "Academic English, persuasive presentation, nuanced idioms, high-level writing.",
+    "order_index": 5,
+    "min_xp": 6500,
+    "badge_icon": "workspace_premium"
+  },
+  {
+    "id": "C2",
+    "name": "Mastery",
+    "title": "C2 — Native-Level Mastery",
+    "description": "Near-native precision, subtle humor, literature, boardroom negotiations.",
+    "order_index": 6,
+    "min_xp": 10000,
+    "badge_icon": "diamond"
+  }
+]

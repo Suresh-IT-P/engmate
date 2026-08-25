@@ -1,0 +1,41 @@
+[
+  {
+    "id": "conv_job_interview_hr",
+    "title": "Software Developer HR Interview Simulation",
+    "tamil_title": "மென்பொருள் வேலை நேர்காணல் பயிற்சி",
+    "persona_name": "Sarah (HR Hiring Manager)",
+    "persona_role": "Senior Tech Talent Recruiter",
+    "scenario_description": "Simulate a real job interview. The HR manager will ask you about your past experience, handling team conflicts, and your future goals.",
+    "initial_message": "Hello! Welcome to your interview session today. To start, could you please introduce yourself and tell me a bit about your professional background?",
+    "tamil_initial_message": "வணக்கம்! நேர்காணலுக்கு வரவேற்கிறோம். உங்களை அறிமுகப்படுத்தி உங்கள் பணி அனுபவத்தைப் பற்றி கூறுங்கள்.",
+    "level_id": "B2",
+    "category": "Interview",
+    "order_index": 1
+  },
+  {
+    "id": "conv_friendly_cafe",
+    "title": "Casual Coffee Shop Chat",
+    "tamil_title": "காபி கடையில் நட்பு உரையாடல்",
+    "persona_name": "Maya (Friendly Companion)",
+    "persona_role": "English Conversation Partner",
+    "scenario_description": "Have a relaxed chat over coffee about your weekend plans, favorite movies, and learning goals.",
+    "initial_message": "Hey there! How has your week been so far? Are you planning anything exciting for this weekend?",
+    "tamil_initial_message": "ஹலோ! இந்த வாரம் எப்படி போகிறது? வார இறுதிக்கு ஏதாவது சிறப்பான திட்டம் உள்ளதா?",
+    "level_id": "A1",
+    "category": "Friendly Chat",
+    "order_index": 2
+  },
+  {
+    "id": "conv_airport_immigration",
+    "title": "Airport Travel & Immigration Counter",
+    "tamil_title": "விமான நிலைய இமிக்ரேஷன் உரையாடல்",
+    "persona_name": "Officer Davies",
+    "persona_role": "Border & Customs Officer",
+    "scenario_description": "Practice answering standard border control questions regarding flight purpose, accommodation, and stay duration.",
+    "initial_message": "Good day. May I see your passport and boarding pass, please? What is the primary purpose of your visit?",
+    "tamil_initial_message": "வணக்கம். உங்கள் பாஸ்போர்ட் மற்றும் போர்டிங் பாஸைக் காட்ட முடியுமா? உங்கள் பயணத்தின் நோக்கம் என்ன?",
+    "level_id": "A2",
+    "category": "Travel",
+    "order_index": 3
+  }
+]

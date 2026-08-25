@@ -1,0 +1,154 @@
+<html lang="en"><head><meta charset="utf-8"/><meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover" name="viewport"/><link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@600;700&family=Be+Vietnam+Pro:wght@400;500&family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@24,400,0,0" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Be+Vietnam+Pro:wght@100..900&family=Plus+Jakarta+Sans:wght@100..900&display=swap" rel="stylesheet"/><script src="https://cdn.tailwindcss.com"></script><script id="tailwind-config">tailwind.config = { darkMode: "class", theme: { extend: { "colors": { "tertiary-container": "#885500", "surface-tint": "#4d44e3", "surface-variant": "#e4e1ee", "surface-container-high": "#eae6f4", "surface-container-lowest": "#ffffff", "surface": "#fcf8ff", "primary-fixed-dim": "#c3c0ff", "outline-variant": "#c7c4d8", "inverse-on-surface": "#f3effc", "on-error": "#ffffff", "secondary-fixed": "#6ffbbe", "surface-bright": "#fcf8ff", "on-secondary": "#ffffff", "on-tertiary": "#ffffff", "surface-dim": "#dcd8e5", "error-container": "#ffdad6", "on-primary-container": "#dad7ff", "inverse-primary": "#c3c0ff", "on-secondary-container": "#00714d", "surface-container-low": "#f5f2ff", "surface-container": "#f0ecf9", "on-tertiary-container": "#ffd4a4", "on-tertiary-fixed": "#2a1700", "surface-container-highest": "#e4e1ee", "on-primary-fixed": "#0f0069", "background": "#fcf8ff", "on-secondary-fixed-variant": "#005236", "secondary-container": "#6cf8bb", "on-surface-variant": "#464555", "on-tertiary-fixed-variant": "#653e00", "secondary": "#006c49", "tertiary-fixed": "#ffddb8", "primary": "#3525cd", "on-secondary-fixed": "#002113", "on-primary": "#ffffff", "on-surface": "#1b1b24", "on-primary-fixed-variant": "#3323cc", "primary-fixed": "#e2dfff", "secondary-fixed-dim": "#4edea3", "inverse-surface": "#302f39", "tertiary-fixed-dim": "#ffb95f", "primary-container": "#4f46e5", "on-background": "#1b1b24", "tertiary": "#684000", "error": "#ba1a1a", "on-error-container": "#93000a", "outline": "#777587" }, "borderRadius": { "DEFAULT": "0.25rem", "lg": "0.5rem", "xl": "0.75rem", "full": "9999px" }, "spacing": { "md": "24px", "base": "8px", "lg": "40px", "max-width": "1200px", "xs": "4px", "sm": "12px", "xl": "64px", "margin-mobile": "20px", "gutter": "16px" }, "fontFamily": { "display-lg": ["Plus Jakarta Sans"], "display-lg-mobile": ["Plus Jakarta Sans"], "tamil-subtext": ["Be Vietnam Pro"], "body-md": ["Be Vietnam Pro"], "headline-md": ["Plus Jakarta Sans"], "body-lg": ["Be Vietnam Pro"], "label-caps": ["Plus Jakarta Sans"] }, "fontSize": { "display-lg": ["40px", { "lineHeight": "1.2", "letterSpacing": "-0.02em", "fontWeight": "700" }], "display-lg-mobile": ["32px", { "lineHeight": "1.2", "fontWeight": "700" }], "tamil-subtext": ["14px", { "lineHeight": "1.4", "fontWeight": "500" }], "body-md": ["16px", { "lineHeight": "1.5", "fontWeight": "400" }], "headline-md": ["24px", { "lineHeight": "1.3", "fontWeight": "600" }], "body-lg": ["18px", { "lineHeight": "1.6", "fontWeight": "400" }], "label-caps": ["12px", { "lineHeight": "1.0", "letterSpacing": "0.05em", "fontWeight": "700" }] } } } };</script><style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head><body class="bg-surface text-on-surface font-body-md min-h-screen pt-safe pb-safe"><main class="flex flex-col w-full"><div class="flex flex-col w-full h-full relative overflow-hidden bg-surface">
+<div class="w-full flex-grow flex flex-col p-6 space-y-8 z-10">
+<!-- Header -->
+<div class="flex flex-col space-y-2 mt-4 text-center">
+<h1 class="font-display-lg-mobile text-display-lg-mobile text-on-surface">
+        How comfortable are you with English?
+      </h1>
+<p class="font-body-md text-body-md text-on-surface-variant opacity-80">
+        ஆங்கிலத்தில் உங்கள் தற்போதைய நிலை என்ன?
+      </p>
+</div>
+<!-- Levels Grid -->
+<div class="grid grid-cols-1 gap-4 flex-grow content-center pb-24" id="level-selection">
+<!-- Option 1: Beginner -->
+<button aria-pressed="false" class="level-card relative w-full bg-surface-container-lowest shadow-sm rounded-xl p-4 flex items-center justify-between group transition-all duration-300 transform hover:scale-[1.02] hover:shadow-md hover:bg-inverse-on-surface focus:outline-none">
+<div class="flex items-center space-x-4">
+<div class="w-12 h-12 bg-surface-variant rounded-full flex items-center justify-center text-2xl group-hover:bg-primary-container group-hover:text-on-primary transition-colors">
+            🌱
+          </div>
+<div class="flex flex-col items-start text-left">
+<span class="font-headline-md text-[20px] text-on-surface leading-snug">Beginner</span>
+<span class="font-tamil-subtext text-tamil-subtext text-on-surface-variant">தொடக்க நிலை</span>
+</div>
+</div>
+<span class="material-symbols-outlined text-outline group-hover:text-primary transition-colors opacity-0 group-hover:opacity-100 transform translate-x-[-10px] group-hover:translate-x-0 duration-300">
+          arrow_forward
+        </span>
+<div class="absolute inset-0 rounded-xl ring-2 ring-primary opacity-0 transition-opacity duration-300 pointer-events-none" id="ring-1"></div>
+</button>
+<!-- Option 2: Read a little -->
+<button aria-pressed="false" class="level-card relative w-full bg-surface-container-lowest shadow-sm rounded-xl p-4 flex items-center justify-between group transition-all duration-300 transform hover:scale-[1.02] hover:shadow-md hover:bg-inverse-on-surface focus:outline-none">
+<div class="flex items-center space-x-4">
+<div class="w-12 h-12 bg-surface-variant rounded-full flex items-center justify-center text-2xl group-hover:bg-primary-container group-hover:text-on-primary transition-colors">
+            📖
+          </div>
+<div class="flex flex-col items-start text-left">
+<span class="font-headline-md text-[20px] text-on-surface leading-snug">I can read a little</span>
+<span class="font-tamil-subtext text-tamil-subtext text-on-surface-variant">சிறிது வாசிக்கத் தெரியும்</span>
+</div>
+</div>
+<span class="material-symbols-outlined text-outline group-hover:text-primary transition-colors opacity-0 group-hover:opacity-100 transform translate-x-[-10px] group-hover:translate-x-0 duration-300">
+          arrow_forward
+        </span>
+<div class="absolute inset-0 rounded-xl ring-2 ring-primary opacity-0 transition-opacity duration-300 pointer-events-none" id="ring-2"></div>
+</button>
+<!-- Option 3: Understand English -->
+<button aria-pressed="false" class="level-card relative w-full bg-surface-container-lowest shadow-sm rounded-xl p-4 flex items-center justify-between group transition-all duration-300 transform hover:scale-[1.02] hover:shadow-md hover:bg-inverse-on-surface focus:outline-none">
+<div class="flex items-center space-x-4">
+<div class="w-12 h-12 bg-surface-variant rounded-full flex items-center justify-center text-2xl group-hover:bg-primary-container group-hover:text-on-primary transition-colors">
+            💬
+          </div>
+<div class="flex flex-col items-start text-left">
+<span class="font-headline-md text-[20px] text-on-surface leading-snug">I understand English</span>
+<span class="font-tamil-subtext text-tamil-subtext text-on-surface-variant">ஆங்கிலம் புரியும்</span>
+</div>
+</div>
+<span class="material-symbols-outlined text-outline group-hover:text-primary transition-colors opacity-0 group-hover:opacity-100 transform translate-x-[-10px] group-hover:translate-x-0 duration-300">
+          arrow_forward
+        </span>
+<div class="absolute inset-0 rounded-xl ring-2 ring-primary opacity-0 transition-opacity duration-300 pointer-events-none" id="ring-3"></div>
+</button>
+<!-- Option 4: Speak English -->
+<button aria-pressed="false" class="level-card relative w-full bg-surface-container-lowest shadow-sm rounded-xl p-4 flex items-center justify-between group transition-all duration-300 transform hover:scale-[1.02] hover:shadow-md hover:bg-inverse-on-surface focus:outline-none">
+<div class="flex items-center space-x-4">
+<div class="w-12 h-12 bg-surface-variant rounded-full flex items-center justify-center text-2xl group-hover:bg-primary-container group-hover:text-on-primary transition-colors">
+            🗣️
+          </div>
+<div class="flex flex-col items-start text-left">
+<span class="font-headline-md text-[20px] text-on-surface leading-snug">I can speak English</span>
+<span class="font-tamil-subtext text-tamil-subtext text-on-surface-variant">ஆங்கிலம் பேசத் தெரியும்</span>
+</div>
+</div>
+<span class="material-symbols-outlined text-outline group-hover:text-primary transition-colors opacity-0 group-hover:opacity-100 transform translate-x-[-10px] group-hover:translate-x-0 duration-300">
+          arrow_forward
+        </span>
+<div class="absolute inset-0 rounded-xl ring-2 ring-primary opacity-0 transition-opacity duration-300 pointer-events-none" id="ring-4"></div>
+</button>
+</div>
+</div>
+<!-- Sticky Bottom Bar -->
+<div class="fixed bottom-0 left-0 right-0 p-6 bg-gradient-to-t from-surface via-surface to-transparent z-20 pointer-events-none">
+<div class="w-full max-w-1200px mx-auto pointer-events-auto">
+<button class="w-full bg-surface-variant text-on-surface-variant font-headline-md text-headline-md py-4 rounded-full shadow-sm transition-all duration-300 flex items-center justify-center opacity-50 cursor-not-allowed" disabled="" id="continue-btn">
+        Continue
+        <span class="material-symbols-outlined ml-2">east</span>
+</button>
+</div>
+</div>
+<!-- Decorative Background Elements -->
+<div class="absolute top-[-10%] right-[-10%] w-64 h-64 bg-primary-fixed-dim rounded-full mix-blend-multiply filter blur-3xl opacity-30 animate-blob"></div>
+<div class="absolute bottom-[-10%] left-[-10%] w-72 h-72 bg-secondary-fixed rounded-full mix-blend-multiply filter blur-3xl opacity-20 animate-blob animation-delay-2000"></div>
+<script>
+    document.addEventListener('DOMContentLoaded', () => {
+      const cards = document.querySelectorAll('.level-card');
+      const continueBtn = document.getElementById('continue-btn');
+
+      cards.forEach((card, index) => {
+        card.addEventListener('click', () => {
+          // Reset all
+          cards.forEach(c => {
+            c.setAttribute('aria-pressed', 'false');
+            c.classList.remove('bg-inverse-on-surface', 'shadow-md', 'scale-[1.02]');
+            c.classList.add('bg-surface-container-lowest', 'shadow-sm');
+            const ring = c.querySelector('.ring-2');
+            if(ring) ring.classList.remove('opacity-100');
+            const icon = c.querySelector('.material-symbols-outlined');
+            if(icon) {
+               icon.classList.remove('opacity-100', 'translate-x-0', 'text-primary');
+               icon.classList.add('opacity-0', 'translate-x-[-10px]');
+            }
+          });
+
+          // Activate selected
+          card.setAttribute('aria-pressed', 'true');
+          card.classList.remove('bg-surface-container-lowest', 'shadow-sm');
+          card.classList.add('bg-inverse-on-surface', 'shadow-md', 'scale-[1.02]');
+          const activeRing = card.querySelector('.ring-2');
+          if(activeRing) activeRing.classList.add('opacity-100');
+          const activeIcon = card.querySelector('.material-symbols-outlined');
+          if(activeIcon) {
+            activeIcon.classList.remove('opacity-0', 'translate-x-[-10px]');
+            activeIcon.classList.add('opacity-100', 'translate-x-0', 'text-primary');
+          }
+
+          // Enable continue button
+          continueBtn.disabled = false;
+          continueBtn.classList.remove('bg-surface-variant', 'text-on-surface-variant', 'opacity-50', 'cursor-not-allowed');
+          continueBtn.classList.add('bg-primary', 'text-on-primary', 'shadow-lg', 'hover:bg-primary-container', 'hover:scale-[1.02]');
+        });
+      });
+    });
+  </script>
+<style>
+    @keyframes blob {
+      0% { transform: translate(0px, 0px) scale(1); }
+      33% { transform: translate(30px, -50px) scale(1.1); }
+      66% { transform: translate(-20px, 20px) scale(0.9); }
+      100% { transform: translate(0px, 0px) scale(1); }
+    }
+    .animate-blob {
+      animation: blob 7s infinite;
+    }
+    .animation-delay-2000 {
+      animation-delay: 2s;
+    }
+  </style>
+</div></main></body></html>

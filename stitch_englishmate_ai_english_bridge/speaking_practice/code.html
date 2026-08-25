@@ -1,0 +1,214 @@
+<html lang="en"><head><meta charset="utf-8"/><meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover" name="viewport"/><link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@600;700&family=Be+Vietnam+Pro:wght@400;500&family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@24,400,0,0" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Be+Vietnam+Pro:wght@100..900&family=Plus+Jakarta+Sans:wght@100..900&display=swap" rel="stylesheet"/><script src="https://cdn.tailwindcss.com"></script><script id="tailwind-config">tailwind.config = { darkMode: "class", theme: { extend: { "colors": { "tertiary-container": "#885500", "surface-tint": "#4d44e3", "surface-variant": "#e4e1ee", "surface-container-high": "#eae6f4", "surface-container-lowest": "#ffffff", "surface": "#fcf8ff", "primary-fixed-dim": "#c3c0ff", "outline-variant": "#c7c4d8", "inverse-on-surface": "#f3effc", "on-error": "#ffffff", "secondary-fixed": "#6ffbbe", "surface-bright": "#fcf8ff", "on-secondary": "#ffffff", "on-tertiary": "#ffffff", "surface-dim": "#dcd8e5", "error-container": "#ffdad6", "on-primary-container": "#dad7ff", "inverse-primary": "#c3c0ff", "on-secondary-container": "#00714d", "surface-container-low": "#f5f2ff", "surface-container": "#f0ecf9", "on-tertiary-container": "#ffd4a4", "on-tertiary-fixed": "#2a1700", "surface-container-highest": "#e4e1ee", "on-primary-fixed": "#0f0069", "background": "#fcf8ff", "on-secondary-fixed-variant": "#005236", "secondary-container": "#6cf8bb", "on-surface-variant": "#464555", "on-tertiary-fixed-variant": "#653e00", "secondary": "#006c49", "tertiary-fixed": "#ffddb8", "primary": "#3525cd", "on-secondary-fixed": "#002113", "on-primary": "#ffffff", "on-surface": "#1b1b24", "on-primary-fixed-variant": "#3323cc", "primary-fixed": "#e2dfff", "secondary-fixed-dim": "#4edea3", "inverse-surface": "#302f39", "tertiary-fixed-dim": "#ffb95f", "primary-container": "#4f46e5", "on-background": "#1b1b24", "tertiary": "#684000", "error": "#ba1a1a", "on-error-container": "#93000a", "outline": "#777587" }, "borderRadius": { "DEFAULT": "0.25rem", "lg": "0.5rem", "xl": "0.75rem", "full": "9999px" }, "spacing": { "md": "24px", "base": "8px", "lg": "40px", "max-width": "1200px", "xs": "4px", "sm": "12px", "xl": "64px", "margin-mobile": "20px", "gutter": "16px" }, "fontFamily": { "display-lg": ["Plus Jakarta Sans"], "display-lg-mobile": ["Plus Jakarta Sans"], "tamil-subtext": ["Be Vietnam Pro"], "body-md": ["Be Vietnam Pro"], "headline-md": ["Plus Jakarta Sans"], "body-lg": ["Be Vietnam Pro"], "label-caps": ["Plus Jakarta Sans"] }, "fontSize": { "display-lg": ["40px", { "lineHeight": "1.2", "letterSpacing": "-0.02em", "fontWeight": "700" }], "display-lg-mobile": ["32px", { "lineHeight": "1.2", "fontWeight": "700" }], "tamil-subtext": ["14px", { "lineHeight": "1.4", "fontWeight": "500" }], "body-md": ["16px", { "lineHeight": "1.5", "fontWeight": "400" }], "headline-md": ["24px", { "lineHeight": "1.3", "fontWeight": "600" }], "body-lg": ["18px", { "lineHeight": "1.6", "fontWeight": "400" }], "label-caps": ["12px", { "lineHeight": "1.0", "letterSpacing": "0.05em", "fontWeight": "700" }] } } } };</script><style>@layer base { body { -webkit-tap-highlight-color: transparent; overscroll-behavior-y: contain; } .pb-safe { padding-bottom: env(safe-area-inset-bottom); } .pt-safe { padding-top: env(safe-area-inset-top); } }</style><style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head><body class="bg-surface text-on-surface font-body-md"><header class="fixed top-0 w-full z-50 bg-surface/80 backdrop-blur-xl pt-safe shadow-[0_1px_8px_rgba(0,0,0,0.04)]"><div class="h-16 px-margin-mobile flex items-center justify-between"><div class="flex items-center gap-sm"><img alt="EnglishMate Logo" class="h-8 w-auto object-contain" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDNGSeLfVgxTKTlT7pq5sMX1EC3BO-kCzBbgCnljCtjbjF5FOUf8MOzBeNZoUgPCMLhNflTdmzzOM0aNV7hlOTjIjHTFl6ziMPT49afuyhRw6TaJ17LgtNPUSaBO-bpyNzwgyviq6YfxZxBOlmnNQsHZcU79hn2eYnNfDA_tc9p6BjD9ap9P27lZCoxiBUM6c_zX_eAiAm2zXOXe3e2p8Ui5vZwHp3s6GgafI93ht0mhIBdVQzgLu4P"/><span class="font-headline-md text-body-md text-primary">Practice</span></div><div class="flex items-center gap-base"><div class="flex items-center gap-xs px-base py-xs bg-surface-container rounded-full"><span class="material-symbols-outlined text-tertiary text-[18px]">workspace_premium</span><span class="text-label-caps font-label-caps text-on-surface">1.2k</span></div><div class="flex items-center gap-xs px-base py-xs bg-surface-container rounded-full"><span class="material-symbols-outlined text-error text-[18px]">local_fire_department</span><span class="text-label-caps font-label-caps text-on-surface">7</span></div><div class="w-8 h-8 rounded-full bg-primary flex items-center justify-center ml-xs"><span class="material-symbols-outlined text-on-primary text-[18px]">person</span></div></div></div></header><main class="pt-16 pb-24 bg-surface min-h-screen"><div class="flex flex-col w-full gap-lg px-margin-mobile">
+<!-- Instruction & Prompt Card -->
+<div class="bg-surface-container-lowest rounded-xl shadow-md p-md flex flex-col gap-sm relative overflow-hidden mt-md">
+<!-- Decorative background element -->
+<div class="absolute -right-4 -top-4 w-24 h-24 bg-primary-fixed/20 rounded-full blur-2xl pointer-events-none"></div>
+<div class="flex items-center gap-xs">
+<span class="material-symbols-outlined text-primary text-[20px]">record_voice_over</span>
+<h2 class="font-tamil-subtext text-tamil-subtext text-on-surface-variant">
+        இந்த வாக்கியத்தை வாசிக்கவும்:
+      </h2>
+</div>
+<div class="font-display-lg-mobile text-display-lg-mobile text-on-surface leading-tight z-10">
+      "Education is the most powerful weapon."
+    </div>
+<div class="flex items-center gap-xs mt-xs">
+<span class="material-symbols-outlined text-tertiary-fixed-dim text-[16px]">lightbulb</span>
+<p class="font-body-md text-body-md text-on-surface-variant">
+        Speak clearly and at a natural pace.
+      </p>
+</div>
+</div>
+<!-- Interactive Microphone Area -->
+<div class="flex flex-col items-center justify-center py-xl relative">
+<!-- Animated Glow Rings (Hidden initially, active on record) -->
+<div class="absolute w-32 h-32 bg-primary/10 rounded-full scale-0 transition-transform duration-500 pointer-events-none" id="mic-ring-1"></div>
+<div class="absolute w-40 h-40 bg-primary/5 rounded-full scale-0 transition-transform duration-700 pointer-events-none delay-75" id="mic-ring-2"></div>
+<div class="absolute w-48 h-48 bg-primary/5 rounded-full scale-0 transition-transform duration-1000 pointer-events-none delay-150" id="mic-ring-3"></div>
+<!-- Main Button -->
+<button class="relative w-24 h-24 bg-primary text-on-primary rounded-full flex items-center justify-center shadow-xl hover:shadow-2xl active:scale-95 transition-all duration-300 z-10" id="mic-button">
+<span class="material-symbols-outlined text-[40px] transition-transform duration-300" id="mic-icon">mic</span>
+</button>
+<!-- Status Text -->
+<div class="mt-md flex flex-col items-center text-center h-16">
+<span class="font-headline-md text-headline-md text-primary transition-opacity duration-300" id="status-english">
+        Ready to Speak
+      </span>
+<span class="font-tamil-subtext text-tamil-subtext text-on-surface-variant transition-opacity duration-300 mt-xs" id="status-tamil">
+        பேசத் தயாராகுங்கள்
+      </span>
+</div>
+</div>
+<!-- Evaluation Metrics (Empty State Initially) -->
+<div class="grid grid-cols-3 gap-sm">
+<!-- Fluency -->
+<div class="bg-surface-container rounded-xl p-sm flex flex-col items-center gap-xs shadow-sm relative overflow-hidden transition-all duration-500" id="card-fluency">
+<div class="relative w-16 h-16 flex items-center justify-center">
+<svg class="absolute inset-0 w-full h-full transform -rotate-90">
+<circle class="stroke-outline-variant" cx="32" cy="32" fill="none" r="28" stroke-width="6"></circle>
+<circle class="stroke-secondary stroke-[6px] transition-all duration-1000 ease-out" cx="32" cy="32" fill="none" id="progress-fluency" r="28" stroke-dasharray="175.9" stroke-dashoffset="175.9" stroke-linecap="round"></circle>
+</svg>
+<span class="font-headline-md text-headline-md text-on-surface opacity-50" id="score-fluency">--</span>
+</div>
+<span class="font-label-caps text-label-caps text-on-surface-variant mt-xs">Fluency</span>
+</div>
+<!-- Grammar -->
+<div class="bg-surface-container rounded-xl p-sm flex flex-col items-center gap-xs shadow-sm relative overflow-hidden transition-all duration-500" id="card-grammar">
+<div class="relative w-16 h-16 flex items-center justify-center">
+<svg class="absolute inset-0 w-full h-full transform -rotate-90">
+<circle class="stroke-outline-variant" cx="32" cy="32" fill="none" r="28" stroke-width="6"></circle>
+<circle class="stroke-secondary stroke-[6px] transition-all duration-1000 ease-out delay-150" cx="32" cy="32" fill="none" id="progress-grammar" r="28" stroke-dasharray="175.9" stroke-dashoffset="175.9" stroke-linecap="round"></circle>
+</svg>
+<span class="font-headline-md text-headline-md text-on-surface opacity-50" id="score-grammar">--</span>
+</div>
+<span class="font-label-caps text-label-caps text-on-surface-variant mt-xs">Grammar</span>
+</div>
+<!-- Pronunciation -->
+<div class="bg-surface-container rounded-xl p-sm flex flex-col items-center gap-xs shadow-sm relative overflow-hidden transition-all duration-500" id="card-pronunciation">
+<div class="relative w-16 h-16 flex items-center justify-center">
+<svg class="absolute inset-0 w-full h-full transform -rotate-90">
+<circle class="stroke-outline-variant" cx="32" cy="32" fill="none" r="28" stroke-width="6"></circle>
+<circle class="stroke-secondary stroke-[6px] transition-all duration-1000 ease-out delay-300" cx="32" cy="32" fill="none" id="progress-pronunciation" r="28" stroke-dasharray="175.9" stroke-dashoffset="175.9" stroke-linecap="round"></circle>
+</svg>
+<span class="font-headline-md text-headline-md text-on-surface opacity-50" id="score-pronunciation">--</span>
+</div>
+<span class="font-label-caps text-label-caps text-on-surface-variant mt-xs text-center line-clamp-1">Pronunciation</span>
+</div>
+</div>
+<script>
+    document.addEventListener('DOMContentLoaded', () => {
+      const micButton = document.getElementById('mic-button');
+      const micIcon = document.getElementById('mic-icon');
+      const statusEnglish = document.getElementById('status-english');
+      const statusTamil = document.getElementById('status-tamil');
+      
+      const rings = [
+        document.getElementById('mic-ring-1'),
+        document.getElementById('mic-ring-2'),
+        document.getElementById('mic-ring-3')
+      ];
+
+      // Progress elements
+      const progFluency = document.getElementById('progress-fluency');
+      const progGrammar = document.getElementById('progress-grammar');
+      const progPron = document.getElementById('progress-pronunciation');
+      
+      const scoreFluency = document.getElementById('score-fluency');
+      const scoreGrammar = document.getElementById('score-grammar');
+      const scorePron = document.getElementById('score-pronunciation');
+
+      let isRecording = false;
+      let pulseInterval;
+
+      function startPulse() {
+        rings.forEach(ring => ring.classList.remove('scale-0'));
+        rings.forEach(ring => ring.classList.add('scale-100', 'animate-pulse'));
+      }
+
+      function stopPulse() {
+        rings.forEach(ring => ring.classList.remove('scale-100', 'animate-pulse'));
+        rings.forEach(ring => ring.classList.add('scale-0'));
+      }
+
+      function setProgress(element, percentage) {
+        const circumference = 175.9; // 2 * pi * 28
+        const offset = circumference - (percentage / 100) * circumference;
+        element.style.strokeDashoffset = offset;
+      }
+
+      function showResults() {
+        // Mock results for delight
+        const results = { f: 92, g: 100, p: 88 };
+        
+        // Reset opacity of scores
+        [scoreFluency, scoreGrammar, scorePron].forEach(el => {
+          el.classList.remove('opacity-50');
+          el.classList.add('text-secondary');
+        });
+
+        // Animate numbers
+        let count = 0;
+        const interval = setInterval(() => {
+          count += 2;
+          if (count <= results.f) scoreFluency.innerText = count;
+          if (count <= results.g) scoreGrammar.innerText = count;
+          if (count <= results.p) scorePron.innerText = count;
+          
+          if (count >= 100) clearInterval(interval);
+        }, 20);
+
+        // Animate rings
+        setTimeout(() => setProgress(progFluency, results.f), 100);
+        setTimeout(() => setProgress(progGrammar, results.g), 250);
+        setTimeout(() => setProgress(progPron, results.p), 400);
+
+        // Highlight cards
+        ['card-fluency', 'card-grammar', 'card-pronunciation'].forEach(id => {
+          document.getElementById(id).classList.add('bg-secondary-container');
+          document.getElementById(id).classList.remove('bg-surface-container');
+        });
+      }
+
+      micButton.addEventListener('click', () => {
+        if (!isRecording) {
+          // Start Recording State
+          isRecording = true;
+          micButton.classList.replace('bg-primary', 'bg-error');
+          micButton.classList.replace('text-on-primary', 'text-on-error');
+          micIcon.innerText = 'stop';
+          
+          statusEnglish.innerText = 'Listening...';
+          statusEnglish.classList.replace('text-primary', 'text-error');
+          statusTamil.innerText = 'கவனிக்கிறது...';
+          
+          startPulse();
+          
+          // Reset scores if repeating
+          [progFluency, progGrammar, progPron].forEach(el => setProgress(el, 0));
+          [scoreFluency, scoreGrammar, scorePron].forEach(el => {
+            el.innerText = '--';
+            el.classList.add('opacity-50');
+            el.classList.remove('text-secondary');
+          });
+          ['card-fluency', 'card-grammar', 'card-pronunciation'].forEach(id => {
+            document.getElementById(id).classList.remove('bg-secondary-container');
+            document.getElementById(id).classList.add('bg-surface-container');
+          });
+
+        } else {
+          // Stop & Process State
+          isRecording = false;
+          micButton.classList.replace('bg-error', 'bg-surface-variant');
+          micButton.classList.replace('text-on-error', 'text-on-surface-variant');
+          micIcon.innerText = 'check';
+          
+          statusEnglish.innerText = 'Analyzing...';
+          statusEnglish.classList.replace('text-error', 'text-on-surface');
+          statusTamil.innerText = 'பகுப்பாய்வு செய்கிறது...';
+          
+          stopPulse();
+          
+          // Simulate network delay then show results
+          setTimeout(() => {
+            micButton.classList.replace('bg-surface-variant', 'bg-primary');
+            micButton.classList.replace('text-on-surface-variant', 'text-on-primary');
+            micIcon.innerText = 'replay';
+            
+            statusEnglish.innerText = 'Excellent job!';
+            statusEnglish.classList.replace('text-on-surface', 'text-secondary');
+            statusTamil.innerText = 'மிக அருமை!';
+            
+            showResults();
+          }, 1500);
+        }
+      });
+    });
+  </script>
+</div></main><nav class="fixed bottom-0 w-full z-50 pb-safe bg-surface/80 backdrop-blur-xl shadow-[0_-1px_8px_rgba(0,0,0,0.04)]" data-active-classes="text-primary"><div class="flex justify-around items-center h-20 px-gutter"><a class="flex flex-col items-center gap-xs text-on-surface-variant" data-path="home" href="#"><span class="material-symbols-outlined">home</span><span class="text-label-caps font-label-caps">Home</span></a><a class="flex flex-col items-center gap-xs text-on-surface-variant" data-path="learn" href="#"><span class="material-symbols-outlined">school</span><span class="text-label-caps font-label-caps">Learn</span></a><a aria-current="page" class="flex flex-col items-center gap-xs text-primary" data-path="practice" href="#"><span class="material-symbols-outlined">edit_note</span><span class="text-label-caps font-label-caps">Practice</span></a><a class="flex flex-col items-center gap-xs text-on-surface-variant" data-path="play" href="#"><span class="material-symbols-outlined">sports_esports</span><span class="text-label-caps font-label-caps">Play</span></a><a class="flex flex-col items-center gap-xs text-on-surface-variant" data-path="me" href="#"><span class="material-symbols-outlined">person</span><span class="text-label-caps font-label-caps">Me</span></a></div></nav></body></html>

@@ -1,0 +1,20 @@
+[
+  {
+    "id": "read_morning_habits",
+    "title": "The Power of 15-Minute Daily Habits",
+    "tamil_title": "15 நிமிட தினசரி பழக்கங்களின் ஆற்றல்",
+    "level_id": "A2",
+    "word_count": 120,
+    "vocabulary_notes": "consistency (தொடர்ச்சி), compound effect (கூட்டு வளர்ச்சி), routine (வழக்கம்)",
+    "passage_text": "Learning a new language does not require three hours of exhausting study every day. Research shows that just fifteen minutes of consistent daily practice yields significantly better results. When you practice daily, your brain retains vocabulary and grammar patterns naturally. Start by listening to a 5-minute English podcast in the morning and learning five new words before bedtime. Small daily improvements accumulate into extraordinary speaking fluency over time."
+  },
+  {
+    "id": "read_chennai_tech_revolution",
+    "title": "Chennai's Thriving Tech & Innovation Ecosystem",
+    "tamil_title": "சென்னையின் வளர்ந்து வரும் தொழில்நுட்ப துறை",
+    "level_id": "B1",
+    "word_count": 160,
+    "vocabulary_notes": "ecosystem (சுற்றுச்சூழல்/கட்டமைப்பு), hub (மையம்), innovation (புதுமை), global (உலகளாவிய)",
+    "passage_text": "Chennai has transformed into one of India's foremost hubs for software development, SaaS companies, and deep-tech innovation. Engineers and entrepreneurs across Tamil Nadu are creating software solutions used by millions of global customers. Strong English communication skills have become a vital prerequisite for tech professionals to collaborate with international clients, participate in global standups, and present product architectures with clarity and precision."
+  }
+]

@@ -8,8 +8,8 @@ export default function LoginView() {
   const { tamilEnabled } = useLearning();
   const navigate = useNavigate();
 
-  const [email, setEmail] = useState('student@englishmate.ai');
-  const [password, setPassword] = useState('EnglishMate@2026');
+  const [email, setEmail] = useState('');
+  const [password, setPassword] = useState('');
   const [loading, setLoading] = useState(false);
   const [errorMsg, setErrorMsg] = useState('');
 
@@ -28,10 +28,6 @@ export default function LoginView() {
     }
   };
 
-  const handleQuickDemo = (demoEmail, demoRole) => {
-    setEmail(demoEmail);
-    setPassword('EnglishMate@2026');
-  };
 
   return (
     <div className="max-w-md mx-auto px-4 pt-12 pb-nav min-h-[80vh] flex flex-col justify-center">
@@ -91,35 +87,6 @@ export default function LoginView() {
           </button>
         </form>
 
-        {/* Quick Demo Logins Selector */}
-        <div className="pt-2 border-t border-surface-variant/40 flex flex-col gap-2">
-          <span className="text-[10px] font-bold uppercase tracking-wider text-outline text-center">
-            Quick 1-Click Demo Accounts
-          </span>
-          <div className="grid grid-cols-3 gap-1.5">
-            <button
-              type="button"
-              onClick={() => handleQuickDemo('student@englishmate.ai', 'Student')}
-              className="py-1.5 px-2 rounded-xl bg-surface-container hover:bg-primary-fixed text-[11px] font-bold text-on-surface hover:text-primary transition-colors text-center"
-            >
-              🎓 Student
-            </button>
-            <button
-              type="button"
-              onClick={() => handleQuickDemo('teacher@englishmate.ai', 'Teacher')}
-              className="py-1.5 px-2 rounded-xl bg-surface-container hover:bg-secondary-fixed text-[11px] font-bold text-on-surface hover:text-secondary transition-colors text-center"
-            >
-              👨‍🏫 Teacher
-            </button>
-            <button
-              type="button"
-              onClick={() => handleQuickDemo('admin@englishmate.ai', 'Admin')}
-              className="py-1.5 px-2 rounded-xl bg-surface-container hover:bg-tertiary-fixed text-[11px] font-bold text-on-surface hover:text-tertiary transition-colors text-center"
-            >
-              🛡️ Admin
-            </button>
-          </div>
-        </div>
 
         <p className="text-center text-xs text-on-surface-variant">
           Don't have an account?{' '}

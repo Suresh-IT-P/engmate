@@ -1,10 +1,12 @@
 const express = require('express');
 const router = express.Router();
 const adminController = require('../controllers/adminController');
-const { authenticateToken } = require('../middleware/auth');
+const { requireAuth } = require('../middleware/auth');
 const { requireTeacherOrAdmin, requireAdmin } = require('../middleware/adminAuth');
 
-router.use(authenticateToken);
+// requireAuth, not authenticateToken: the latter falls back to the first
+// active user, which handed the whole admin CMS to anonymous callers.
+router.use(requireAuth);
 router.use(requireTeacherOrAdmin);
 
 router.get('/stats', adminController.getAdminStats);

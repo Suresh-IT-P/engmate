@@ -61,6 +61,16 @@ async function getOrCreateDirectRoom(req, res, next) {
       return error(res, 'Friend ID is required.', 400);
     }
 
+    if (Number(friendId) === Number(userId)) {
+      return error(res, 'You cannot open a chat with yourself.', 400);
+    }
+
+    // Room membership is permanent once created, so it must not be grantable to
+    // an arbitrary user id. Same friends-only rule the call path enforces.
+    if (!(await chatService.areFriends(userId, friendId))) {
+      return error(res, 'You can only start a chat with someone on your friends list.', 403);
+    }
+
     const roomId = `room_dm_${Math.min(userId, friendId)}_${Math.max(userId, friendId)}`;
 
     const existing = await db.query('SELECT * FROM chat_rooms WHERE id = ?', [roomId]);
@@ -99,6 +109,21 @@ async function getRoomMessages(req, res, next) {
   try {
     const { roomId } = req.params;
     const { limit = 50 } = req.query;
+
+    // Direct rooms are private. Their ids are derived from the two user ids, so
+    // they are trivially enumerable — membership has to be checked server-side.
+    const room = await db.query('SELECT room_type FROM chat_rooms WHERE id = ?', [roomId]);
+    if (room.length === 0) {
+      return error(res, 'Conversation not found.', 404);
+    }
+    if (room[0].room_type !== 'public') {
+      if (!req.user) {
+        return error(res, 'Sign in to read this conversation.', 401);
+      }
+      if (!(await chatService.canAccessRoom(req.user.id, roomId))) {
+        return error(res, 'You are not a member of this conversation.', 403);
+      }
+    }
 
     const messages = await db.query(
       `SELECT m.id, m.room_id, m.sender_id, m.message_text, m.tamil_translation,
@@ -150,6 +175,12 @@ async function sendMessage(req, res, next) {
 
     if (!messageText || !messageText.trim()) {
       return error(res, 'Message text is required.', 400);
+    }
+
+    // The socket handler gates this; the REST path did not, so the same message
+    // could be posted into a stranger's conversation over HTTP.
+    if (!(await chatService.canAccessRoom(userId, roomId))) {
+      return error(res, 'You are not a member of this conversation.', 403);
     }
 
     const newMessage = await chatService.createMessage({

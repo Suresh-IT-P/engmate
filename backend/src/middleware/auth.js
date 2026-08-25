@@ -60,6 +60,41 @@ async function authenticateToken(req, res, next) {
   }
 }
 
+/**
+ * Strict authentication — no guest fallback.
+ *
+ * authenticateToken deliberately attaches "the first active user" when a token
+ * is missing or invalid, which is fine for a signed-out demo of public content
+ * but catastrophic anywhere that reads or writes a specific person's data: an
+ * anonymous caller simply becomes user id 1. Every such route must use this
+ * instead.
+ */
+async function requireAuth(req, res, next) {
+  const authHeader = req.headers['authorization'];
+  const token = authHeader && authHeader.startsWith('Bearer ') ? authHeader.split(' ')[1] : null;
+
+  if (!token) {
+    return error(res, 'Sign in to continue.', 401);
+  }
+
+  try {
+    const decoded = jwt.verify(token, config.jwtSecret);
+    const users = await db.query(
+      'SELECT id, email, role, status FROM users WHERE id = ?',
+      [decoded.userId]
+    );
+
+    if (users.length === 0 || users[0].status !== 'active') {
+      return error(res, 'Your account is not active.', 401);
+    }
+
+    req.user = { id: users[0].id, email: users[0].email, role: users[0].role };
+    return next();
+  } catch (err) {
+    return error(res, 'Your session has expired. Please sign in again.', 401);
+  }
+}
+
 // Optional auth for public routes with personalized perks
 async function optionalAuth(req, res, next) {
   const authHeader = req.headers['authorization'];
@@ -81,5 +116,6 @@ async function optionalAuth(req, res, next) {
 
 module.exports = {
   authenticateToken,
+  requireAuth,
   optionalAuth
 };

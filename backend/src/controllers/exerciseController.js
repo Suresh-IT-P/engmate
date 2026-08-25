@@ -70,9 +70,32 @@ async function submitExercise(req, res, next) {
     const { id } = req.params;
     const { answers = [], durationSeconds = 60 } = req.body; // answers: [{ questionId, answer }]
 
-    const questions = await db.query('SELECT * FROM questions WHERE exercise_id = ?', [id]);
+    // Grade the questions the learner was actually shown, identified by the ids
+    // they submitted — not everything attached to the exercise.
+    //
+    // Two bugs were hiding here. The Daily Quiz and the Custom Practice Sprint
+    // both hand out a synthetic exercise id ("daily_quiz_2026-08-25",
+    // "custom_sprint_1756…") that exists in no table, so looking questions up by
+    // exercise_id returned nothing and every submission 404'd — neither feature
+    // could ever be completed. And for a real exercise, grading the full set
+    // marked unshown questions wrong when the learner had been given a subset.
+    const answeredIds = [...new Set(
+      answers.map((a) => Number(a.questionId)).filter((n) => Number.isFinite(n))
+    )];
+
+    let questions;
+    if (answeredIds.length > 0) {
+      const placeholders = answeredIds.map(() => '?').join(',');
+      questions = await db.query(
+        `SELECT * FROM questions WHERE id IN (${placeholders})`,
+        answeredIds
+      );
+    } else {
+      questions = await db.query('SELECT * FROM questions WHERE exercise_id = ?', [id]);
+    }
+
     if (questions.length === 0) {
-      return error(res, 'No questions found for this exercise', 404);
+      return error(res, 'No questions found for this submission', 404);
     }
 
     let correctCount = 0;

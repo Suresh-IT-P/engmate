@@ -10,7 +10,7 @@ async function getAdminStats(req, res, next) {
     const grammarCount = (await db.query('SELECT COUNT(*) as c FROM grammar_topics'))[0]?.c || 0;
     const exerciseCount = (await db.query('SELECT COUNT(*) as c FROM exercises'))[0]?.c || 0;
     const quizAttemptsCount = (await db.query('SELECT COUNT(*) as c FROM quiz_attempts'))[0]?.c || 0;
-    const activeLearnersToday = (await db.query('SELECT COUNT(DISTINCT user_id) as c FROM learning_sessions WHERE session_date = DATE("now")'))[0]?.c || 0;
+    const activeLearnersToday = (await db.query('SELECT COUNT(DISTINCT user_id) as c FROM learning_sessions WHERE session_date = CURDATE()'))[0]?.c || 0;
 
     const recentUsers = await db.query(
       `SELECT u.id, u.email, u.role, u.status, u.created_at, p.full_name, p.current_level, p.xp

@@ -1,6 +1,6 @@
 import React, { useState, useEffect, useRef, useCallback } from 'react';
 import { useParams, useNavigate } from 'react-router-dom';
-import { getSocket } from '../services/socket';
+import { connectSocket } from '../services/socket';
 import { Send, MessageSquare, X, ArrowLeft, Copy, Check, Link2 } from 'lucide-react';
 import { useAuth } from '../context/AuthContext';
 import BattleTopicPicker from '../components/BattleTopicPicker';
@@ -52,6 +52,12 @@ export default function MultiplayerBattle() {
   const { profile } = useAuth();
 
   const [socket, setSocket] = useState(null);
+  // Whether that socket is actually open. Create and Join stay disabled until
+  // it is, so a click cannot disappear into a buffered emit.
+  const [connected, setConnected] = useState(false);
+  // Set while a create_room is in flight, so the button shows progress and a
+  // server that never answers surfaces an error instead of hanging.
+  const [creating, setCreating] = useState(false);
   const [gameState, setGameState] = useState(roomIdParam ? 'CONNECTING' : 'SETUP');
   const [roomId, setRoomId] = useState(roomIdParam || '');
   const [joinCode, setJoinCode] = useState('');
@@ -97,8 +103,18 @@ export default function MultiplayerBattle() {
 
   /* ----------------------------------------------------------- socket ---- */
   useEffect(() => {
-    const newSocket = getSocket();
+    const newSocket = connectSocket();
     setSocket(newSocket);
+
+    // Attach through this helper so cleanup can detach exactly what this screen
+    // added. The old cleanup called socket.off(event) with no handler, which
+    // removes EVERY listener for that event — including the 'connect' handler
+    // CallProvider relies on for presence and incoming calls.
+    const bound = [];
+    const on = (event, handler) => {
+      bound.push([event, handler]);
+      on(event, handler);
+    };
 
     const applyMeta = (data) => {
       setRoomId(data.roomId);
@@ -110,7 +126,8 @@ export default function MultiplayerBattle() {
       sessionStorage.setItem('activeRoomId', data.roomId);
     };
 
-    newSocket.on('room_created', (data) => {
+    on('room_created', (data) => {
+      setCreating(false);
       applyMeta(data);
       setGameState('LOBBY');
       joinedRef.current = data.roomId;
@@ -118,12 +135,12 @@ export default function MultiplayerBattle() {
       navigate(`/battle/room/${data.roomId}`, { replace: true });
     });
 
-    newSocket.on('join_success', (data) => {
+    on('join_success', (data) => {
       applyMeta(data);
       setGameState('LOBBY');
     });
 
-    newSocket.on('rejoin_success', (data) => {
+    on('rejoin_success', (data) => {
       applyMeta(data);
       setGameState(data.state);
       if (data.questionData) {
@@ -132,11 +149,11 @@ export default function MultiplayerBattle() {
       }
     });
 
-    newSocket.on('settings_updated', (data) => {
+    on('settings_updated', (data) => {
       applyMeta(data);
     });
 
-    newSocket.on('rematch_ready', (data) => {
+    on('rematch_ready', (data) => {
       applyMeta(data);
       setGameState('LOBBY');
       setQuestionData(null);
@@ -144,14 +161,29 @@ export default function MultiplayerBattle() {
       setAnswerResult(null);
     });
 
-    newSocket.on('connect', () => {
+    on('connect', () => {
+      setConnected(true);
+      setRoomError(null);
       const savedRoomId = sessionStorage.getItem('activeRoomId');
       if (savedRoomId) newSocket.emit('rejoin_room', { roomId: savedRoomId, sessionId });
     });
 
-    newSocket.on('room_update', (data) => setPlayers(data.players));
+    on('disconnect', () => setConnected(false));
 
-    newSocket.on('error', (msg) => {
+    // Without this the Create button just does nothing when the server is
+    // unreachable, which is exactly how this bug presented.
+    on('connect_error', () => {
+      setConnected(false);
+      setCreating(false);
+      setRoomError('Cannot reach the game server. Check your connection and try again.');
+    });
+
+    if (newSocket.connected) setConnected(true);
+
+    on('room_update', (data) => setPlayers(data.players));
+
+    on('error', (msg) => {
+      setCreating(false);
       setRoomError(typeof msg === 'string' ? msg : 'Something went wrong.');
       setGameState('SETUP');
       setRoomId('');
@@ -161,7 +193,7 @@ export default function MultiplayerBattle() {
       navigate('/battle/room', { replace: true });
     });
 
-    newSocket.on('game_started', (data) => {
+    on('game_started', (data) => {
       setGameState('COUNTDOWN');
       setChatMessages((prev) => prev.slice(-30));
       setTimeout(() => {
@@ -170,7 +202,7 @@ export default function MultiplayerBattle() {
       }, 2000);
     });
 
-    newSocket.on('new_question', (data) => {
+    on('new_question', (data) => {
       setQuestionData(data);
       setSelectedOpt(null);
       setAnswerResult(null);
@@ -178,35 +210,35 @@ export default function MultiplayerBattle() {
       setTimeLeft(data.secondsPerQuestion || 10);
     });
 
-    newSocket.on('answer_result', (data) => setAnswerResult(data));
+    on('answer_result', (data) => setAnswerResult(data));
 
     // Sent to everyone at the end of a round, including anyone who ran out of
     // time, so the correct answer is always revealed.
-    newSocket.on('round_over', (data) => {
+    on('round_over', (data) => {
       setAnswerResult((prev) => prev || { isCorrect: false, correctAns: data.correctAns, explanation: data.explanation });
       if (data.players) setPlayers(data.players);
     });
 
-    newSocket.on('opponent_answered', ({ name }) => {
+    on('opponent_answered', ({ name }) => {
       setOpponentLockedIn(true);
       setToast({ id: Math.random(), text: `🔒 ${name} locked in!` });
     });
 
-    newSocket.on('game_finished', (data) => {
+    on('game_finished', (data) => {
       setPlayers(data.players);
       setGameState('FINISHED');
     });
 
-    newSocket.on('receive_chat', (msg) => {
+    on('receive_chat', (msg) => {
       setChatMessages((prev) => [...prev, msg]);
     });
 
-    newSocket.on('system_message', (msg) => {
+    on('system_message', (msg) => {
       setChatMessages((prev) => [...prev, { ...msg, system: true }]);
       setToast({ id: msg.id, text: msg.text });
     });
 
-    newSocket.on('receive_emote', (data) => {
+    on('receive_emote', (data) => {
       // Everyone in the room sees this, including the sender — who already
       // burst it locally on tap, so theirs is skipped to avoid a double volley.
       if (data.senderId === newSocket.id) return;
@@ -219,7 +251,8 @@ export default function MultiplayerBattle() {
     });
 
     return () => {
-      BATTLE_EVENTS.forEach((event) => newSocket.off(event));
+      // Detach only this screen's handlers, by reference.
+      bound.forEach(([event, handler]) => newSocket.off(event, handler));
     };
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
@@ -267,7 +300,18 @@ export default function MultiplayerBattle() {
 
   /* ----------------------------------------------------------- actions --- */
   const handleCreateRoom = () => {
+    if (!socket || !socket.connected) {
+      setRoomError('Still connecting to the game server — try again in a moment.');
+      return;
+    }
     setRoomError(null);
+    setCreating(true);
+    setTimeout(() => {
+      setCreating((inFlight) => {
+        if (inFlight) setRoomError('The server did not answer. Please try again.');
+        return false;
+      });
+    }, 8000);
     socket.emit('create_room', {
       playerName,
       sessionId,
@@ -281,6 +325,11 @@ export default function MultiplayerBattle() {
   const handleJoinByCode = () => {
     const code = joinCode.trim().toUpperCase();
     if (!code) return setRoomError('Enter a room code first.');
+    if (!socket || !socket.connected) {
+      setRoomError('Still connecting to the game server — try again in a moment.');
+      return;
+    }
+    setRoomError(null);
     navigate(`/battle/room/${code}`);
   };
 
@@ -484,11 +533,24 @@ export default function MultiplayerBattle() {
 
             <button
               onClick={handleCreateRoom}
-              disabled={!socket}
+              disabled={!connected || creating}
               className="w-full px-3 py-4 rounded-2xl bg-primary text-white font-extrabold text-sm shadow-lg shadow-primary/25 hover:bg-primary-container transition-all active:scale-95 disabled:opacity-50 break-words"
             >
-              Create Room · {topic?.title || 'Mixed Challenge'} · {seconds}s · {questionCount} Qs
+              {creating
+                ? 'Creating room…'
+                : !connected
+                  ? 'Connecting to the game server…'
+                  : `Create Room · ${topic?.title || 'Mixed Challenge'} · ${seconds}s · ${questionCount} Qs`}
             </button>
+
+            {/* Say plainly when the socket is not up, instead of leaving a
+                button that silently does nothing. */}
+            {!connected && (
+              <p className="text-[11px] font-bold text-on-surface-variant text-center flex items-center justify-center gap-1.5">
+                <span className="material-symbols-outlined text-[14px] animate-spin">progress_activity</span>
+                Connecting to the game server…
+              </p>
+            )}
 
             <div className="flex items-center gap-2 text-on-surface/50 text-xs font-bold uppercase">
               <span className="flex-1 min-w-0 border-b border-surface-variant" />
@@ -508,6 +570,7 @@ export default function MultiplayerBattle() {
               />
               <button
                 onClick={handleJoinByCode}
+                disabled={!connected}
                 className="px-6 py-3 bg-surface-container-highest text-on-surface font-bold rounded-2xl hover:bg-surface-variant transition-all active:scale-95"
               >
                 Join

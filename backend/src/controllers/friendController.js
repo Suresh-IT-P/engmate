@@ -17,7 +17,7 @@ async function searchUsers(req, res, next) {
     const exactTerm = q.trim();
 
     const users = await db.query(
-      `SELECT u.id, u.email, u.username, u.phone_number, p.full_name, p.avatar_url, p.current_level, p.xp
+      `SELECT u.id, u.username, p.full_name, p.avatar_url, p.current_level, p.xp
        FROM users u
        JOIN user_profiles p ON u.id = p.user_id
        WHERE u.id != ?

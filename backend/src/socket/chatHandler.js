@@ -95,8 +95,10 @@ async function logCall(call, status) {
         call.calleeId,
         status,
         duration,
-        new Date(call.startedAt).toISOString(),
-        new Date().toISOString()
+        // Date objects, not ISO strings — MySQL rejects the trailing 'Z' form
+        // for DATETIME, which meant no call was ever logged.
+        new Date(call.startedAt),
+        new Date()
       ]
     );
   } catch (err) {

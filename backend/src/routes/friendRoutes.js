@@ -1,9 +1,10 @@
 const express = require('express');
 const router = express.Router();
 const friendController = require('../controllers/friendController');
-const { authenticateToken } = require('../middleware/auth');
+const { requireAuth } = require('../middleware/auth');
 
-router.use(authenticateToken);
+// Friend search exposes other people's profiles; it must know who is asking.
+router.use(requireAuth);
 
 router.get('/search', friendController.searchUsers);
 router.post('/request', friendController.sendFriendRequest);

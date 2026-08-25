@@ -56,6 +56,10 @@ async function initMySQL() {
       user: config.db.user,
       password: config.db.password,
       database: config.db.database,
+      // DATE columns as strings: this codebase came from SQLite and compares
+      // them with 'YYYY-MM-DD'. Without this, mysql2 returns a Date whose
+      // .toString() is "Tue Aug 25", which silently broke every streak.
+      dateStrings: ['DATE'],
       waitForConnections: true,
       connectionLimit: 10,
       queueLimit: 0,

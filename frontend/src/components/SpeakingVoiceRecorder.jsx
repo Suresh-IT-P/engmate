@@ -19,6 +19,9 @@ export default function SpeakingVoiceRecorder({ topic, onEvaluated }) {
   const recognitionRef = useRef(null);
   const finalTranscriptRef = useRef('');
   const isRecordingIntentRef = useRef(false); // tracks user INTENT to record (vs browser state)
+  const restartCountRef = useRef(0);
+  const restartTimerRef = useRef(null);
+  const MAX_RESTARTS = 25; // Prevent infinite restart loops
 
   // Reset when topic changes
   useEffect(() => {
@@ -42,6 +45,10 @@ export default function SpeakingVoiceRecorder({ topic, onEvaluated }) {
         status.onchange = () => setMicPermission(status.state);
       }).catch(() => {});
     }
+    // Cleanup on unmount
+    return () => {
+      stopRecognition();
+    };
   }, []);
 
   const createRecognition = useCallback(() => {
@@ -49,10 +56,10 @@ export default function SpeakingVoiceRecorder({ topic, onEvaluated }) {
     if (!SpeechRecognition) return null;
 
     const recognition = new SpeechRecognition();
-    recognition.continuous = true;        // Keep listening until manually stopped
+    recognition.continuous = false;       // Single utterance per session — prevents Chrome audio buffer re-processing bug
     recognition.interimResults = true;    // Show live text as the user speaks
     recognition.maxAlternatives = 1;
-    recognition.lang = 'en-IN';          // Indian English accent support
+    recognition.lang = 'en-IN';           // Indian English accent support
 
     recognition.onstart = () => {
       setIsRecording(true);
@@ -75,6 +82,8 @@ export default function SpeakingVoiceRecorder({ topic, onEvaluated }) {
       if (newFinal) {
         finalTranscriptRef.current += newFinal;
         setFinalTranscript(finalTranscriptRef.current.trim());
+        // Reset restart count on successful speech capture
+        restartCountRef.current = 0;
       }
       setInterimText(interim);
     };
@@ -109,14 +118,34 @@ export default function SpeakingVoiceRecorder({ topic, onEvaluated }) {
 
     recognition.onend = () => {
       setInterimText('');
-      // If user still intends to record (no-speech timeout, or browser auto-stopped),
-      // restart recognition automatically
+
       if (isRecordingIntentRef.current) {
-        try {
-          recognition.start();
-        } catch (e) {
-          // Recognition may still be active — ignore
+        restartCountRef.current++;
+
+        if (restartCountRef.current > MAX_RESTARTS) {
+          // Too many restarts — stop to prevent infinite loop
+          isRecordingIntentRef.current = false;
+          setIsRecording(false);
+          setMicError('Recording session ended. Please tap the microphone to start again.');
+          return;
         }
+
+        // Create a FRESH SpeechRecognition instance on each restart.
+        // Reusing the same instance causes Chrome to re-process its audio buffer,
+        // producing garbled/duplicated transcript text.
+        restartTimerRef.current = setTimeout(() => {
+          if (!isRecordingIntentRef.current) return; // User stopped during delay
+
+          const freshRecognition = createRecognition();
+          if (freshRecognition) {
+            recognitionRef.current = freshRecognition;
+            try {
+              freshRecognition.start();
+            } catch (e) {
+              console.warn('Failed to restart recognition:', e);
+            }
+          }
+        }, 150); // Small delay to let Chrome release audio resources
       } else {
         setIsRecording(false);
       }
@@ -127,6 +156,13 @@ export default function SpeakingVoiceRecorder({ topic, onEvaluated }) {
 
   const stopRecognition = () => {
     isRecordingIntentRef.current = false;
+
+    // Clear any pending restart timer
+    if (restartTimerRef.current) {
+      clearTimeout(restartTimerRef.current);
+      restartTimerRef.current = null;
+    }
+
     if (recognitionRef.current) {
       try {
         recognitionRef.current.abort();
@@ -135,6 +171,7 @@ export default function SpeakingVoiceRecorder({ topic, onEvaluated }) {
     }
     setIsRecording(false);
     setInterimText('');
+    restartCountRef.current = 0;
   };
 
   const startRecording = async () => {
@@ -160,6 +197,7 @@ export default function SpeakingVoiceRecorder({ topic, onEvaluated }) {
     setInterimText('');
     setResult(null);
     setMicError('');
+    restartCountRef.current = 0;
 
     const recognition = createRecognition();
     if (!recognition) return;

@@ -145,7 +145,8 @@ export default function SpeakingVoiceRecorder({ topic, onEvaluated }) {
 
     // Request microphone permission first
     try {
-      await navigator.mediaDevices.getUserMedia({ audio: true });
+      const stream = await navigator.mediaDevices.getUserMedia({ audio: true });
+      stream.getTracks().forEach(track => track.stop());
       setMicPermission('granted');
     } catch (err) {
       setMicPermission('denied');

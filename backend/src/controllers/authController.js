@@ -115,8 +115,8 @@ async function register(req, res, next) {
 
 async function login(req, res, next) {
   try {
-    const { email, identifier, password } = req.body;
-    const loginId = (identifier || email || '').trim().toLowerCase();
+    const { email, identifier, phoneNumber, phone, password } = req.body;
+    const loginId = (identifier || phoneNumber || phone || email || '').trim().toLowerCase();
 
     if (!loginId || !password) {
       return error(res, 'Phone number and password are required.', 400);

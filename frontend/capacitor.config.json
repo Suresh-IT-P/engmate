@@ -1,0 +1,17 @@
+{
+  "appId": "com.engmate.app",
+  "appName": "Engmate",
+  "webDir": "dist",
+  "bundledWebRuntime": false,
+  "server": {
+    "androidScheme": "https",
+    "cleartext": true,
+    "allowNavigation": [
+      "engmate.njjtechnologies.in",
+      "*.njjtechnologies.in"
+    ]
+  },
+  "android": {
+    "allowMixedContent": true
+  }
+}

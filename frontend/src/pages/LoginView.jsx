@@ -34,9 +34,11 @@ export default function LoginView() {
 
         {/* Brand Banner */}
         <div className="text-center flex flex-col items-center gap-2">
-          <div className="w-14 h-14 shrink-0 rounded-2xl bg-gradient-to-tr from-primary to-primary-container text-white flex items-center justify-center shadow-lg shadow-primary/25">
-            <span className="material-symbols-outlined text-[32px]">translate</span>
-          </div>
+          <img
+            src="/favicon.png"
+            alt="Engmate Logo"
+            className="w-16 h-16 shrink-0 rounded-2xl object-cover shadow-lg shadow-primary/25"
+          />
           <h1 className="text-2xl font-extrabold text-on-surface font-display">Welcome Back!</h1>
           <p className="text-xs text-on-surface-variant font-tamil">
             {tamilEnabled ? 'உங்கள் கற்றல் பயணத்தைத் தொடர உள்நுழையவும்.' : 'Sign in to continue your English learning streak.'}

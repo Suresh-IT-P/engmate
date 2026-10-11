@@ -11,9 +11,17 @@ import { io } from 'socket.io-client';
  */
 export const SOCKET_URL =
   import.meta.env.VITE_SOCKET_URL ||
-  (window.location.hostname === 'localhost' || window.location.hostname === '127.0.0.1' 
-    ? 'http://localhost:5000' 
-    : window.location.origin);
+  import.meta.env.VITE_API_URL ||
+  (typeof window !== 'undefined' && (
+    window.Capacitor?.isNativePlatform?.() ||
+    window.Capacitor !== undefined ||
+    window.location.protocol === 'capacitor:' ||
+    window.location.protocol === 'ionic:'
+  )
+    ? 'https://engmate.njjtechnologies.in'
+    : (window.location.hostname === 'localhost' || window.location.hostname === '127.0.0.1' 
+        ? 'http://localhost:5000' 
+        : window.location.origin));
 
 let socket = null;
 

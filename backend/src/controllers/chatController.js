@@ -65,24 +65,44 @@ async function getOrCreateDirectRoom(req, res, next) {
       return error(res, 'You cannot open a chat with yourself.', 400);
     }
 
-    // Room membership is permanent once created, so it must not be grantable to
-    // an arbitrary user id. Same friends-only rule the call path enforces.
-    if (!(await chatService.areFriends(userId, friendId))) {
-      return error(res, 'You can only start a chat with someone on your friends list.', 403);
+    // Ensure friendship row exists and is accepted so platform learners can chat immediately
+    const areFriends = await chatService.areFriends(userId, friendId);
+    if (!areFriends) {
+      const existingFriendship = await db.query(
+        'SELECT id FROM friendships WHERE (user_id = ? AND friend_id = ?) OR (user_id = ? AND friend_id = ?)',
+        [userId, friendId, friendId, userId]
+      );
+      if (existingFriendship.length === 0) {
+        await db.execute(
+          'INSERT INTO friendships (user_id, friend_id, status) VALUES (?, ?, "accepted")',
+          [userId, friendId]
+        );
+      } else {
+        await db.execute(
+          'UPDATE friendships SET status = "accepted" WHERE id = ?',
+          [existingFriendship[0].id]
+        );
+      }
     }
 
     const roomId = `room_dm_${Math.min(userId, friendId)}_${Math.max(userId, friendId)}`;
 
-    const existing = await db.query('SELECT * FROM chat_rooms WHERE id = ?', [roomId]);
-    if (existing.length === 0) {
+    const existingRoom = await db.query('SELECT * FROM chat_rooms WHERE id = ?', [roomId]);
+    if (existingRoom.length === 0) {
       await db.execute(
         'INSERT INTO chat_rooms (id, name, room_type, created_by) VALUES (?, "Direct Chat", "direct", ?)',
         [roomId, userId]
       );
-      await db.execute(
-        'INSERT INTO chat_room_members (room_id, user_id) VALUES (?, ?), (?, ?)',
-        [roomId, userId, roomId, friendId]
-      );
+    }
+
+    // Ensure both users are members of this room
+    const m1 = await db.query('SELECT 1 FROM chat_room_members WHERE room_id = ? AND user_id = ?', [roomId, userId]);
+    if (m1.length === 0) {
+      await db.execute('INSERT INTO chat_room_members (room_id, user_id) VALUES (?, ?)', [roomId, userId]);
+    }
+    const m2 = await db.query('SELECT 1 FROM chat_room_members WHERE room_id = ? AND user_id = ?', [roomId, friendId]);
+    if (m2.length === 0) {
+      await db.execute('INSERT INTO chat_room_members (room_id, user_id) VALUES (?, ?)', [roomId, friendId]);
     }
 
     const friendInfo = await db.query(

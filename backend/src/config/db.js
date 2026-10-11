@@ -3,13 +3,11 @@ const fs = require('fs');
 const path = require('path');
 
 let mysqlPool = null;
+let sqliteDb = null;
+let activeEngine = 'mysql';
 
 /**
  * Build the SSL config for Aiven (or any SSL-required MySQL).
- * Priority:
- *  1. DB_CA_CERT env var (base64-encoded cert — for Render/cloud deployments)
- *  2. Local certs/aiven-ca.pem file (for local dev)
- *  3. Plain { rejectUnauthorized: false } fallback
  */
 function buildSslConfig() {
   if (!config.db.ssl) return undefined;
@@ -30,7 +28,29 @@ function buildSslConfig() {
   return { rejectUnauthorized: false };
 }
 
+function initSQLite() {
+  if (!sqliteDb) {
+    try {
+      const { DatabaseSync } = require('node:sqlite');
+      const sqlitePath = path.resolve(__dirname, '../../database/englishmate.sqlite');
+      sqliteDb = new DatabaseSync(sqlitePath);
+      activeEngine = 'sqlite';
+      console.log(`[Database] Connected successfully to SQLite database (${sqlitePath})`);
+      return true;
+    } catch (err) {
+      console.error(`[Database] CRITICAL: SQLite initialization failed: ${err.message}`);
+      throw err;
+    }
+  }
+  return true;
+}
+
 async function initMySQL() {
+  if (config.db.client === 'sqlite') {
+    initSQLite();
+    return true;
+  }
+
   const mysql = require('mysql2/promise');
   const sslConfig = buildSslConfig();
 
@@ -40,7 +60,7 @@ async function initMySQL() {
       port: config.db.port,
       user: config.db.user,
       password: config.db.password,
-      connectTimeout: 5000,
+      connectTimeout: 4000,
       ...(sslConfig && { ssl: sslConfig })
     });
     await adminConn.query(`CREATE DATABASE IF NOT EXISTS \`${config.db.database}\` CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci;`);
@@ -56,121 +76,175 @@ async function initMySQL() {
       user: config.db.user,
       password: config.db.password,
       database: config.db.database,
-      // DATE columns as strings: this codebase came from SQLite and compares
-      // them with 'YYYY-MM-DD'. Without this, mysql2 returns a Date whose
-      // .toString() is "Tue Aug 25", which silently broke every streak.
       dateStrings: ['DATE'],
       waitForConnections: true,
       connectionLimit: 10,
       queueLimit: 0,
       enableKeepAlive: true,
       keepAliveInitialDelay: 0,
+      connectTimeout: 4000,
       ...(sslConfig && { ssl: sslConfig })
     });
     await mysqlPool.query('SELECT 1');
+    activeEngine = 'mysql';
     console.log(`[Database] Connected successfully to MySQL (${config.db.database} on ${config.db.host}:${config.db.port})`);
     return true;
   } catch (err) {
     mysqlPool = null;
-    console.error(`[Database] CRITICAL: MySQL connection failed (${config.db.host}:${config.db.port}): ${err.message}`);
-    throw err;
+    console.warn(`[Database] MySQL connection attempt failed (${config.db.host}:${config.db.port}): ${err.message}`);
+    console.log(`[Database] Seamlessly falling back to local SQLite database...`);
+    initSQLite();
+    return true;
   }
 }
 
 async function getEngine() {
-  if (!mysqlPool) {
+  if (activeEngine === 'mysql' && !mysqlPool) {
     await initMySQL();
+  } else if (activeEngine === 'sqlite' && !sqliteDb) {
+    initSQLite();
   }
-  return 'mysql';
+  return activeEngine;
 }
 
-/**
- * mysql2 throws "Bind parameters must not contain undefined" rather than
- * treating it as NULL, so an optional field the caller left off becomes a
- * 500 instead of a null column. Normalise here, once, for every query.
- */
 function normalise(params) {
   if (!Array.isArray(params)) return params;
   return params.map((p) => (p === undefined ? null : p));
 }
 
+function normalizeSqlForSqlite(sql) {
+  let s = sql
+    .replace(/\bCURDATE\(\)/gi, "DATE('now')")
+    .replace(/\bCURRENT_DATE\(\)/gi, "DATE('now')")
+    .replace(/\bNOW\(\)/gi, "DATETIME('now')");
+
+  // MySQL "ON DUPLICATE KEY UPDATE ..." -> in SQLite "INSERT OR REPLACE INTO ..."
+  if (/ON\s+DUPLICATE\s+KEY\s+UPDATE/i.test(s)) {
+    s = s.replace(/^INSERT\s+INTO/i, 'INSERT OR REPLACE INTO');
+    s = s.replace(/\s+ON\s+DUPLICATE\s+KEY\s+UPDATE[\s\S]*$/i, '');
+  }
+  return s;
+}
+
 async function query(sql, params = []) {
-  await getEngine();
-  const [rows] = await mysqlPool.query(sql, normalise(params));
-  return rows;
+  const engine = await getEngine();
+  const normParams = normalise(params);
+  if (engine === 'mysql' && mysqlPool) {
+    const [rows] = await mysqlPool.query(sql, normParams);
+    return rows;
+  } else {
+    const sSql = normalizeSqlForSqlite(sql);
+    const stmt = sqliteDb.prepare(sSql);
+    return stmt.all(...normParams);
+  }
 }
 
 async function execute(sql, params = []) {
-  await getEngine();
-  const [result] = await mysqlPool.execute(sql, normalise(params));
-  return {
-    insertId: result.insertId,
-    affectedRows: result.affectedRows,
-    changedRows: result.changedRows
-  };
+  const engine = await getEngine();
+  const normParams = normalise(params);
+  if (engine === 'mysql' && mysqlPool) {
+    const [result] = await mysqlPool.execute(sql, normParams);
+    return {
+      insertId: result.insertId,
+      affectedRows: result.affectedRows,
+      changedRows: result.changedRows
+    };
+  } else {
+    const sSql = normalizeSqlForSqlite(sql);
+    const stmt = sqliteDb.prepare(sSql);
+    const info = stmt.run(...normParams);
+    return {
+      insertId: Number(info.lastInsertRowid),
+      affectedRows: Number(info.changes),
+      changedRows: Number(info.changes)
+    };
+  }
 }
 
-/**
- * Run several statements as one atomic unit on a single pooled connection.
- *
- * Registration needs this: it writes a user, a profile, settings, a streak and
- * a notification. Without a transaction, a failure on any of the later inserts
- * leaves an orphaned users row behind — and because the phone number is unique,
- * that person can then never register again.
- *
- * The callback receives a tx object exposing the same query/execute signature.
- */
 async function withTransaction(work) {
-  await getEngine();
-  const conn = await mysqlPool.getConnection();
+  const engine = await getEngine();
+  if (engine === 'mysql' && mysqlPool) {
+    const conn = await mysqlPool.getConnection();
+    const tx = {
+      query: async (sql, params = []) => {
+        const [rows] = await conn.query(sql, normalise(params));
+        return rows;
+      },
+      execute: async (sql, params = []) => {
+        const [result] = await conn.execute(sql, normalise(params));
+        return {
+          insertId: result.insertId,
+          affectedRows: result.affectedRows,
+          changedRows: result.changedRows
+        };
+      }
+    };
 
-  const tx = {
-    query: async (sql, params = []) => {
-      const [rows] = await conn.query(sql, normalise(params));
-      return rows;
-    },
-    execute: async (sql, params = []) => {
-      const [result] = await conn.execute(sql, normalise(params));
-      return {
-        insertId: result.insertId,
-        affectedRows: result.affectedRows,
-        changedRows: result.changedRows
-      };
-    }
-  };
-
-  try {
-    await conn.beginTransaction();
-    const out = await work(tx);
-    await conn.commit();
-    return out;
-  } catch (err) {
     try {
-      await conn.rollback();
-    } catch (_) {
-      /* the connection is already broken; releasing it is all we can do */
+      await conn.beginTransaction();
+      const out = await work(tx);
+      await conn.commit();
+      return out;
+    } catch (err) {
+      try {
+        await conn.rollback();
+      } catch (_) {}
+      throw err;
+    } finally {
+      conn.release();
     }
-    throw err;
-  } finally {
-    conn.release();
+  } else {
+    // SQLite transaction
+    sqliteDb.exec('BEGIN IMMEDIATE');
+    const tx = {
+      query: async (sql, params = []) => {
+        const sSql = normalizeSqlForSqlite(sql);
+        return sqliteDb.prepare(sSql).all(...normalise(params));
+      },
+      execute: async (sql, params = []) => {
+        const sSql = normalizeSqlForSqlite(sql);
+        const info = sqliteDb.prepare(sSql).run(...normalise(params));
+        return {
+          insertId: Number(info.lastInsertRowid),
+          affectedRows: Number(info.changes),
+          changedRows: Number(info.changes)
+        };
+      }
+    };
+
+    try {
+      const out = await work(tx);
+      sqliteDb.exec('COMMIT');
+      return out;
+    } catch (err) {
+      try {
+        sqliteDb.exec('ROLLBACK');
+      } catch (_) {}
+      throw err;
+    }
   }
 }
 
 async function execDirect(rawSql) {
-  await getEngine();
-  await mysqlPool.query(rawSql);
+  const engine = await getEngine();
+  if (engine === 'mysql' && mysqlPool) {
+    await mysqlPool.query(rawSql);
+  } else {
+    sqliteDb.exec(normalizeSqlForSqlite(rawSql));
+  }
 }
 
 function getActiveEngineName() {
-  return 'mysql';
+  return activeEngine;
 }
 
-// Stubs for SQLite functions to avoid breaking older seed scripts temporarily
 async function getSQLiteDb() {
-  throw new Error('SQLite has been completely removed from this project.');
+  initSQLite();
+  return sqliteDb;
 }
+
 function persistSQLite() {
-  // no-op
+  // DatabaseSync writes synchronously to disk
 }
 
 module.exports = {

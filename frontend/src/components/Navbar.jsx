@@ -15,14 +15,14 @@ export default function Navbar() {
         
         {/* Left: Brand Logo & Title */}
         <Link to="/" className="flex items-center gap-2 sm:gap-2.5 group min-w-0 flex-1">
-          <div className="w-9 h-9 sm:w-10 sm:h-10 shrink-0 rounded-xl bg-gradient-to-tr from-primary to-primary-container flex items-center justify-center text-white shadow-md shadow-primary/20 group-hover:scale-105 transition-transform">
-            <span className="material-symbols-outlined text-[20px] sm:text-[24px]">translate</span>
-          </div>
+          <img
+            src="/favicon.png"
+            alt="Engmate Logo"
+            className="w-9 h-9 sm:w-10 sm:h-10 shrink-0 rounded-xl object-cover shadow-md shadow-primary/20 group-hover:scale-105 transition-transform"
+          />
           <div className="flex flex-col min-w-0">
             <div className="flex items-center gap-1.5 min-w-0">
-              <span className="font-display font-bold text-base sm:text-lg text-primary leading-none truncate">English Mate</span>
-              {/* The badge is the first thing to go: on a 320px screen the brand
-                  block and the action cluster together overran the bar. */}
+              <span className="font-display font-bold text-base sm:text-lg text-primary leading-none truncate">Engmate</span>
               <span className="hidden md:inline-block shrink-0 text-[10px] uppercase font-bold tracking-wider px-1.5 py-0.5 rounded bg-secondary-container/60 text-on-secondary-container">AI Bridge</span>
             </div>
             {tamilEnabled && (
@@ -34,15 +34,17 @@ export default function Navbar() {
         {/* Right: Search, Tamil toggle, XP, Streak, Profile Avatar */}
         <div className="flex items-center gap-1.5 xs:gap-2 md:gap-3 shrink-0">
           
-          {/* Search Button */}
-          <button
-            onClick={() => setSearchOpen(true)}
-            className="w-9 h-9 shrink-0 rounded-full bg-surface-container flex items-center justify-center text-on-surface-variant hover:text-primary hover:bg-surface-variant transition-colors"
-            title="Search topics & words"
-            aria-label="Search"
-          >
-            <span className="material-symbols-outlined text-[20px]">search</span>
-          </button>
+          {/* Search Button (Only when signed in) */}
+          {user && (
+            <button
+              onClick={() => setSearchOpen(true)}
+              className="w-9 h-9 shrink-0 rounded-full bg-surface-container flex items-center justify-center text-on-surface-variant hover:text-primary hover:bg-surface-variant transition-colors"
+              title="Search topics & words"
+              aria-label="Search"
+            >
+              <span className="material-symbols-outlined text-[20px]">search</span>
+            </button>
+          )}
 
           {/* Tamil Translation Toggle */}
           <button
@@ -58,19 +60,24 @@ export default function Navbar() {
             <span className={`w-2 h-2 rounded-full ${tamilEnabled ? 'bg-secondary-container' : 'bg-outline-variant'}`}></span>
           </button>
 
-          {/* XP Badge */}
-          <div className="hidden sm:flex items-center gap-1 px-3 py-1 bg-tertiary-container/15 rounded-full border border-tertiary-container/30">
-            <span className="material-symbols-outlined text-tertiary text-[18px]">workspace_premium</span>
-            <span className="text-xs font-bold text-on-surface font-display">{profile?.xp || 0} XP</span>
-          </div>
+          {/* XP & Streak (Only when signed in) */}
+          {user && (
+            <>
+              {/* XP Badge */}
+              <div className="hidden sm:flex items-center gap-1 px-3 py-1 bg-tertiary-container/15 rounded-full border border-tertiary-container/30">
+                <span className="material-symbols-outlined text-tertiary text-[18px]">workspace_premium</span>
+                <span className="text-xs font-bold text-on-surface font-display">{profile?.xp || 0} XP</span>
+              </div>
 
-          {/* Streak Badge */}
-          <div className="flex items-center gap-0.5 xs:gap-1 px-1.5 xs:px-2.5 py-1 shrink-0 bg-error-container/40 rounded-full border border-error-container/60">
-            <span className="material-symbols-outlined text-error text-[18px]" style={{ fontVariationSettings: "'FILL' 1" }}>
-              local_fire_department
-            </span>
-            <span className="text-xs font-bold text-on-surface font-display">{streak.current || 1}</span>
-          </div>
+              {/* Streak Badge */}
+              <div className="flex items-center gap-0.5 xs:gap-1 px-1.5 xs:px-2.5 py-1 shrink-0 bg-error-container/40 rounded-full border border-error-container/60">
+                <span className="material-symbols-outlined text-error text-[18px]" style={{ fontVariationSettings: "'FILL' 1" }}>
+                  local_fire_department
+                </span>
+                <span className="text-xs font-bold text-on-surface font-display">{streak.current || 1}</span>
+              </div>
+            </>
+          )}
 
           {/* User Profile / Auth Menu */}
           {user ? (

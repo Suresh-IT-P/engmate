@@ -1,4 +1,21 @@
-const API_BASE = '/api';
+const getApiBase = () => {
+  const envUrl = import.meta.env.VITE_API_URL;
+  if (envUrl) {
+    return envUrl.endsWith('/api') ? envUrl : `${envUrl.replace(/\/$/, '')}/api`;
+  }
+  const isCapacitor = typeof window !== 'undefined' && (
+    window.Capacitor?.isNativePlatform?.() ||
+    window.Capacitor !== undefined ||
+    window.location.protocol === 'capacitor:' ||
+    window.location.protocol === 'ionic:'
+  );
+  if (isCapacitor) {
+    return 'https://engmate.njjtechnologies.in/api';
+  }
+  return '/api';
+};
+
+const API_BASE = getApiBase();
 
 async function request(endpoint, options = {}) {
   const token = localStorage.getItem('englishmate_token');

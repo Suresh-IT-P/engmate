@@ -57,10 +57,12 @@ function ProtectedRoute({ children }) {
 }
 
 function AppContent() {
+  const { user } = useAuth();
+
   return (
     <div className="min-h-screen bg-background text-on-background flex flex-col">
       <Navbar />
-      <GlobalSearchModal />
+      {user && <GlobalSearchModal />}
       <main className="flex-1 min-w-0 app-main">
         <Routes>
           <Route path="/login" element={<LoginView />} />
@@ -98,9 +100,9 @@ function AppContent() {
           </Route>
         </Routes>
       </main>
-      <FloatingChatWidget />
-      <CallOverlay />
-      <BottomNav />
+      {user && <FloatingChatWidget />}
+      {user && <CallOverlay />}
+      {user && <BottomNav />}
     </div>
   );
 }

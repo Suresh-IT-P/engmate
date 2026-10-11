@@ -8,7 +8,6 @@ import { ReactionBurstProvider } from './components/reactions/ReactionBurstLayer
 import Navbar from './components/Navbar';
 import BottomNav from './components/BottomNav';
 import GlobalSearchModal from './components/GlobalSearchModal';
-import FloatingChatWidget from './components/FloatingChatWidget';
 import CallOverlay from './components/CallOverlay';
 
 import HomeDashboard from './pages/HomeDashboard';
@@ -100,7 +99,6 @@ function AppContent() {
           </Route>
         </Routes>
       </main>
-      {user && <FloatingChatWidget />}
       {user && <CallOverlay />}
       {user && <BottomNav />}
     </div>

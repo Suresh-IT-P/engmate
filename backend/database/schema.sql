@@ -338,7 +338,7 @@ CREATE TABLE IF NOT EXISTS conversation_topics (
     id VARCHAR(50) PRIMARY KEY,
     title VARCHAR(150) NOT NULL,
     tamil_title VARCHAR(150),
-    persona_name VARCHAR(100) DEFAULT 'Maya (English Coach)',
+    persona_name VARCHAR(100) DEFAULT 'Keerthu (English Coach)',
     persona_role VARCHAR(100) DEFAULT 'Friendly English Tutor',
     scenario_description TEXT NOT NULL,
     initial_message TEXT NOT NULL,

@@ -10,6 +10,66 @@ const GEMINI_FALLBACK_MODEL = 'gemini-flash-latest';
  *  its own capacity, so it is usually free when the main one is not. */
 const GEMINI_BUSY_FALLBACK_MODEL = 'gemini-flash-lite-latest';
 
+/** The tutor's name. Set here rather than by the app, so older installs that
+ *  still send "Maya" or "Suresh" meet Keerthu too. */
+const TUTOR_NAME = 'Keerthu';
+
+/**
+ * Keerthu's pet names for the student, in English letters and Tamil script.
+ * Every reply uses one, and each reply moves on to the next.
+ */
+const PET_NAMES = [
+  { en: 'chellam', ta: 'செல்லம்' },
+  { en: 'thangam', ta: 'தங்கம்' },
+  { en: 'pattu', ta: 'பட்டு' },
+  { en: 'Amul baby', ta: 'அமுல் பேபி' },
+  { en: 'rowdy baby', ta: 'ரௌடி பேபி' }
+];
+
+/** Added to a reply that forgot to cheer the student on. */
+const CHEERS = [
+  { en: (p) => `You're doing great, ${p}! 💛`, ta: (p) => `நீ சூப்பரா பண்ற, ${p}! 💛` },
+  { en: (p) => `Keep going, ${p}! 💪`, ta: (p) => `தொடர்ந்து பேசு, ${p}! 💪` },
+  { en: (p) => `I'm proud of you, ${p}! 🌟`, ta: (p) => `உன்னை நினைச்சா பெருமையா இருக்கு, ${p}! 🌟` }
+];
+
+/** Spaces and case vary ("Rowdy Baby", "rowdybaby"), so compare without them. */
+function mentionsPetName(text, pet) {
+  return String(text || '').toLowerCase().replace(/\s+/g, '')
+    .includes(pet.en.toLowerCase().replace(/\s+/g, ''));
+}
+
+/** The pet name after the one in Keerthu's last reply, so they take turns. */
+function nextPetName(history = []) {
+  const lastReply = [...history].reverse().find((h) => h.sender === 'assistant')?.content;
+  const last = PET_NAMES.findIndex((p) => mentionsPetName(lastReply, p));
+  return last === -1
+    ? PET_NAMES[Math.floor(Math.random() * PET_NAMES.length)]
+    : PET_NAMES[(last + 1) % PET_NAMES.length];
+}
+
+/** A pet name is affection, not a key point, so it is never bold. */
+const BOLD_PET_NAME = new RegExp(
+  `\\*\\*(${PET_NAMES.flatMap((p) => [p.en.replace(' ', ' ?'), p.ta]).join('|')})\\*\\*`, 'gi');
+
+function unboldPetNames(text) {
+  return text && text.replace(BOLD_PET_NAME, '$1');
+}
+
+/** Every reply cheers the student by a pet name: add one if it has none. */
+function withPetName(res, pet) {
+  if (!res?.reply) return res;
+  const reply = unboldPetNames(res.reply);
+  const tamilTranslation = unboldPetNames(res.tamilTranslation);
+  if (PET_NAMES.some((p) => mentionsPetName(reply, p))) return { ...res, reply, tamilTranslation };
+  const cheer = CHEERS[Math.floor(Math.random() * CHEERS.length)];
+  return {
+    ...res,
+    reply: `${reply}\n\n${cheer.en(pet.en)}`,
+    tamilTranslation: tamilTranslation && `${tamilTranslation}\n\n${cheer.ta(pet.ta)}`
+  };
+}
+
 /**
  * AI Service Provider Abstraction
  * Handles Gemini, OpenAI, and high-fidelity built-in English Coach Engine.
@@ -19,6 +79,7 @@ class AIService {
     this.provider = config.ai.provider;
     this.apiKey = config.ai.apiKey;
     this.model = config.ai.model;
+    this.tutorName = TUTOR_NAME;
   }
 
   /**
@@ -39,16 +100,17 @@ class AIService {
   /**
    * Conversational Chat with AI Tutor or Scenario Persona
    */
-  async chat({ message, history = [], persona = 'Suresh', role = 'Friendly English Tutor', scenario = 'General Chat', level = 'A1', enableTamil = true }) {
+  async chat({ message, history = [], role = 'Friendly English Tutor', scenario = 'General Chat', level = 'A1', enableTamil = true }) {
+    const pet = nextPetName(history);
     if (this.apiKey && this.provider === 'gemini') {
       try {
-        const geminiRes = await this.geminiChat({ message, history, persona, role, scenario, level, enableTamil });
-        if (geminiRes && geminiRes.reply) return geminiRes;
+        const geminiRes = await this.geminiChat({ message, history, pet, role, scenario, level, enableTamil });
+        if (geminiRes && geminiRes.reply) return withPetName(geminiRes, pet);
       } catch (err) {
         console.warn('[AIService] Gemini Chat fallback triggered:', err.message);
       }
     }
-    return this.ruleBasedChat({ message, history, persona, role, scenario, level, enableTamil });
+    return withPetName(this.ruleBasedChat({ message, history, pet, role, scenario, level, enableTamil }), pet);
   }
 
   /**
@@ -202,7 +264,7 @@ class AIService {
     };
   }
 
-  ruleBasedChat({ message, history = [], persona = 'Maya', role = 'Friendly English Tutor', scenario = 'General Chat', level = 'A1', enableTamil = true }) {
+  ruleBasedChat({ message, history = [], pet = nextPetName(history), role = 'Friendly English Tutor', scenario = 'General Chat', level = 'A1', enableTamil = true }) {
     const raw = (message || '').trim();
     const lower = raw.toLowerCase();
     let reply = "";
@@ -298,6 +360,7 @@ class AIService {
     // SCENARIO 3: GRAMMAR DOCTOR & SPECIFIC CONCEPTS
     // -------------------------------------------------------------
     else if (scenario.toLowerCase().includes('doctor') || lower.includes('correct this') || lower.includes('is this correct')) {
+      const doctor = this.ruleBasedSentenceDoctor(raw, level);
       if (doctor.hasMistake) {
         reply = `Here is how to make your sentence natural and correct:\n\n• **Correct Form:** "${doctor.improved}"\n• **Rule:** ${doctor.grammarRule}\n• **Explanation:** ${doctor.explanation}`;
         tamilTranslation = `இலக்கண திருத்தம்:\n• சரியான வடிவம்: "${doctor.improved}"\n• தமிழில் விளக்கம்: ${doctor.tamilExplanation}`;
@@ -309,20 +372,20 @@ class AIService {
       }
     }
     // -------------------------------------------------------------
-    // SCENARIO 4: GENERAL AI TUTOR (MAYA) — MULTI-TOPIC CONVERSATION
+    // SCENARIO 4: GENERAL AI TUTOR (KEERTHU) — MULTI-TOPIC CONVERSATION
     // -------------------------------------------------------------
     else {
       // Greetings
       if (lower.includes('hello') || lower.includes('hi') || lower.includes('vanakkam') || lower.includes('hey')) {
         const greetings = [
           {
-            en: "வணக்கம்! Hello! I'm Suresh, your AI English Coach. What would you like to explore today? We can practice daily conversation, learn new words, or master tricky grammar rules!",
-            ta: "வணக்கம்! நான் சுரேஷ், உங்கள் ஆங்கில ஆசிரியர். இன்று அன்றாட உரையாடலா, புதிய சொற்களா அல்லது இலக்கணமா, எதைப் பயிலலாம்?",
+            en: `வணக்கம், ${pet.en}! Hello! I'm Keerthu, your AI English Coach. What would you like to explore today? We can practice daily conversation, learn new words, or master tricky grammar rules!`,
+            ta: `வணக்கம், ${pet.ta}! நான் கீர்த்து, உன் ஆங்கில ஆசிரியர். இன்று அன்றாட உரையாடலா, புதிய சொற்களா அல்லது இலக்கணமா, எதைப் பயிலலாம்?`,
             chips: ["Teach me 3 new words", "Explain Present Perfect tense", "Let's practice daily talk", "Correct my sentences"]
           },
           {
-            en: "Hello there! Wonderful to see you practicing today. How has your day been so far?",
-            ta: "வணக்கம்! இன்று பயிற்சி செய்ய வந்ததில் மகிழ்ச்சி. இன்றைய நாள் உங்களுக்கு எவ்வாறு சென்றது?",
+            en: `Hello there, ${pet.en}! Wonderful to see you practicing today. How has your day been so far?`,
+            ta: `வணக்கம், ${pet.ta}! இன்று பயிற்சி செய்ய வந்ததில் மகிழ்ச்சி. இன்றைய நாள் உனக்கு எப்படி போச்சு?`,
             chips: ["My day was very productive", "I was busy with work/studies", "It was good, thank you!"]
           }
         ];
@@ -487,8 +550,8 @@ class AIService {
         suggestedReplies = ["I am doing great!", "I want to improve my speaking", "Can we do a short quiz?"];
       }
       else if (lower.includes('who are you') || lower.includes('your name')) {
-        reply = "I am **Suresh**, your interactive AI English Coach at English Mate! I am designed to help Tamil speakers master English grammar, fluency, vocabulary, and pronunciation with zero hesitation.";
-        tamilTranslation = "நான் சுரேஷ், உங்கள் ஆங்கில ஆசிரியர். இலக்கணம், உச்சரிப்பு மற்றும் சரளமாகப் பேச உங்களுக்குப் பயிற்சி அளிக்கிறேன்.";
+        reply = `I am **Keerthu**, your interactive AI English Coach at Engmate, ${pet.en}! I am here to help you master English grammar, fluency, vocabulary, and pronunciation with zero hesitation.`;
+        tamilTranslation = `நான் **கீர்த்து**, உன் ஆங்கில ஆசிரியர், ${pet.ta}! இலக்கணம், உச்சரிப்பு மற்றும் சரளமாகப் பேச உனக்குப் பயிற்சி அளிக்கிறேன்.`;
         suggestedReplies = ["Let's start learning!", "Teach me something useful", "How do I become fluent fast?"];
       }
       // General dynamic contextual response (Rotating never-repeat engine)
@@ -647,10 +710,11 @@ Return ONLY a valid JSON object with format:
     return JSON.parse(cleanJson);
   }
 
-  async geminiChat({ message, history = [], persona = 'Maya', role = 'Friendly English Tutor', scenario = 'General Chat', level = 'A1', enableTamil = true }) {
-    if (!this.getGeminiApiKey()) return this.ruleBasedChat({ message, history, persona, role, scenario, level, enableTamil });
+  async geminiChat({ message, history = [], pet = nextPetName(history), role = 'Friendly English Tutor', scenario = 'General Chat', level = 'A1', enableTamil = true }) {
+    if (!this.getGeminiApiKey()) return this.ruleBasedChat({ message, history, pet, role, scenario, level, enableTamil });
 
-    const systemInstructionText = `You are ${persona}, an enthusiastic and supportive AI English Coach for Tamil speakers in this scenario: "${scenario}".
+    const petNames = PET_NAMES.map((p) => `"${p.en}"`).join(', ');
+    const systemInstructionText = `You are ${TUTOR_NAME}, a cheerful, affectionate AI English Coach for Tamil speakers in this scenario: "${scenario}".
 Student proficiency level: ${level}.
 Guidelines:
 1. Always respond warmly, engagingly, and naturally in conversational English.
@@ -658,7 +722,9 @@ Guidelines:
 3. ${enableTamil ? 'Include a natural Tamil translation for your reply so the student can understand nuances.' : ''}
 4. Provide 3 or 4 relevant, natural suggested English replies the student could choose next.
 5. Bold the key points by wrapping them in **double asterisks**: the corrected sentence, the word, idiom or phrase being taught, and the grammar rule's name. Bold 1 to 3 short phrases per reply, never whole sentences of chat. Bold the same English phrases inside tamilTranslation. Never use asterisks in suggestedReplies.
-6. Return ONLY a valid JSON object in this exact schema:
+6. Keep encouraging the student like a loving akka. Call them by one of your Tamil pet names in every reply: ${petNames}. In this reply, call them "${pet.en}" (in tamilTranslation, write it as "${pet.ta}"). Use it once per reply. Praise every attempt, and when they make a mistake, cheer them on before you correct it, in your own words each time. Don't bold the pet name, and never put it in suggestedReplies.
+7. In a role-play scenario (job interview, cafe), stay in your role, but step out of it for a moment to cheer the student with the pet name.
+8. Return ONLY a valid JSON object in this exact schema:
 {
   "reply": "English response text",
   "tamilTranslation": "Tamil translation of the response",
@@ -668,6 +734,10 @@ Guidelines:
     // Build multi-turn conversation contents
     const contents = [];
     const recentHistory = (history || []).slice(-8);
+    // The new message is saved before history is read, so it may already be
+    // last; sent twice, Gemini thinks the student typed it twice.
+    const lastTurn = recentHistory[recentHistory.length - 1];
+    if (lastTurn && lastTurn.sender === 'user' && lastTurn.content === message) recentHistory.pop();
 
     for (const h of recentHistory) {
       if (h.content) {
@@ -693,12 +763,23 @@ Guidelines:
         contents,
         generationConfig: {
           temperature: 0.7,
-          responseMimeType: "application/json"
+          responseMimeType: "application/json",
+          // A schema makes Gemini escape quotes inside the strings; without
+          // one, the lite model sometimes returns JSON that does not parse.
+          responseSchema: {
+            type: 'OBJECT',
+            properties: {
+              reply: { type: 'STRING' },
+              tamilTranslation: { type: 'STRING' },
+              suggestedReplies: { type: 'ARRAY', items: { type: 'STRING' } }
+            },
+            required: ['reply', 'suggestedReplies']
+          }
         }
       });
     } catch (err) {
       console.warn('[AIService] Gemini API error:', err.message);
-      return this.ruleBasedChat({ message, history, persona, role, scenario, level, enableTamil });
+      return this.ruleBasedChat({ message, history, pet, role, scenario, level, enableTamil });
     }
 
     try {
@@ -713,8 +794,13 @@ Guidelines:
           : ["Tell me more", "Can you explain in detail?", "Ask me a question"]
       };
     } catch (e) {
+      // Broken JSON is code, not a reply: never show it to the student.
+      if (!text || /^\s*(\{|```)/.test(text)) {
+        console.warn('[AIService] Gemini returned JSON that does not parse; using the built-in tutor.');
+        return this.ruleBasedChat({ message, history, pet, role, scenario, level, enableTamil });
+      }
       return {
-        reply: text || "That's wonderful! Tell me more about what you're thinking.",
+        reply: text,
         tamilTranslation: enableTamil ? "அருமை! நீங்கள் என்ன நினைக்கிறீர்கள் என்பதைப் பற்றி மேலும் கூறுங்கள்." : undefined,
         suggestedReplies: ["Tell me more", "Can you give an example?", "Ask me a question"]
       };

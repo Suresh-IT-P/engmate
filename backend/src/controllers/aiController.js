@@ -6,7 +6,8 @@ const { success, error } = require('../utils/response');
 async function chat(req, res, next) {
   try {
     const userId = req.user.id;
-    const { message, conversationId, topicId, persona = 'Maya', role = 'Friendly English Tutor', scenario = 'General Chat', enableTamil = true } = req.body;
+    // Any "persona" the app sends is ignored: the tutor is always Keerthu.
+    const { message, conversationId, topicId, role = 'Friendly English Tutor', scenario = 'General Chat', enableTamil = true } = req.body;
 
     if (!message || message.trim().length === 0) {
       return error(res, 'Message text is required.', 400);
@@ -17,7 +18,7 @@ async function chat(req, res, next) {
       const convRes = await db.execute(
         `INSERT INTO ai_conversations (user_id, topic_id, title, mode)
          VALUES (?, ?, ?, 'tutor')`,
-        [userId, topicId || null, `Chat with ${persona}`]
+        [userId, topicId || null, `Chat with ${aiService.tutorName}`]
       );
       convId = convRes.insertId;
     }
@@ -44,7 +45,6 @@ async function chat(req, res, next) {
     const aiResponse = await aiService.chat({
       message: message.trim(),
       history,
-      persona,
       role,
       scenario,
       level: userLevel,

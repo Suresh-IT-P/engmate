@@ -9,26 +9,26 @@ export default function AITutorView() {
   const scenarios = {
     'Friendly Chat': {
       title: 'Friendly Chat',
-      welcome: "வணக்கம்! Hello! I am Suresh, your AI English Coach. How can I help you practice your English today? You can ask grammar questions, learn new words, or chat freely.",
-      welcomeTamil: "வணக்கம்! நான் சுரேஷ், உங்கள் ஆங்கில ஆசிரியர். இன்று என்ன பயிற்சி செய்யலாம்?",
+      welcome: "வணக்கம், chellam! Hello! I am Keerthu, your AI English Coach. How can I help you practice your English today? You can ask grammar questions, learn new words, or chat freely.",
+      welcomeTamil: "வணக்கம், செல்லம்! நான் கீர்த்து, உன் ஆங்கில ஆசிரியர். இன்று என்ன பயிற்சி செய்யலாம்?",
       chips: ["Explain Present Continuous Tense", "Teach me 3 new vocabulary words", "Check my grammar", "Tell me a common idiom"]
     },
     'Job Interview Simulation': {
       title: 'Job Interview Simulation',
-      welcome: "Good morning! Welcome to your interview practice. I will be your interviewer today. Could you please introduce yourself and mention your key strengths?",
-      welcomeTamil: "காலை வணக்கம்! உங்கள் நேர்காணல் பயிற்சிக்கு நல்வரவு. உங்களை அறிமுகப்படுத்திக் கொண்டு உங்கள் பலங்களைப் பற்றிக் கூறுங்கள்.",
+      welcome: "Good morning, thangam! Welcome to your interview practice. I will be your interviewer today. Could you please introduce yourself and mention your key strengths?",
+      welcomeTamil: "காலை வணக்கம், தங்கம்! உங்கள் நேர்காணல் பயிற்சிக்கு நல்வரவு. உங்களை அறிமுகப்படுத்திக் கொண்டு உங்கள் பலங்களைப் பற்றிக் கூறுங்கள்.",
       chips: ["Hello! My name is...", "I have experience in...", "My greatest strength is..."]
     },
     'Coffee Shop & Travel': {
       title: 'Coffee Shop & Travel',
-      welcome: "Hello! Welcome to Green Valley Cafe. Here is our menu. What can I get started for you today?",
-      welcomeTamil: "வணக்கம்! கஃபேக்கு நல்வரவு. இன்று உங்களுக்கு என்ன பானம் அல்லது உணவு வேண்டும்?",
+      welcome: "Hello, pattu! Welcome to Green Valley Cafe. Here is our menu. What can I get started for you today?",
+      welcomeTamil: "வணக்கம், பட்டு! கஃபேக்கு நல்வரவு. இன்று உங்களுக்கு என்ன பானம் அல்லது உணவு வேண்டும்?",
       chips: ["I'd like a cappuccino, please", "Can I see the special menu?", "Do you have iced tea?"]
     },
     'Grammar Doctor': {
       title: 'Grammar Doctor',
-      welcome: "Welcome to AI Grammar Doctor! Type or speak any English sentence, and I will analyze its grammar, explain the rules, and give you Tamil translations.",
-      welcomeTamil: "வாக்கியப் பிழை திருத்திக்கு நல்வரவு! எந்த வாக்கியத்தையும் பதிவிட்டு பிழைகளைத் திருத்திக் கொள்ளுங்கள்.",
+      welcome: "Welcome to AI Grammar Doctor, rowdy baby! Type or speak any English sentence, and I will analyze its grammar, explain the rules, and give you Tamil translations.",
+      welcomeTamil: "வாக்கியப் பிழை திருத்திக்கு நல்வரவு, ரௌடி பேபி! எந்த வாக்கியத்தையும் பதிவிட்டு பிழைகளைத் திருத்திக் கொள்ளுங்கள்.",
       chips: ["Myself Alex from Madurai", "I am go to college daily", "He don't like coffee", "I did not went there"]
     }
   };
@@ -128,7 +128,7 @@ export default function AITutorView() {
         message: text,
         conversationId,
         scenario: selectedScenario,
-        persona: 'Suresh',
+        persona: 'Keerthu',
         enableTamil: tamilEnabled
       });
 
@@ -151,8 +151,8 @@ export default function AITutorView() {
         {
           id: Date.now() + 1,
           sender: 'assistant',
-          content: "I'm having trouble connecting right now, but please keep practicing! Try typing another sentence.",
-          tamil_translation: "இணைப்பில் சிறு தாமதம் ஏற்பட்டுள்ளது. தொடர்ந்து பயிற்சி செய்யுங்கள்."
+          content: "I'm having trouble connecting right now, Amul baby, but please keep practicing! Try typing another sentence.",
+          tamil_translation: "இணைப்பில் சிறு தாமதம் ஏற்பட்டுள்ளது, அமுல் பேபி. தொடர்ந்து பயிற்சி செய்!"
         }
       ]);
     } finally {
@@ -214,7 +214,7 @@ export default function AITutorView() {
             <div className="absolute bottom-0 right-0 w-2.5 h-2.5 bg-secondary rounded-full border-2 border-surface"></div>
           </div>
           <div className="min-w-0">
-            <h3 className="font-bold text-xs sm:text-sm text-on-surface font-display leading-tight truncate">Suresh (AI English Coach)</h3>
+            <h3 className="font-bold text-xs sm:text-sm text-on-surface font-display leading-tight truncate">Keerthu (AI English Coach)</h3>
             <span className="text-[10px] font-bold text-secondary font-tamil">ஆன்லைனில் உள்ளார் (Active)</span>
           </div>
         </div>
@@ -306,7 +306,7 @@ export default function AITutorView() {
         {loading && (
           <div className="self-start flex items-center gap-2 text-xs font-bold text-primary p-3 rounded-2xl bg-surface-container-high animate-pulse">
             <span className="material-symbols-outlined text-[18px] animate-spin">progress_activity</span>
-            Maya is thinking...
+            Keerthu is thinking...
           </div>
         )}
         <div ref={messagesEndRef} />

@@ -9,8 +9,8 @@ export default function AITutorView() {
   const scenarios = {
     'Friendly Chat': {
       title: 'Friendly Chat',
-      welcome: "வணக்கம், chellam! Hello! I am Keerthu, your AI English Coach. How can I help you practice your English today? You can ask grammar questions, learn new words, or chat freely.",
-      welcomeTamil: "வணக்கம், செல்லம்! நான் கீர்த்து, உன் ஆங்கில ஆசிரியர். இன்று என்ன பயிற்சி செய்யலாம்?",
+      welcome: "வணக்கம், chellam! Hello! I am Suresh, your AI English Coach. How can I help you practice your English today? You can ask grammar questions, learn new words, or chat freely.",
+      welcomeTamil: "வணக்கம், செல்லம்! நான் சுரேஷ், உன் ஆங்கில ஆசிரியர். இன்று என்ன பயிற்சி செய்யலாம்?",
       chips: ["Explain Present Continuous Tense", "Teach me 3 new vocabulary words", "Check my grammar", "Tell me a common idiom"]
     },
     'Job Interview Simulation': {
@@ -128,7 +128,7 @@ export default function AITutorView() {
         message: text,
         conversationId,
         scenario: selectedScenario,
-        persona: 'Keerthu',
+        persona: 'Suresh',
         enableTamil: tamilEnabled
       });
 
@@ -214,7 +214,7 @@ export default function AITutorView() {
             <div className="absolute bottom-0 right-0 w-2.5 h-2.5 bg-secondary rounded-full border-2 border-surface"></div>
           </div>
           <div className="min-w-0">
-            <h3 className="font-bold text-xs sm:text-sm text-on-surface font-display leading-tight truncate">Keerthu (AI English Coach)</h3>
+            <h3 className="font-bold text-xs sm:text-sm text-on-surface font-display leading-tight truncate">Suresh (AI English Coach)</h3>
             <span className="text-[10px] font-bold text-secondary font-tamil">ஆன்லைனில் உள்ளார் (Active)</span>
           </div>
         </div>
@@ -306,7 +306,7 @@ export default function AITutorView() {
         {loading && (
           <div className="self-start flex items-center gap-2 text-xs font-bold text-primary p-3 rounded-2xl bg-surface-container-high animate-pulse">
             <span className="material-symbols-outlined text-[18px] animate-spin">progress_activity</span>
-            Keerthu is thinking...
+            Suresh is thinking...
           </div>
         )}
         <div ref={messagesEndRef} />

@@ -143,6 +143,8 @@ export const api = {
   getRoomMessages: (roomId, limit = 50) => request(`/chat/rooms/${roomId}/messages?limit=${limit}`),
   getDirectRoomDetail: (roomId) => request(`/chat/rooms/${roomId}/detail`),
   getRoomCalls: (roomId, limit = 50) => request(`/chat/rooms/${roomId}/calls?limit=${limit}`),
+  // Deletes the chat for you only: its history goes, the friend keeps theirs.
+  deleteChat: (roomId) => request(`/chat/rooms/${roomId}`, { method: 'DELETE' }),
   sendChatMessage: (roomId, payload) => request(`/chat/rooms/${roomId}/messages`, { method: 'POST', body: payload }),
   createChatRoom: (payload) => request('/chat/rooms', { method: 'POST', body: payload }),
 

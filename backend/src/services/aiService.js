@@ -10,13 +10,14 @@ const GEMINI_FALLBACK_MODEL = 'gemini-flash-latest';
  *  its own capacity, so it is usually free when the main one is not. */
 const GEMINI_BUSY_FALLBACK_MODEL = 'gemini-flash-lite-latest';
 
-/** The tutor's name. Set here rather than by the app, so older installs that
- *  still send "Maya" or "Suresh" meet Keerthu too. */
-const TUTOR_NAME = 'Keerthu';
+/** The tutor's name. Set here rather than by the app, so every install, old
+ *  or new, meets the same tutor whatever name it sends. */
+const TUTOR_NAME = 'Suresh';
 
 /**
- * Keerthu's pet names for the student, in English letters and Tamil script.
- * Every reply uses one, and each reply moves on to the next.
+ * Suresh's pet names for the student, in English letters and Tamil script.
+ * Every reply uses one, never one from the last few replies. All of them suit
+ * anyone: the tutor never knows a student's gender or age.
  */
 const PET_NAMES = [
   { en: 'chellam', ta: 'செல்லம்' },
@@ -26,6 +27,9 @@ const PET_NAMES = [
   { en: 'rowdy baby', ta: 'ரௌடி பேபி' }
 ];
 
+/** How many of Suresh's latest replies a pet name sits out before it returns. */
+const PET_NAME_REST = 3;
+
 /** Added to a reply that forgot to cheer the student on. */
 const CHEERS = [
   { en: (p) => `You're doing great, ${p}! 💛`, ta: (p) => `நீ சூப்பரா பண்ற, ${p}! 💛` },
@@ -33,27 +37,38 @@ const CHEERS = [
   { en: (p) => `I'm proud of you, ${p}! 🌟`, ta: (p) => `உன்னை நினைச்சா பெருமையா இருக்கு, ${p}! 🌟` }
 ];
 
-/** Spaces and case vary ("Rowdy Baby", "rowdybaby"), so compare without them. */
+/**
+ * Finds a pet name as a whole word, in any case and with or without its
+ * space ("Rowdy Baby", "rowdybaby"), but not inside a longer one ("pattu" in
+ * "pattukutty").
+ */
+const PET_NAME_PATTERNS = new Map(PET_NAMES.map((p) => [
+  p,
+  new RegExp(`(?<![a-z])${p.en.toLowerCase().split(/\s+/).join('\\s*')}(?![a-z])`, 'i')
+]));
+
 function mentionsPetName(text, pet) {
-  return String(text || '').toLowerCase().replace(/\s+/g, '')
-    .includes(pet.en.toLowerCase().replace(/\s+/g, ''));
+  return PET_NAME_PATTERNS.get(pet).test(String(text || ''));
 }
 
-/** The pet name after the one in Keerthu's last reply, so they take turns. */
+/** A pet name Suresh hasn't used in the last few replies, so they keep changing. */
 function nextPetName(history = []) {
-  const lastReply = [...history].reverse().find((h) => h.sender === 'assistant')?.content;
-  const last = PET_NAMES.findIndex((p) => mentionsPetName(lastReply, p));
-  return last === -1
-    ? PET_NAMES[Math.floor(Math.random() * PET_NAMES.length)]
-    : PET_NAMES[(last + 1) % PET_NAMES.length];
+  const recent = history.filter((h) => h.sender === 'assistant').slice(-PET_NAME_REST);
+  const fresh = PET_NAMES.filter((p) => !recent.some((h) => mentionsPetName(h.content, p)));
+  const pool = fresh.length ? fresh : PET_NAMES;
+  return pool[Math.floor(Math.random() * pool.length)];
 }
+
+/** Latin and Tamil letters only, so spacing, case and punctuation don't matter. */
+const lettersOf = (s) => String(s || '').toLowerCase().replace(/[^a-z஀-௿]/g, '');
 
 /** A pet name is affection, not a key point, so it is never bold. */
-const BOLD_PET_NAME = new RegExp(
-  `\\*\\*(${PET_NAMES.flatMap((p) => [p.en.replace(' ', ' ?'), p.ta]).join('|')})\\*\\*`, 'gi');
-
 function unboldPetNames(text) {
-  return text && text.replace(BOLD_PET_NAME, '$1');
+  return text && text.replace(/\*\*([^*]+)\*\*/g, (bold, inner) => (
+    PET_NAMES.some((p) => [p.en, p.ta].some((name) => lettersOf(name) === lettersOf(inner)))
+      ? inner
+      : bold
+  ));
 }
 
 /** Every reply cheers the student by a pet name: add one if it has none. */
@@ -372,15 +387,15 @@ class AIService {
       }
     }
     // -------------------------------------------------------------
-    // SCENARIO 4: GENERAL AI TUTOR (KEERTHU) — MULTI-TOPIC CONVERSATION
+    // SCENARIO 4: GENERAL AI TUTOR (SURESH) — MULTI-TOPIC CONVERSATION
     // -------------------------------------------------------------
     else {
       // Greetings
       if (lower.includes('hello') || lower.includes('hi') || lower.includes('vanakkam') || lower.includes('hey')) {
         const greetings = [
           {
-            en: `வணக்கம், ${pet.en}! Hello! I'm Keerthu, your AI English Coach. What would you like to explore today? We can practice daily conversation, learn new words, or master tricky grammar rules!`,
-            ta: `வணக்கம், ${pet.ta}! நான் கீர்த்து, உன் ஆங்கில ஆசிரியர். இன்று அன்றாட உரையாடலா, புதிய சொற்களா அல்லது இலக்கணமா, எதைப் பயிலலாம்?`,
+            en: `வணக்கம், ${pet.en}! Hello! I'm Suresh, your AI English Coach. What would you like to explore today? We can practice daily conversation, learn new words, or master tricky grammar rules!`,
+            ta: `வணக்கம், ${pet.ta}! நான் சுரேஷ், உன் ஆங்கில ஆசிரியர். இன்று அன்றாட உரையாடலா, புதிய சொற்களா அல்லது இலக்கணமா, எதைப் பயிலலாம்?`,
             chips: ["Teach me 3 new words", "Explain Present Perfect tense", "Let's practice daily talk", "Correct my sentences"]
           },
           {
@@ -550,8 +565,8 @@ class AIService {
         suggestedReplies = ["I am doing great!", "I want to improve my speaking", "Can we do a short quiz?"];
       }
       else if (lower.includes('who are you') || lower.includes('your name')) {
-        reply = `I am **Keerthu**, your interactive AI English Coach at Engmate, ${pet.en}! I am here to help you master English grammar, fluency, vocabulary, and pronunciation with zero hesitation.`;
-        tamilTranslation = `நான் **கீர்த்து**, உன் ஆங்கில ஆசிரியர், ${pet.ta}! இலக்கணம், உச்சரிப்பு மற்றும் சரளமாகப் பேச உனக்குப் பயிற்சி அளிக்கிறேன்.`;
+        reply = `I am **Suresh**, your interactive AI English Coach at Engmate, ${pet.en}! I am here to help you master English grammar, fluency, vocabulary, and pronunciation with zero hesitation.`;
+        tamilTranslation = `நான் **சுரேஷ்**, உன் ஆங்கில ஆசிரியர், ${pet.ta}! இலக்கணம், உச்சரிப்பு மற்றும் சரளமாகப் பேச உனக்குப் பயிற்சி அளிக்கிறேன்.`;
         suggestedReplies = ["Let's start learning!", "Teach me something useful", "How do I become fluent fast?"];
       }
       // General dynamic contextual response (Rotating never-repeat engine)
@@ -722,9 +737,10 @@ Guidelines:
 3. ${enableTamil ? 'Include a natural Tamil translation for your reply so the student can understand nuances.' : ''}
 4. Provide 3 or 4 relevant, natural suggested English replies the student could choose next.
 5. Bold the key points by wrapping them in **double asterisks**: the corrected sentence, the word, idiom or phrase being taught, and the grammar rule's name. Bold 1 to 3 short phrases per reply, never whole sentences of chat. Bold the same English phrases inside tamilTranslation. Never use asterisks in suggestedReplies.
-6. Keep encouraging the student like a loving akka. Call them by one of your Tamil pet names in every reply: ${petNames}. In this reply, call them "${pet.en}" (in tamilTranslation, write it as "${pet.ta}"). Use it once per reply. Praise every attempt, and when they make a mistake, cheer them on before you correct it, in your own words each time. Don't bold the pet name, and never put it in suggestedReplies.
-7. In a role-play scenario (job interview, cafe), stay in your role, but step out of it for a moment to cheer the student with the pet name.
-8. Return ONLY a valid JSON object in this exact schema:
+6. Keep encouraging the student, as warmly as a loving family member would. Call them by one of your Tamil pet names in every reply: ${petNames}. In this reply, call them "${pet.en}" (in tamilTranslation, write it as "${pet.ta}"). Use it once per reply. Praise every attempt, and when they make a mistake, cheer them on before you correct it, in your own words each time. Don't bold the pet name, and never put it in suggestedReplies.
+7. You never know the student's gender, so never call them anything that assumes it: no "boy", "girl", "bro", "sis", "kanna" or "kanmani", and in Tamil no டா or டி.
+8. In a role-play scenario (job interview, cafe), stay in your role, but step out of it for a moment to cheer the student with the pet name.
+9. Return ONLY a valid JSON object in this exact schema:
 {
   "reply": "English response text",
   "tamilTranslation": "Tamil translation of the response",

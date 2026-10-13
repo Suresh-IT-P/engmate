@@ -79,7 +79,7 @@ async function runTests() {
 
     const chatResponse = await aiService.chat({
       message: 'Hello teacher! How to improve vocabulary?',
-      persona: 'Keerthu',
+      persona: 'Suresh',
       role: 'Friendly English Tutor',
       level: 'A1'
     });

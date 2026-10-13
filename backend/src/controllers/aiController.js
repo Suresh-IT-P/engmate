@@ -6,7 +6,7 @@ const { success, error } = require('../utils/response');
 async function chat(req, res, next) {
   try {
     const userId = req.user.id;
-    // Any "persona" the app sends is ignored: the tutor is always Keerthu.
+    // Any "persona" the app sends is ignored: aiService sets the tutor's name.
     const { message, conversationId, topicId, role = 'Friendly English Tutor', scenario = 'General Chat', enableTamil = true } = req.body;
 
     if (!message || message.trim().length === 0) {

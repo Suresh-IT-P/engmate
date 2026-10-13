@@ -36,6 +36,6 @@ AI_MODEL=gpt-4o-mini
 ## 2. Built-in Offline Fallback Engine
 When `AI_API_KEY` is not set:
 - **Sentence Doctor:** Parses common Indian/Tamil English errors (`Myself Alex` $\to$ `I am Alex`, `I am go` $\to$ `I am going`, `passed out of college` $\to$ `graduated from college`, `did not went` $\to$ `did not go`), and generates bilingual English-Tamil explanations and grammar rules.
-- **AI Tutor Chat:** Maintains context across conversation personas (Friendly Tutor Keerthu, Job Interview Recruiter, Cafe Barista, Border Control Officer), provides suggested reply chips, and offers subtle grammar corrections.
+- **AI Tutor Chat:** Maintains context across conversation personas (Friendly Tutor Suresh, Job Interview Recruiter, Cafe Barista, Border Control Officer), provides suggested reply chips, and offers subtle grammar corrections.
 - **Writing Evaluator:** Calculates Grammar (0-100), Vocabulary (0-100), Clarity (0-100), and provides structured feedback bullet points.
 - **Pronunciation & Speaking Evaluator:** Compares speech-to-text transcript with target sentence, computes accuracy, fluency, pronunciation scores, and flags missed words.

@@ -2,12 +2,14 @@ import React, { useState, useEffect } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import { useAuth } from '../context/AuthContext';
 import { useLearning } from '../context/LearningContext';
+import { useCall } from '../context/CallContext';
 import { api } from '../services/api';
 import SentenceDoctorModal from '../components/SentenceDoctorModal';
 
 export default function HomeDashboard() {
   const { user, profile, streak } = useAuth();
   const { tamilEnabled, speakText } = useLearning();
+  const { onlineFriends } = useCall();
   const navigate = useNavigate();
 
   const [dashboardData, setDashboardData] = useState(null);
@@ -212,6 +214,50 @@ export default function HomeDashboard() {
             <span className="text-[11px] font-tamil text-on-surface-variant mt-0.5">பயிற்சிக் கூடம்</span>
           </Link>
 
+        </div>
+      </div>
+
+      {/* Grammar Battle: a full-width card rather than a fifth tile, which
+          would sit alone on a row of the 2-column phone grid. */}
+      <div className="bg-gradient-to-br from-primary to-fuchsia-600 text-white rounded-3xl p-4 sm:p-5 shadow-lg shadow-primary/20 relative overflow-hidden flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4">
+        <span className="material-symbols-outlined absolute -right-4 -bottom-6 text-[120px] opacity-10 pointer-events-none select-none">
+          swords
+        </span>
+
+        <div className="relative z-10 flex items-center gap-3 min-w-0">
+          <div className="w-12 h-12 rounded-2xl bg-white/20 backdrop-blur-md flex items-center justify-center shrink-0">
+            <span className="material-symbols-outlined text-[28px]">sports_esports</span>
+          </div>
+          <div className="min-w-0">
+            <span className="text-[10px] font-bold uppercase tracking-wider text-white/80 flex items-center gap-1.5">
+              Live Grammar Battle
+              {onlineFriends.length > 0 && (
+                <span className="normal-case tracking-normal px-1.5 py-0.5 rounded-full bg-white/20 flex items-center gap-1">
+                  <span className="w-1.5 h-1.5 rounded-full bg-emerald-300 animate-pulse" />
+                  {onlineFriends.length} {onlineFriends.length === 1 ? 'friend' : 'friends'} online
+                </span>
+              )}
+            </span>
+            <h4 className="text-base font-bold font-display">Battle a friend or the AI</h4>
+            <p className="text-xs text-white/90 font-tamil">நண்பருடன் அல்லது AI-உடன் இலக்கணப் போட்டி</p>
+          </div>
+        </div>
+
+        <div className="relative z-10 w-full sm:w-auto flex gap-2 shrink-0">
+          <Link
+            to="/battle/room"
+            className="flex-1 sm:flex-none px-4 py-2.5 rounded-2xl bg-white text-primary font-bold text-xs shadow-md hover:bg-white/90 active:scale-95 transition-all flex items-center justify-center gap-1.5"
+          >
+            <span className="material-symbols-outlined text-[18px]">group</span>
+            vs Friend
+          </Link>
+          <Link
+            to="/battle/ai"
+            className="flex-1 sm:flex-none px-4 py-2.5 rounded-2xl bg-white/15 border border-white/40 text-white font-bold text-xs hover:bg-white/25 active:scale-95 transition-all flex items-center justify-center gap-1.5"
+          >
+            <span className="material-symbols-outlined text-[18px]">smart_toy</span>
+            vs AI
+          </Link>
         </div>
       </div>
 

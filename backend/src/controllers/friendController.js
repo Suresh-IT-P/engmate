@@ -101,13 +101,13 @@ async function sendFriendRequest(req, res, next) {
         return error(res, 'Friend request already sent.', 400);
       } else {
         // Auto accept if they sent you a request too
-        await db.execute('UPDATE friendships SET status = "accepted" WHERE id = ?', [f.id]);
+        await db.execute("UPDATE friendships SET status = 'accepted' WHERE id = ?", [f.id]);
         return success(res, { status: 'accepted' }, 'Friend request accepted!');
       }
     }
 
     await db.execute(
-      'INSERT INTO friendships (user_id, friend_id, status) VALUES (?, ?, "pending")',
+      "INSERT INTO friendships (user_id, friend_id, status) VALUES (?, ?, 'pending')",
       [userId, targetId]
     );
 
@@ -198,7 +198,7 @@ async function respondFriendRequest(req, res, next) {
     }
 
     if (action === 'accept') {
-      await db.execute('UPDATE friendships SET status = "accepted" WHERE id = ?', [friendshipId]);
+      await db.execute("UPDATE friendships SET status = 'accepted' WHERE id = ?", [friendshipId]);
 
       // Create direct chat room automatically
       const friendId = f[0].user_id;
@@ -207,7 +207,7 @@ async function respondFriendRequest(req, res, next) {
       const existingRoom = await db.query('SELECT id FROM chat_rooms WHERE id = ?', [roomId]);
       if (existingRoom.length === 0) {
         await db.execute(
-          'INSERT INTO chat_rooms (id, name, room_type, created_by) VALUES (?, "Direct Chat", "direct", ?)',
+          "INSERT INTO chat_rooms (id, name, room_type, created_by) VALUES (?, 'Direct Chat', 'direct', ?)",
           [roomId, userId]
         );
         await db.execute('INSERT INTO chat_room_members (room_id, user_id) VALUES (?, ?), (?, ?)', [roomId, userId, roomId, friendId]);

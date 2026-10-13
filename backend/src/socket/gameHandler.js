@@ -121,6 +121,13 @@ async function loadQuestions(topicId, count = QUESTIONS_PER_MATCH) {
   }
 }
 
+/**
+ * How long a dropped player keeps their seat. A phone that is locked or
+ * switched to another app loses its socket within about a minute, and was
+ * evicted 30s after that — too soon to come back to a match in progress.
+ */
+const RECONNECT_GRACE_MS = 2 * 60 * 1000;
+
 // In-memory store for game rooms
 // Room structure: { players: [{id, name, score}], state: 'LOBBY'|'PLAYING'|'FINISHED', currentQuestionIndex: 0, answers: [] }
 const rooms = {};
@@ -143,7 +150,11 @@ function initGameSocket(server) {
       secondsPerQuestion = DEFAULT_SECONDS,
       questionCount = QUESTIONS_PER_MATCH
     }) => {
-      const roomId = Math.random().toString(36).substring(2, 6).toUpperCase();
+      // Re-roll on a clash, or a new room would silently replace a live one.
+      let roomId;
+      do {
+        roomId = Math.random().toString(36).substring(2, 6).toUpperCase();
+      } while (roomId.length < 4 || rooms[roomId]);
       rooms[roomId] = {
         players: [{ id: socket.id, sessionId, name: playerName, score: 0, streak: 0, connected: true }],
         state: 'LOBBY',
@@ -320,6 +331,8 @@ function initGameSocket(server) {
     socket.on('send_chat', ({ roomId, message, senderName }) => {
       io.to(roomId).emit('receive_chat', {
         id: Math.random().toString(36).substring(7),
+        // Lets each client put the line on the right player's avatar.
+        senderId: socket.id,
         senderName,
         message,
         timestamp: new Date().toISOString()
@@ -346,7 +359,7 @@ function initGameSocket(server) {
           player.connected = false;
           io.to(roomId).emit('room_update', { players: room.players });
 
-          // 30s grace period before permanent removal
+          // Grace period before permanent removal
           room.disconnectTimeouts = room.disconnectTimeouts || {};
           room.disconnectTimeouts[player.sessionId] = setTimeout(() => {
             const playerIndex = room.players.findIndex(p => p.sessionId === player.sessionId);
@@ -358,7 +371,7 @@ function initGameSocket(server) {
                 io.to(roomId).emit('room_update', { players: room.players });
               }
             }
-          }, 30000);
+          }, RECONNECT_GRACE_MS);
         }
       }
     });
@@ -521,4 +534,21 @@ function initGameSocket(server) {
   return io;
 }
 
+/**
+ * Read-only view of one room, for the friend chat to check an invite against.
+ * Returns null once the room is gone (every player left, or a server restart).
+ */
+function getBattleRoom(roomId) {
+  const room = rooms[String(roomId || '').toUpperCase()];
+  if (!room) return null;
+  return {
+    state: room.state,
+    topicTitle: room.topicTitle,
+    questionCount: room.questionCount,
+    playerSocketIds: room.players.map((p) => p.id),
+    playerCount: room.players.length
+  };
+}
+
 module.exports = initGameSocket;
+module.exports.getBattleRoom = getBattleRoom;

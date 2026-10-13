@@ -19,9 +19,9 @@ function formatDuration(total) {
 
 export default function CallOverlay() {
   const {
-    call, status, muted, seconds,
+    call, status, muted, speakerOn, canSwitchSpeaker, seconds,
     lastEndReason, mediaError,
-    acceptCall, declineCall, hangUp, toggleMute, dismissNotice
+    acceptCall, declineCall, hangUp, toggleMute, toggleSpeaker, dismissNotice
   } = useCall();
 
   // A refused mic or a declined call leaves a short banner behind.
@@ -136,13 +136,34 @@ export default function CallOverlay() {
               <span className="material-symbols-outlined text-[30px]">call_end</span>
             </button>
 
-            <div className="w-14 h-14 shrink-0" aria-hidden="true" />
+            {canSwitchSpeaker ? (
+              <button
+                onClick={toggleSpeaker}
+                className={`w-14 h-14 shrink-0 rounded-full flex items-center justify-center transition-all active:scale-95 ${
+                  speakerOn ? 'bg-surface text-on-surface' : 'bg-surface/20 text-surface'
+                }`}
+                aria-label={speakerOn ? 'Switch to earpiece' : 'Switch to speaker'}
+                aria-pressed={speakerOn}
+              >
+                <span className="material-symbols-outlined text-[24px]">
+                  {speakerOn ? 'volume_up' : 'phone_in_talk'}
+                </span>
+              </button>
+            ) : (
+              <div className="w-14 h-14 shrink-0" aria-hidden="true" />
+            )}
           </div>
         )}
 
         {muted && status === 'active' && (
           <p className="text-center text-[11px] font-bold text-surface/60 mt-4">
             Your microphone is muted
+          </p>
+        )}
+
+        {canSwitchSpeaker && !incomingRinging && (
+          <p className={`text-center text-[11px] font-bold text-surface/60 ${muted && status === 'active' ? 'mt-1' : 'mt-4'}`}>
+            {speakerOn ? 'Speaker on' : 'Earpiece'}
           </p>
         )}
       </div>

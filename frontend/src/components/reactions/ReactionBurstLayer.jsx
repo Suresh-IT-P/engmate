@@ -28,6 +28,7 @@ export function ReactionBurstProvider({ children }) {
   const [sparkles, setSparkles] = useState([]);
   const timersRef = useRef([]);
   const calmRef = useRef(false);
+  const lastBurstRef = useRef({ at: 0, x: 0, y: 0 });
 
   useEffect(() => {
     calmRef.current = prefersReducedMotion();
@@ -53,8 +54,16 @@ export function ReactionBurstProvider({ children }) {
     const originX = opts.originX ?? window.innerWidth / 2;
     const originY = opts.originY ?? window.innerHeight * 0.72;
 
-    const next = makeBurst(emoji, { count: opts.count ?? 7, originX, originY, calm });
-    const spark = makeSparkles({ originX, originY, calm });
+    // Mashing one button used to stack full bursts on the same spot into a
+    // heap. A quick follow-up tap there adds a small volley instead.
+    const now = Date.now();
+    const last = lastBurstRef.current;
+    const repeat = now - last.at < 600 && Math.hypot(originX - last.x, originY - last.y) < 40;
+    lastBurstRef.current = { at: now, x: originX, y: originY };
+
+    const count = opts.count ?? 7;
+    const next = makeBurst(emoji, { count: repeat ? Math.max(2, Math.round(count / 3)) : count, originX, originY, calm });
+    const spark = repeat ? [] : makeSparkles({ originX, originY, calm });
 
     // Rapid tapping could otherwise queue hundreds of animating nodes.
     setParticles((prev) => [...prev, ...next].slice(-MAX_PARTICLES));
@@ -92,7 +101,7 @@ export function ReactionBurstProvider({ children }) {
         {particles.map((p) => (
           <span
             key={p.id}
-            className="absolute animate-reaction-float select-none drop-shadow-lg will-change-transform"
+            className="absolute animate-reaction-float select-none"
             style={{ left: p.originX, top: p.originY, ...p.style }}
           >
             {p.emoji}

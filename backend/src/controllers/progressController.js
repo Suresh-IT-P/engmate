@@ -113,7 +113,7 @@ async function getSkillAnalytics(req, res, next) {
     const lessonCount = (await db.query('SELECT COUNT(*) as c FROM user_progress WHERE user_id = ?', [userId]))[0]?.c || 0;
     const vocabCount = (await db.query('SELECT COUNT(*) as c FROM user_vocabulary WHERE user_id = ?', [userId]))[0]?.c || 0;
     const quizCount = (await db.query('SELECT COUNT(*) as c, AVG(accuracy_pct) as avg_acc FROM quiz_attempts WHERE user_id = ?', [userId]))[0] || {};
-    const speakingSessions = (await db.query('SELECT COUNT(*) as c FROM learning_sessions WHERE user_id = ? AND session_type = "speaking"', [userId]))[0]?.c || 0;
+    const speakingSessions = (await db.query("SELECT COUNT(*) as c FROM learning_sessions WHERE user_id = ? AND session_type = 'speaking'", [userId]))[0]?.c || 0;
 
     const skills = {
       vocabulary: Math.min(100, Math.round(20 + vocabCount * 8)),

@@ -258,7 +258,11 @@ export default function AITutorView() {
                       : 'bg-surface-container-lowest border border-surface-variant/60 text-on-surface rounded-tl-sm'
                   }`}
                 >
-                  <FormattedText text={msg.content} highlightVariant="badge" />
+                  {/* The student's own words stay plain: FormattedText styles for light
+                      backgrounds (dark grey text), which vanished on the blue bubble. */}
+                  {isUser
+                    ? <p className="whitespace-pre-wrap">{msg.content}</p>
+                    : <FormattedText text={msg.content} highlightVariant="bold" />}
 
                   {/* Audio button for AI reply */}
                   {!isUser && (
@@ -276,7 +280,7 @@ export default function AITutorView() {
                 {!isUser && tamilEnabled && msg.tamil_translation && (
                   <div className="p-2.5 rounded-xl bg-secondary-container/20 border border-secondary/20 text-xs font-tamil text-on-surface font-medium">
                     <span className="font-bold mr-1">📖</span>
-                    <FormattedText text={msg.tamil_translation} highlightVariant="badge" />
+                    <FormattedText text={msg.tamil_translation} highlightVariant="bold" />
                   </div>
                 )}
 

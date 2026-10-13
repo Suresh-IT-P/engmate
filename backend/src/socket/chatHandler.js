@@ -2,6 +2,7 @@ const jwt = require('jsonwebtoken');
 const config = require('../config/env');
 const db = require('../config/db');
 const chatService = require('../services/chatService');
+const { getBattleRoom } = require('./gameHandler');
 
 /**
  * Friend chat and voice calling over Socket.IO.
@@ -78,6 +79,15 @@ function markOffline(userId, socketId) {
 
 const isOnline = (userId) => online.has(Number(userId)) || online.has(String(userId));
 
+/** Remember when a user was last here, for "last seen" in chat. Never throws. */
+async function touchLastSeen(userId, at = Date.now()) {
+  try {
+    await db.execute('UPDATE users SET last_seen_ms = ? WHERE id = ?', [at, userId]);
+  } catch (err) {
+    console.warn('[chatHandler] last seen update failed:', err.message);
+  }
+}
+
 /** Write the outcome of a call to the timeline. Never throws into the socket. */
 async function logCall(call, status) {
   try {
@@ -131,6 +141,9 @@ function initChatSocket(io) {
 
       socket.join(roomOf(userId));
       markOnline(userId, socket.id);
+      // Stamped on arrival too, so a crash that skips the disconnect below
+      // still leaves a sensible "last seen".
+      touchLastSeen(userId);
 
       // Tell this user's friends they came online, and report back who of
       // theirs is already here.
@@ -155,8 +168,34 @@ function initChatSocket(io) {
       }
     });
 
-    socket.on('presence:check', ({ userIds = [] } = {}, ack) => {
-      if (typeof ack === 'function') ack({ online: userIds.filter(isOnline) });
+    socket.on('presence:check', async ({ userIds = [] } = {}, ack) => {
+      if (typeof ack !== 'function') return;
+      const ids = (Array.isArray(userIds) ? userIds : [])
+        .map(Number).filter(Number.isFinite).slice(0, 100);
+      const onlineIds = ids.filter(isOnline);
+
+      // Last seen for the offline ones, shared with friends only.
+      const lastSeen = {};
+      const offline = ids.filter((id) => !isOnline(id));
+      if (userId && offline.length) {
+        try {
+          const rows = await db.query(
+            `SELECT u.id, u.last_seen_ms FROM users u
+             WHERE u.id IN (${offline.map(() => '?').join(', ')})
+               AND EXISTS (
+                 SELECT 1 FROM friendships f
+                 WHERE f.status = 'accepted'
+                   AND ((f.user_id = ? AND f.friend_id = u.id) OR (f.friend_id = ? AND f.user_id = u.id))
+               )`,
+            [...offline, userId, userId]
+          );
+          for (const r of rows) {
+            if (r.last_seen_ms) lastSeen[r.id] = new Date(Number(r.last_seen_ms)).toISOString();
+          }
+        } catch (_) { /* online state alone is still useful */ }
+      }
+
+      ack({ online: onlineIds, lastSeen });
     });
 
     /* --------------------------------------------------- room + chat --- */
@@ -195,6 +234,7 @@ function initChatSocket(io) {
             roomId,
             preview: message.message_text.slice(0, 80),
             senderId: userId,
+            senderName: message.sender_name,
             at: message.created_at
           });
         }
@@ -234,6 +274,81 @@ function initChatSocket(io) {
     socket.on('chat:typing', ({ roomId, isTyping } = {}) => {
       if (!userId || !roomId) return;
       socket.to(`room:${roomId}`).emit('chat:typing', { roomId, userId, isTyping: !!isTyping });
+    });
+
+    /* ------------------------------------------------- game invites --- */
+
+    /**
+     * Challenge the friend in a direct chat to a Grammar Battle room the
+     * sender has already created. The invite is stored as a chat message so it
+     * stays in the conversation, and the friend also gets a live pop-up
+     * wherever they are in the app.
+     */
+    socket.on('game:invite', async ({ roomId, battleRoomId } = {}, ack) => {
+      const reply = (res) => { if (typeof ack === 'function') ack(res); };
+      if (!userId) return reply({ ok: false, error: 'Sign in to challenge a friend.' });
+      if (!roomId || !battleRoomId) return reply({ ok: false, error: 'Missing conversation or battle room.' });
+
+      try {
+        const code = String(battleRoomId).toUpperCase();
+        const battle = getBattleRoom(code);
+        // Only a player already in the room may invite to it.
+        if (!battle || !battle.playerSocketIds.includes(socket.id)) {
+          return reply({ ok: false, error: 'That battle room is no longer open.' });
+        }
+
+        if (!(await chatService.canAccessRoom(userId, roomId))) {
+          return reply({ ok: false, error: 'You are not a member of this conversation.' });
+        }
+        const peer = await chatService.getDirectPeer(roomId, userId);
+        if (!peer || !(await chatService.areFriends(userId, peer.id))) {
+          return reply({ ok: false, error: 'You can only challenge your friends.' });
+        }
+
+        const message = await chatService.createMessage({
+          userId,
+          roomId,
+          // Readable on its own, for conversation previews and older app builds.
+          messageText: `🎮 Grammar Battle challenge · ${battle.topicTitle} (code ${code})`,
+          checkGrammar: false,
+          messageType: 'game_invite',
+          metadata: { battleRoomId: code, topicTitle: battle.topicTitle, questionCount: battle.questionCount }
+        });
+
+        io.to(`room:${roomId}`).emit('chat:new-message', message);
+        // Moves the chat up the friend's conversation list. `kind` tells the
+        // client not to toast it, since the invite pop-up below covers that.
+        io.to(roomOf(peer.id)).emit('chat:room-activity', {
+          roomId,
+          kind: 'game_invite',
+          preview: message.message_text.slice(0, 80),
+          senderId: userId,
+          senderName: message.sender_name,
+          at: message.created_at
+        });
+        io.to(roomOf(peer.id)).emit('game:invite-incoming', {
+          chatRoomId: roomId,
+          battleRoomId: code,
+          topicTitle: battle.topicTitle,
+          from: { id: userId, name: message.sender_name }
+        });
+
+        reply({ ok: true, message });
+      } catch (err) {
+        console.error('[chatHandler] game invite failed:', err.message);
+        reply({ ok: false, error: 'Could not send the challenge.' });
+      }
+    });
+
+    /** Whether the battle rooms behind invite cards are still open. */
+    socket.on('game:room-status', ({ battleRoomIds } = {}, ack) => {
+      if (typeof ack !== 'function') return;
+      const states = {};
+      for (const id of (Array.isArray(battleRoomIds) ? battleRoomIds : []).slice(0, 50)) {
+        const code = String(id).toUpperCase();
+        states[code] = getBattleRoom(code)?.state || null;
+      }
+      ack({ ok: true, states });
     });
 
     /* ------------------------------------------------ call signalling --- */
@@ -359,6 +474,9 @@ function initChatSocket(io) {
       const wentOffline = markOffline(userId, socket.id);
       if (!wentOffline) return; // another tab of theirs is still connected
 
+      const lastSeenAt = Date.now();
+      touchLastSeen(userId, lastSeenAt);
+
       // Drop any call this user was part of, so the other side is not left
       // listening to silence.
       const callId = busy.get(Number(userId));
@@ -381,7 +499,11 @@ function initChatSocket(io) {
           [userId, userId, userId]
         );
         for (const f of friends) {
-          io.to(roomOf(f.friend_id)).emit('presence:update', { userId, online: false });
+          io.to(roomOf(f.friend_id)).emit('presence:update', {
+            userId,
+            online: false,
+            lastSeen: new Date(lastSeenAt).toISOString()
+          });
         }
       } catch (_) {
         // presence is best-effort

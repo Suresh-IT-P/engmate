@@ -1,4 +1,5 @@
 import React, { createContext, useContext, useEffect, useRef, useState, useCallback } from 'react';
+import { Capacitor, registerPlugin } from '@capacitor/core';
 import { getSocket } from '../services/socket';
 import { useAuth } from './AuthContext';
 
@@ -25,6 +26,14 @@ const ICE_SERVERS = [
   { urls: 'stun:stun.l.google.com:19302' },
   { urls: 'stun:stun1.l.google.com:19302' }
 ];
+
+/**
+ * Earpiece/speaker switch. On Android, WebRTC audio plays through the earpiece
+ * by default and only native code can reroute it (AudioRoutePlugin.java). In a
+ * plain browser the plugin is absent and the toggle is hidden.
+ */
+const AudioRoute = registerPlugin('AudioRoute');
+const canSwitchSpeaker = Capacitor.isPluginAvailable('AudioRoute');
 
 /** idle → calling/ringing → connecting → active → (back to idle) */
 const CallContext = createContext(null);
@@ -56,6 +65,7 @@ export function CallProvider({ children }) {
   const [call, setCall] = useState(null);
   const [status, setStatus] = useState('idle');
   const [muted, setMuted] = useState(false);
+  const [speakerOn, setSpeakerOn] = useState(false);
   const [seconds, setSeconds] = useState(0);
   const [lastEndReason, setLastEndReason] = useState(null);
   const [mediaError, setMediaError] = useState(null);
@@ -88,6 +98,9 @@ export function CallProvider({ children }) {
     }
     pendingCandidatesRef.current = [];
     setMuted(false);
+    // Android keeps the speaker selection after the call unless it is cleared.
+    if (canSwitchSpeaker) AudioRoute.setSpeaker({ on: false }).catch(() => {});
+    setSpeakerOn(false);
     setSeconds(0);
   }, []);
 
@@ -325,6 +338,18 @@ export function CallProvider({ children }) {
     return () => clearInterval(id);
   }, [status]);
 
+  /* ------------------------------------------------- audio route ----- */
+
+  // The WebView only switches to call audio (earpiece) once WebRTC is running,
+  // so a choice made while ringing is applied when the call goes live, and
+  // every toggle after that is applied straight away.
+  useEffect(() => {
+    if (status !== 'active' || !canSwitchSpeaker) return;
+    AudioRoute.setSpeaker({ on: speakerOn })
+      .then((res) => { if (speakerOn && !res?.speaker) setSpeakerOn(false); })
+      .catch(() => setSpeakerOn(false));
+  }, [status, speakerOn]);
+
   /* ------------------------------------------------------ actions ----- */
 
   /** Ring a friend. The mic is not opened until they actually pick up. */
@@ -401,6 +426,8 @@ export function CallProvider({ children }) {
     setMuted(next);
   }, [muted]);
 
+  const toggleSpeaker = useCallback(() => setSpeakerOn((on) => !on), []);
+
   const isFriendOnline = useCallback(
     (id) => onlineFriends.map(Number).includes(Number(id)),
     [onlineFriends]
@@ -425,6 +452,8 @@ export function CallProvider({ children }) {
         call,
         status,
         muted,
+        speakerOn,
+        canSwitchSpeaker,
         seconds,
         lastEndReason,
         mediaError,
@@ -433,6 +462,7 @@ export function CallProvider({ children }) {
         declineCall,
         hangUp,
         toggleMute,
+        toggleSpeaker,
         dismissNotice
       }}
     >

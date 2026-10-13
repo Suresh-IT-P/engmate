@@ -33,7 +33,10 @@ function initSQLite() {
     try {
       const { DatabaseSync } = require('node:sqlite');
       const sqlitePath = path.resolve(__dirname, '../../database/englishmate.sqlite');
-      sqliteDb = new DatabaseSync(sqlitePath);
+      // Read "double-quoted" values as strings, the way MySQL does. Queries
+      // written against MySQL used them, and on SQLite each one failed with
+      // "no such column" — the AI tutor, friend requests and lessons among them.
+      sqliteDb = new DatabaseSync(sqlitePath, { enableDoubleQuotedStringLiterals: true });
       activeEngine = 'sqlite';
       console.log(`[Database] Connected successfully to SQLite database (${sqlitePath})`);
       return true;

@@ -1,6 +1,11 @@
 /** @type {import('tailwindcss').Config} */
 export default {
   darkMode: 'class',
+  // On touch screens a tapped button kept its hover: style (grey and scaled
+  // up) until you tapped elsewhere. Hover styles now apply only with a mouse.
+  future: {
+    hoverOnlyWhenSupported: true,
+  },
   content: [
     "./index.html",
     "./src/**/*.{js,ts,jsx,tsx}",
@@ -125,8 +130,10 @@ export default {
           '100%': { transform: 'scale(1)' },
         },
         // A reaction leaves the tap point, arcs out along its own --dx/--dy,
-        // overshoots in size, then shrinks and fades. Randomising the vars per
+        // pops to full size, then shrinks and fades. Randomising the vars per
         // particle is what stops a burst looking like a single column.
+        // Scale never goes above 1: the glyph is rasterised at its own size, so
+        // growing past it blurred the emoji and swelled a burst into one blob.
         reactionFloat: {
           '0%': {
             opacity: '0',
@@ -134,11 +141,11 @@ export default {
           },
           '14%': {
             opacity: '1',
-            transform: 'translate3d(calc(var(--dx, 0px) * 0.14), calc(var(--dy, -160px) * 0.10), 0) scale(1.35) rotate(var(--r1, -12deg))',
+            transform: 'translate3d(calc(var(--dx, 0px) * 0.22), calc(var(--dy, -160px) * 0.16), 0) scale(1) rotate(var(--r1, -12deg))',
           },
           '45%': {
             opacity: '1',
-            transform: 'translate3d(calc(var(--dx, 0px) * 0.55), calc(var(--dy, -160px) * 0.48), 0) scale(1.05) rotate(var(--r2, 10deg))',
+            transform: 'translate3d(calc(var(--dx, 0px) * 0.6), calc(var(--dy, -160px) * 0.52), 0) scale(0.9) rotate(var(--r2, 10deg))',
           },
           '100%': {
             opacity: '0',

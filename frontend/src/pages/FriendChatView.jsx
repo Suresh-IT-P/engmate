@@ -1,20 +1,27 @@
 import React, { useEffect, useMemo, useRef, useState } from 'react';
-import { useNavigate, useParams } from 'react-router-dom';
+import { useNavigate, useParams, useSearchParams } from 'react-router-dom';
 import { api } from '../services/api';
+import { createBattleRoom } from '../services/battle';
 import { useAuth } from '../context/AuthContext';
 import { useLearning } from '../context/LearningContext';
 import { useCall } from '../context/CallContext';
 import { useBurst } from '../components/reactions/ReactionBurstLayer';
 import { ReactionRow, ReactionSheet, ReactionChips } from '../components/reactions/ReactionPicker';
-import { summarise, haptic } from '../components/reactions/reactionKit';
+import { summarise, haptic, emojiOnly, REACTION_GROUPS } from '../components/reactions/reactionKit';
+import ChallengeSheet from '../components/ChallengeSheet';
+import GameInviteCard from '../components/GameInviteCard';
 
 /**
- * One-to-one chat with a friend, with a voice-call button in the header.
+ * One-to-one chat with a friend, with voice-call and Grammar Battle challenge
+ * buttons in the header.
  *
  * Messages arrive over the socket rather than the 5-second poll the chat hub
  * uses, and the timeline interleaves call records ("missed call", "voice call,
  * 2:14") with the messages so the conversation reads in order.
  */
+
+/** The emoji tray: every reaction emoji, one tap sends it as a big emoji. */
+const TRAY_EMOJI = REACTION_GROUPS.flatMap((g) => g.emojis);
 
 const QUICK_REPLIES = [
   'Hi! 👋',
@@ -41,6 +48,20 @@ function dayLabel(iso) {
   return d.toLocaleDateString([], { day: 'numeric', month: 'short' });
 }
 
+/** "last seen just now" / "5 min ago" / "today at 10:42" / "yesterday at 21:05" / "12 Oct". */
+function lastSeenLabel(iso) {
+  const d = new Date(iso);
+  if (Number.isNaN(d.getTime())) return null;
+  const mins = Math.floor((Date.now() - d.getTime()) / 60000);
+  if (mins < 1) return 'last seen just now';
+  if (mins < 60) return `last seen ${mins} min ago`;
+
+  const day = dayLabel(iso);
+  if (day === 'Today' || day === 'Yesterday') return `last seen ${day.toLowerCase()} at ${timeLabel(iso)}`;
+  const sameYear = d.getFullYear() === new Date().getFullYear();
+  return `last seen ${d.toLocaleDateString([], sameYear ? { day: 'numeric', month: 'short' } : { day: 'numeric', month: 'short', year: 'numeric' })}`;
+}
+
 function callSummary(entry, iAmCaller) {
   if (entry.status === 'completed') {
     const m = Math.floor((entry.duration_seconds || 0) / 60);
@@ -55,7 +76,8 @@ function callSummary(entry, iAmCaller) {
 export default function FriendChatView() {
   const { roomId } = useParams();
   const navigate = useNavigate();
-  const { user } = useAuth();
+  const [searchParams, setSearchParams] = useSearchParams();
+  const { user, profile } = useAuth();
   const { tamilEnabled, speakText } = useLearning();
   const { socket, connected, myUserId, isFriendOnline, startCall, status: callStatus } = useCall();
 
@@ -73,6 +95,13 @@ export default function FriendChatView() {
   // Which message the reaction row is open on, and whether the full sheet is up.
   const [reactingId, setReactingId] = useState(null);
   const [sheetOpen, setSheetOpen] = useState(false);
+
+  const [emojiTrayOpen, setEmojiTrayOpen] = useState(false);
+
+  // Grammar Battle challenges: the sheet, and whether each invited room is still open.
+  const [challengeOpen, setChallengeOpen] = useState(false);
+  const [challenging, setChallenging] = useState(false);
+  const [battleStates, setBattleStates] = useState({});
 
   const endRef = useRef(null);
   const typingTimerRef = useRef(null);
@@ -131,6 +160,10 @@ export default function FriendChatView() {
       if (msg.room_id !== roomId) return;
       // The sender already appended their own copy optimistically.
       setMessages((prev) => (prev.some((m) => m.id === msg.id) ? prev : [...prev, msg]));
+
+      // A friend's emoji lands with a little burst of itself.
+      const emoji = Number(msg.sender_id) !== Number(meId) && emojiOnly(msg.message_text);
+      if (emoji) burst(emoji[0], { count: 8, buzz: false });
     };
 
     const onTyping = ({ roomId: r, userId, isTyping }) => {
@@ -253,7 +286,63 @@ export default function FriendChatView() {
 
   useEffect(() => {
     endRef.current?.scrollIntoView({ behavior: 'smooth', block: 'end' });
-  }, [timeline.length, peerTyping]);
+  }, [timeline.length, peerTyping, emojiTrayOpen]);
+
+  /* ------------------------------------------------ battle invites ---- */
+
+  // Battle rooms live in server memory only, so ask which invites are still
+  // joinable, and keep asking while the chat is open.
+  const inviteCodes = useMemo(() => [...new Set(
+    messages
+      .filter((m) => m.message_type === 'game_invite' && m.metadata?.battleRoomId)
+      .map((m) => m.metadata.battleRoomId)
+  )].join(','), [messages]);
+
+  useEffect(() => {
+    if (!socket || !connected || !inviteCodes) return undefined;
+    let alive = true;
+    const ask = () => socket.emit('game:room-status', { battleRoomIds: inviteCodes.split(',') }, (res) => {
+      if (alive && res?.ok) setBattleStates(res.states || {});
+    });
+    ask();
+    const poll = setInterval(ask, 10000);
+    return () => { alive = false; clearInterval(poll); };
+  }, [socket, connected, inviteCodes]);
+
+  // The friend lists link here with ?challenge=1 to open the sheet straight away.
+  useEffect(() => {
+    if (searchParams.get('challenge') !== '1') return;
+    setChallengeOpen(true);
+    setSearchParams({}, { replace: true });
+  }, [searchParams, setSearchParams]);
+
+  /** Create a battle room, drop the invite into the chat, then wait in the lobby. */
+  const sendChallenge = async ({ topic, questionCount }) => {
+    if (challenging) return;
+    setChallenging(true);
+    try {
+      const code = await createBattleRoom(socket, {
+        playerName: profile?.full_name || user?.full_name || 'Player',
+        topic,
+        questionCount
+      });
+
+      const res = await new Promise((resolve) => {
+        const timer = setTimeout(() => resolve({ ok: false, error: 'The server did not answer. Try again.' }), 8000);
+        socket.emit('game:invite', { roomId, battleRoomId: code }, (r) => { clearTimeout(timer); resolve(r); });
+      });
+      if (!res?.ok) throw new Error(res?.error || 'Could not send the challenge.');
+
+      setChallengeOpen(false);
+      burst('🎮', { count: 8 });
+      navigate(`/battle/room/${code}`);
+    } catch (err) {
+      setChallengeOpen(false);
+      setLoadError(err.message);
+    } finally {
+      setChallenging(false);
+    }
+  };
 
   /* ------------------------------------------------------- actions ---- */
 
@@ -269,43 +358,87 @@ export default function FriendChatView() {
     typingTimerRef.current = setTimeout(() => notifyTyping(false), 1500);
   };
 
+  /**
+   * Send the draft, or `text` when given (a quick reply or a tray emoji).
+   * Only a draft send clears and locks the input, so tapping an emoji never
+   * wipes a half-typed sentence.
+   */
   const send = (text) => {
-    const body = (text ?? draft).trim();
-    if (!body || sending) return;
+    const fromDraft = text === undefined;
+    const body = (fromDraft ? draft : text).trim();
+    if (!body || (fromDraft && sending)) return;
 
-    setSending(true);
-    setDraft('');
-    clearTimeout(typingTimerRef.current);
-    notifyTyping(false);
+    if (fromDraft) {
+      setSending(true);
+      setDraft('');
+      clearTimeout(typingTimerRef.current);
+      notifyTyping(false);
+    }
 
-    socket.emit('chat:message', { roomId, messageText: body, checkGrammar }, (res) => {
-      setSending(false);
+    // Emoji have no grammar to check, and should not wait on the AI.
+    const wantGrammar = checkGrammar && !emojiOnly(body);
+
+    socket.emit('chat:message', { roomId, messageText: body, checkGrammar: wantGrammar }, (res) => {
+      if (fromDraft) setSending(false);
       if (res?.ok && res.message) {
         setMessages((prev) => (prev.some((m) => m.id === res.message.id) ? prev : [...prev, res.message]));
       } else if (res && !res.ok) {
         setLoadError(res.error || 'Message failed to send.');
-        setDraft(body); // hand the text back rather than losing it
+        if (fromDraft) setDraft(body); // hand the text back rather than losing it
       }
     });
+  };
+
+  const sendEmoji = (emoji, el) => {
+    const r = el?.getBoundingClientRect?.();
+    burst(emoji, { count: 6, originX: r ? r.left + r.width / 2 : undefined, originY: r ? r.top : undefined });
+    send(emoji);
   };
 
   // Presence from the shared context, plus a direct check on mount: the
   // register ack can land before this screen exists, leaving the context's
   // list empty even though the friend is online.
   const [peerOnlineDirect, setPeerOnlineDirect] = useState(false);
+  const [peerLastSeen, setPeerLastSeen] = useState(null);
 
   useEffect(() => {
     if (!socket || !connected || !peer?.id) return;
     let alive = true;
     const ask = () => socket.emit('presence:check', { userIds: [peer.id] }, (res) => {
-      if (alive) setPeerOnlineDirect((res?.online || []).map(Number).includes(Number(peer.id)));
+      if (!alive) return;
+      setPeerOnlineDirect((res?.online || []).map(Number).includes(Number(peer.id)));
+      if (res?.lastSeen?.[peer.id]) setPeerLastSeen(res.lastSeen[peer.id]);
     });
+
+    // Going offline is pushed the moment it happens, with the time, instead of
+    // waiting up to 15 s for the next check to notice.
+    const onPresence = ({ userId, online, lastSeen }) => {
+      if (Number(userId) !== Number(peer.id)) return;
+      setPeerOnlineDirect(!!online);
+      if (!online && lastSeen) setPeerLastSeen(lastSeen);
+    };
+
     ask();
     const poll = setInterval(ask, 15000);
-    return () => { alive = false; clearInterval(poll); };
+    socket.on('presence:update', onPresence);
+    return () => {
+      alive = false;
+      clearInterval(poll);
+      socket.off('presence:update', onPresence);
+    };
   }, [socket, connected, peer?.id]);
 
   const peerOnline = (peer ? isFriendOnline(peer.id) : false) || peerOnlineDirect;
+
+  // "last seen 3 min ago" has to age while the screen is open.
+  const [, setMinuteTick] = useState(0);
+  useEffect(() => {
+    if (peerOnline || !peerLastSeen) return undefined;
+    const id = setInterval(() => setMinuteTick((n) => n + 1), 60000);
+    return () => clearInterval(id);
+  }, [peerOnline, peerLastSeen]);
+
+  const lastSeenText = !peerOnline && peerLastSeen ? lastSeenLabel(peerLastSeen) : null;
   const callBusy = callStatus !== 'idle';
 
   // Only a missing peer or a non-friend makes calling impossible. Being offline
@@ -314,7 +447,7 @@ export default function FriendChatView() {
   const callBlockedReason = !peer
     ? 'This conversation has no other member.'
     : !canCall
-      ? `Add ${peer.full_name || 'them'} as a friend to enable voice calls.`
+      ? `Add ${peer.full_name || 'them'} as a friend to call or play together.`
       : null;
 
   /* --------------------------------------------------------- views ---- */
@@ -360,12 +493,23 @@ export default function FriendChatView() {
               <span className="text-primary">typing…</span>
             ) : (
               <span className={peerOnline ? 'text-secondary' : 'text-on-surface-variant'}>
-                {peerOnline ? 'Online' : 'Offline'}
-                {peer?.current_level ? ` · ${peer.current_level}` : ''}
+                {peerOnline ? 'Online' : lastSeenText || 'Offline'}
+                {/* The level fits beside "Online"; "last seen …" needs the room. */}
+                {peer?.current_level && !lastSeenText ? ` · ${peer.current_level}` : ''}
               </span>
             )}
           </p>
         </div>
+
+        <button
+          onClick={() => setChallengeOpen(true)}
+          disabled={!!callBlockedReason || !connected}
+          title={callBlockedReason || `Challenge ${peer?.full_name || 'your friend'} to a Grammar Battle`}
+          className="w-10 h-10 shrink-0 rounded-full bg-tertiary text-white flex items-center justify-center shadow-md shadow-tertiary/25 hover:opacity-90 active:scale-95 transition-all disabled:opacity-30 disabled:cursor-not-allowed"
+          aria-label="Challenge to a Grammar Battle"
+        >
+          <span className="material-symbols-outlined text-[20px]">sports_esports</span>
+        </button>
 
         <button
           onClick={() => startCall(peer, roomId)}
@@ -391,7 +535,7 @@ export default function FriendChatView() {
         <div className="px-3 py-2 mb-2 rounded-xl bg-surface-container border border-surface-variant/60 text-on-surface-variant text-[11px] font-bold flex items-center gap-2 shrink-0">
           <span className="material-symbols-outlined text-[15px] shrink-0">schedule</span>
           <span className="min-w-0 break-words">
-            {peer?.full_name || 'They'} is offline. You can still send messages — and you can press call to try.
+            {peer?.full_name || 'They'} {lastSeenText ? `was ${lastSeenText}` : 'is offline'}. You can still send messages — and you can press call to try.
           </span>
         </div>
       )}
@@ -420,6 +564,16 @@ export default function FriendChatView() {
             <p className="text-[11px] text-outline mt-1">
               Tip: double-tap a message for ❤️, or hold it to pick a reaction.
             </p>
+            {!callBlockedReason && (
+              <button
+                onClick={() => setChallengeOpen(true)}
+                disabled={!connected}
+                className="mt-3 px-4 py-2.5 rounded-2xl bg-tertiary text-white text-xs font-extrabold flex items-center gap-1.5 shadow-md shadow-tertiary/25 active:scale-95 transition-transform disabled:opacity-40"
+              >
+                <span className="material-symbols-outlined text-[18px]">sports_esports</span>
+                Challenge {peer?.full_name || 'them'} to a Grammar Battle
+              </button>
+            )}
           </div>
         )}
 
@@ -460,6 +614,28 @@ export default function FriendChatView() {
           const msg = item.data;
           const mine = Number(msg.sender_id) === Number(meId);
 
+          if (msg.message_type === 'game_invite' && msg.metadata?.battleRoomId) {
+            const code = msg.metadata.battleRoomId;
+            return (
+              <div
+                key={`msg-${msg.id}`}
+                className={`flex flex-col gap-1 max-w-[85%] min-w-0 ${mine ? 'self-end items-end' : 'self-start items-start'}`}
+              >
+                <GameInviteCard
+                  invite={msg.metadata}
+                  mine={mine}
+                  senderName={msg.sender_name}
+                  roomState={battleStates[code]}
+                  onOpen={() => navigate(`/battle/room/${code}`)}
+                />
+                <span className="text-[9px] font-bold text-outline px-1">{timeLabel(msg.created_at)}</span>
+              </div>
+            );
+          }
+
+          // A message of only a few emoji is shown big, without a bubble.
+          const bigEmoji = !!emojiOnly(msg.message_text);
+
           return (
             <div
               key={`msg-${msg.id}`}
@@ -474,21 +650,27 @@ export default function FriendChatView() {
                 onPointerCancel={cancelLongPress}
                 onClick={(e) => handleBubbleTap(msg.id, e.currentTarget)}
                 onContextMenu={(e) => { e.preventDefault(); setReactingId(msg.id); }}
-                className={`p-3 rounded-2xl text-sm font-medium leading-relaxed break-words relative cursor-pointer select-none transition-transform active:scale-[0.98] ${
-                  mine
-                    ? 'bg-primary text-white rounded-br-sm shadow-md shadow-primary/20'
-                    : 'bg-surface-container text-on-surface rounded-bl-sm border border-surface-variant/60'
-                }`}
+                className={bigEmoji
+                  ? 'text-5xl leading-tight px-1 cursor-pointer select-none transition-transform active:scale-90 animate-pop-in'
+                  : `p-3 rounded-2xl text-sm font-medium leading-relaxed break-words relative cursor-pointer select-none transition-transform active:scale-[0.98] ${
+                    mine
+                      ? 'bg-primary text-white rounded-br-sm shadow-md shadow-primary/20'
+                      : 'bg-surface-container text-on-surface rounded-bl-sm border border-surface-variant/60'
+                  }`}
               >
-                <p className="whitespace-pre-wrap pr-6">{msg.message_text}</p>
-                <button
-                  onPointerDown={(e) => { e.stopPropagation(); cancelLongPress(); }}
-                  onClick={(e) => { e.stopPropagation(); speakText(msg.message_text); }}
-                  className={`absolute top-2 right-2 opacity-60 hover:opacity-100 ${mine ? 'text-white' : 'text-primary'}`}
-                  aria-label="Listen to this message"
-                >
-                  <span className="material-symbols-outlined text-[15px]">volume_up</span>
-                </button>
+                {bigEmoji ? msg.message_text : (
+                  <>
+                    <p className="whitespace-pre-wrap pr-6">{msg.message_text}</p>
+                    <button
+                      onPointerDown={(e) => { e.stopPropagation(); cancelLongPress(); }}
+                      onClick={(e) => { e.stopPropagation(); speakText(msg.message_text); }}
+                      className={`absolute top-2 right-2 opacity-60 hover:opacity-100 ${mine ? 'text-white' : 'text-primary'}`}
+                      aria-label="Listen to this message"
+                    >
+                      <span className="material-symbols-outlined text-[15px]">volume_up</span>
+                    </button>
+                  </>
+                )}
               </div>
 
               {msg.grammar_correction && (
@@ -558,8 +740,35 @@ export default function FriendChatView() {
         onPick={(emoji, el) => reactingId && react(reactingId, emoji, el)}
       />
 
+      <ChallengeSheet
+        open={challengeOpen && !callBlockedReason}
+        onClose={() => setChallengeOpen(false)}
+        friendName={peer?.full_name || 'your friend'}
+        onSend={sendChallenge}
+        sending={challenging}
+      />
+
       {/* Composer */}
       <div className="shrink-0 pt-1 pb-2">
+        {emojiTrayOpen && (
+          <div className="mb-2 p-2 rounded-2xl bg-surface-container border border-surface-variant/60 animate-fade-in">
+            <div className="grid grid-cols-9 sm:grid-cols-12 gap-0.5 max-h-40 overflow-y-auto overscroll-contain">
+              {TRAY_EMOJI.map((emoji) => (
+                <button
+                  key={emoji}
+                  onClick={(e) => { haptic(8); sendEmoji(emoji, e.currentTarget); }}
+                  disabled={!connected}
+                  className="aspect-square min-h-[36px] rounded-xl text-2xl flex items-center justify-center hover:bg-surface-variant active:scale-90 transition-transform disabled:opacity-40"
+                  aria-label={`Send ${emoji}`}
+                >
+                  {emoji}
+                </button>
+              ))}
+            </div>
+            <p className="text-[10px] font-bold text-on-surface-variant text-center mt-1">Tap an emoji to send it</p>
+          </div>
+        )}
+
         <div className="flex gap-1.5 overflow-x-auto hide-scrollbar pb-2">
           {QUICK_REPLIES.map((q) => (
             <button
@@ -585,6 +794,19 @@ export default function FriendChatView() {
             />
             <span className="material-symbols-outlined text-[16px] text-primary">auto_fix_high</span>
           </label>
+
+          <button
+            onClick={() => setEmojiTrayOpen((o) => !o)}
+            className={`w-10 h-10 shrink-0 rounded-xl flex items-center justify-center border transition-colors ${
+              emojiTrayOpen
+                ? 'bg-primary text-white border-primary'
+                : 'bg-surface-container text-on-surface-variant border-surface-variant/60 hover:text-primary'
+            }`}
+            aria-label={emojiTrayOpen ? 'Close emoji' : 'Send an emoji'}
+            aria-expanded={emojiTrayOpen}
+          >
+            <span className="material-symbols-outlined text-[20px]">{emojiTrayOpen ? 'keyboard' : 'mood'}</span>
+          </button>
 
           <input
             type="text"

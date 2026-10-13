@@ -65,7 +65,7 @@ async function completeLesson(req, res, next) {
     const existing = await db.query('SELECT id FROM user_progress WHERE user_id = ? AND lesson_id = ?', [userId, id]);
     if (existing.length === 0) {
       await db.execute(
-        'INSERT INTO user_progress (user_id, lesson_id, status, score) VALUES (?, ?, "completed", ?)',
+        "INSERT INTO user_progress (user_id, lesson_id, status, score) VALUES (?, ?, 'completed', ?)",
         [userId, id, score]
       );
     } else {

@@ -1,6 +1,16 @@
 const config = require('../config/env');
 
 /**
+ * Used when the configured model is gone. An alias for the current Flash
+ * model, so unlike a pinned version it is never retired.
+ */
+const GEMINI_FALLBACK_MODEL = 'gemini-flash-latest';
+
+/** Asked instead when the main model is overloaded: lighter, faster, and on
+ *  its own capacity, so it is usually free when the main one is not. */
+const GEMINI_BUSY_FALLBACK_MODEL = 'gemini-flash-lite-latest';
+
+/**
  * AI Service Provider Abstraction
  * Handles Gemini, OpenAI, and high-fidelity built-in English Coach Engine.
  */
@@ -580,37 +590,65 @@ class AIService {
   }
 
   getGeminiModel() {
-    return process.env.AI_MODEL || config.ai.model || 'gemini-1.5-flash';
+    return this.modelOverride || process.env.AI_MODEL || config.ai.model || GEMINI_FALLBACK_MODEL;
+  }
+
+  /**
+   * Send one generateContent request and return the reply text.
+   *
+   * A retired model answers 404. That is how gemini-1.5-flash quietly turned
+   * every tutor reply into the rule engine's for months, so on a 404 this
+   * retries once with the always-current alias and keeps using it.
+   */
+  async geminiGenerate(body) {
+    const apiKey = this.getGeminiApiKey();
+    const call = async (model) => {
+      const res = await fetch(
+        `https://generativelanguage.googleapis.com/v1beta/models/${model}:generateContent?key=${apiKey}`,
+        { method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify(body) }
+      );
+      return { status: res.status, data: await res.json() };
+    };
+
+    const model = this.getGeminiModel();
+    let { status, data } = await call(model);
+    if (status === 404 && model !== GEMINI_FALLBACK_MODEL) {
+      console.warn(`[AIService] Gemini model "${model}" not found; using "${GEMINI_FALLBACK_MODEL}" instead. Update AI_MODEL.`);
+      this.modelOverride = GEMINI_FALLBACK_MODEL;
+      ({ status, data } = await call(GEMINI_FALLBACK_MODEL));
+    }
+
+    // "High demand" (503) and rate limits (429) hit the newest models often.
+    // Waiting on the same busy model rarely helps; the lighter one usually
+    // answers at once, which beats dropping the student to canned replies.
+    if (status === 503 || status === 429) {
+      const busyModel = this.getGeminiModel();
+      const alternate = busyModel === GEMINI_BUSY_FALLBACK_MODEL ? GEMINI_FALLBACK_MODEL : GEMINI_BUSY_FALLBACK_MODEL;
+      console.warn(`[AIService] Gemini model "${busyModel}" is busy (${status}); asking "${alternate}".`);
+      ({ status, data } = await call(alternate));
+    }
+
+    if (data.error) throw new Error(data.error.message || `Gemini HTTP ${status}`);
+    return data.candidates?.[0]?.content?.parts?.[0]?.text || '';
   }
 
   async geminiCorrect(userSentence, userLevel) {
-    const apiKey = this.getGeminiApiKey();
-    const model = this.getGeminiModel();
-    if (!apiKey) return this.ruleBasedSentenceDoctor(userSentence, userLevel);
+    if (!this.getGeminiApiKey()) return this.ruleBasedSentenceDoctor(userSentence, userLevel);
 
     const prompt = `You are an expert English Teacher for Tamil speakers. Correct this student sentence: "${userSentence}". Student level: ${userLevel}.
 Return ONLY a valid JSON object with format:
 {"hasMistake": boolean, "original": "${userSentence}", "improved": "corrected sentence", "explanation": "clear English explanation", "tamilExplanation": "Tamil explanation", "grammarRule": "Rule name"}`;
 
-    const url = `https://generativelanguage.googleapis.com/v1beta/models/${model}:generateContent?key=${apiKey}`;
-    const res = await fetch(url, {
-      method: 'POST',
-      headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify({
-        contents: [{ parts: [{ text: prompt }] }],
-        generationConfig: { responseMimeType: "application/json" }
-      })
+    const text = await this.geminiGenerate({
+      contents: [{ parts: [{ text: prompt }] }],
+      generationConfig: { responseMimeType: "application/json" }
     });
-    const data = await res.json();
-    const text = data.candidates?.[0]?.content?.parts?.[0]?.text || '';
     const cleanJson = text.replace(/```json/g, '').replace(/```/g, '').trim();
     return JSON.parse(cleanJson);
   }
 
   async geminiChat({ message, history = [], persona = 'Maya', role = 'Friendly English Tutor', scenario = 'General Chat', level = 'A1', enableTamil = true }) {
-    const apiKey = this.getGeminiApiKey();
-    const model = this.getGeminiModel();
-    if (!apiKey) return this.ruleBasedChat({ message, history, persona, role, scenario, level, enableTamil });
+    if (!this.getGeminiApiKey()) return this.ruleBasedChat({ message, history, persona, role, scenario, level, enableTamil });
 
     const systemInstructionText = `You are ${persona}, an enthusiastic and supportive AI English Coach for Tamil speakers in this scenario: "${scenario}".
 Student proficiency level: ${level}.
@@ -619,7 +657,8 @@ Guidelines:
 2. Ask thoughtful follow-up questions to encourage the student to practice speaking and thinking in English.
 3. ${enableTamil ? 'Include a natural Tamil translation for your reply so the student can understand nuances.' : ''}
 4. Provide 3 or 4 relevant, natural suggested English replies the student could choose next.
-5. Return ONLY a valid JSON object in this exact schema:
+5. Bold the key points by wrapping them in **double asterisks**: the corrected sentence, the word, idiom or phrase being taught, and the grammar rule's name. Bold 1 to 3 short phrases per reply, never whole sentences of chat. Bold the same English phrases inside tamilTranslation. Never use asterisks in suggestedReplies.
+6. Return ONLY a valid JSON object in this exact schema:
 {
   "reply": "English response text",
   "tamilTranslation": "Tamil translation of the response",
@@ -645,11 +684,9 @@ Guidelines:
       parts: [{ text: message }]
     });
 
-    const url = `https://generativelanguage.googleapis.com/v1beta/models/${model}:generateContent?key=${apiKey}`;
-    const res = await fetch(url, {
-      method: 'POST',
-      headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify({
+    let text;
+    try {
+      text = await this.geminiGenerate({
         systemInstruction: {
           parts: [{ text: systemInstructionText }]
         },
@@ -658,23 +695,22 @@ Guidelines:
           temperature: 0.7,
           responseMimeType: "application/json"
         }
-      })
-    });
-
-    const data = await res.json();
-    if (data.error) {
-      console.warn('[AIService] Gemini API error:', data.error.message);
+      });
+    } catch (err) {
+      console.warn('[AIService] Gemini API error:', err.message);
       return this.ruleBasedChat({ message, history, persona, role, scenario, level, enableTamil });
     }
 
-    const text = data.candidates?.[0]?.content?.parts?.[0]?.text || '';
     try {
       const cleanJson = text.replace(/```json/g, '').replace(/```/g, '').trim();
       const parsed = JSON.parse(cleanJson);
       return {
         reply: parsed.reply || text,
         tamilTranslation: enableTamil ? parsed.tamilTranslation : undefined,
-        suggestedReplies: Array.isArray(parsed.suggestedReplies) ? parsed.suggestedReplies : ["Tell me more", "Can you explain in detail?", "Ask me a question"]
+        // Chips are plain text, so drop any bold markers that slipped in.
+        suggestedReplies: Array.isArray(parsed.suggestedReplies)
+          ? parsed.suggestedReplies.map((s) => String(s).replace(/\*/g, '').trim())
+          : ["Tell me more", "Can you explain in detail?", "Ask me a question"]
       };
     } catch (e) {
       return {

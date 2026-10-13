@@ -41,7 +41,9 @@ async function runGrammarDoctor(userId, text) {
  * Persist a chat message and return it in the exact shape the clients render.
  * @returns {Promise<object>} the stored message, correction already parsed
  */
-async function createMessage({ userId, roomId, messageText, checkGrammar = true }) {
+async function createMessage({
+  userId, roomId, messageText, checkGrammar = true, messageType = 'text', metadata = null
+}) {
   const text = String(messageText || '').trim();
   if (!text) throw new Error('Message text is required.');
 
@@ -50,9 +52,9 @@ async function createMessage({ userId, roomId, messageText, checkGrammar = true 
     : { correctionJson: null, tamilTranslation: null };
 
   const result = await db.execute(
-    `INSERT INTO chat_messages (room_id, sender_id, message_text, tamil_translation, grammar_correction)
-     VALUES (?, ?, ?, ?, ?)`,
-    [roomId, userId, text, tamilTranslation, correctionJson]
+    `INSERT INTO chat_messages (room_id, sender_id, message_text, tamil_translation, grammar_correction, message_type, metadata)
+     VALUES (?, ?, ?, ?, ?, ?, ?)`,
+    [roomId, userId, text, tamilTranslation, correctionJson, messageType, metadata ? JSON.stringify(metadata) : null]
   );
 
   const sender = await db.query(
@@ -69,6 +71,8 @@ async function createMessage({ userId, roomId, messageText, checkGrammar = true 
     message_text: text,
     tamil_translation: tamilTranslation,
     grammar_correction: correctionJson ? JSON.parse(correctionJson) : null,
+    message_type: messageType,
+    metadata,
     created_at: new Date().toISOString(),
     sender_name: sender[0]?.full_name || 'User',
     sender_avatar: sender[0]?.avatar_url || null,

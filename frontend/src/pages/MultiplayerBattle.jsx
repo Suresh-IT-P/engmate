@@ -1,9 +1,11 @@
 import React, { useState, useEffect, useRef, useCallback } from 'react';
 import { useParams, useNavigate } from 'react-router-dom';
 import { connectSocket } from '../services/socket';
+import { getBattleSessionId, setActiveBattle, clearActiveBattle } from '../services/battle';
 import { Send, MessageSquare, X, ArrowLeft, Copy, Check, Link2 } from 'lucide-react';
 import { useAuth } from '../context/AuthContext';
 import BattleTopicPicker from '../components/BattleTopicPicker';
+import InviteFriendsPanel from '../components/InviteFriendsPanel';
 import { useBurst } from '../components/reactions/ReactionBurstLayer';
 import { haptic } from '../components/reactions/reactionKit';
 
@@ -11,10 +13,10 @@ import { haptic } from '../components/reactions/reactionKit';
 const TIMER_PRESETS = [5, 10, 15, 20, 30, 45, 60];
 const ROUND_PRESETS = [5, 10, 15, 20];
 
-/** Two rows: the competitive reactions, then the warm ones. */
+/** The emoji picker's two sections: the competitive reactions, then the warm ones. */
 const EMOTE_GROUPS = [
-  ['😂', '🔥', '😎', '😱', '🤯', '👏', '💪', '🐐', '🤝', '😭', '🙈', '⚡', '🎉', '🤔', '💀', '🧠'],
-  ['❤️', '😍', '🥰', '😘', '💖', '💕', '🌹', '💐', '💝', '😻', '🫶', '✨']
+  { label: 'Hype', emojis: ['😂', '🔥', '😎', '😱', '🤯', '👏', '💪', '🐐', '🤝', '😭', '🙈', '⚡', '🎉', '🤔', '💀', '🧠'] },
+  { label: 'Love', emojis: ['❤️', '😍', '🥰', '😘', '💖', '💕', '🌹', '💐', '💝', '😻', '🫶', '✨'] }
 ];
 
 /** One tap sends a whole sentence — banter without breaking your typing rhythm. */
@@ -61,14 +63,7 @@ export default function MultiplayerBattle() {
   const [roomTopicTitle, setRoomTopicTitle] = useState(null);
   const [hostSessionId, setHostSessionId] = useState(null);
 
-  const [sessionId] = useState(() => {
-    let sid = sessionStorage.getItem('grammar_battle_sid');
-    if (!sid) {
-      sid = Math.random().toString(36).substring(2, 10);
-      sessionStorage.setItem('grammar_battle_sid', sid);
-    }
-    return sid;
-  });
+  const [sessionId] = useState(getBattleSessionId);
 
   // Game data
   const [questionData, setQuestionData] = useState(null);
@@ -78,14 +73,23 @@ export default function MultiplayerBattle() {
 
   // Social
   const [chatOpen, setChatOpen] = useState(false);
+  const [emojiOpen, setEmojiOpen] = useState(false);
+  const emojiPanelRef = useRef(null);
+  const emojiButtonRef = useRef(null);
   const [chatMessages, setChatMessages] = useState([]);
   const [chatInput, setChatInput] = useState('');
   const [unread, setUnread] = useState(0);
   const [toast, setToast] = useState(null);
+  // Each player's latest chat line, popped up on their avatar in the
+  // scoreboard so it can be read mid-question without opening the chat.
+  const [bubbles, setBubbles] = useState({ me: null, opponent: null });
+  const bubbleTimersRef = useRef({});
   const chatEndRef = useRef(null);
   const joinedRef = useRef(null);
 
   const playerName = profile?.full_name || 'Player';
+  const playerNameRef = useRef(playerName);
+  playerNameRef.current = playerName;
   const isHost = hostSessionId ? hostSessionId === sessionId : true;
   const inviteUrl = roomId ? `${window.location.origin}/battle/room/${roomId}` : '';
 
@@ -111,7 +115,7 @@ export default function MultiplayerBattle() {
       if (data.secondsPerQuestion) setSeconds(data.secondsPerQuestion);
       if (data.questionCount) setQuestionCount(data.questionCount);
       if (data.hostSessionId) setHostSessionId(data.hostSessionId);
-      sessionStorage.setItem('activeRoomId', data.roomId);
+      setActiveBattle(data.roomId);
     };
 
     on('room_created', (data) => {
@@ -194,7 +198,7 @@ export default function MultiplayerBattle() {
       setRoomError(typeof msg === 'string' ? msg : 'Something went wrong.');
       setGameState('SETUP');
       setRoomId('');
-      sessionStorage.removeItem('activeRoomId');
+      clearActiveBattle();
       joinedRef.current = null;
       // A dead invite link should not stay in the address bar.
       navigate('/battle/room', { replace: true });
@@ -238,6 +242,20 @@ export default function MultiplayerBattle() {
 
     on('receive_chat', (msg) => {
       setChatMessages((prev) => [...prev, msg]);
+
+      // Older servers sent no senderId; fall back to the name.
+      const side = (msg.senderId ? msg.senderId === newSocket.id : msg.senderName === playerNameRef.current)
+        ? 'me'
+        : 'opponent';
+      // Long enough to read, but capped: the bubble sits over the question,
+      // and a timed round is no place to hide it for long.
+      const ttl = Math.min(4500, 2500 + String(msg.message || '').length * 50);
+      clearTimeout(bubbleTimersRef.current[side]);
+      setBubbles((prev) => ({ ...prev, [side]: { id: msg.id, text: msg.message } }));
+      bubbleTimersRef.current[side] = setTimeout(() => {
+        setBubbles((prev) => (prev[side]?.id === msg.id ? { ...prev, [side]: null } : prev));
+      }, ttl);
+      if (side === 'opponent') haptic(10);
     });
 
     on('system_message', (msg) => {
@@ -260,6 +278,7 @@ export default function MultiplayerBattle() {
     return () => {
       // Detach only this screen's handlers, by reference.
       bound.forEach(([event, handler]) => newSocket.off(event, handler));
+      Object.values(bubbleTimersRef.current).forEach(clearTimeout);
     };
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
@@ -306,6 +325,18 @@ export default function MultiplayerBattle() {
     }
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [chatMessages, chatOpen]);
+
+  // A tap anywhere outside the emoji picker closes it, without swallowing
+  // that tap: mid-round, the tap that closes it may well be an answer.
+  useEffect(() => {
+    if (!emojiOpen) return undefined;
+    const onDown = (e) => {
+      if (emojiPanelRef.current?.contains(e.target) || emojiButtonRef.current?.contains(e.target)) return;
+      setEmojiOpen(false);
+    };
+    document.addEventListener('pointerdown', onDown);
+    return () => document.removeEventListener('pointerdown', onDown);
+  }, [emojiOpen]);
 
   /* ----------------------------------------------------------- actions --- */
   const handleCreateRoom = () => {
@@ -399,7 +430,7 @@ export default function MultiplayerBattle() {
   };
 
   const leaveRoom = () => {
-    sessionStorage.removeItem('activeRoomId');
+    clearActiveBattle();
     joinedRef.current = null;
     navigate('/battle/room');
     setGameState('SETUP');
@@ -415,24 +446,63 @@ export default function MultiplayerBattle() {
 
   // Built as plain elements rather than nested components: a component defined
   // inside the render is a new type on every pass, so React would remount it —
-  // and the one-second timer tick would restart every emote animation.
-  const emoteBar = (
-    <div className="space-y-1">
-      {EMOTE_GROUPS.map((group, gi) => (
-        // One scrolling line per group rather than a wrapping grid: wrapped, the
-        // 28 emoji took ~180px of vertical space in the middle of a match.
-        <div key={gi} className="flex items-center gap-1 sm:gap-1.5 overflow-x-auto hide-scrollbar sm:flex-wrap sm:justify-center px-0.5">
-          {group.map((emoji) => (
-            <button
-              key={emoji}
-              onClick={(e) => handleSendEmote(emoji, e.currentTarget)}
-              className="w-9 h-9 xs:w-10 xs:h-10 shrink-0 text-xl xs:text-2xl leading-none rounded-xl flex items-center justify-center hover:bg-surface-variant hover:scale-125 active:scale-90 transition-transform"
-              title="Send reaction"
-              aria-label={`Send ${emoji}`}
-            >
-              {emoji}
-            </button>
-          ))}
+  // and the one-second timer tick would restart every animation in it.
+
+  /** Speech bubble under a scoreboard avatar. */
+  const speechBubble = (side) => {
+    const b = bubbles[side];
+    if (!b) return null;
+    const mine = side === 'me';
+    return (
+      <div
+        key={b.id}
+        role="status"
+        className={`absolute top-full mt-2.5 z-20 w-max max-w-[10.5rem] sm:max-w-[14rem] px-3 py-2 rounded-2xl text-left text-xs font-bold leading-snug break-words shadow-xl pointer-events-none animate-pop-in ${
+          mine
+            ? 'left-0 origin-top-left bg-primary text-white'
+            : 'right-0 origin-top-right bg-surface-container-lowest text-on-surface border border-surface-variant'
+        }`}
+      >
+        {/* The tail, pointing up at the avatar. */}
+        <span
+          className={`absolute -top-1.5 w-3 h-3 rotate-45 ${
+            mine ? 'left-2.5 bg-primary' : 'right-2.5 bg-surface-container-lowest border-l border-t border-surface-variant'
+          }`}
+        />
+        <span className="relative line-clamp-2">{b.text}</span>
+      </div>
+    );
+  };
+
+  /**
+   * What the emoji button opens: every emote in one floating panel, instead of
+   * rows of them taking up the screen. It stays open so several can be sent
+   * in a row; a tap anywhere else closes it.
+   */
+  const emojiPicker = (
+    <div
+      ref={emojiPanelRef}
+      role="dialog"
+      aria-label="Send a reaction"
+      className="fixed right-3 md:right-8 bottom-[calc(12.75rem+env(safe-area-inset-bottom,0px))] z-50 w-[calc(100vw-1.5rem)] max-w-[20rem] p-3 rounded-3xl bg-surface-container-lowest border border-surface-variant/60 shadow-2xl origin-bottom-right animate-pop-in"
+    >
+      {EMOTE_GROUPS.map((group) => (
+        <div key={group.label} className="mb-2 last:mb-0">
+          <span className="text-[10px] font-bold uppercase tracking-wider text-on-surface-variant block mb-1 px-0.5">
+            {group.label}
+          </span>
+          <div className="grid grid-cols-8 gap-0.5">
+            {group.emojis.map((emoji) => (
+              <button
+                key={emoji}
+                onClick={(e) => handleSendEmote(emoji, e.currentTarget)}
+                className="aspect-square rounded-xl text-2xl leading-none flex items-center justify-center hover:bg-surface-variant active:scale-90 transition-transform"
+                aria-label={`Send ${emoji}`}
+              >
+                {emoji}
+              </button>
+            ))}
+          </div>
         </div>
       ))}
     </div>
@@ -630,10 +700,13 @@ export default function MultiplayerBattle() {
             </span>
           </div>
 
+          {/* Invite a friend directly, until someone has taken the other seat */}
+          {players.length < 2 && <InviteFriendsPanel battleRoomId={roomId} />}
+
           {/* Invite link */}
           <div className="w-full max-w-sm">
             <span className="text-[10px] font-bold uppercase tracking-wider text-on-surface-variant flex items-center gap-1 mb-1.5">
-              <Link2 size={12} /> Invite link
+              <Link2 size={12} /> {players.length < 2 ? 'Or share the link' : 'Invite link'}
             </span>
             <div className="flex gap-2">
               <input
@@ -697,8 +770,6 @@ export default function MultiplayerBattle() {
             </div>
           </div>
 
-          {emoteBar}
-
           <button
             onClick={handleStartMatch}
             disabled={players.length < 2}
@@ -727,8 +798,13 @@ export default function MultiplayerBattle() {
           {/* Scores + clock */}
           <div className="flex items-center justify-between p-2.5 sm:p-3 rounded-2xl bg-surface-container gap-2 sm:gap-3">
             <div className="flex items-center gap-2 min-w-0 flex-1">
-              <div className="w-8 h-8 shrink-0 rounded-full bg-primary text-white font-bold text-xs flex items-center justify-center">
-                {me.name.charAt(0).toUpperCase()}
+              <div className="relative shrink-0">
+                <div className={`w-8 h-8 rounded-full bg-primary text-white font-bold text-xs flex items-center justify-center transition-shadow ${
+                  bubbles.me ? 'ring-2 ring-primary/40 ring-offset-2 ring-offset-surface-container' : ''
+                }`}>
+                  {me.name.charAt(0).toUpperCase()}
+                </div>
+                {speechBubble('me')}
               </div>
               <div className="min-w-0">
                 <span className="text-[10px] font-bold uppercase block text-on-surface-variant truncate">You</span>
@@ -757,8 +833,13 @@ export default function MultiplayerBattle() {
                 </span>
                 {opponent.streak >= 2 && <span className="ml-1 text-[10px] font-bold text-error">🔥{opponent.streak}</span>}
               </div>
-              <div className="w-8 h-8 shrink-0 rounded-full bg-secondary text-white font-bold text-xs flex items-center justify-center">
-                {opponent.name.charAt(0).toUpperCase()}
+              <div className="relative shrink-0">
+                <div className={`w-8 h-8 rounded-full bg-secondary text-white font-bold text-xs flex items-center justify-center transition-shadow ${
+                  bubbles.opponent ? 'ring-2 ring-secondary/50 ring-offset-2 ring-offset-surface-container animate-bounce-short' : ''
+                }`}>
+                  {opponent.name.charAt(0).toUpperCase()}
+                </div>
+                {speechBubble('opponent')}
               </div>
             </div>
           </div>
@@ -802,11 +883,6 @@ export default function MultiplayerBattle() {
               💡 {answerResult.explanation}
             </p>
           )}
-
-          {/* Reactions mid-match */}
-          <div className="pt-1 border-t border-surface-variant/40">
-            {emoteBar}
-          </div>
         </div>
       )}
 
@@ -833,8 +909,6 @@ export default function MultiplayerBattle() {
               <p className="text-2xl font-bold text-error font-display">{opponent.score}</p>
             </div>
           </div>
-
-          {emoteBar}
 
           <div className="flex flex-col gap-2 w-full max-w-sm">
             <button
@@ -912,6 +986,22 @@ export default function MultiplayerBattle() {
               </form>
             </div>
           </div>
+
+          {/* Emoji button, stacked above the chat button. */}
+          {!chatOpen && (
+            <button
+              ref={emojiButtonRef}
+              onClick={() => setEmojiOpen((o) => !o)}
+              className={`fixed right-3 md:right-8 bottom-[calc(9.25rem+env(safe-area-inset-bottom,0px))] w-12 h-12 shrink-0 rounded-full shadow-xl flex items-center justify-center z-50 active:scale-95 transition-all ${
+                emojiOpen ? 'bg-on-surface text-surface' : 'bg-tertiary text-white hover:scale-105'
+              }`}
+              aria-label={emojiOpen ? 'Close reactions' : 'Send a reaction'}
+              aria-expanded={emojiOpen}
+            >
+              <span className="material-symbols-outlined text-[22px]">{emojiOpen ? 'close' : 'add_reaction'}</span>
+            </button>
+          )}
+          {emojiOpen && !chatOpen && emojiPicker}
 
           {!chatOpen && (
             <button

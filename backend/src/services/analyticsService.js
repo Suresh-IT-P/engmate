@@ -120,7 +120,7 @@ class AnalyticsService {
     }
 
     // Check vocab mastered
-    const vocabCountRes = await db.query('SELECT COUNT(*) as count FROM user_vocabulary WHERE user_id = ? AND status = "mastered"', [userId]);
+    const vocabCountRes = await db.query("SELECT COUNT(*) as count FROM user_vocabulary WHERE user_id = ? AND status = 'mastered'", [userId]);
     const vocabCount = vocabCountRes[0]?.count || 0;
     if (vocabCount >= 10) {
       const u = await this.awardAchievement(userId, 'ach_vocab_10');

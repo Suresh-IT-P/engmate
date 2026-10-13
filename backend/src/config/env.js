@@ -33,7 +33,9 @@ const config = {
   ai: {
     provider: process.env.AI_PROVIDER || 'gemini', // 'gemini', 'openai', 'anthropic', 'rule_engine'
     apiKey: process.env.AI_API_KEY || process.env.GEMINI_API_KEY || '',
-    model: process.env.AI_MODEL || 'gemini-1.5-flash',
+    // An alias, not a pinned version: gemini-1.5-flash was retired and every
+    // request to it failed, silently, into the rule-based fallback.
+    model: process.env.AI_MODEL || 'gemini-flash-latest',
   },
   
   // CORS

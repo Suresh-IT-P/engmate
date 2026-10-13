@@ -52,20 +52,37 @@ export function makeBurst(emoji, { count = 7, originX = 0, originY = 0, calm = f
   const rise = (calm ? 90 : 190) * vp.rise;
   const [minSize, maxSize] = calm ? [vp.size[0], vp.size[0] + 8] : vp.size;
 
+  // Tapped near a screen edge, half a symmetric fan flies off-screen and the
+  // rest piles up against the edge. Slide the fan toward the open side.
+  const width = typeof window === 'undefined' ? 1024 : window.innerWidth;
+  const margin = maxSize;
+  let fanCenter = 0;
+  if (originX - spread < margin) fanCenter = margin - (originX - spread);
+  else if (originX + spread > width - margin) fanCenter = (width - margin) - (originX + spread);
+
   return Array.from({ length: n }, (_, i) => ({
     id: `${Date.now()}_${i}_${Math.random().toString(36).slice(2, 7)}`,
     emoji,
     originX,
     originY,
     style: {
-      '--dx': `${rand(-spread, spread)}px`,
+      // Evenly spaced across the fan, then jittered. Purely random positions
+      // let several particles land on the same spot and read as one blob.
+      '--dx': `${fanCenter + spread * (((i + 0.5) / n) * 2 - 1) + rand(-spread / n, spread / n)}px`,
       '--dy': `${-rand(rise * 0.6, rise)}px`,
       '--s': rand(0.5, 0.95).toFixed(2),
       '--r1': `${rand(-28, -6)}deg`,
       '--r2': `${rand(6, 28)}deg`,
       '--dur': `${rand(calm ? 1.1 : 1.8, calm ? 1.4 : 2.8).toFixed(2)}s`,
       fontSize: `${rand(minSize, maxSize).toFixed(0)}px`,
-      animationDelay: `${(i * rand(20, 70)).toFixed(0)}ms`,
+      // Centre the glyph on the origin. left/top place its top-left corner,
+      // which put every burst below and to the right of the finger.
+      lineHeight: 1,
+      marginLeft: '-0.5em',
+      marginTop: '-0.5em',
+      // Random, not by index: the fan is ordered left to right, so delays by
+      // index would launch it as a sweep instead of a burst.
+      animationDelay: `${rand(0, Math.min(360, n * 35)).toFixed(0)}ms`,
       // Base state, not decoration. A CSS animation outranks an inline style
       // while it runs, so the keyframes still control the fade — but if the
       // animation is missing (a stale dev server that never picked up the
@@ -89,6 +106,9 @@ export function makeSparkles({ originX = 0, originY = 0, calm = false } = {}) {
       '--dy': `${-rand(30, 110) * vp.rise}px`,
       '--dur': `${rand(0.9, 1.5).toFixed(2)}s`,
       fontSize: `${rand(9, 15).toFixed(0)}px`,
+      lineHeight: 1,
+      marginLeft: '-0.5em',
+      marginTop: '-0.5em',
       animationDelay: `${(i * 40).toFixed(0)}ms`,
       opacity: 0
     }
@@ -114,6 +134,26 @@ export function prefersReducedMotion() {
   } catch (_) {
     return false;
   }
+}
+
+/** Code points that can make up one emoji: the picture plus its joiners,
+ *  variation selectors, skin tones and flag letters. */
+const EMOJI_PARTS = /^(\p{Extended_Pictographic}|\p{Regional_Indicator}|\p{Emoji_Modifier}|‍|️|⃣)+$/u;
+const HAS_PICTURE = /\p{Extended_Pictographic}|\p{Regional_Indicator}/u;
+
+/**
+ * The emoji in a message made of nothing but a few emoji, or null.
+ * Such a message is shown big, without a bubble, the way messengers do.
+ */
+export function emojiOnly(text, max = 3) {
+  const compact = String(text || '').replace(/\s+/g, '');
+  if (!compact) return null;
+  // Graphemes, so a family or a flag counts as one emoji rather than several.
+  const parts = typeof Intl !== 'undefined' && Intl.Segmenter
+    ? [...new Intl.Segmenter(undefined, { granularity: 'grapheme' }).segment(compact)].map((s) => s.segment)
+    : Array.from(compact);
+  if (parts.length > max) return null;
+  return parts.every((p) => EMOJI_PARTS.test(p) && HAS_PICTURE.test(p)) ? parts : null;
 }
 
 /** Collapse a raw reaction list into [{ emoji, count, mine }] for rendering. */

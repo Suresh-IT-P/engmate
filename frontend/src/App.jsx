@@ -9,6 +9,7 @@ import Navbar from './components/Navbar';
 import BottomNav from './components/BottomNav';
 import GlobalSearchModal from './components/GlobalSearchModal';
 import CallOverlay from './components/CallOverlay';
+import FriendNotifications from './components/FriendNotifications';
 
 import HomeDashboard from './pages/HomeDashboard';
 import LearnHub from './pages/LearnHub';
@@ -100,6 +101,7 @@ function AppContent() {
         </Routes>
       </main>
       {user && <CallOverlay />}
+      {user && <FriendNotifications />}
       {user && <BottomNav />}
     </div>
   );

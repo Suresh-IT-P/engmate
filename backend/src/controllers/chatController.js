@@ -74,12 +74,12 @@ async function getOrCreateDirectRoom(req, res, next) {
       );
       if (existingFriendship.length === 0) {
         await db.execute(
-          'INSERT INTO friendships (user_id, friend_id, status) VALUES (?, ?, "accepted")',
+          "INSERT INTO friendships (user_id, friend_id, status) VALUES (?, ?, 'accepted')",
           [userId, friendId]
         );
       } else {
         await db.execute(
-          'UPDATE friendships SET status = "accepted" WHERE id = ?',
+          "UPDATE friendships SET status = 'accepted' WHERE id = ?",
           [existingFriendship[0].id]
         );
       }
@@ -90,8 +90,9 @@ async function getOrCreateDirectRoom(req, res, next) {
     const existingRoom = await db.query('SELECT * FROM chat_rooms WHERE id = ?', [roomId]);
     if (existingRoom.length === 0) {
       await db.execute(
-        'INSERT INTO chat_rooms (id, name, room_type, created_by) VALUES (?, "Direct Chat", "direct", ?)',
-        [roomId, userId]
+        // Values as parameters: SQLite reads "double quotes" as column names.
+        'INSERT INTO chat_rooms (id, name, room_type, created_by) VALUES (?, ?, ?, ?)',
+        [roomId, 'Direct Chat', 'direct', userId]
       );
     }
 
@@ -147,7 +148,7 @@ async function getRoomMessages(req, res, next) {
 
     const messages = await db.query(
       `SELECT m.id, m.room_id, m.sender_id, m.message_text, m.tamil_translation,
-              m.grammar_correction, m.created_at,
+              m.grammar_correction, m.message_type, m.metadata, m.created_at,
               p.full_name as sender_name, p.avatar_url as sender_avatar,
               p.current_level as sender_level, u.role as sender_role
        FROM chat_messages m
@@ -169,8 +170,14 @@ async function getRoomMessages(req, res, next) {
           corr = { explanation: msg.grammar_correction };
         }
       }
+      let metadata = null;
+      if (msg.metadata) {
+        try { metadata = JSON.parse(msg.metadata); } catch (_) { /* leave it null */ }
+      }
       return {
         ...msg,
+        message_type: msg.message_type || 'text',
+        metadata,
         grammar_correction: corr
       };
     });

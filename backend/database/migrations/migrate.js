@@ -62,6 +62,11 @@ async function runMigration() {
   await safeAddColumn('users', 'phone_number', 'VARCHAR(20)');
   await safeAddColumn('user_profiles', 'username', 'VARCHAR(100)');
   await safeAddColumn('user_profiles', 'phone_number', 'VARCHAR(20)');
+  // 'text' or 'game_invite'; metadata holds the invite's JSON (room code, topic).
+  await safeAddColumn('chat_messages', 'message_type', "VARCHAR(20) DEFAULT 'text'");
+  await safeAddColumn('chat_messages', 'metadata', 'TEXT');
+  // Epoch ms rather than DATETIME: identical on MySQL and SQLite, no timezone.
+  await safeAddColumn('users', 'last_seen_ms', 'BIGINT');
 }
 
 if (require.main === module) {

@@ -19,7 +19,7 @@ export default function ChatRoomHub() {
   const [searchParams, setSearchParams] = useSearchParams();
 
   // Call context for online presence and voice calling
-  const { isFriendOnline, startCall } = useCall();
+  const { isFriendOnline, startCall, socket } = useCall();
 
   const activeRoomIdFromUrl = searchParams.get('room');
 
@@ -29,6 +29,24 @@ export default function ChatRoomHub() {
   // Public & direct rooms
   const [publicRooms, setPublicRooms] = useState([]);
   const [directRooms, setDirectRooms] = useState([]);
+  // Direct chats that got a message while this screen was open.
+  const [freshRooms, setFreshRooms] = useState(() => new Set());
+
+  // Keep Recent Conversations live: a friend's message moves their chat to the
+  // top with the new preview, without waiting for a reload.
+  useEffect(() => {
+    if (!socket) return undefined;
+    const onActivity = ({ roomId, preview, at }) => {
+      setDirectRooms((prev) => {
+        const room = prev.find((r) => r.id === roomId);
+        if (!room) return prev;
+        return [{ ...room, last_message: preview, last_message_at: at }, ...prev.filter((r) => r.id !== roomId)];
+      });
+      setFreshRooms((prev) => new Set(prev).add(roomId));
+    };
+    socket.on('chat:room-activity', onActivity);
+    return () => socket.off('chat:room-activity', onActivity);
+  }, [socket]);
   const [activeRoom, setActiveRoom] = useState(null);
   const [showRoomPicker, setShowRoomPicker] = useState(false);
 
@@ -178,7 +196,8 @@ export default function ChatRoomHub() {
     setMainTab('circles');
   };
 
-  const handleOpenDirectChat = async (peerId) => {
+  /** `challenge` opens the chat with the Grammar Battle sheet already up. */
+  const handleOpenDirectChat = async (peerId, { challenge = false } = {}) => {
     if (!user) {
       navigate('/login');
       return;
@@ -187,7 +206,7 @@ export default function ChatRoomHub() {
     try {
       const res = await api.getOrCreateDirectRoom(peerId);
       if (res.success && res.data) {
-        navigate(`/messages/${res.data.id}`);
+        navigate(`/messages/${res.data.id}${challenge ? '?challenge=1' : ''}`);
       } else {
         alert(res.message || 'Could not start chat');
       }
@@ -650,13 +669,14 @@ export default function ChatRoomHub() {
                             {room.friend_name || 'Friend'}
                           </h4>
                           {room.last_message_at && (
-                            <span className="text-[10px] text-on-surface-variant shrink-0">
+                            <span className={`text-[10px] shrink-0 flex items-center gap-1 ${freshRooms.has(room.id) ? 'text-primary font-bold' : 'text-on-surface-variant'}`}>
+                              {freshRooms.has(room.id) && <span className="w-2 h-2 rounded-full bg-primary" aria-label="New message" />}
                               {formatTime(room.last_message_at)}
                             </span>
                           )}
                         </div>
 
-                        <p className="text-[11px] text-on-surface-variant truncate mt-0.5">
+                        <p className={`text-[11px] truncate mt-0.5 ${freshRooms.has(room.id) ? 'text-on-surface font-bold' : 'text-on-surface-variant'}`}>
                           {room.last_message || 'Start chatting in English...'}
                         </p>
 
@@ -756,6 +776,18 @@ export default function ChatRoomHub() {
                               <span>Chat</span>
                             </>
                           )}
+                        </button>
+
+                        {/* 🎮 Grammar Battle challenge */}
+                        <button
+                          type="button"
+                          disabled={isOpening}
+                          onClick={() => handleOpenDirectChat(friend.id, { challenge: true })}
+                          className="p-2 rounded-xl font-bold transition-all active:scale-95 border bg-tertiary text-white border-tertiary shadow-sm shadow-tertiary/25 hover:opacity-90 disabled:opacity-50"
+                          title="Challenge to a Grammar Battle"
+                          aria-label={`Challenge ${friend.full_name || friend.username} to a Grammar Battle`}
+                        >
+                          <span className="material-symbols-outlined text-[18px]">sports_esports</span>
                         </button>
 
                         {/* 📞 Voice Call */}

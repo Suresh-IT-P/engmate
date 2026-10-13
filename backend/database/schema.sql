@@ -25,6 +25,7 @@ CREATE TABLE IF NOT EXISTS users (
     role VARCHAR(20) NOT NULL DEFAULT 'user', -- 'user', 'admin', 'teacher'
     status VARCHAR(20) NOT NULL DEFAULT 'active',
     is_verified BOOLEAN NOT NULL DEFAULT 1,
+    last_seen_ms BIGINT, -- epoch ms of the last chat connect/disconnect
     created_at DATETIME DEFAULT CURRENT_TIMESTAMP,
     updated_at DATETIME DEFAULT CURRENT_TIMESTAMP
 );
@@ -594,6 +595,8 @@ CREATE TABLE IF NOT EXISTS chat_messages (
     message_text TEXT NOT NULL,
     tamil_translation TEXT,
     grammar_correction TEXT,
+    message_type VARCHAR(20) DEFAULT 'text',
+    metadata TEXT,
     created_at DATETIME DEFAULT CURRENT_TIMESTAMP,
     FOREIGN KEY (room_id) REFERENCES chat_rooms(id) ON DELETE CASCADE,
     FOREIGN KEY (sender_id) REFERENCES users(id) ON DELETE CASCADE

@@ -91,11 +91,12 @@ export default function FriendsHub() {
     }
   };
 
-  const startDirectChat = async (friendId) => {
+  /** `challenge` opens the chat with the Grammar Battle sheet already up. */
+  const startDirectChat = async (friendId, { challenge = false } = {}) => {
     try {
       const res = await api.getOrCreateDirectRoom(friendId);
       if (res.success && res.data) {
-        navigate(`/messages/${res.data.id}`);
+        navigate(`/messages/${res.data.id}${challenge ? '?challenge=1' : ''}`);
       }
     } catch (err) {
       console.error(err);
@@ -223,6 +224,13 @@ export default function FriendsHub() {
                     >
                       <span className="material-symbols-outlined text-[16px]">chat</span>
                       Chat
+                    </button>
+                    <button
+                      onClick={() => startDirectChat(f.id, { challenge: true })}
+                      className="px-3.5 py-2 rounded-xl bg-tertiary text-white font-bold text-xs flex items-center gap-1 shadow-sm hover:opacity-90 transition-all"
+                    >
+                      <span className="material-symbols-outlined text-[16px]">sports_esports</span>
+                      Play
                     </button>
                     <button
                       onClick={() => handleRemoveFriend(f.id)}
